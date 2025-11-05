@@ -49,7 +49,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 63px;
+  gap: 55px;
   position: relative;
   isolation: isolate; /* שומר ז-אינדקס של הזוהרים מאחורה */
   max-width: var(--maxw);
@@ -114,6 +114,12 @@ h1 {
   gap: clamp(12px, 2.4vw, 22px);
   justify-items: stretch;
   align-items: stretch;
+}
+
+.emoji {
+  font-size: clamp(40px, 6vw, 70px);
+  line-height: 1;
+  margin-bottom: 15px; /* 👈 זה המרווח בין האימוגי לכותרת */
 }
 
 /* ===============  Tile Button  =============== */
