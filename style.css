@@ -1,0 +1,186 @@
+/* ===============  Design Tokens  =============== */
+:root {
+  --bg: #0b0f1a;
+  --text: #eaf6ff;
+  --muted: #9fbad9;
+
+  --tile-bg: rgba(19, 32, 54, 0.55);
+  --tile-border: rgba(120, 220, 255, 0.35);
+  --tile-shadow: 0 10px 30px rgba(0, 255, 234, 0.18);
+  --tile-hover: rgba(18, 210, 200, 0.16);
+
+  --accent: #35ffe0; /* ניאון טורקיז */
+  --accent-2: #00a0ff; /* כחול ניאון */
+
+  --radius: 18px;
+  --maxw: 1100px;
+}
+
+/* ===============  Base  =============== */
+* {
+  box-sizing: border-box;
+}
+html,
+body {
+  height: 100%;
+  background: radial-gradient(
+      1200px 800px at 20% 10%,
+      #0f2240 0%,
+      transparent 60%
+    ),
+    radial-gradient(800px 600px at 80% 90%, #00121f 0%, transparent 60%),
+    var(--bg);
+  color: var(--text);
+  font-family: "Rubik", "Segoe UI", Arial, system-ui, sans-serif;
+}
+
+body {
+  padding-top: 150px;
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+.wrap {
+  min-height: 100dvh;
+  padding: max(24px, env(safe-area-inset-top))
+    max(16px, env(safe-area-inset-right)) max(24px, env(safe-area-inset-bottom))
+    max(16px, env(safe-area-inset-left));
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 63px;
+  position: relative;
+  isolation: isolate; /* שומר ז-אינדקס של הזוהרים מאחורה */
+  max-width: var(--maxw);
+  margin-inline: auto;
+}
+
+/* רקעי זוהר */
+.glow {
+  position: absolute;
+  inset: auto;
+  z-index: -1;
+  filter: blur(80px);
+  opacity: 0.6;
+  pointer-events: none;
+}
+.glow-a {
+  width: 42vmax;
+  height: 42vmax;
+  right: -10vmax;
+  top: -8vmax;
+  background: conic-gradient(from 120deg, #00f0ff, #00ffa6, #00c2ff, #00f0ff);
+  border-radius: 50%;
+  mix-blend-mode: screen;
+}
+.glow-b {
+  width: 35vmax;
+  height: 35vmax;
+  left: -8vmax;
+  bottom: -10vmax;
+  background: radial-gradient(circle at 30% 30%, #0066ff, transparent 60%),
+    radial-gradient(circle at 70% 70%, #00ffd5, transparent 60%);
+  border-radius: 50%;
+  mix-blend-mode: screen;
+}
+
+/* ===============  Hero  =============== */
+.hero {
+  text-align: center;
+}
+.emoji {
+  font-size: clamp(40px, 6vw, 70px);
+  line-height: 1;
+  margin-bottom: 8px;
+}
+h1 {
+  margin: 0;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  font-size: clamp(18px, 3.2vw, 34px);
+  text-shadow: 0 0 12px rgba(0, 255, 234, 0.35);
+}
+
+/* ===============  Grid  =============== */
+.grid {
+  width: 100%;
+  display: grid;
+  /* רספונסיבי: אריח מינימום 140–170 פיקסלים, נשבר לבד לשורות */
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(clamp(140px, 22vw, 170px), 1fr)
+  );
+  gap: clamp(12px, 2.4vw, 22px);
+  justify-items: stretch;
+  align-items: stretch;
+}
+
+/* ===============  Tile Button  =============== */
+.tile {
+  appearance: none;
+  border: 1px solid var(--tile-border);
+  background: linear-gradient(180deg, var(--tile-bg), rgba(10, 18, 30, 0.45));
+  color: var(--text);
+  font-weight: 700;
+  font-size: clamp(14px, 2.1vw, 18px);
+  padding: clamp(16px, 2.6vw, 24px);
+  border-radius: var(--radius);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05), var(--tile-shadow);
+  backdrop-filter: blur(6px) saturate(120%);
+  -webkit-backdrop-filter: blur(6px) saturate(120%);
+  cursor: pointer;
+  transition: transform 0.18s ease, box-shadow 0.18s ease,
+    background-color 0.18s ease, border-color 0.18s ease;
+  text-align: center;
+  outline: none;
+}
+.tile:hover {
+  transform: translateY(-2px) scale(1.02);
+  background-color: var(--tile-hover);
+  border-color: rgba(120, 220, 255, 0.75);
+  box-shadow: 0 16px 40px rgba(0, 255, 234, 0.25),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.04);
+}
+.tile:active {
+  transform: translateY(0) scale(0.99);
+}
+.tile:focus-visible {
+  box-shadow: 0 0 0 3px rgba(53, 255, 224, 0.55),
+    0 12px 30px rgba(0, 180, 255, 0.25);
+}
+
+/* ===============  Responsiveness Tweaks  =============== */
+/* טאבלט קטן / מובייל גדול */
+@media (max-width: 900px) {
+  .wrap {
+    gap: 22px;
+  }
+}
+/* מובייל */
+@media (max-width: 520px) {
+  .grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px;
+  }
+  .tile {
+    padding: 14px;
+  }
+}
+/* מסכים רחבים במיוחד */
+@media (min-width: 1300px) {
+  .grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+/* נגישות: פחות אנימציה אם המשתמש ביקש */
+@media (prefers-reduced-motion: reduce) {
+  .tile {
+    transition: none;
+  }
+  .tile:hover,
+  .tile:active {
+    transform: none;
+  }
+}
