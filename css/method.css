@@ -54,6 +54,7 @@
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 280px));
   gap: 28px;
+  margin-top: -51px; /* ✅ מקטין את המרחק מהכותרת */
   justify-content: center;
   width: 100%;
   max-width: 700px;
