@@ -11,8 +11,8 @@
 /* הכפתור חזרה */
 .back-btn {
   position: absolute;
-  top: 24px;
-  right: 24px;
+  top: 54px;
+  left: 24px; /* ⬅️ החלפנו את right ב-left */
   display: flex;
   align-items: center;
   gap: 8px;
@@ -27,6 +27,7 @@
   box-shadow: var(--tile-shadow);
   backdrop-filter: blur(8px);
 }
+
 .back-btn:hover {
   transform: translateY(-2px);
   background-color: var(--tile-hover);
