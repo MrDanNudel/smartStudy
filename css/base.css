@@ -1,34 +1,6 @@
 /* =====================================================
-   SMART STUDY — BASE STYLES (חל על כל הדפים)
+   PAGE TRANSITIONS — Enhanced Neon Fade
    ===================================================== */
-
-/* ===============  Design Tokens  =============== */
-:root {
-  /* צבעים עיקריים */
-  --bg: #0b0f1a;
-  --text: #eaf6ff;
-  --muted: #9fbad9;
-
-  /* צבעים וזכוכית */
-  --tile-bg: rgba(19, 32, 54, 0.55);
-  --tile-border: rgba(120, 220, 255, 0.35);
-  --tile-shadow: 0 10px 30px rgba(0, 255, 234, 0.18);
-  --tile-hover: rgba(18, 210, 200, 0.16);
-
-  /* צבעי הדגשה */
-  --accent: #35ffe0; /* ניאון טורקיז */
-  --accent-2: #00a0ff; /* כחול ניאון */
-
-  /* מבנה */
-  --radius: 18px;
-  --maxw: 1100px;
-}
-
-/* ===============  Reset + Base  =============== */
-* {
-  box-sizing: border-box;
-}
-
 html,
 body {
   height: 100%;
@@ -36,101 +8,83 @@ body {
   margin: 0;
   padding: 0;
 
-  /* רקע כללי רדיאלי גדול */
+  /* רקע כהה ואלגנטי */
   background: radial-gradient(
       60vmax 60vmax at 20% 15%,
       #0f2240 0%,
       transparent 60%
     ),
     radial-gradient(70vmax 70vmax at 80% 80%, #00121f 0%, transparent 65%),
-    var(--bg);
+    #0b0f1a;
   background-repeat: no-repeat;
 
-  color: var(--text);
+  color: #eaf6ff;
   font-family: "Rubik", "Segoe UI", Arial, system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
 }
 
-/* ===============  Layout Wrapper  =============== */
-.wrap {
-  min-height: 100dvh;
-  padding: max(24px, env(safe-area-inset-top))
-    max(16px, env(safe-area-inset-right)) max(24px, env(safe-area-inset-bottom))
-    max(16px, env(safe-area-inset-left));
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 40px;
-  padding-top: 50px;
-  position: relative;
-  isolation: isolate;
-  max-width: var(--maxw);
-  margin-inline: auto;
+.fade-in {
+  animation: fadeIn 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  opacity: 0;
 }
 
-/* ===============  Glow Backgrounds  =============== */
-.glow {
-  position: absolute;
-  z-index: -1;
-  filter: blur(80px);
-  opacity: 0.6;
+.fade-out {
+  animation: fadeOut 0.45s ease forwards;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: scale(1.03);
+    filter: blur(12px) brightness(1.4);
+  }
+  50% {
+    opacity: 0.6;
+    filter: blur(4px) brightness(1.15);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+    filter: blur(0) brightness(1);
+  }
+}
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+    filter: blur(0) brightness(1);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0.97);
+    filter: blur(10px) brightness(0.7);
+  }
+}
+
+/* אפקט אור ניאון קל בזמן טעינה */
+.fade-in::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(
+    circle at center,
+    rgba(0, 255, 255, 0.25),
+    transparent 80%
+  );
+  opacity: 0;
+  animation: glowPulse 1.2s ease forwards;
   pointer-events: none;
-}
-.glow-a {
-  width: 42vmax;
-  height: 42vmax;
-  right: -10vmax;
-  top: -8vmax;
-  background: conic-gradient(from 120deg, #00f0ff, #00ffa6, #00c2ff, #00f0ff);
-  border-radius: 50%;
-  mix-blend-mode: screen;
-}
-.glow-b {
-  width: 35vmax;
-  height: 35vmax;
-  left: -8vmax;
-  bottom: -10vmax;
-  background: radial-gradient(circle at 30% 30%, #0066ff, transparent 60%),
-    radial-gradient(circle at 70% 70%, #00ffd5, transparent 60%);
-  border-radius: 50%;
-  mix-blend-mode: screen;
+  z-index: 2;
 }
 
-/* ===============  Hero Section  =============== */
-.hero {
-  text-align: center;
-  margin-bottom: 40px;
-}
-.emoji {
-  font-size: clamp(40px, 6vw, 70px);
-  line-height: 1;
-  margin-bottom: 28px;
-}
-h1 {
-  margin: 0;
-  font-weight: 700;
-  letter-spacing: 0.06em;
-  font-size: clamp(18px, 3.2vw, 34px);
-  text-shadow: 0 0 12px rgba(0, 255, 234, 0.35);
-}
-
-/* ===============  Responsiveness  =============== */
-@media (max-width: 520px) {
-  .wrap {
-    gap: 28px;
-    padding-top: 40px;
+@keyframes glowPulse {
+  0% {
+    opacity: 0.8;
+    filter: blur(60px);
   }
-  .emoji {
-    font-size: 48px;
-    margin-bottom: 20px;
-  }
-}
-
-/* ===============  Accessibility  =============== */
-@media (prefers-reduced-motion: reduce) {
-  * {
-    transition: none !important;
-    animation: none !important;
+  100% {
+    opacity: 0;
+    filter: blur(0);
   }
 }

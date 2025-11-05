@@ -10,29 +10,25 @@
 
     <!-- ✅ קישורים נכונים ל־CSS -->
     <link rel="stylesheet" href="css/base.css" />
-    <link rel="stylesheet" href="css/method.css" />
+    <link rel="stylesheet" href="css/method.css?v=2" />
   </head>
 
   <body>
     <main class="wrap method-wrap">
-      <!-- רקעי זוהר קיימים כדי לשמור על העיצוב -->
       <div class="glow glow-a"></div>
       <div class="glow glow-b"></div>
 
-      <!-- כפתור חזרה -->
       <button class="back-btn" type="button" aria-label="לעמוד הקודם">
         <span class="back-icon" aria-hidden="true">◀</span>
         <span>לעמוד הקודם</span>
       </button>
 
-      <!-- כותרת -->
       <header class="hero method-hero">
         <div class="method-emoji" aria-hidden="true">🗣️</div>
         <h1>בחר שיטת תרגול</h1>
         <p class="chosen-subject" id="chosenSubject"></p>
       </header>
 
-      <!-- שתי אפשרויות -->
       <section class="method-grid" aria-label="שיטות תרגול">
         <button class="method-card" data-method="quiz">
           <div class="method-title">מבחן שאלות אמריקאיות</div>
@@ -44,7 +40,6 @@
       </section>
     </main>
 
-    <!-- ✅ קישור לסקריפט הנכון -->
     <script src="js/method.js"></script>
   </body>
 </html>

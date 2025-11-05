@@ -1,37 +1,45 @@
 /* =====================================================
-   SMART STUDY — METHOD PAGE
+   SMART STUDY — METHOD PAGE (Glass & Neon Edition)
    ===================================================== */
 
-/* ירושה מה-base.css - רק מוסיפים התאמות עיצוב */
+/* מבנה כללי */
 .method-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   justify-content: flex-start;
   gap: 60px;
+  min-height: 100vh;
+  text-align: center;
+  padding-bottom: 60px;
 }
 
-/* הכפתור חזרה */
+/* כפתור חזרה */
 .back-btn {
   position: absolute;
   top: 54px;
-  left: 24px; /* ⬅️ החלפנו את right ב-left */
+  left: 24px;
   display: flex;
   align-items: center;
   gap: 8px;
-  padding: 10px 16px;
-  border: 1px solid var(--tile-border);
-  border-radius: var(--radius);
-  background: var(--tile-bg);
+  padding: 10px 18px;
+  border: 1px solid rgba(120, 220, 255, 0.35);
+  border-radius: 18px;
+  background: rgba(19, 32, 54, 0.55);
   color: var(--text);
   font-weight: 600;
+  font-size: 14px;
   cursor: pointer;
-  transition: 0.2s ease;
-  box-shadow: var(--tile-shadow);
-  backdrop-filter: blur(8px);
+  transition: 0.25s ease;
+  box-shadow: 0 8px 25px rgba(0, 255, 234, 0.18);
+  backdrop-filter: blur(10px) saturate(120%);
+  -webkit-backdrop-filter: blur(10px) saturate(120%);
 }
-
 .back-btn:hover {
-  transform: translateY(-2px);
-  background-color: var(--tile-hover);
-  border-color: rgba(120, 220, 255, 0.6);
+  transform: translateY(-2px) scale(1.03);
+  background-color: rgba(18, 210, 200, 0.16);
+  border-color: rgba(120, 220, 255, 0.65);
+  box-shadow: 0 14px 40px rgba(0, 255, 234, 0.3);
 }
 
 /* כותרת */
@@ -49,36 +57,61 @@
   margin-top: 12px;
 }
 
-/* הגריד של הכפתורים */
+/* גריד */
 .method-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 280px));
-  gap: 28px;
-  margin-top: -51px; /* ✅ מקטין את המרחק מהכותרת */
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 32px;
   justify-content: center;
+  align-items: center;
   width: 100%;
   max-width: 700px;
 }
-
-/* קלפים */
+/* קלפים (כפתורי שיטה) */
 .method-card {
-  border: 1px solid var(--tile-border);
-  border-radius: var(--radius);
-  background: linear-gradient(180deg, var(--tile-bg), rgba(10, 18, 30, 0.45));
+  border: 1px solid rgba(120, 220, 255, 0.35);
+  border-radius: 18px;
+  background: linear-gradient(
+    180deg,
+    rgba(19, 32, 54, 0.55),
+    rgba(10, 18, 30, 0.45)
+  );
   color: var(--text);
   font-weight: 700;
   font-size: 20px;
   padding: 60px 0;
   text-align: center;
   cursor: pointer;
-  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
-  box-shadow: var(--tile-shadow);
-  backdrop-filter: blur(6px);
+  transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease,
+    border-color 0.25s ease;
+  box-shadow: 0 10px 30px rgba(0, 255, 234, 0.18);
+  backdrop-filter: blur(8px) saturate(120%);
+  -webkit-backdrop-filter: blur(8px) saturate(120%);
+
+  /* אפקט כניסה אחיד ומהיר */
+  opacity: 0;
+  transform: scale(0.94);
+  animation: fadeCard 0.6s ease forwards;
 }
+
+/* אפקט ריחוף */
 .method-card:hover {
   transform: scale(1.05);
-  background: var(--tile-hover);
+  background: rgba(18, 210, 200, 0.16);
   border-color: rgba(120, 220, 255, 0.75);
+  box-shadow: 0 16px 45px rgba(0, 255, 234, 0.25);
+}
+
+/* אנימציית כניסה אחידה */
+@keyframes fadeCard {
+  from {
+    opacity: 0;
+    transform: scale(0.94) translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
 }
 
 /* רספונסיביות */
@@ -92,7 +125,8 @@
     font-size: 18px;
   }
   .back-btn {
-    top: 16px;
-    right: 16px;
+    top: 20px;
+    left: 16px;
+    padding: 8px 14px;
   }
 }
