@@ -1,0 +1,96 @@
+/* =====================================================
+   SMART STUDY — METHOD PAGE
+   ===================================================== */
+
+/* ירושה מה-base.css - רק מוסיפים התאמות עיצוב */
+.method-wrap {
+  justify-content: flex-start;
+  gap: 60px;
+}
+
+/* הכפתור חזרה */
+.back-btn {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 16px;
+  border: 1px solid var(--tile-border);
+  border-radius: var(--radius);
+  background: var(--tile-bg);
+  color: var(--text);
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.2s ease;
+  box-shadow: var(--tile-shadow);
+  backdrop-filter: blur(8px);
+}
+.back-btn:hover {
+  transform: translateY(-2px);
+  background-color: var(--tile-hover);
+  border-color: rgba(120, 220, 255, 0.6);
+}
+
+/* כותרת */
+.method-hero {
+  text-align: center;
+  margin-top: 90px;
+}
+.method-emoji {
+  font-size: clamp(48px, 6vw, 80px);
+  margin-bottom: 24px;
+}
+.chosen-subject {
+  font-size: 18px;
+  color: var(--muted);
+  margin-top: 12px;
+}
+
+/* הגריד של הכפתורים */
+.method-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 280px));
+  gap: 28px;
+  justify-content: center;
+  width: 100%;
+  max-width: 700px;
+}
+
+/* קלפים */
+.method-card {
+  border: 1px solid var(--tile-border);
+  border-radius: var(--radius);
+  background: linear-gradient(180deg, var(--tile-bg), rgba(10, 18, 30, 0.45));
+  color: var(--text);
+  font-weight: 700;
+  font-size: 20px;
+  padding: 60px 0;
+  text-align: center;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+  box-shadow: var(--tile-shadow);
+  backdrop-filter: blur(6px);
+}
+.method-card:hover {
+  transform: scale(1.05);
+  background: var(--tile-hover);
+  border-color: rgba(120, 220, 255, 0.75);
+}
+
+/* רספונסיביות */
+@media (max-width: 600px) {
+  .method-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  .method-card {
+    padding: 40px 0;
+    font-size: 18px;
+  }
+  .back-btn {
+    top: 16px;
+    right: 16px;
+  }
+}

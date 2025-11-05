@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover"
+    />
+    <title>בחר שיטת תרגול</title>
+
+    <!-- ✅ קישורים נכונים ל־CSS -->
+    <link rel="stylesheet" href="css/base.css" />
+    <link rel="stylesheet" href="css/method.css" />
+  </head>
+
+  <body>
+    <main class="wrap method-wrap">
+      <!-- רקעי זוהר קיימים כדי לשמור על העיצוב -->
+      <div class="glow glow-a"></div>
+      <div class="glow glow-b"></div>
+
+      <!-- כפתור חזרה -->
+      <button class="back-btn" type="button" aria-label="לעמוד הקודם">
+        <span class="back-icon" aria-hidden="true">◀</span>
+        <span>לעמוד הקודם</span>
+      </button>
+
+      <!-- כותרת -->
+      <header class="hero method-hero">
+        <div class="method-emoji" aria-hidden="true">🗣️</div>
+        <h1>בחר שיטת תרגול</h1>
+        <p class="chosen-subject" id="chosenSubject"></p>
+      </header>
+
+      <!-- שתי אפשרויות -->
+      <section class="method-grid" aria-label="שיטות תרגול">
+        <button class="method-card" data-method="quiz">
+          <div class="method-title">מבחן שאלות אמריקאיות</div>
+        </button>
+
+        <button class="method-card" data-method="show">
+          <div class="method-title">הצגת שאלות תשובות</div>
+        </button>
+      </section>
+    </main>
+
+    <!-- ✅ קישור לסקריפט הנכון -->
+    <script src="js/method.js"></script>
+  </body>
+</html>
