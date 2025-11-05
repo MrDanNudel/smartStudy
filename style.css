@@ -199,3 +199,23 @@ h1 {
     transform: none;
   }
 }
+
+/* ✅ אייפד (ופלח טאבלט דומה): 2 שורות × 4 עמודות סימטריות */
+@media (min-width: 700px) and (max-width: 1180px) {
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(160px, 1fr)); /* 4 עמודות */
+    grid-template-rows: repeat(2, auto); /* 2 שורות */
+    grid-auto-flow: row; /* לא "ממלא" עמודות מוזר */
+    gap: 24px;
+    max-width: 900px;
+    margin: 0 auto;
+    justify-content: center; /* מרכז אופקית */
+    align-content: start; /* או center אם תרצה למרכז גם אנכית */
+  }
+
+  .tile {
+    width: 100%; /* כל כפתור ימלא את תא הגריד שלו */
+    max-width: none;
+  }
+}
