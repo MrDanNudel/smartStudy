@@ -188,7 +188,23 @@
       //  התחלת מבחן
       // ==========================
       document.getElementById("start-btn").addEventListener("click", () => {
-        window.location.href = `exam.html?time=${settings.timePerQuestion}&questions=${settings.numQuestions}&fails=${settings.maxFails}`;
+        // לוקחים את הנושא וה־key מה-URL
+        const params = new URLSearchParams(window.location.search);
+        const subject =
+          params.get("subject") ||
+          localStorage.getItem("selectedSubjectLabel") ||
+          "נושא לא מוגדר";
+        const key =
+          params.get("key") ||
+          localStorage.getItem("selectedSubjectKey") ||
+          "chemistry";
+
+        // מעבירים את כל הנתונים ל-exam.html
+        window.location.href = `exam.html?time=${
+          settings.timePerQuestion
+        }&questions=${settings.numQuestions}&fails=${
+          settings.maxFails
+        }&subject=${encodeURIComponent(subject)}&key=${key}`;
       });
 
       // ==========================
