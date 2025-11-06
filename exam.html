@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>מבחן אמריקאי</title>
+
+    <!-- קבצי עיצוב -->
+    <link rel="stylesheet" href="css/base.css" />
+    <link rel="stylesheet" href="css/exam.css" />
+  </head>
+
+  <body>
+    <!-- סרגל עליון -->
+    <div class="top-bar">
+      <button class="nav-btn" id="prevBtn">⟵ לעמוד הקודם</button>
+      <div class="title">
+        <div class="subject" id="subjectTitle"></div>
+        <div class="subtitle">שאלון אמריקאי</div>
+      </div>
+      <button class="nav-btn" id="homeBtn">לעמוד הבית ⟶</button>
+    </div>
+
+    <!-- קלף השאלה -->
+    <div class="card" id="card">
+      <h2 class="qtext" id="questionText">טוען...</h2>
+      <div class="qmeta" id="qMeta">שאלה 1 מתוך 20</div>
+      <div class="options" id="options"></div>
+    </div>
+
+    <!-- מד זמן -->
+    <div class="timer-wrap">
+      <div class="bar"><span id="barFill"></span></div>
+      <div class="time-left" id="timeLeft">..נשארו 30 שניות</div>
+    </div>
+
+    <!-- סטטוס -->
+    <div class="footer-stats">
+      <div id="failsView">פסילות: 0 / 5</div>
+      <div id="progressView">התקדמות: 0%</div>
+    </div>
+
+    <!-- מסך סיום -->
+    <div class="overlay" id="endOverlay">
+      <div class="end-card">
+        <div class="end-title" id="endTitle">המבחן נגמר</div>
+        <div class="end-sub" id="endSub">כל הכבוד!</div>
+        <div class="btn-row">
+          <button class="btn" id="againBtn">נסה שוב</button>
+          <button class="btn primary" id="backBtn">חזרה לבחירת שיטה</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- סקריפט לוגיקה -->
+    <script src="js/exam.js"></script>
+  </body>
+</html>

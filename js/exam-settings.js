@@ -103,9 +103,21 @@ window.addEventListener("load", () => {
 // ==========================
 //  התחלת מבחן
 // ==========================
+// ==========================
+//  התחלת מבחן
+// ==========================
 document.getElementById("start-btn").addEventListener("click", () => {
-  // מעבר למסך המבחן עם הנתונים
-  window.location.href = `exam.html?time=${settings.timePerQuestion}&questions=${settings.numQuestions}&fails=${settings.maxFails}`;
+  // שומר את ההגדרות (גם אם המשתמש לא שינה כלום)
+  localStorage.setItem("examSettings", JSON.stringify(settings));
+
+  // מעביר לדף הבחינה עם פרמטרים ב־URL
+  const query = new URLSearchParams({
+    time: settings.timePerQuestion,
+    questions: settings.numQuestions,
+    fails: settings.maxFails,
+  }).toString();
+
+  window.location.href = `exam.html?${query}`;
 });
 
 // ==========================
