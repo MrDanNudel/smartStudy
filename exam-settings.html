@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>הגדרות מבחן אמריקאי</title>
+
+    <!-- עיצוב -->
+    <link rel="stylesheet" href="css/base.css" />
+    <link rel="stylesheet" href="css/exam-settings.css" />
+  </head>
+
+  <body>
+    <!-- סרגל עליון -->
+    <div class="top-bar">
+      <button class="nav-btn" id="prev-page">⟵ לעמוד הקודם</button>
+      <h1 class="page-title">כימיה</h1>
+      <button class="nav-btn" id="home-page">לעמוד הבית ⟶</button>
+    </div>
+
+    <!-- תוכן ראשי -->
+    <div class="settings-container">
+      <h2 class="subtitle">הגדרות לשאלון אמריקאי</h2>
+
+      <div class="settings-grid">
+        <button class="setting-btn" id="time-btn">
+          הגדר זמן לשאלה<br /><span id="time-value">30 שניות</span>
+        </button>
+        <button class="setting-btn" id="questions-btn">
+          הגדר מספר שאלות<br /><span id="questions-value">20 שאלות</span>
+        </button>
+        <button class="setting-btn" id="fails-btn">
+          הגדר מספר פסילות<br /><span id="fails-value">עד 5 פסילות</span>
+        </button>
+      </div>
+
+      <button id="start-btn" class="start-btn">התחל מבחן !</button>
+    </div>
+
+    <!-- חלון קלט -->
+    <div class="modal" id="modal">
+      <div class="modal-content">
+        <h3 id="modal-title"></h3>
+        <input type="number" id="modal-input" />
+        <div class="modal-actions">
+          <button id="save-btn" class="primary">שמור</button>
+          <button id="cancel-btn">בטל</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- סקריפט -->
+    <script>
+      // ==========================
+      //  הגדרות מבחן
+      // ==========================
+      const modal = document.getElementById("modal");
+      const modalInput = document.getElementById("modal-input");
+      const modalTitle = document.getElementById("modal-title");
+      const saveBtn = document.getElementById("save-btn");
+      const cancelBtn = document.getElementById("cancel-btn");
+
+      const timeBtn = document.getElementById("time-btn");
+      const questionsBtn = document.getElementById("questions-btn");
+      const failsBtn = document.getElementById("fails-btn");
+
+      const timeValue = document.getElementById("time-value");
+      const questionsValue = document.getElementById("questions-value");
+      const failsValue = document.getElementById("fails-value");
+
+      let settings = {
+        timePerQuestion: 30,
+        numQuestions: 20,
+        maxFails: 5,
+      };
+
+      let currentField = null;
+
+      // פתיחת חלון קלט
+      function openModal(field, title, min, max) {
+        currentField = { field, min, max };
+        modalTitle.textContent = title;
+        modalInput.value = settings[field];
+        modal.style.display = "flex";
+        modalInput.focus();
+        modalInput.min = min;
+        modalInput.max = max;
+      }
+
+      // שמירה
+      saveBtn.addEventListener("click", () => {
+        const val = parseInt(modalInput.value);
+        if (isNaN(val) || val < currentField.min || val > currentField.max) {
+          alert(`הזן ערך בין ${currentField.min} ל-${currentField.max}`);
+          return;
+        }
+        settings[currentField.field] = val;
+        modal.style.display = "none";
+        updateUI();
+      });
+
+      // ביטול
+      cancelBtn.addEventListener("click", () => (modal.style.display = "none"));
+
+      // כפתורי פתיחת ההגדרות
+      timeBtn.addEventListener("click", () =>
+        openModal("timePerQuestion", "הגדר זמן לשאלה (בשניות)", 10, 90)
+      );
+      questionsBtn.addEventListener("click", () =>
+        openModal("numQuestions", "הגדר מספר שאלות", 10, 50)
+      );
+      failsBtn.addEventListener("click", () =>
+        openModal("maxFails", "הגדר מספר פסילות", 0, 5)
+      );
+
+      // עדכון תצוגה
+      function updateUI() {
+        timeValue.textContent = `${settings.timePerQuestion} שניות`;
+        questionsValue.textContent = `${settings.numQuestions} שאלות`;
+        failsValue.textContent = `עד ${settings.maxFails} פסילות`;
+        localStorage.setItem("examSettings", JSON.stringify(settings));
+      }
+
+      // טעינה ראשונית
+      window.addEventListener("load", () => {
+        const saved = localStorage.getItem("examSettings");
+        if (saved) settings = JSON.parse(saved);
+        updateUI();
+      });
+
+      // התחלת מבחן
+      document.getElementById("start-btn").addEventListener("click", () => {
+        window.location.href = `exam.html?time=${settings.timePerQuestion}&questions=${settings.numQuestions}&fails=${settings.maxFails}`;
+      });
+
+      // ==========================
+      //  ניווט עליון
+      // ==========================
+
+      // חזרה לעמוד הקודם
+      document.getElementById("prev-page").addEventListener("click", () => {
+        window.history.back();
+      });
+
+      // חזרה לעמוד הבית + איפוס נושא
+      document.getElementById("home-page").addEventListener("click", () => {
+        localStorage.removeItem("selectedSubjectLabel");
+        localStorage.removeItem("selectedSubjectKey");
+        window.location.href = "index.html";
+      });
+    </script>
+  </body>
+</html>

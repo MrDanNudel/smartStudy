@@ -30,16 +30,49 @@
       </header>
 
       <section class="method-grid" aria-label="שיטות תרגול">
-        <button class="method-card" data-method="quiz">
+        <button class="method-card" data-method="quiz" id="quizBtn">
           <div class="method-title">מבחן שאלות אמריקאיות</div>
         </button>
 
-        <button class="method-card" data-method="show">
+        <button class="method-card" data-method="show" id="showBtn">
           <div class="method-title">הצגת שאלות תשובות</div>
         </button>
       </section>
     </main>
 
-    <script src="js/method.js"></script>
+    <script>
+      // 🧠 קריאה מהנושא שנשמר בדף הקודם
+      const chosenSubject =
+        localStorage.getItem("selectedSubjectLabel") || "נושא לא מוגדר";
+      const subjectKey = localStorage.getItem("selectedSubjectKey") || "";
+
+      // מציג את הנושא בכותרת
+      document.getElementById(
+        "chosenSubject"
+      ).textContent = `נושא נבחר: ${chosenSubject}`;
+
+      // מעבר למסכי תרגול
+      const quizBtn = document.getElementById("quizBtn");
+      const showBtn = document.getElementById("showBtn");
+
+      quizBtn.addEventListener("click", () => {
+        // מעבר לעמוד ההגדרות של המבחן
+        window.location.href = `exam-settings.html?subject=${encodeURIComponent(
+          chosenSubject
+        )}&key=${subjectKey}`;
+      });
+
+      showBtn.addEventListener("click", () => {
+        // מעבר לעמוד הצגת שאלות ותשובות
+        window.location.href = `practice.html?mode=review&subject=${encodeURIComponent(
+          chosenSubject
+        )}&key=${subjectKey}`;
+      });
+
+      // כפתור חזרה
+      document.querySelector(".back-btn").addEventListener("click", () => {
+        window.history.back();
+      });
+    </script>
   </body>
 </html>
