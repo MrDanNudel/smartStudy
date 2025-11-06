@@ -47,12 +47,25 @@ document.querySelectorAll(".method-card").forEach((card) => {
     localStorage.setItem("selectedMethodKey", methodKey);
     localStorage.setItem("selectedMethodLabel", methodLabel);
 
+    // שליפת הנושא הנבחר כדי להעביר אותו הלאה
+    const subjectLabel =
+      localStorage.getItem("selectedSubjectLabel") || "כימיה";
+    const subjectKey = localStorage.getItem("selectedSubjectKey") || "";
+
     // אפקט מעבר חלק קדימה
     document.body.classList.add("fade-out");
 
     setTimeout(() => {
-      window.location.href =
-        methodKey === "quiz" ? "quiz-mode.html" : "answers-mode.html";
+      // מעבר לעמוד ההגדרות אם זו שיטת המבחן האמריקאי
+      if (methodKey === "exam") {
+        window.location.href = `exam-settings.html?subject=${encodeURIComponent(
+          subjectLabel
+        )}&key=${subjectKey}`;
+      } else if (methodKey === "quiz") {
+        window.location.href = "quiz-mode.html";
+      } else {
+        window.location.href = "answers-mode.html";
+      }
     }, 400);
   });
 });

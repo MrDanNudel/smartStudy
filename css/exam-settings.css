@@ -16,11 +16,12 @@ body {
 /* ===== סרגל עליון ===== */
 .top-bar {
   position: absolute;
-  top: 20px;
+  top: 24px;
   width: 92%;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  flex-direction: row-reverse; /* ✅ הפוך את הסדר של הכפתורים */
 }
 
 /* עיצוב כפתורים תואם לשאר הדפים */
@@ -70,15 +71,14 @@ body {
 /* הקו הזוהר מתחת לכותרת */
 .page-title::after {
   content: "";
-  position: absolute;
-  bottom: -8px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 100px;
-  height: 2px;
-  border-radius: 2px;
-  background: linear-gradient(90deg, #00e0ff, #0096ff);
-  box-shadow: 0 0 10px rgba(0, 200, 255, 0.5);
+  display: block;
+  width: 120px; /* ✅ כפול אורך */
+  height: 4px; /* ✅ טיפה עבה יותר */
+  margin: 12px auto 0;
+  background: linear-gradient(90deg, #00baff, #00e6ff);
+  border-radius: 3px;
+  box-shadow: 0 0 18px rgba(0, 220, 255, 0.7);
+  transition: width 0.4s ease;
 }
 
 /* ===== תוכן ראשי ===== */

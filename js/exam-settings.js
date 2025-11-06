@@ -85,6 +85,19 @@ window.addEventListener("load", () => {
   const saved = localStorage.getItem("examSettings");
   if (saved) settings = JSON.parse(saved);
   updateUI();
+
+  // --- הצגת הנושא שנבחר בכותרת ---
+  const params = new URLSearchParams(window.location.search);
+  const subject = params.get("subject");
+  const titleEl = document.querySelector(".page-title");
+
+  if (titleEl) {
+    if (subject) {
+      titleEl.textContent = `הגדרות למבחן ב: ${subject}`;
+    } else {
+      titleEl.textContent = "הגדרות למבחן";
+    }
+  }
 });
 
 // ==========================
@@ -101,11 +114,9 @@ document.getElementById("start-btn").addEventListener("click", () => {
 
 // כפתור חזרה לעמוד הקודם
 document.getElementById("prev-page").addEventListener("click", () => {
-  // ננסה קודם לחזור בהיסטוריה
   if (window.history.length > 1) {
     window.history.back();
   } else {
-    // אם אין היסטוריה (העמוד נפתח ישירות), נחזור לשיטת התרגול
     window.location.href = "select-method.html";
   }
 });
