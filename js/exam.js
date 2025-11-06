@@ -172,7 +172,7 @@ function startTimer() {
 
   const total = settings.timePerQuestion;
   timerId = setInterval(() => {
-    timeLeftSec -= 0.1;
+    timeLeftSec -= 0.05;
     if (timeLeftSec <= 0) {
       clearInterval(timerId);
       handleAnswer(-1);
@@ -182,7 +182,7 @@ function startTimer() {
     const ratio = Math.max(0, timeLeftSec / total);
     barFill.style.transform = `scaleX(${ratio.toFixed(3)})`;
     drawTime();
-  }, 100);
+  }, 50);
 }
 
 function drawTime() {
