@@ -40,12 +40,12 @@ function openModal(field, title, min, max, suffix) {
 //  שמירה
 // ==========================
 saveBtn.addEventListener("click", () => {
-  const val = parseInt(modalInput.value);
-  if (isNaN(val) || val < currentField.min || val > currentField.max) {
+  const val = Number.parseInt(modalInput.value, 10);
+  if (Number.isNaN(val) || val < currentField.min || val > currentField.max) {
     alert(`הזן ערך בין ${currentField.min} ל-${currentField.max}`);
     return;
   }
-  settings[currentField.field] = val;
+  settings[currentField.field] = val; // נשמר כמספר
   modal.style.display = "none";
   updateUI();
 });
@@ -69,12 +69,30 @@ failsBtn.addEventListener("click", () =>
 );
 
 // ==========================
+//  פונקציה לעדכון ערך הפסילות
+// ==========================
+
+// ==========================
 //  עדכון תצוגה
 // ==========================
 function updateUI() {
+  // עדכון זמן ושאלות
   timeValue.textContent = `${settings.timePerQuestion} שניות`;
   questionsValue.textContent = `${settings.numQuestions} שאלות`;
-  failsValue.textContent = `עד ${settings.maxFails} פסילות`;
+
+  // עדכון הפסילות
+  const fails = Number(settings.maxFails);
+  const failsValueEl = document.getElementById("fails-value");
+
+  if (failsValueEl) {
+    if (fails === 0) {
+      failsValueEl.textContent = "ללא הגבלת טעויות";
+    } else {
+      failsValueEl.textContent = `עד ${fails} פסילות`;
+    }
+  }
+
+  // שמירה
   localStorage.setItem("examSettings", JSON.stringify(settings));
 }
 
@@ -82,6 +100,9 @@ function updateUI() {
 //  טעינה ראשונית
 // ==========================
 window.addEventListener("load", () => {
+  // אפשר למחוק את השורה הזאת אחרי הבדיקה
+  localStorage.removeItem("examSettings");
+
   const saved = localStorage.getItem("examSettings");
   if (saved) settings = JSON.parse(saved);
   updateUI();
@@ -92,25 +113,18 @@ window.addEventListener("load", () => {
   const titleEl = document.querySelector(".page-title");
 
   if (titleEl) {
-    if (subject) {
-      titleEl.textContent = `הגדרות למבחן ב: ${subject}`;
-    } else {
-      titleEl.textContent = "הגדרות למבחן";
-    }
+    titleEl.textContent = subject
+      ? `הגדרות למבחן ב: ${subject}`
+      : "הגדרות למבחן";
   }
 });
 
 // ==========================
 //  התחלת מבחן
 // ==========================
-// ==========================
-//  התחלת מבחן
-// ==========================
 document.getElementById("start-btn").addEventListener("click", () => {
-  // שומר את ההגדרות (גם אם המשתמש לא שינה כלום)
   localStorage.setItem("examSettings", JSON.stringify(settings));
 
-  // מעביר לדף הבחינה עם פרמטרים ב־URL
   const query = new URLSearchParams({
     time: settings.timePerQuestion,
     questions: settings.numQuestions,
@@ -123,8 +137,6 @@ document.getElementById("start-btn").addEventListener("click", () => {
 // ==========================
 //  ניווט עליון
 // ==========================
-
-// כפתור חזרה לעמוד הקודם
 document.getElementById("prev-page").addEventListener("click", () => {
   if (window.history.length > 1) {
     window.history.back();
@@ -133,7 +145,6 @@ document.getElementById("prev-page").addEventListener("click", () => {
   }
 });
 
-// כפתור חזרה לעמוד הבית + איפוס נושא נבחר
 document.getElementById("home-page").addEventListener("click", () => {
   localStorage.removeItem("selectedSubjectLabel");
   localStorage.removeItem("selectedSubjectKey");

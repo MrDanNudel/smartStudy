@@ -2,19 +2,20 @@
 // קריאת הגדרות מה־URL / localStorage
 // ================================
 const url = new URLSearchParams(location.search);
+const saved = JSON.parse(localStorage.getItem("examSettings") || "{}");
+
 const settings = {
-  timePerQuestion:
-    parseInt(url.get("time")) ||
-    JSON.parse(localStorage.getItem("examSettings") || "{}").timePerQuestion ||
-    30,
-  numQuestions:
-    parseInt(url.get("questions")) ||
-    JSON.parse(localStorage.getItem("examSettings") || "{}").numQuestions ||
-    20,
-  maxFails:
-    parseInt(url.get("fails")) ||
-    JSON.parse(localStorage.getItem("examSettings") || "{}").maxFails ||
-    5,
+  timePerQuestion: !isNaN(parseInt(url.get("time")))
+    ? parseInt(url.get("time"))
+    : saved.timePerQuestion || 30,
+
+  numQuestions: !isNaN(parseInt(url.get("questions")))
+    ? parseInt(url.get("questions"))
+    : saved.numQuestions || 20,
+
+  maxFails: !isNaN(parseInt(url.get("fails")))
+    ? parseInt(url.get("fails"))
+    : saved.maxFails || 5,
 };
 
 const subjectLabel =
@@ -3207,7 +3208,7 @@ function handleAnswer(chosenIndex) {
 
   updateHud();
 
-  if (fails > settings.maxFails) {
+  if (settings.maxFails !== 0 && fails > settings.maxFails) {
     setTimeout(
       () => endExam("חרגת ממספר הפסילות", "המבחן נגמר. נסה שוב מאוחר יותר ✋"),
       700
@@ -3226,7 +3227,14 @@ function handleAnswer(chosenIndex) {
 // עדכון HUD
 // ================================
 function updateHud() {
-  failsView.textContent = `פסילות: ${fails} / ${settings.maxFails}`;
+  if (settings.maxFails === 0) {
+    // ללא הגבלת טעויות – מציג רק את כמות הטעויות שנעשו
+    failsView.textContent = `תשובות לא נכונות :  ${fails}`;
+  } else {
+    // יש הגבלת טעויות
+    failsView.textContent = `תשובות לא נכונות : ${fails} / ${settings.maxFails}`;
+  }
+
   const progress = Math.round((current / settings.numQuestions) * 100);
   progressView.textContent = `התקדמות: ${progress}%`;
 }

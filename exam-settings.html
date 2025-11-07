@@ -152,7 +152,14 @@
       function updateUI() {
         timeValue.textContent = `${settings.timePerQuestion} שניות`;
         questionsValue.textContent = `${settings.numQuestions} שאלות`;
-        failsValue.textContent = `עד ${settings.maxFails} פסילות`;
+
+        // אם המשתמש בחר 0 פסילות – נציג "ללא הגבלת טעויות"
+        if (Number(settings.maxFails) === 0) {
+          failsValue.textContent = "ללא הגבלה";
+        } else {
+          failsValue.textContent = `עד ${settings.maxFails} פסילות`;
+        }
+
         localStorage.setItem("examSettings", JSON.stringify(settings));
       }
 
