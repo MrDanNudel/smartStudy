@@ -11,6 +11,20 @@
     <!-- ✅ קישורים נכונים ל־CSS -->
     <link rel="stylesheet" href="css/base.css" />
     <link rel="stylesheet" href="css/method.css?v=2" />
+
+    <style>
+      /* ✨ אפקט כניסה ויציאה חלק */
+      body {
+        opacity: 0;
+        transition: opacity 0.4s ease;
+      }
+      body.fade-in {
+        opacity: 1;
+      }
+      body.fade-out {
+        opacity: 0;
+      }
+    </style>
   </head>
 
   <body>
@@ -41,6 +55,11 @@
     </main>
 
     <script>
+      // ✨ אפקט כניסה חלק לדף
+      window.addEventListener("DOMContentLoaded", () => {
+        document.body.classList.add("fade-in");
+      });
+
       // 🧠 קריאה מהנושא שנשמר בדף הקודם
       const chosenSubject =
         localStorage.getItem("selectedSubjectLabel") || "נושא לא מוגדר";
@@ -56,22 +75,36 @@
       const showBtn = document.getElementById("showBtn");
 
       quizBtn.addEventListener("click", () => {
-        // מעבר לעמוד ההגדרות של המבחן
-        window.location.href = `exam-settings.html?subject=${encodeURIComponent(
-          chosenSubject
-        )}&key=${subjectKey}`;
+        // אפקט מעבר חלק
+        document.body.classList.remove("fade-in");
+        document.body.classList.add("fade-out");
+        setTimeout(() => {
+          // מעבר לעמוד ההגדרות של המבחן
+          window.location.href = `exam-settings.html?subject=${encodeURIComponent(
+            subjectKey
+          )}`;
+        }, 400);
       });
 
       showBtn.addEventListener("click", () => {
-        // מעבר לעמוד הצגת שאלות ותשובות
-        window.location.href = `practice.html?mode=review&subject=${encodeURIComponent(
-          chosenSubject
-        )}&key=${subjectKey}`;
+        // אפקט מעבר חלק
+        document.body.classList.remove("fade-in");
+        document.body.classList.add("fade-out");
+        setTimeout(() => {
+          // ✅ מעבר לעמוד ההגדרות של שאלות-תשובות
+          window.location.href = `qa-settings.html?subject=${encodeURIComponent(
+            subjectKey
+          )}`;
+        }, 400);
       });
 
-      // כפתור חזרה
+      // כפתור חזרה עם אפקט יציאה
       document.querySelector(".back-btn").addEventListener("click", () => {
-        window.history.back();
+        document.body.classList.remove("fade-in");
+        document.body.classList.add("fade-out");
+        setTimeout(() => {
+          window.history.back();
+        }, 400);
       });
     </script>
   </body>

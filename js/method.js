@@ -64,7 +64,7 @@ document.querySelectorAll(".method-card").forEach((card) => {
       } else if (methodKey === "quiz") {
         window.location.href = "quiz-mode.html";
       } else {
-        window.location.href = "answers-mode.html";
+        window.location.href = "qa-settings.html";
       }
     }, 400);
   });
