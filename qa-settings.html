@@ -107,7 +107,81 @@
 
     <!-- מאגר השאלות -->
     <script src="data/qa-bank.js"></script>
+
     <!-- לוגיקה -->
-    <script src="js/qa-settings.js"></script>
+    <script>
+      console.log("subjectKey =", getSubjectKey());
+
+      function getSubjectKey() {
+        const url = new URL(window.location.href);
+        return url.searchParams.get("subject") || "chemistry";
+      }
+
+      const subjectTitles = {
+        anatomy: "אנטומיה",
+        chemistry: "כימיה",
+        psychology: "פסיכולוגיה",
+        literacy: "אוריינות שפתית",
+        basketball: "יסודות בכדורסל",
+        athletics: "יסודות באתלטיקה",
+        statistics: "סטטיסטיקה",
+        football: "יסודות בכדורגל",
+      };
+
+      const qaBanks = window.qaBanks || {};
+
+      const els = {
+        subjectLabel: document.getElementById("subjectLabel"),
+        subjectBadge: document.getElementById("subjectBadge"),
+        numInput: document.getElementById("numQuestions"),
+        numHint: document.getElementById("numHint"),
+        startBtn: document.getElementById("startBtn"),
+      };
+
+      (function init() {
+        const subjectKey = getSubjectKey();
+        const title = subjectTitles[subjectKey] || subjectKey;
+
+        els.subjectLabel.textContent = title;
+        els.subjectBadge.textContent = title;
+
+        const bank = qaBanks[subjectKey] || [];
+        const max = Math.max(10, bank.length);
+        const min = 10;
+
+        els.numInput.min = String(min);
+        els.numInput.max = String(max);
+        els.numInput.value = min;
+        updateHint();
+
+        // 🟢 לא מתקנים אוטומטית בזמן ההקלדה
+        els.numInput.addEventListener("input", () => {
+          const value = Number(els.numInput.value);
+          if (!isNaN(value)) {
+            els.numHint.textContent = `${min}–${max}`;
+          }
+        });
+
+        // 🟢 בודקים רק בעת התחלת התרגול
+        els.startBtn.addEventListener("click", () => {
+          let count = Number(els.numInput.value);
+          if (isNaN(count) || count < min) count = min;
+          if (count > max) count = max;
+
+          const settings = {
+            mode: "qa",
+            subject: subjectKey,
+            numQuestions: count,
+            timestamp: Date.now(),
+          };
+          localStorage.setItem("qa_settings", JSON.stringify(settings));
+          window.location.href = "qa-practice.html";
+        });
+
+        function updateHint() {
+          els.numHint.textContent = `${min}–${max}`;
+        }
+      })();
+    </script>
   </body>
 </html>
