@@ -22,6 +22,7 @@ let settings = {
 };
 
 let currentField = null;
+let maxQuestionsForSubject = 100; // ברירת מחדל — נעדכן לפי הנושא בפועל
 
 // ==========================
 //  פתיחת חלון קלט
@@ -62,15 +63,17 @@ timeBtn.addEventListener("click", () =>
   openModal("timePerQuestion", "הגדר זמן לשאלה (בשניות)", 10, 90, " שניות")
 );
 questionsBtn.addEventListener("click", () =>
-  openModal("numQuestions", "הגדר מספר שאלות", 10, 50, " שאלות")
+  openModal(
+    "numQuestions",
+    `הגדר מספר שאלות (עד ${maxQuestionsForSubject})`,
+    5,
+    maxQuestionsForSubject,
+    " שאלות"
+  )
 );
 failsBtn.addEventListener("click", () =>
   openModal("maxFails", "הגדר מספר פסילות", 0, 5, " פסילות")
 );
-
-// ==========================
-//  פונקציה לעדכון ערך הפסילות
-// ==========================
 
 // ==========================
 //  עדכון תצוגה
@@ -85,11 +88,8 @@ function updateUI() {
   const failsValueEl = document.getElementById("fails-value");
 
   if (failsValueEl) {
-    if (fails === 0) {
-      failsValueEl.textContent = "ללא הגבלת טעויות";
-    } else {
-      failsValueEl.textContent = `עד ${fails} פסילות`;
-    }
+    failsValueEl.textContent =
+      fails === 0 ? "ללא הגבלת טעויות" : `עד ${fails} פסילות`;
   }
 
   // שמירה
@@ -100,22 +100,48 @@ function updateUI() {
 //  טעינה ראשונית
 // ==========================
 window.addEventListener("load", () => {
-  // אפשר למחוק את השורה הזאת אחרי הבדיקה
-  localStorage.removeItem("examSettings");
-
-  const saved = localStorage.getItem("examSettings");
-  if (saved) settings = JSON.parse(saved);
-  updateUI();
-
-  // --- הצגת הנושא שנבחר בכותרת ---
+  // --- שליפת הנושא ---
   const params = new URLSearchParams(window.location.search);
   const subject = params.get("subject");
-  const titleEl = document.querySelector(".page-title");
+  const key =
+    params.get("key") ||
+    localStorage.getItem("selectedSubjectKey") ||
+    "chemistry";
 
-  if (titleEl) {
-    titleEl.textContent = subject
-      ? `הגדרות למבחן ב: ${subject}`
-      : "הגדרות למבחן";
+  // --- קביעת כמות השאלות לפי הנושא ---
+  // (כאן אתה צריך לוודא שהמשתנים של הבנקים כבר נטענו לפני קובץ זה)
+  try {
+    const bank =
+      (typeof banks !== "undefined" && banks[key]) ||
+      (typeof psychologyQuestions !== "undefined" &&
+        key === "psychology" &&
+        psychologyQuestions) ||
+      [];
+
+    maxQuestionsForSubject = Array.isArray(bank) ? bank.length : 100;
+
+    // אם המשתמש שמר הגדרות קודם
+    const saved = localStorage.getItem("examSettings");
+    if (saved) settings = JSON.parse(saved);
+
+    // ודא שהערך לא חורג מהכמות בפועל
+    if (settings.numQuestions > maxQuestionsForSubject) {
+      settings.numQuestions = maxQuestionsForSubject;
+    }
+
+    updateUI();
+
+    // הצגת כותרת הנושא
+    const titleEl = document.querySelector(".page-title");
+    if (titleEl) {
+      titleEl.textContent = subject
+        ? `הגדרות למבחן ב: ${subject}`
+        : "הגדרות למבחן";
+    }
+
+    console.log(`נושא: ${key} | מספר שאלות זמינות: ${maxQuestionsForSubject}`);
+  } catch (err) {
+    console.error("שגיאה בקריאת בנק השאלות:", err);
   }
 });
 
@@ -125,10 +151,22 @@ window.addEventListener("load", () => {
 document.getElementById("start-btn").addEventListener("click", () => {
   localStorage.setItem("examSettings", JSON.stringify(settings));
 
+  const params = new URLSearchParams(window.location.search);
+  const subject =
+    params.get("subject") ||
+    localStorage.getItem("selectedSubjectLabel") ||
+    "נושא לא מוגדר";
+  const key =
+    params.get("key") ||
+    localStorage.getItem("selectedSubjectKey") ||
+    "chemistry";
+
   const query = new URLSearchParams({
     time: settings.timePerQuestion,
     questions: settings.numQuestions,
     fails: settings.maxFails,
+    subject: subject,
+    key: key,
   }).toString();
 
   window.location.href = `exam.html?${query}`;
