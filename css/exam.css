@@ -83,7 +83,10 @@ body {
 }
 .subtitle {
   color: var(--sub);
-  margin-top: 6px;
+  margin-top: 18px; /* 🟢 הורדתי את "שאלון אמריקאי" קצת למטה */
+  font-size: 20px;
+  text-align: center;
+  letter-spacing: 0.5px;
 }
 
 /* כרטיס שאלה */
@@ -263,4 +266,33 @@ body {
 }
 .btn:hover {
   transform: translateY(-1px);
+}
+/* כותרת הנושא בעמוד המבחן */
+.subject {
+  font-size: 46px; /* גודל גדול וברור */
+  font-weight: 800; /* טקסט עבה */
+  color: #4ec8ff; /* צבע כחול זוהר */
+  text-shadow: 0 0 16px rgba(80, 200, 255, 0.6); /* אפקט זוהר */
+  text-align: center; /* באמצע */
+  margin-top: 30px; /* ↑ שליטה כמה גבוה זה – אפשר לשנות ל-20px אם רוצים יותר קרוב למעלה */
+  transition: opacity 0.8s ease, transform 0.8s ease;
+  opacity: 0;
+  transform: translateY(-10px);
+}
+
+.subject.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* קו זוהר מתחת לנושא */
+.subject::after {
+  content: "";
+  display: block;
+  width: 80px;
+  height: 3px;
+  margin: 10px auto 0;
+  background: linear-gradient(90deg, #00c6ff, #00e0ff);
+  border-radius: 2px;
+  box-shadow: 0 0 10px rgba(0, 200, 255, 0.5);
 }

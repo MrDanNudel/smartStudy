@@ -8,6 +8,26 @@
     <!-- קבצי עיצוב -->
     <link rel="stylesheet" href="css/base.css" />
     <link rel="stylesheet" href="css/exam.css" />
+
+    <style>
+      /* ✨ עיצוב מודגש לנושא (זהה לעמוד ההגדרות) */
+      .subject-highlight {
+        font-size: 46px;
+        font-weight: 800;
+        color: #4ec8ff;
+        text-shadow: 0 0 16px rgba(80, 200, 255, 0.6);
+        text-align: center;
+        margin-top: 10px;
+        transition: opacity 0.8s ease, transform 0.8s ease;
+        opacity: 0;
+        transform: translateY(-10px);
+      }
+
+      .subject-highlight.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    </style>
   </head>
 
   <body>
@@ -52,8 +72,36 @@
       </div>
     </div>
 
+    <!-- סקריפטים -->
     <script src="data/exam-bank.js"></script>
-    <!-- סקריפט לוגיקה -->
     <script src="js/exam.js"></script>
+
+    <!-- ✅ תרגום + עיצוב נושא -->
+    <script>
+      const SUBJECT_TITLES = {
+        anatomy: "אנטומיה",
+        chemistry: "כימיה",
+        psychology: "פסיכולוגיה",
+        literacy: "אוריינות שפתית",
+        basketball: "יסודות בכדורסל",
+        athletics: "יסודות באתלטיקה",
+        statistics: "סטטיסטיקה",
+        football: "יסודות בכדורגל",
+        physics: "פיזיקה",
+      };
+
+      window.addEventListener("load", () => {
+        const params = new URLSearchParams(window.location.search);
+        const subjectKey = (params.get("subject") || "").toLowerCase();
+        const subjectLabel = SUBJECT_TITLES[subjectKey] || subjectKey;
+
+        const titleEl = document.getElementById("subjectTitle");
+        if (titleEl) {
+          titleEl.textContent = subjectLabel;
+          titleEl.classList.add("subject-highlight");
+          setTimeout(() => titleEl.classList.add("visible"), 150);
+        }
+      });
+    </script>
   </body>
 </html>
