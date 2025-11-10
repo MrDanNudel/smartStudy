@@ -59,7 +59,7 @@ body {
   position: relative;
 }
 
-/* 🔹 בר התקדמות (עכשיו מתחת לריבוע) */
+/* 🔹 בר התקדמות מתחת לריבוע (גרסה רגילה, ללא זוהר) */
 .progress-container {
   width: 90%;
   max-width: 600px;
@@ -68,14 +68,24 @@ body {
   background: rgba(255, 255, 255, 0.08);
   border-radius: 10px;
   overflow: hidden;
+  position: relative;
 }
+
 .progress-bar {
   height: 10px;
-  background: linear-gradient(90deg, #00c6ff, #0072ff);
   width: 0%;
   border-radius: 10px;
+  background: linear-gradient(90deg, #3ec7ff, #0077ff);
   transition: width 0.3s ease;
-  box-shadow: 0 0 10px rgba(0, 200, 255, 0.5);
+}
+
+@keyframes glowFlow {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
 }
 
 /* 🔹 טקסט התקדמות */
@@ -109,14 +119,31 @@ body {
   transform: translateY(0);
 }
 
-/* 🔹 שדה תשובה */
+/* 🔹 עטיפת תשובה עם סימן שאלה */
+.answer-wrapper {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+.info-icon {
+  cursor: pointer;
+  font-size: 0.9em;
+  color: #00b7ff;
+  text-shadow: 0 0 6px rgba(0, 200, 255, 0.6);
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+.info-icon:hover {
+  color: #4cd4ff;
+  transform: scale(1.2);
+}
+
+/* 🔹 שדה תשובה ממורכז */
 .answer-row {
   width: 100%;
   display: flex;
   justify-content: center;
-  margin-top: 30px; /* רווח מלמעלה */
+  margin-top: 30px;
 }
-
 #answerInput {
   width: 80%;
   max-width: 420px;
@@ -144,8 +171,6 @@ body {
   align-items: center;
   margin-bottom: 40px;
 }
-
-/* 🔹 שורת הכפתורים */
 .inner-nav {
   display: flex;
   justify-content: center;
@@ -190,7 +215,48 @@ body {
   background: rgba(40, 80, 120, 0.7);
 }
 
-/* 🔹 אנימציה */
+/* 🔹 חלון פופאפ */
+.explain-popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(10, 20, 35, 0.75);
+  backdrop-filter: blur(5px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+  animation: fadeIn 0.3s ease;
+}
+.popup-box {
+  background: rgba(20, 40, 70, 0.9);
+  border: 1px solid rgba(120, 220, 255, 0.4);
+  border-radius: 14px;
+  padding: 24px 30px;
+  color: #dff6ff;
+  text-align: center;
+  font-size: 1.1em;
+  box-shadow: 0 0 20px rgba(0, 180, 255, 0.3);
+  animation: zoomIn 0.3s ease;
+}
+.popup-box button {
+  margin-top: 16px;
+  background: #00aaff;
+  border: none;
+  color: #fff;
+  border-radius: 8px;
+  padding: 8px 18px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+.popup-box button:hover {
+  background: #00c6ff;
+}
+
+/* 🔹 אנימציות */
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -199,5 +265,15 @@ body {
   to {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+@keyframes zoomIn {
+  from {
+    transform: scale(0.9);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
   }
 }

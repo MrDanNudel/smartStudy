@@ -20,8 +20,7 @@ function shuffle(arr) {
   return arr;
 }
 
-bank = shuffle([...bank]).slice(0, numQuestions); // ✅ קודם חותכים לפי הכמות שביקשו
-
+bank = shuffle([...bank]).slice(0, numQuestions);
 let current = 0;
 
 // אלמנטים
@@ -52,8 +51,6 @@ subjectTitle.textContent = SUBJECT_TITLES[subjectKey] || "נושא לא ידוע
 // === הצגת שאלה ===
 function loadQuestion() {
   const q = bank[current];
-
-  // הגנה – אם אין שאלה
   if (!q) return;
 
   questionText.textContent = q.q;
@@ -62,11 +59,9 @@ function loadQuestion() {
   answerInput.value = "";
   showAnswerBtn.textContent = "הצג תשובה";
 
-  // עדכון מצב כפתורים
   prevBtn.disabled = current === 0;
   nextBtn.disabled = current === bank.length - 1;
 
-  // עדכון התקדמות
   updateProgress();
 }
 
@@ -83,15 +78,40 @@ showAnswerBtn.onclick = () => {
   const correct = q.a[q.correct] || q.a;
 
   if (!feedback.classList.contains("show")) {
-    feedback.innerHTML = `<div>✅ <span class="correct-answer">${correct}</span></div>`;
+    feedback.innerHTML = `
+      <div class="answer-wrapper">
+        ✅ <span class="correct-answer">${correct}</span>
+        <span class="info-icon" title="פירוט נוסף">❓</span>
+      </div>
+    `;
     feedback.classList.add("show");
     showAnswerBtn.textContent = "הסתר תשובה";
+
+    const infoIcon = document.querySelector(".info-icon");
+    infoIcon.addEventListener("click", showExplanationPopup);
   } else {
     feedback.innerHTML = "";
     feedback.classList.remove("show");
     showAnswerBtn.textContent = "הצג תשובה";
   }
 };
+
+// === פופאפ הסבר מעמיק ===
+function showExplanationPopup() {
+  const popup = document.createElement("div");
+  popup.className = "explain-popup";
+  popup.innerHTML = `
+    <div class="popup-box">
+      <p>פירוט מעמיק לתשובה בקרוב...!</p>
+      <button id="closePopupBtn">סגור</button>
+    </div>
+  `;
+  document.body.appendChild(popup);
+
+  document
+    .getElementById("closePopupBtn")
+    .addEventListener("click", () => popup.remove());
+}
 
 // === ניווט קדימה ===
 nextBtn.onclick = () => {
@@ -109,7 +129,7 @@ prevBtn.onclick = () => {
   }
 };
 
-// ✅ טעינה רק אחרי שבנינו את השאלות
+// === טעינה ראשונית ===
 window.addEventListener("DOMContentLoaded", () => {
   loadQuestion();
 });
