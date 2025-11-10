@@ -11,7 +11,7 @@ if (bank.length === 0) {
   window.location.href = "index.html";
 }
 
-// ערבוב השאלות
+// ערבוב שאלות ובחירת כמות
 function shuffle(arr) {
   for (let i = arr.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
@@ -19,11 +19,12 @@ function shuffle(arr) {
   }
   return arr;
 }
-bank = shuffle(bank).slice(0, numQuestions);
+
+bank = shuffle([...bank]).slice(0, numQuestions); // ✅ קודם חותכים לפי הכמות שביקשו
 
 let current = 0;
 
-// שליפת אלמנטים
+// אלמנטים
 const questionText = document.getElementById("questionText");
 const answerInput = document.getElementById("answerInput");
 const showAnswerBtn = document.getElementById("showAnswerBtn");
@@ -31,41 +32,68 @@ const feedback = document.getElementById("feedback");
 const progressText = document.getElementById("progressText");
 const nextBtn = document.getElementById("nextQuestion");
 const prevBtn = document.getElementById("prevQuestion");
+const subjectTitle = document.querySelector(".subject-name");
+const progressBar = document.getElementById("progressBar");
 
-// הצגת שאלה ראשונה
-loadQuestion();
+// שמות נושאים
+const SUBJECT_TITLES = {
+  anatomy: "אנטומיה",
+  chemistry: "כימיה",
+  psychology: "פסיכולוגיה",
+  literacy: "אוריינות שפתית",
+  basketball: "יסודות בכדורסל",
+  athletics: "יסודות באתלטיקה",
+  statistics: "סטטיסטיקה",
+  football: "יסודות בכדורגל",
+  physics: "פיזיקה",
+};
+subjectTitle.textContent = SUBJECT_TITLES[subjectKey] || "נושא לא ידוע";
 
+// === הצגת שאלה ===
 function loadQuestion() {
   const q = bank[current];
-  questionText.textContent = q.q;
-  feedback.textContent = "";
-  progressText.textContent = `שאלה ${current + 1} מתוך ${bank.length}`;
-  answerInput.value = "";
-  answerInput.style.display = "block";
-  showAnswerBtn.style.display = "inline-block";
 
+  // הגנה – אם אין שאלה
+  if (!q) return;
+
+  questionText.textContent = q.q;
+  feedback.classList.remove("show");
+  feedback.innerHTML = "";
+  answerInput.value = "";
+  showAnswerBtn.textContent = "הצג תשובה";
+
+  // עדכון מצב כפתורים
   prevBtn.disabled = current === 0;
   nextBtn.disabled = current === bank.length - 1;
+
+  // עדכון התקדמות
+  updateProgress();
 }
 
-// כפתור "הצג תשובה"
+// === עדכון בר התקדמות ===
+function updateProgress() {
+  const progressPercent = ((current + 1) / bank.length) * 100;
+  progressBar.style.width = `${progressPercent}%`;
+  progressText.textContent = `שאלה ${current + 1} מתוך ${bank.length}`;
+}
+
+// === כפתור הצגת תשובה / הסתרה ===
 showAnswerBtn.onclick = () => {
   const q = bank[current];
-  const userAnswer = answerInput.value.trim();
+  const correct = q.a[q.correct] || q.a;
 
-  // הצגת תשובות
-  feedback.innerHTML = `
-    <div>🔹 <b>התשובה שלך:</b> ${userAnswer || "לא נכתבה תשובה"}</div>
-    <div>✅ <b>תשובה נכונה:</b> ${q.a[q.correct]}</div>
-  `;
-  feedback.style.color = "#7ddfff";
-
-  // הסתרת קלט וכפתור
-  answerInput.style.display = "none";
-  showAnswerBtn.style.display = "none";
+  if (!feedback.classList.contains("show")) {
+    feedback.innerHTML = `<div>✅ <span class="correct-answer">${correct}</span></div>`;
+    feedback.classList.add("show");
+    showAnswerBtn.textContent = "הסתר תשובה";
+  } else {
+    feedback.innerHTML = "";
+    feedback.classList.remove("show");
+    showAnswerBtn.textContent = "הצג תשובה";
+  }
 };
 
-// ניווט קדימה
+// === ניווט קדימה ===
 nextBtn.onclick = () => {
   if (current < bank.length - 1) {
     current++;
@@ -73,10 +101,15 @@ nextBtn.onclick = () => {
   }
 };
 
-// ניווט אחורה
+// === ניווט אחורה ===
 prevBtn.onclick = () => {
   if (current > 0) {
     current--;
     loadQuestion();
   }
 };
+
+// ✅ טעינה רק אחרי שבנינו את השאלות
+window.addEventListener("DOMContentLoaded", () => {
+  loadQuestion();
+});

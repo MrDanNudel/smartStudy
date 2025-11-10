@@ -8,11 +8,10 @@
   </head>
 
   <body>
-    <!-- 🔹 כפתורי ניווט עליונים -->
+    <!-- 🔹 ניווט עליון -->
     <button id="backBtn" class="nav-btn" onclick="history.back()">
       ← לעמוד הקודם
     </button>
-
     <button
       id="homeBtn"
       class="nav-btn"
@@ -23,39 +22,41 @@
 
     <!-- 🔹 כותרת -->
     <header class="hero">
-      <h1 id="subjectTitle">תרגול</h1>
+      <h1 id="subjectTitle">תרגול<br /><span class="subject-name"></span></h1>
     </header>
 
     <!-- 🔹 קופסה ראשית -->
     <main class="qa-box">
       <div id="progressText" class="progress-text">שאלה 1 מתוך 10</div>
+      <h2 id="questionText" class="question">טוען שאלה...</h2>
 
-      <h2 id="questionText">טוען שאלה...</h2>
+      <div id="feedback" class="feedback"></div>
 
-      <!-- שדה התשובה -->
       <div class="answer-row">
         <input
           id="answerInput"
           type="text"
-          placeholder="כתוב כאן את התשובה שלך..."
+          placeholder="✏️ כתוב כאן את תשובתך (לא חובה)"
           autocomplete="off"
         />
       </div>
-
-      <!-- כפתור הצגת תשובה -->
-      <button id="showAnswerBtn" class="main-btn">הצג תשובה</button>
-
-      <!-- פידבק -->
-      <div id="feedback" class="feedback"></div>
-
-      <!-- ניווט בין שאלות -->
-      <div class="inner-nav">
-        <button id="prevQuestion" class="sub-btn">שאלה קודמת</button>
-        <button id="nextQuestion" class="sub-btn">שאלה הבאה</button>
-      </div>
     </main>
 
-    <!-- 🔹 קישורים לקבצי קוד -->
+    <!-- 🔹 בר התקדמות מתחת לריבוע -->
+    <div class="progress-container">
+      <div class="progress-bar" id="progressBar"></div>
+    </div>
+
+    <!-- 🔹 כפתורי ניווט -->
+    <div class="buttons-below">
+      <div class="inner-nav">
+        <button id="prevQuestion" class="sub-btn">שאלה קודמת</button>
+        <button id="showAnswerBtn" class="main-btn">הצג תשובה</button>
+        <button id="nextQuestion" class="sub-btn">שאלה הבאה</button>
+      </div>
+    </div>
+
+    <!-- 🔹 קישורים לקוד -->
     <script src="data/exam-bank.js"></script>
     <script src="js/qa.js"></script>
   </body>
