@@ -316,3 +316,84 @@ body {
     opacity: 1;
   }
 }
+/* 📱 ריספונסיביות לאייפון / טאבלטים */
+@media (max-width: 768px) {
+  /* קופסה ראשית */
+  .qa-box {
+    width: 90%;
+    padding: 24px 20px 70px 20px;
+  }
+
+  /* כפתורי ניווט עליון */
+  #backBtn {
+    left: 16px;
+    font-size: 14px;
+    padding: 8px 14px;
+  }
+  #homeBtn {
+    right: 16px;
+    font-size: 14px;
+    padding: 8px 14px;
+  }
+
+  /* אגודלים — יתקרבו פנימה */
+  .thumb-right {
+    right: -30px;
+  }
+  .thumb-left {
+    left: -30px;
+  }
+  .thumb-side {
+    font-size: 1.6em;
+    top: 48%;
+  }
+
+  /* שדה תשובה */
+  #answerInput {
+    width: 90%;
+    font-size: 0.95em;
+    height: 42px;
+  }
+
+  /* בר התקדמות */
+  .progress-container {
+    width: 95%;
+  }
+
+  /* כפתורים */
+  .inner-nav {
+    flex-wrap: wrap;
+    gap: 14px;
+  }
+
+  .main-btn {
+    width: 70%;
+    font-size: 0.95em;
+  }
+
+  .sub-btn {
+    font-size: 0.9em;
+    padding: 8px 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .thumb-right {
+    right: -18px;
+  }
+  .thumb-left {
+    left: -18px;
+  }
+  .thumb-side {
+    font-size: 1.5em;
+    top: 49%;
+  }
+
+  #answerInput {
+    width: 95%;
+  }
+
+  .qa-box {
+    padding: 20px 15px 65px 15px;
+  }
+}
