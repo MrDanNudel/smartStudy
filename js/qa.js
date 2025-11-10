@@ -1,17 +1,16 @@
-// שליפת פרמטרים מה-URL
+// === שליפת פרמטרים מה-URL ===
 const params = new URLSearchParams(window.location.search);
 const subjectKey = params.get("subject");
 const numQuestions = parseInt(params.get("questions")) || 10;
 
-// שליפת שאלות
+// === שליפת שאלות ===
 let bank = banks[subjectKey] || [];
-
 if (bank.length === 0) {
   alert("לא נמצאו שאלות לנושא זה");
   window.location.href = "index.html";
 }
 
-// ערבוב שאלות
+// === ערבוב שאלות ===
 function shuffle(arr) {
   for (let i = arr.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
@@ -20,12 +19,12 @@ function shuffle(arr) {
   return arr;
 }
 
-// משתנים גלובליים
+// === משתנים גלובליים ===
 let fullBank = [...bank];
 let currentBank = [...fullBank].slice(0, numQuestions);
 let current = 0;
 
-// אלמנטים
+// === אלמנטים ===
 const questionText = document.getElementById("questionText");
 const answerInput = document.getElementById("answerInput");
 const showAnswerBtn = document.getElementById("showAnswerBtn");
@@ -38,7 +37,7 @@ const progressBar = document.getElementById("progressBar");
 const orderMode = document.getElementById("orderMode");
 const randomMode = document.getElementById("randomMode");
 
-// שמות נושאים
+// === שמות נושאים ===
 const SUBJECT_TITLES = {
   anatomy: "אנטומיה",
   chemistry: "כימיה",
@@ -67,6 +66,7 @@ function loadQuestion() {
   nextBtn.disabled = current === currentBank.length - 1;
 
   updateProgress();
+  updateThumbState(q.q); // ← בדיקה אם השאלה כבר סומנה (קל/קשה)
 }
 
 // === עדכון בר התקדמות ===
@@ -130,7 +130,7 @@ prevBtn.onclick = () => {
   }
 };
 
-// === מעבר בין מצבים (לפי הסדר / אקראי) ===
+// === מצב לפי סדר / אקראי ===
 orderMode.addEventListener("change", () => {
   if (orderMode.checked) {
     currentBank = [...fullBank].slice(0, numQuestions);
@@ -146,7 +146,67 @@ randomMode.addEventListener("change", () => {
   }
 });
 
-// === טעינה ראשונית ===
+// === אגודל למעלה / למטה עם שמירה מקומית ===
+const thumbUp = document.getElementById("thumbUp");
+const thumbDown = document.getElementById("thumbDown");
+
+// טען נתונים קיימים מה-localStorage
+let hardQuestions = JSON.parse(localStorage.getItem("hardQuestions") || "[]");
+let easyQuestions = JSON.parse(localStorage.getItem("easyQuestions") || "[]");
+
+// עדכון מצב אגודלים לפי שאלה
+function updateThumbState(questionText) {
+  if (hardQuestions.includes(questionText)) {
+    thumbDown.classList.add("active-down");
+    thumbUp.classList.remove("active-up");
+  } else if (easyQuestions.includes(questionText)) {
+    thumbUp.classList.add("active-up");
+    thumbDown.classList.remove("active-down");
+  } else {
+    thumbUp.classList.remove("active-up");
+    thumbDown.classList.remove("active-down");
+  }
+}
+
+// אגודל למעלה
+thumbUp.addEventListener("click", () => {
+  const currentQuestion = questionText.textContent.trim();
+
+  if (thumbUp.classList.contains("active-up")) {
+    thumbUp.classList.remove("active-up");
+    easyQuestions = easyQuestions.filter((q) => q !== currentQuestion);
+  } else {
+    thumbUp.classList.add("active-up");
+    thumbDown.classList.remove("active-down");
+
+    easyQuestions.push(currentQuestion);
+    hardQuestions = hardQuestions.filter((q) => q !== currentQuestion);
+  }
+
+  localStorage.setItem("easyQuestions", JSON.stringify(easyQuestions));
+  localStorage.setItem("hardQuestions", JSON.stringify(hardQuestions));
+});
+
+// אגודל למטה
+thumbDown.addEventListener("click", () => {
+  const currentQuestion = questionText.textContent.trim();
+
+  if (thumbDown.classList.contains("active-down")) {
+    thumbDown.classList.remove("active-down");
+    hardQuestions = hardQuestions.filter((q) => q !== currentQuestion);
+  } else {
+    thumbDown.classList.add("active-down");
+    thumbUp.classList.remove("active-up");
+
+    hardQuestions.push(currentQuestion);
+    easyQuestions = easyQuestions.filter((q) => q !== currentQuestion);
+  }
+
+  localStorage.setItem("easyQuestions", JSON.stringify(easyQuestions));
+  localStorage.setItem("hardQuestions", JSON.stringify(hardQuestions));
+});
+
+// === התחלה ===
 window.addEventListener("DOMContentLoaded", () => {
   loadQuestion();
 });

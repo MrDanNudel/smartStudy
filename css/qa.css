@@ -18,15 +18,12 @@ body {
   cursor: pointer;
   transition: 0.3s;
 }
-/* 🔹 מיקום נכון של כפתורי ניווט עליון */
-/* 🔹 קרב כפתורי הניווט למרכז */
 #backBtn {
-  left: 120px; /* עמוד קודם - יותר למרכז */
+  left: 120px;
 }
 #homeBtn {
-  right: 120px; /* עמוד הבית - יותר למרכז */
+  right: 120px;
 }
-
 .nav-btn:hover {
   background: rgba(40, 80, 120, 0.6);
 }
@@ -39,6 +36,13 @@ body {
 .hero h1 {
   font-size: 2em;
   text-shadow: 0 0 10px rgba(0, 180, 255, 0.6);
+}
+.subject-name {
+  display: block;
+  color: #9fd8ff;
+  font-size: 1.2em;
+  margin-top: 4px;
+  text-shadow: 0 0 10px rgba(0, 200, 255, 0.5);
 }
 
 /* 🔹 בחירת מצב שאלות */
@@ -62,13 +66,6 @@ body {
   margin-left: 6px;
   cursor: pointer;
 }
-.subject-name {
-  display: block;
-  color: #9fd8ff;
-  font-size: 1.2em;
-  margin-top: 4px;
-  text-shadow: 0 0 10px rgba(0, 200, 255, 0.5);
-}
 
 /* 🔹 קופסה ראשית */
 .qa-box {
@@ -83,8 +80,53 @@ body {
   animation: fadeIn 0.5s ease;
   position: relative;
 }
+/* 🔹 אגודלים משני צידי הריבוע */
+.thumb-side {
+  position: absolute;
+  top: 45%;
+  font-size: 2em;
+  cursor: pointer;
+  user-select: none;
+  color: #7daeff; /* צבע כחול רגיל */
+  filter: drop-shadow(0 0 6px rgba(0, 200, 255, 0.3));
+  transition: transform 0.15s ease, color 0.25s ease, filter 0.25s ease;
+}
 
-/* 🔹 בר התקדמות מתחת לריבוע (גרסה רגילה, ללא זוהר) */
+/* מיקום */
+.thumb-right {
+  right: -60px; /* בצד ימין */
+}
+.thumb-left {
+  left: -60px; /* בצד שמאל */
+}
+
+/* ✅ ירוק מלא – היד עצמה */
+.thumb-side.active-up {
+  color: #00ff6a;
+  filter: drop-shadow(0 0 25px rgba(0, 255, 140, 1))
+    drop-shadow(0 0 25px rgba(0, 255, 140, 0.9));
+  transform: scale(1.2);
+}
+
+/* ❌ אדום מלא – היד עצמה */
+.thumb-side.active-down {
+  color: #ff4040;
+  filter: drop-shadow(0 0 25px rgba(255, 60, 60, 1))
+    drop-shadow(0 0 25px rgba(255, 60, 60, 0.9));
+  transform: scale(1.2);
+}
+
+/* ריחוף */
+.thumb-side:hover {
+  transform: scale(1.15);
+}
+
+/* אפקט קליק קטן */
+.thumb-side:active {
+  transform: scale(0.9) rotate(-4deg);
+}
+
+/* 🔹 בר התקדמות */
 .progress-container {
   width: 90%;
   max-width: 600px;
@@ -95,22 +137,12 @@ body {
   overflow: hidden;
   position: relative;
 }
-
 .progress-bar {
   height: 10px;
   width: 0%;
   border-radius: 10px;
   background: linear-gradient(90deg, #3ec7ff, #0077ff);
   transition: width 0.3s ease;
-}
-
-@keyframes glowFlow {
-  0% {
-    background-position: 200% 0;
-  }
-  100% {
-    background-position: -200% 0;
-  }
 }
 
 /* 🔹 טקסט התקדמות */
@@ -144,25 +176,7 @@ body {
   transform: translateY(0);
 }
 
-/* 🔹 עטיפת תשובה עם סימן שאלה */
-.answer-wrapper {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-}
-.info-icon {
-  cursor: pointer;
-  font-size: 0.9em;
-  color: #00b7ff;
-  text-shadow: 0 0 6px rgba(0, 200, 255, 0.6);
-  transition: transform 0.2s ease, color 0.2s ease;
-}
-.info-icon:hover {
-  color: #4cd4ff;
-  transform: scale(1.2);
-}
-
-/* 🔹 שדה תשובה ממורכז */
+/* 🔹 שדה תשובה */
 .answer-row {
   width: 100%;
   display: flex;
@@ -240,7 +254,7 @@ body {
   background: rgba(40, 80, 120, 0.7);
 }
 
-/* 🔹 חלון פופאפ */
+/* 🔹 פופאפ הסבר */
 .explain-popup {
   position: fixed;
   top: 0;
