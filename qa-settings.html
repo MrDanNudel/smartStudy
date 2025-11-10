@@ -186,7 +186,7 @@
             timestamp: Date.now(),
           };
           localStorage.setItem("qa_settings", JSON.stringify(settings));
-          window.location.href = "qa-practice.html";
+          window.location.href = `qa.html?subject=${subjectKey}&questions=${count}`;
         });
 
         function updateHint() {

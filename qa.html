@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>תרגול שאלות ותשובות</title>
+    <link rel="stylesheet" href="css/qa.css" />
+  </head>
+
+  <body>
+    <!-- 🔹 כפתורי ניווט עליונים -->
+    <button id="backBtn" class="nav-btn" onclick="history.back()">
+      ← לעמוד הקודם
+    </button>
+
+    <button
+      id="homeBtn"
+      class="nav-btn"
+      onclick="window.location.href='index.html'"
+    >
+      לעמוד הבית →
+    </button>
+
+    <!-- 🔹 כותרת -->
+    <header class="hero">
+      <h1 id="subjectTitle">תרגול</h1>
+    </header>
+
+    <!-- 🔹 קופסה ראשית -->
+    <main class="qa-box">
+      <div id="progressText" class="progress-text">שאלה 1 מתוך 10</div>
+
+      <h2 id="questionText">טוען שאלה...</h2>
+
+      <!-- שדה התשובה -->
+      <div class="answer-row">
+        <input
+          id="answerInput"
+          type="text"
+          placeholder="כתוב כאן את התשובה שלך..."
+          autocomplete="off"
+        />
+      </div>
+
+      <!-- כפתור הצגת תשובה -->
+      <button id="showAnswerBtn" class="main-btn">הצג תשובה</button>
+
+      <!-- פידבק -->
+      <div id="feedback" class="feedback"></div>
+
+      <!-- ניווט בין שאלות -->
+      <div class="inner-nav">
+        <button id="prevQuestion" class="sub-btn">שאלה קודמת</button>
+        <button id="nextQuestion" class="sub-btn">שאלה הבאה</button>
+      </div>
+    </main>
+
+    <!-- 🔹 קישורים לקבצי קוד -->
+    <script src="data/exam-bank.js"></script>
+    <script src="js/qa.js"></script>
+  </body>
+</html>
