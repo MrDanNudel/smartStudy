@@ -111,12 +111,12 @@ body {
 
 /* 🔹 שדה תשובה */
 .answer-row {
-  position: absolute;
-  bottom: 25px;
   width: 100%;
   display: flex;
   justify-content: center;
+  margin-top: 30px; /* רווח מלמעלה */
 }
+
 #answerInput {
   width: 80%;
   max-width: 420px;
@@ -130,6 +130,11 @@ body {
   text-align: center;
   height: 44px;
   box-sizing: border-box;
+  transition: 0.3s ease;
+}
+#answerInput:focus {
+  border-color: rgba(120, 220, 255, 0.7);
+  box-shadow: 0 0 8px rgba(0, 200, 255, 0.4);
 }
 
 /* 🔹 כפתורים מתחת לריבוע */
