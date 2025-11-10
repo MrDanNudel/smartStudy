@@ -377,23 +377,33 @@ body {
   }
 }
 
-@media (max-width: 480px) {
-  .thumb-right {
-    right: -18px;
-  }
-  .thumb-left {
-    left: -18px;
-  }
+/* 📱 תיקון לאגודלים באייפון ומסכים קטנים */
+@media (max-width: 768px) {
   .thumb-side {
-    font-size: 1.5em;
+    font-size: 1.8em;
+    top: 48%;
+  }
+
+  .thumb-right {
+    right: -20px; /* במקום -60px */
+  }
+
+  .thumb-left {
+    left: -20px; /* במקום -60px */
+  }
+}
+
+@media (max-width: 480px) {
+  .thumb-side {
+    font-size: 1.6em;
     top: 49%;
   }
 
-  #answerInput {
-    width: 95%;
+  .thumb-right {
+    right: -10px;
   }
 
-  .qa-box {
-    padding: 20px 15px 65px 15px;
+  .thumb-left {
+    left: -10px;
   }
 }
