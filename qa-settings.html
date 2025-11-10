@@ -5,10 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>הגדרות — שאלות-תשובות</title>
 
+    <!-- עיצוב -->
     <link rel="stylesheet" href="css/qa-settings.css" />
 
     <style>
-      /* 🎨 כפתורי ניווט */
+      body {
+        font-family: "Assistant", sans-serif;
+        text-align: center;
+        color: var(--text, #e8f6ff);
+        background: radial-gradient(circle at top, #041a2e, #020b15);
+      }
+
       .back-btn,
       .home-btn {
         position: absolute;
@@ -39,7 +46,6 @@
         right: 32px;
       }
 
-      /* טקסט ראשי */
       .hero h1 {
         font-size: 26px;
         margin-bottom: 8px;
@@ -48,17 +54,43 @@
 
       .subject-highlight {
         display: block;
-        font-size: 50px; /* ✅ גדול יותר מבעבר */
+        font-size: 50px;
         font-weight: 800;
         color: #4ec8ff;
         margin-top: 8px;
         text-shadow: 0 0 16px rgba(80, 200, 255, 0.5);
       }
 
-      body {
-        font-family: "Assistant", sans-serif;
-        text-align: center;
-        color: var(--text, #e8f6ff);
+      select.select {
+        background: #0b1b31;
+        border: 1px solid rgba(120, 220, 255, 0.25);
+        border-radius: 12px;
+        padding: 10px 14px;
+        color: var(--text);
+        font-size: 16px;
+        outline: none;
+      }
+
+      select.select:focus {
+        border-color: #89e2ff;
+      }
+
+      .hint.warning {
+        color: #5fd9ff;
+        text-shadow: 0 0 10px rgba(95, 217, 255, 0.7);
+        animation: glow 2s infinite ease-in-out;
+      }
+
+      @keyframes glow {
+        0% {
+          opacity: 0.6;
+        }
+        50% {
+          opacity: 1;
+        }
+        100% {
+          opacity: 0.6;
+        }
       }
 
       h2 {
@@ -67,6 +99,54 @@
 
       .panel {
         margin-top: 80px;
+      }
+
+      #clearStorageBtn {
+        margin-top: 30px;
+        padding: 8px 18px;
+        border-radius: 14px;
+        background: rgba(255, 60, 60, 0.2);
+        border: 1px solid rgba(255, 100, 100, 0.4);
+        color: #ff8080;
+        font-weight: 600;
+        cursor: pointer;
+        transition: 0.25s ease;
+      }
+
+      #clearStorageBtn:hover {
+        background: rgba(255, 80, 80, 0.35);
+        transform: scale(1.05);
+      }
+
+      /* 🔹 תיבת סטטוס למעלה מימין */
+      .status-bar {
+        position: absolute;
+        top: 20px;
+        right: 180px;
+        background: rgba(19, 32, 54, 0.65);
+        border: 1px solid rgba(120, 220, 255, 0.25);
+        border-radius: 14px;
+        padding: 10px 16px;
+        color: #dff8ff;
+        font-size: 15px;
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+        text-align: right;
+        box-shadow: 0 0 10px rgba(0, 200, 255, 0.3);
+        backdrop-filter: blur(8px);
+      }
+
+      .status-bar span {
+        display: block;
+      }
+
+      .status-bar .hard {
+        color: #ff7b7b;
+      }
+
+      .status-bar .easy {
+        color: #7dffb2;
       }
     </style>
   </head>
@@ -78,12 +158,18 @@
         לעמוד הראשי →
       </button>
 
+      <!-- 🔹 תיבת סטטוס -->
+      <div class="status-bar" id="statusBar">
+        <span class="hard">💾 שאלות קשות: 0</span>
+        <span class="easy">💡 שאלות קלות: 0</span>
+      </div>
+
       <header class="hero">
         <h1>
-          הנושא הנבחר
+          שאלות
           <span id="subjectLabel" class="subject-highlight">—</span>
         </h1>
-        <p class="sub">בחר/י את מספר השאלות להצגה (שאלה אחת ⇒ תשובה אחת).</p>
+        <p class="sub">בחר/י את סוג התרגול ומספר השאלות הרצוי.</p>
       </header>
 
       <section class="panel">
@@ -91,9 +177,13 @@
 
         <div class="grid">
           <div class="field">
-            <label>נושא</label>
-            <div id="subjectBadge" class="badge">—</div>
-            <small class="hint">כרגע מוצג לצורך תצוגה בלבד.</small>
+            <label for="questionMode">בחר סוג שאלות</label>
+            <select id="questionMode" class="select">
+              <option value="all">📚 כל השאלות בנושא</option>
+              <option value="hard">💪 שאלות שסומנו כמאתגרות</option>
+              <option value="easy">💡 שאלות שסומנו כקלות</option>
+            </select>
+            <small class="hint">בחר אילו שאלות ברצונך לתרגל</small>
           </div>
 
           <div class="field">
@@ -101,16 +191,17 @@
             <input
               id="numQuestions"
               type="number"
-              min="10"
+              min="1"
               step="1"
               value="10"
             />
-            <small id="numHint" class="hint">10–10</small>
+            <small id="numHint" class="hint">1–10</small>
           </div>
         </div>
 
         <div class="actions">
           <button id="startBtn" class="primary">התחל תרגול!</button>
+          <button id="clearStorageBtn">נקה שאלות מסומנות</button>
         </div>
       </section>
 
@@ -122,7 +213,7 @@
     <script src="data/qa-bank.js"></script>
 
     <script>
-      console.log("subjectKey =", getSubjectKey());
+      console.log("✅ QA Settings script loaded and running!");
 
       function getSubjectKey() {
         const url = new URL(window.location.href);
@@ -137,61 +228,128 @@
         basketball: "יסודות בכדורסל",
         athletics: "יסודות באתלטיקה",
         football: "יסודות בכדורגל",
-        statistics1: "סטטיסטיקה – חלק א׳", // ✅ תוספת חיונית
+        statistics1: "סטטיסטיקה – חלק א׳",
+        physics: "פיזיקה",
       };
 
       const qaBanks = window.qaBanks || {};
 
       const els = {
         subjectLabel: document.getElementById("subjectLabel"),
-        subjectBadge: document.getElementById("subjectBadge"),
         numInput: document.getElementById("numQuestions"),
         numHint: document.getElementById("numHint"),
+        modeSelect: document.getElementById("questionMode"),
         startBtn: document.getElementById("startBtn"),
+        clearBtn: document.getElementById("clearStorageBtn"),
+        statusBar: document.getElementById("statusBar"),
       };
 
       (function init() {
         const subjectKey = getSubjectKey();
         const title = subjectTitles[subjectKey] || subjectKey;
-
-        // 🟦 מציג את הנושא
         els.subjectLabel.textContent = title;
-        els.subjectBadge.textContent = title;
 
-        const bank = qaBanks[subjectKey] || [];
-        const max = Math.max(10, bank.length);
-        const min = 10;
+        const allQuestions = qaBanks[subjectKey] || [];
+        const hardQTexts = JSON.parse(
+          localStorage.getItem("hardQuestions") || "[]"
+        );
+        const easyQTexts = JSON.parse(
+          localStorage.getItem("easyQuestions") || "[]"
+        );
 
-        els.numInput.min = String(min);
-        els.numInput.max = String(max);
-        els.numInput.value = min;
-        updateHint();
+        const hardQuestions = allQuestions.filter((q) =>
+          hardQTexts.includes(q.q)
+        );
+        const easyQuestions = allQuestions.filter((q) =>
+          easyQTexts.includes(q.q)
+        );
+
+        console.groupCollapsed("📊 QA Settings Debug Info");
+        console.log("נושא:", subjectKey);
+        console.log("סה״כ שאלות:", allQuestions.length);
+        console.log("💪 קשות:", hardQuestions.length);
+        console.log("💡 קלות:", easyQuestions.length);
+        console.groupEnd();
+
+        // עדכון תיבת הסטטוס
+        function updateStatusBar() {
+          els.statusBar.querySelector(
+            ".hard"
+          ).textContent = `💾 שאלות קשות: ${hardQuestions.length}`;
+          els.statusBar.querySelector(
+            ".easy"
+          ).textContent = `💡 שאלות קלות: ${easyQuestions.length}`;
+        }
+        updateStatusBar();
+
+        let selectedQuestions = [...allQuestions];
+        let currentMode = "all";
+
+        function updateRange() {
+          if (currentMode === "hard") selectedQuestions = hardQuestions;
+          else if (currentMode === "easy") selectedQuestions = easyQuestions;
+          else selectedQuestions = allQuestions;
+
+          const count = selectedQuestions.length;
+          if (count === 0) {
+            els.numHint.textContent = "⚠️ אין שאלות זמינות במצב זה";
+            els.numHint.classList.add("warning");
+            els.numInput.value = "";
+            els.numInput.disabled = true;
+            els.startBtn.disabled = true;
+            return;
+          }
+
+          els.numHint.classList.remove("warning");
+          els.numInput.disabled = false;
+          els.numInput.max = count;
+          els.numInput.min = 1;
+          els.numInput.value = Math.min(
+            parseInt(els.numInput.value) || 1,
+            count
+          );
+          els.numHint.textContent = `1–${count}`;
+          els.startBtn.disabled = false;
+        }
+
+        els.modeSelect.addEventListener("change", () => {
+          currentMode = els.modeSelect.value;
+          updateRange();
+        });
 
         els.numInput.addEventListener("input", () => {
-          const value = Number(els.numInput.value);
-          if (!isNaN(value)) {
-            els.numHint.textContent = `${min}–${max}`;
-          }
+          const max = parseInt(els.numInput.max) || 1;
+          const val = Math.max(
+            1,
+            Math.min(parseInt(els.numInput.value) || 1, max)
+          );
+          els.numInput.value = val;
         });
 
         els.startBtn.addEventListener("click", () => {
-          let count = Number(els.numInput.value);
-          if (isNaN(count) || count < min) count = min;
-          if (count > max) count = max;
-
+          const count = parseInt(els.numInput.value) || 1;
           const settings = {
-            mode: "qa",
+            mode: currentMode,
             subject: subjectKey,
             numQuestions: count,
-            timestamp: Date.now(),
           };
           localStorage.setItem("qa_settings", JSON.stringify(settings));
-          window.location.href = `qa.html?subject=${subjectKey}&questions=${count}`;
+          window.location.href = `qa.html?subject=${subjectKey}&mode=${currentMode}&questions=${count}`;
         });
 
-        function updateHint() {
-          els.numHint.textContent = `${min}–${max}`;
-        }
+        els.clearBtn.addEventListener("click", () => {
+          if (confirm("לנקות את כל השאלות שסומנו כקלות או קשות?")) {
+            localStorage.setItem("hardQuestions", "[]");
+            localStorage.setItem("easyQuestions", "[]");
+            alert("✅ כל הסימונים נמחקו בהצלחה!");
+            hardQuestions.length = 0;
+            easyQuestions.length = 0;
+            updateStatusBar();
+            updateRange();
+          }
+        });
+
+        updateRange();
       })();
     </script>
   </body>

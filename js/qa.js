@@ -1,3 +1,7 @@
+// ===============================
+// Q&A Practice Logic — Smart Study (Full Final Version)
+// ===============================
+
 // === שליפת פרמטרים מה-URL ===
 const params = new URLSearchParams(window.location.search);
 const subjectKey = params.get("subject");
@@ -36,6 +40,8 @@ const subjectTitle = document.querySelector(".subject-name");
 const progressBar = document.getElementById("progressBar");
 const orderMode = document.getElementById("orderMode");
 const randomMode = document.getElementById("randomMode");
+const thumbUp = document.getElementById("thumbUp");
+const thumbDown = document.getElementById("thumbDown");
 
 // === שמות נושאים ===
 const SUBJECT_TITLES = {
@@ -48,8 +54,9 @@ const SUBJECT_TITLES = {
   statistics: "סטטיסטיקה",
   football: "יסודות בכדורגל",
   physics: "פיזיקה",
-  statistics1: "סטטיסטיקה – חלק א׳", // ✅ שם מסודר
+  statistics1: "סטטיסטיקה – חלק א׳",
 };
+
 subjectTitle.textContent = SUBJECT_TITLES[subjectKey] || "נושא לא ידוע";
 
 // === טוען שאלה ===
@@ -67,7 +74,7 @@ function loadQuestion() {
   nextBtn.disabled = current === currentBank.length - 1;
 
   updateProgress();
-  updateThumbState(q.q); // ← בדיקה אם השאלה כבר סומנה (קל/קשה)
+  updateThumbState(q.q);
 }
 
 // === עדכון בר התקדמות ===
@@ -147,15 +154,13 @@ randomMode.addEventListener("change", () => {
   }
 });
 
-// === אגודל למעלה / למטה עם שמירה מקומית ===
-const thumbUp = document.getElementById("thumbUp");
-const thumbDown = document.getElementById("thumbDown");
-
-// טען נתונים קיימים מה-localStorage
+// ===============================
+// מערכת אגודלים משודרגת
+// ===============================
 let hardQuestions = JSON.parse(localStorage.getItem("hardQuestions") || "[]");
 let easyQuestions = JSON.parse(localStorage.getItem("easyQuestions") || "[]");
 
-// עדכון מצב אגודלים לפי שאלה
+// עדכון מצב אגודלים לפי השאלה הנוכחית
 function updateThumbState(questionText) {
   if (hardQuestions.includes(questionText)) {
     thumbDown.classList.add("active-down");
@@ -169,38 +174,42 @@ function updateThumbState(questionText) {
   }
 }
 
-// אגודל למעלה
+// אגודל למעלה 👍 — שאלה קלה
 thumbUp.addEventListener("click", () => {
-  const currentQuestion = questionText.textContent.trim();
+  const qText = questionText.textContent.trim();
 
-  if (thumbUp.classList.contains("active-up")) {
+  if (easyQuestions.includes(qText)) {
+    // אם כבר מסומן כקל — הסר לגמרי
+    easyQuestions = easyQuestions.filter((q) => q !== qText);
     thumbUp.classList.remove("active-up");
-    easyQuestions = easyQuestions.filter((q) => q !== currentQuestion);
   } else {
+    // הסר אותו אם היה ברשימת קשות
+    hardQuestions = hardQuestions.filter((q) => q !== qText);
+    // הוסף לרשימת הקלות
+    easyQuestions.push(qText);
     thumbUp.classList.add("active-up");
     thumbDown.classList.remove("active-down");
-
-    easyQuestions.push(currentQuestion);
-    hardQuestions = hardQuestions.filter((q) => q !== currentQuestion);
   }
 
   localStorage.setItem("easyQuestions", JSON.stringify(easyQuestions));
   localStorage.setItem("hardQuestions", JSON.stringify(hardQuestions));
 });
 
-// אגודל למטה
+// אגודל למטה 👎 — שאלה קשה
 thumbDown.addEventListener("click", () => {
-  const currentQuestion = questionText.textContent.trim();
+  const qText = questionText.textContent.trim();
 
-  if (thumbDown.classList.contains("active-down")) {
+  if (hardQuestions.includes(qText)) {
+    // אם כבר מסומן כקשה — הסר לגמרי
+    hardQuestions = hardQuestions.filter((q) => q !== qText);
     thumbDown.classList.remove("active-down");
-    hardQuestions = hardQuestions.filter((q) => q !== currentQuestion);
   } else {
+    // הסר אותו אם היה ברשימת קלות
+    easyQuestions = easyQuestions.filter((q) => q !== qText);
+    // הוסף לרשימת הקשות
+    hardQuestions.push(qText);
     thumbDown.classList.add("active-down");
     thumbUp.classList.remove("active-up");
-
-    hardQuestions.push(currentQuestion);
-    easyQuestions = easyQuestions.filter((q) => q !== currentQuestion);
   }
 
   localStorage.setItem("easyQuestions", JSON.stringify(easyQuestions));
