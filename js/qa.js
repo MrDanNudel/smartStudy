@@ -11,7 +11,7 @@ if (bank.length === 0) {
   window.location.href = "index.html";
 }
 
-// ערבוב שאלות ובחירת כמות
+// ערבוב שאלות
 function shuffle(arr) {
   for (let i = arr.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
@@ -20,7 +20,9 @@ function shuffle(arr) {
   return arr;
 }
 
-bank = shuffle([...bank]).slice(0, numQuestions);
+// משתנים גלובליים
+let fullBank = [...bank];
+let currentBank = [...fullBank].slice(0, numQuestions);
 let current = 0;
 
 // אלמנטים
@@ -33,6 +35,8 @@ const nextBtn = document.getElementById("nextQuestion");
 const prevBtn = document.getElementById("prevQuestion");
 const subjectTitle = document.querySelector(".subject-name");
 const progressBar = document.getElementById("progressBar");
+const orderMode = document.getElementById("orderMode");
+const randomMode = document.getElementById("randomMode");
 
 // שמות נושאים
 const SUBJECT_TITLES = {
@@ -48,9 +52,9 @@ const SUBJECT_TITLES = {
 };
 subjectTitle.textContent = SUBJECT_TITLES[subjectKey] || "נושא לא ידוע";
 
-// === הצגת שאלה ===
+// === טוען שאלה ===
 function loadQuestion() {
-  const q = bank[current];
+  const q = currentBank[current];
   if (!q) return;
 
   questionText.textContent = q.q;
@@ -60,21 +64,21 @@ function loadQuestion() {
   showAnswerBtn.textContent = "הצג תשובה";
 
   prevBtn.disabled = current === 0;
-  nextBtn.disabled = current === bank.length - 1;
+  nextBtn.disabled = current === currentBank.length - 1;
 
   updateProgress();
 }
 
 // === עדכון בר התקדמות ===
 function updateProgress() {
-  const progressPercent = ((current + 1) / bank.length) * 100;
+  const progressPercent = ((current + 1) / currentBank.length) * 100;
   progressBar.style.width = `${progressPercent}%`;
-  progressText.textContent = `שאלה ${current + 1} מתוך ${bank.length}`;
+  progressText.textContent = `שאלה ${current + 1} מתוך ${currentBank.length}`;
 }
 
-// === כפתור הצגת תשובה / הסתרה ===
+// === הצגת תשובה ===
 showAnswerBtn.onclick = () => {
-  const q = bank[current];
+  const q = currentBank[current];
   const correct = q.a[q.correct] || q.a;
 
   if (!feedback.classList.contains("show")) {
@@ -107,27 +111,40 @@ function showExplanationPopup() {
     </div>
   `;
   document.body.appendChild(popup);
-
   document
     .getElementById("closePopupBtn")
     .addEventListener("click", () => popup.remove());
 }
 
-// === ניווט קדימה ===
+// === ניווט קדימה / אחורה ===
 nextBtn.onclick = () => {
-  if (current < bank.length - 1) {
+  if (current < currentBank.length - 1) {
     current++;
     loadQuestion();
   }
 };
-
-// === ניווט אחורה ===
 prevBtn.onclick = () => {
   if (current > 0) {
     current--;
     loadQuestion();
   }
 };
+
+// === מעבר בין מצבים (לפי הסדר / אקראי) ===
+orderMode.addEventListener("change", () => {
+  if (orderMode.checked) {
+    currentBank = [...fullBank].slice(0, numQuestions);
+    current = 0;
+    loadQuestion();
+  }
+});
+randomMode.addEventListener("change", () => {
+  if (randomMode.checked) {
+    currentBank = shuffle([...fullBank]).slice(0, numQuestions);
+    current = 0;
+    loadQuestion();
+  }
+});
 
 // === טעינה ראשונית ===
 window.addEventListener("DOMContentLoaded", () => {

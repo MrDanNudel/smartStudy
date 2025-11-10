@@ -18,12 +18,15 @@ body {
   cursor: pointer;
   transition: 0.3s;
 }
+/* 🔹 מיקום נכון של כפתורי ניווט עליון */
+/* 🔹 קרב כפתורי הניווט למרכז */
 #backBtn {
-  right: 20px;
+  left: 120px; /* עמוד קודם - יותר למרכז */
 }
 #homeBtn {
-  left: 20px;
+  right: 120px; /* עמוד הבית - יותר למרכז */
 }
+
 .nav-btn:hover {
   background: rgba(40, 80, 120, 0.6);
 }
@@ -36,6 +39,28 @@ body {
 .hero h1 {
   font-size: 2em;
   text-shadow: 0 0 10px rgba(0, 180, 255, 0.6);
+}
+
+/* 🔹 בחירת מצב שאלות */
+.mode-selector {
+  text-align: center;
+  margin-top: 20px;
+  color: #9fd8ff;
+  font-weight: 500;
+  font-size: 1.1em;
+}
+.mode-selector label {
+  margin: 0 14px;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+.mode-selector label:hover {
+  color: #c4eeff;
+}
+.mode-selector input[type="radio"] {
+  accent-color: #00bfff;
+  margin-left: 6px;
+  cursor: pointer;
 }
 .subject-name {
   display: block;

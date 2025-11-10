@@ -25,6 +25,18 @@
       <h1 id="subjectTitle">תרגול<br /><span class="subject-name"></span></h1>
     </header>
 
+    <!-- 🔹 בחירת סדר שאלות -->
+    <div class="mode-selector">
+      <label>
+        <input type="radio" name="mode" id="orderMode" checked />
+        לפי הסדר
+      </label>
+      <label>
+        <input type="radio" name="mode" id="randomMode" />
+        אקראי
+      </label>
+    </div>
+
     <!-- 🔹 קופסה ראשית -->
     <main class="qa-box">
       <div id="progressText" class="progress-text">שאלה 1 מתוך 10</div>
@@ -42,7 +54,7 @@
       </div>
     </main>
 
-    <!-- 🔹 בר התקדמות מתחת לריבוע -->
+    <!-- 🔹 בר התקדמות -->
     <div class="progress-container">
       <div class="progress-bar" id="progressBar"></div>
     </div>
