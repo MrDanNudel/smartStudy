@@ -48,6 +48,7 @@ const SUBJECT_TITLES = {
   statistics: "סטטיסטיקה",
   football: "יסודות בכדורגל",
   physics: "פיזיקה",
+  statistics1: "סטטיסטיקה – חלק א׳", // ✅ שם מסודר
 };
 subjectTitle.textContent = SUBJECT_TITLES[subjectKey] || "נושא לא ידוע";
 
