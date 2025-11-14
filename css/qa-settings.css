@@ -10,14 +10,17 @@
   --shadow: 0 10px 35px rgba(0, 0, 0, 0.35);
 }
 
+/* RESET */
 * {
   box-sizing: border-box;
 }
+
 html,
 body {
   height: 100%;
   margin: 0;
 }
+
 body {
   font-family: "Rubik", system-ui, -apple-system, Segoe UI, Arial, sans-serif;
   background: radial-gradient(
@@ -30,6 +33,7 @@ body {
   color: var(--text);
 }
 
+/* WRAPPER */
 .wrap {
   min-height: 100vh;
   max-width: 960px;
@@ -38,6 +42,7 @@ body {
   position: relative;
 }
 
+/* כפתורי ניווט */
 .back-btn {
   position: absolute;
   top: 24px;
@@ -60,26 +65,103 @@ body {
   border-color: #89e2ff;
 }
 
+.home-btn {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  display: flex;
+  align-items: center;
+  padding: 10px 16px;
+  border-radius: 14px;
+  border: 1px solid var(--panel-border);
+  background: rgba(19, 32, 54, 0.55);
+  color: var(--text);
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.2s ease;
+  backdrop-filter: blur(8px);
+}
+.home-btn:hover {
+  transform: translateY(-1px);
+  border-color: #89e2ff;
+}
+
+/* כותרת עליונה */
 .hero {
-  margin-top: 40px;
+  margin-top: 80px; /* היה 40px */
   text-align: center;
 }
+
 .hero h1 {
   margin: 0 0 6px;
   font-size: clamp(22px, 2.6vw, 34px);
   font-weight: 800;
   letter-spacing: 0.2px;
 }
+
 .hero #subjectLabel {
   color: var(--accent);
 }
+
 .sub {
   color: var(--muted);
   margin: 0;
 }
 
+/* ⭐ STATUS BAR — גרסה משולבת ומסודרת ⭐ */
+.status-bar {
+  margin: 34px auto 0;
+  width: 700px;
+  max-width: 95%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+
+  background: rgba(19, 32, 54, 0.55);
+  border: 1px solid rgba(120, 220, 255, 0.25);
+  border-radius: 18px;
+
+  padding: 15px 26px;
+  color: var(--text);
+  font-size: 19px;
+  font-weight: 600;
+
+  box-shadow: 0 0 20px rgba(0, 200, 255, 0.22);
+  backdrop-filter: blur(10px);
+}
+
+.status-bar span {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.status-bar .hard {
+  color: #ff7979;
+}
+.status-bar .easy {
+  color: #7dffb2;
+}
+.status-bar .unsorted {
+  color: #9fc6ff;
+}
+
+/* רספונסיבי */
+@media (max-width: 650px) {
+  .status-bar {
+    flex-direction: column;
+    gap: 10px;
+    padding: 16px;
+    width: 92%;
+    font-size: 17px;
+  }
+}
+
+/* PANEL (הפאנל שמתחת לסטטוס בר) */
 .panel {
-  margin: 28px auto 0;
+  margin: 40px auto 0; /* היה 28px — עכשיו מותאם לסטטוס */
   border: 1px solid var(--panel-border);
   background: var(--panel);
   padding: 22px;
@@ -92,6 +174,7 @@ body {
   margin: 0 0 18px;
 }
 
+/* GRID */
 .grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -103,14 +186,17 @@ body {
   }
 }
 
+/* FIELDS */
 .field {
   display: flex;
   flex-direction: column;
   gap: 8px;
 }
+
 .field label {
   font-weight: 700;
 }
+
 .field input[type="number"] {
   background: #0b1b31;
   border: 1px solid rgba(120, 220, 255, 0.25);
@@ -124,29 +210,33 @@ body {
   border-color: #89e2ff;
 }
 
-.badge {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 44px;
-  padding: 0 14px;
-  border: 1px dashed rgba(120, 220, 255, 0.35);
-  border-radius: 12px;
-  color: var(--accent-2);
+.select {
   background: #0b1b31;
-  font-weight: 700;
+  border: 1px solid rgba(120, 220, 255, 0.25);
+  color: var(--text);
+  border-radius: 12px;
+  padding: 12px 14px;
+  outline: none;
+  font-size: 16px;
+}
+.select:focus {
+  border-color: #89e2ff;
 }
 
+/* HINTS */
 .hint {
   color: var(--muted);
   font-size: 13px;
 }
 
+/* BUTTONS */
 .actions {
   display: flex;
   justify-content: center;
   margin-top: 14px;
+  gap: 14px;
 }
+
 .primary {
   padding: 12px 22px;
   border-radius: 14px;
@@ -165,6 +255,21 @@ body {
   transform: translateY(1px);
 }
 
+#clearStorageBtn {
+  padding: 12px 22px;
+  border-radius: 14px;
+  background: rgba(255, 60, 60, 0.2);
+  border: 1px solid rgba(255, 100, 100, 0.4);
+  color: #ff8080;
+  font-weight: 600;
+  cursor: pointer;
+}
+#clearStorageBtn:hover {
+  background: rgba(255, 80, 80, 0.35);
+  transform: scale(1.05);
+}
+
+/* FOOTER */
 .foot {
   margin-top: 18px;
   text-align: center;

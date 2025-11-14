@@ -7,148 +7,6 @@
 
     <!-- עיצוב -->
     <link rel="stylesheet" href="css/qa-settings.css" />
-
-    <style>
-      body {
-        font-family: "Assistant", sans-serif;
-        text-align: center;
-        color: var(--text, #e8f6ff);
-        background: radial-gradient(circle at top, #041a2e, #020b15);
-      }
-
-      .back-btn,
-      .home-btn {
-        position: absolute;
-        top: 32px;
-        padding: 10px 18px;
-        border: 1px solid rgba(120, 220, 255, 0.35);
-        border-radius: 18px;
-        background: rgba(19, 32, 54, 0.55);
-        color: var(--text, #e8f6ff);
-        font-weight: 600;
-        cursor: pointer;
-        transition: 0.25s ease;
-        box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
-        backdrop-filter: blur(8px);
-      }
-
-      .back-btn:hover,
-      .home-btn:hover {
-        background: rgba(19, 32, 54, 0.8);
-        transform: scale(1.05);
-      }
-
-      .back-btn {
-        left: 32px;
-      }
-
-      .home-btn {
-        right: 32px;
-      }
-
-      .hero h1 {
-        font-size: 26px;
-        margin-bottom: 8px;
-        color: var(--text, #e8f6ff);
-      }
-
-      .subject-highlight {
-        display: block;
-        font-size: 50px;
-        font-weight: 800;
-        color: #4ec8ff;
-        margin-top: 8px;
-        text-shadow: 0 0 16px rgba(80, 200, 255, 0.5);
-      }
-
-      select.select {
-        background: #0b1b31;
-        border: 1px solid rgba(120, 220, 255, 0.25);
-        border-radius: 12px;
-        padding: 10px 14px;
-        color: var(--text);
-        font-size: 16px;
-        outline: none;
-      }
-
-      select.select:focus {
-        border-color: #89e2ff;
-      }
-
-      .hint.warning {
-        color: #5fd9ff;
-        text-shadow: 0 0 10px rgba(95, 217, 255, 0.7);
-        animation: glow 2s infinite ease-in-out;
-      }
-
-      @keyframes glow {
-        0% {
-          opacity: 0.6;
-        }
-        50% {
-          opacity: 1;
-        }
-        100% {
-          opacity: 0.6;
-        }
-      }
-
-      h2 {
-        color: #b7dfff;
-      }
-
-      .panel {
-        margin-top: 80px;
-      }
-
-      #clearStorageBtn {
-        margin-top: 30px;
-        padding: 8px 18px;
-        border-radius: 14px;
-        background: rgba(255, 60, 60, 0.2);
-        border: 1px solid rgba(255, 100, 100, 0.4);
-        color: #ff8080;
-        font-weight: 600;
-        cursor: pointer;
-        transition: 0.25s ease;
-      }
-
-      #clearStorageBtn:hover {
-        background: rgba(255, 80, 80, 0.35);
-        transform: scale(1.05);
-      }
-
-      /* 🔹 תיבת סטטוס למעלה מימין */
-      .status-bar {
-        position: absolute;
-        top: 20px;
-        right: 180px;
-        background: rgba(19, 32, 54, 0.65);
-        border: 1px solid rgba(120, 220, 255, 0.25);
-        border-radius: 14px;
-        padding: 10px 16px;
-        color: #dff8ff;
-        font-size: 15px;
-        display: flex;
-        flex-direction: column;
-        gap: 4px;
-        text-align: right;
-        box-shadow: 0 0 10px rgba(0, 200, 255, 0.3);
-        backdrop-filter: blur(8px);
-      }
-
-      .status-bar span {
-        display: block;
-      }
-
-      .status-bar .hard {
-        color: #ff7b7b;
-      }
-
-      .status-bar .easy {
-        color: #7dffb2;
-      }
-    </style>
   </head>
 
   <body>
@@ -158,12 +16,6 @@
         לעמוד הראשי →
       </button>
 
-      <!-- 🔹 תיבת סטטוס -->
-      <div class="status-bar" id="statusBar">
-        <span class="hard">💾 שאלות קשות: 0</span>
-        <span class="easy">💡 שאלות קלות: 0</span>
-      </div>
-
       <header class="hero">
         <h1>
           שאלות
@@ -171,6 +23,13 @@
         </h1>
         <p class="sub">בחר/י את סוג התרגול ומספר השאלות הרצוי.</p>
       </header>
+
+      <!-- ⭐ תיבת סטטוס ממורכזת ופרוסה ⭐ -->
+      <div class="status-bar" id="statusBar">
+        <span class="hard">💪 שאלות קשות: 0</span>
+        <span class="easy">💡 שאלות קלות: 0</span>
+        <span class="unsorted">📄 שאלות שלא סומנו: 0</span>
+      </div>
 
       <section class="panel">
         <h2>הגדרות תרגול שאלות-תשובות</h2>
@@ -273,14 +132,25 @@
 
         // עדכון תיבת הסטטוס
         function updateStatusBar() {
+          // רשימות
+          const hardQ = hardQuestions.length;
+          const easyQ = easyQuestions.length;
+          const total = allQuestions.length;
+
+          // לא מסומנות = כלל השאלות - קלות - קשות
+          const unsorted = total - hardQ - easyQ;
+
+          // עדכון ה־DOM
           els.statusBar.querySelector(
             ".hard"
-          ).textContent = `💾 שאלות קשות: ${hardQuestions.length}`;
+          ).textContent = `💪 שאלות קשות: ${hardQ}`;
           els.statusBar.querySelector(
             ".easy"
-          ).textContent = `💡 שאלות קלות: ${easyQuestions.length}`;
+          ).textContent = `💡 שאלות קלות: ${easyQ}`;
+          els.statusBar.querySelector(
+            ".unsorted"
+          ).textContent = `📄 שאלות שלא סומנו: ${unsorted}`;
         }
-        updateStatusBar();
 
         let selectedQuestions = [...allQuestions];
         let currentMode = "all";

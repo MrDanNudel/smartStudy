@@ -4,13 +4,13 @@
 
 console.log("✅ QA Settings script loaded and running!");
 
-// קריאת פרמטר subject מה-URL (לדוגמה: ?subject=chemistry)
+// קריאת פרמטר subject מה-URL
 function getSubjectKey() {
   const url = new URL(window.location.href);
-  return url.searchParams.get("subject") || "chemistry"; // ברירת מחדל
+  return url.searchParams.get("subject") || "chemistry";
 }
 
-// מיפוי שם ידידותי לנושא בעברית
+// שמות בעברית
 const subjectTitles = {
   anatomy: "אנטומיה",
   chemistry: "כימיה",
@@ -23,19 +23,20 @@ const subjectTitles = {
   physics: "פיזיקה",
 };
 
-// מאגר כללי (נטען מהקובץ data/qa-bank.js)
-const qaBanks = window.qaBanks || {}; // { chemistry: [...], physics: [...], ... }
+// מאגר השאלות
+const qaBanks = window.qaBanks || {};
 
-// אחסון אלמנטים חשובים לשימוש חוזר
+// אלמנטים מהדף
 const els = {
   subjectLabel: document.getElementById("subjectLabel"),
   numInput: document.getElementById("numQuestions"),
   numHint: document.getElementById("numHint"),
   startBtn: document.getElementById("startBtn"),
   modeSelect: document.getElementById("questionMode"),
+  statusBar: document.getElementById("statusBar"),
 };
 
-// פונקציית עזר — שמירה בטווח
+// שמירה בטווח
 function clamp(v, a, b) {
   return Math.min(Math.max(v, a), b);
 }
@@ -47,87 +48,99 @@ function clamp(v, a, b) {
   const title = subjectTitles[subjectKey] || subjectKey;
   if (els.subjectLabel) els.subjectLabel.textContent = title;
 
-  // טעינת מאגר השאלות
+  // טעינת מאגר השאלות לנושא
   const allQuestions = qaBanks[subjectKey] || [];
-  console.log(`📘 נושא "${subjectKey}" כולל ${allQuestions.length} שאלות`);
 
-  // טעינת שאלות שסומנו כקשות ב-localStorage
+  // טעינת שאלות שסומנו כקשות/קלות
   const hardQTexts = JSON.parse(localStorage.getItem("hardQuestions") || "[]");
+  const easyQTexts = JSON.parse(localStorage.getItem("easyQuestions") || "[]");
 
-  // השוואה עם normalizing כדי למנוע בעיות של רווחים, ניקוד וכו'
-  const normalize = (str) => str?.trim()?.normalize("NFKC") || "";
+  const normalize = (s) => s?.trim()?.normalize("NFKC") || "";
+
   const hardQuestions = allQuestions.filter((q) =>
     hardQTexts.some((hq) => normalize(hq) === normalize(q.q))
   );
 
-  let currentMode = "all";
-
-  // === DEBUG הדפסות עיקריות ===
-  console.groupCollapsed("📊 QA Settings Debug Info");
-  console.log("🧩 נושא נבחר:", subjectKey);
-  console.log('🧮 סה"כ שאלות בנושא:', allQuestions.length);
-  console.log("🔥 שאלות שסומנו כקשות ב-localStorage:", hardQTexts);
-  console.log(
-    "✅ אותרו בפועל במאגר (לאחר normalization):",
-    hardQuestions.length
+  const easyQuestions = allQuestions.filter((q) =>
+    easyQTexts.some((eq) => normalize(eq) === normalize(q.q))
   );
-  if (hardQuestions.length === 0 && hardQTexts.length > 0) {
-    console.warn(
-      "⚠️ יש שאלות שסומנו כקשות אך לא נמצאו התאמות — ייתכן שיש הבדל קטן בטקסט (רווח, ניקוד וכו')."
-    );
+
+  const unsortedQuestions = allQuestions.filter(
+    (q) => !hardQTexts.includes(q.q) && !easyQTexts.includes(q.q)
+  );
+
+  // ==============
+  // תיבת סטטוס
+  // ==============
+  function updateStatusBar() {
+    if (!els.statusBar) return;
+
+    els.statusBar.querySelector(
+      ".hard"
+    ).textContent = `💪 שאלות קשות: ${hardQuestions.length}`;
+
+    els.statusBar.querySelector(
+      ".easy"
+    ).textContent = `💡 שאלות קלות: ${easyQuestions.length}`;
+
+    els.statusBar.querySelector(
+      ".unsorted"
+    ).textContent = `📄 שאלות שלא סומנו: ${unsortedQuestions.length}`;
   }
+
+  console.groupCollapsed("📊 QA Settings Debug Info");
+  console.log("נושא:", subjectKey);
+  console.log("סה״כ שאלות:", allQuestions.length);
+  console.log("קשות:", hardQuestions.length);
+  console.log("קלות:", easyQuestions.length);
+  console.log("לא מסומנות:", unsortedQuestions.length);
   console.groupEnd();
 
-  // עדכון טווח שדות לפי מצב תרגול
+  // ⭐ מופעל כאן — כדי שהסטטוס יוצג מיד
+  updateStatusBar();
+
+  // מצב ברירת מחדל
+  let currentMode = "all";
+
+  // עדכון טווח
   function updateRange() {
-    const selectedQuestions =
-      currentMode === "hard" ? hardQuestions : allQuestions;
+    let selectedQuestions =
+      currentMode === "hard"
+        ? hardQuestions
+        : currentMode === "easy"
+        ? easyQuestions
+        : allQuestions;
+
     const count = selectedQuestions.length;
 
-    console.groupCollapsed("⚙️ updateRange()");
-    console.log("מצב נוכחי:", currentMode);
-    console.log("כמות שאלות נבחרות:", count);
-    console.groupEnd();
-
     if (count === 0) {
-      els.numHint.textContent =
-        currentMode === "hard"
-          ? "⚠️ אין שאלות שסומנו כמאתגרות בנושא זה"
-          : "⚠️ אין שאלות זמינות לנושא זה";
+      els.numHint.textContent = "⚠️ אין שאלות במצב זה";
       els.numInput.value = "";
       els.numInput.disabled = true;
       els.startBtn.disabled = true;
-      els.startBtn.title = "אין שאלות זמינות לתרגול";
       return;
     }
 
-    const min = 1;
-    const max = count;
     els.numInput.disabled = false;
-    els.numInput.min = String(min);
-    els.numInput.max = String(max);
-    els.numInput.value = clamp(Number(els.numInput.value) || 1, min, max);
-    els.numHint.textContent = `${min}–${max}`;
+    els.numInput.min = "1";
+    els.numInput.max = count;
+    els.numInput.value = clamp(Number(els.numInput.value) || 1, 1, count);
+    els.numHint.textContent = `1–${count}`;
     els.startBtn.disabled = false;
-    els.startBtn.title = "";
   }
 
-  // שינוי מצב תרגול (כל השאלות / מאתגרות)
   if (els.modeSelect) {
     els.modeSelect.addEventListener("change", () => {
       currentMode = els.modeSelect.value;
-      console.log("🌀 שינוי מצב:", currentMode);
       updateRange();
     });
   }
 
-  // הגבלת טווח בעת הקלדה
   els.numInput.addEventListener("input", () => {
     const v = clamp(Number(els.numInput.value), 1, Number(els.numInput.max));
     els.numInput.value = v;
   });
 
-  // התחלת תרגול שאלות-תשובות
   els.startBtn.addEventListener("click", () => {
     const count = clamp(
       Number(els.numInput.value),
@@ -135,24 +148,12 @@ function clamp(v, a, b) {
       Number(els.numInput.max)
     );
 
-    if (currentMode === "hard" && hardQuestions.length === 0) {
-      alert("לא קיימות שאלות שסומנו כמאתגרות בנושא זה.");
-      console.warn("🟡 לחיצה על התחל — אין שאלות מאתגרות זמינות");
-      return;
-    }
-
     const settings = {
       mode: currentMode,
       subject: subjectKey,
       numQuestions: count,
       timestamp: Date.now(),
     };
-
-    console.groupCollapsed("🚀 Starting QA Session");
-    console.log("מצב:", currentMode);
-    console.log("שאלות נבחרות:", count);
-    console.log("שמירה ב-localStorage:", settings);
-    console.groupEnd();
 
     localStorage.setItem("qa_settings", JSON.stringify(settings));
     window.location.href = `qa.html?subject=${subjectKey}&mode=${currentMode}&questions=${count}`;

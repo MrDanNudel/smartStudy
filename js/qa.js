@@ -1,20 +1,20 @@
 // ===============================
-// Q&A Practice Logic — Smart Study (Full Final Version)
+// Q&A Practice Logic — Smart Study (Circles Edition)
 // ===============================
 
 // === שליפת פרמטרים מה-URL ===
 const params = new URLSearchParams(window.location.search);
-const subjectKey = params.get("subject");
-const numQuestions = parseInt(params.get("questions")) || 10;
+const subjectKey = params.get("subject") || "chemistry";
+const modeFromUrl = params.get("mode") || "all";
+const numQuestionsRequested = parseInt(params.get("questions"), 10) || 10;
 
-// === שליפת שאלות ===
-let bank = banks[subjectKey] || [];
-if (bank.length === 0) {
+let bank = (window.qaBanks && window.qaBanks[subjectKey]) || [];
+if (!bank || bank.length === 0) {
   alert("לא נמצאו שאלות לנושא זה");
   window.location.href = "index.html";
 }
 
-// === ערבוב שאלות ===
+// === ערבוב ===
 function shuffle(arr) {
   for (let i = arr.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
@@ -23,25 +23,36 @@ function shuffle(arr) {
   return arr;
 }
 
-// === משתנים גלובליים ===
-let fullBank = [...bank];
-let currentBank = [...fullBank].slice(0, numQuestions);
+// === מצב GLOBAL ===
+const fullBank = [...bank];
+let currentMode = modeFromUrl;
+
+let filteredBank = [];
+let currentBank = [];
 let current = 0;
+
+// === טעינת סימוני קל/קשה מהזיכרון ===
+let hardQuestions = JSON.parse(localStorage.getItem("hardQuestions") || "[]");
+let easyQuestions = JSON.parse(localStorage.getItem("easyQuestions") || "[]");
 
 // === אלמנטים ===
 const questionText = document.getElementById("questionText");
-const answerInput = document.getElementById("answerInput");
-const showAnswerBtn = document.getElementById("showAnswerBtn");
-const feedback = document.getElementById("feedback");
 const progressText = document.getElementById("progressText");
+const progressBar = document.getElementById("progressBar");
+
+const showAnswerBtn = document.getElementById("showAnswerBtn");
+const answerInput = document.getElementById("answerInput");
+const feedback = document.getElementById("feedback");
+
 const nextBtn = document.getElementById("nextQuestion");
 const prevBtn = document.getElementById("prevQuestion");
-const subjectTitle = document.querySelector(".subject-name");
-const progressBar = document.getElementById("progressBar");
+
 const orderMode = document.getElementById("orderMode");
 const randomMode = document.getElementById("randomMode");
-const thumbUp = document.getElementById("thumbUp");
-const thumbDown = document.getElementById("thumbDown");
+
+// 🔵 העיגולים החדשים
+const circleEasy = document.getElementById("circleEasy");
+const circleHard = document.getElementById("circleHard");
 
 // === שמות נושאים ===
 const SUBJECT_TITLES = {
@@ -51,20 +62,68 @@ const SUBJECT_TITLES = {
   literacy: "אוריינות שפתית",
   basketball: "יסודות בכדורסל",
   athletics: "יסודות באתלטיקה",
-  statistics: "סטטיסטיקה",
   football: "יסודות בכדורגל",
   physics: "פיזיקה",
   statistics1: "סטטיסטיקה – חלק א׳",
 };
 
-subjectTitle.textContent = SUBJECT_TITLES[subjectKey] || "נושא לא ידוע";
+document.querySelector(".subject-name").textContent =
+  SUBJECT_TITLES[subjectKey] || subjectKey;
 
-// === טוען שאלה ===
+// ===============================
+// בניית מאגר לפי מצב (all / hard / easy)
+// ===============================
+function buildFilteredBank() {
+  if (currentMode === "hard") {
+    filteredBank = fullBank.filter((q) => hardQuestions.includes(q.q.trim()));
+  } else if (currentMode === "easy") {
+    filteredBank = fullBank.filter((q) => easyQuestions.includes(q.q.trim()));
+  } else {
+    filteredBank = fullBank.slice();
+  }
+
+  if (filteredBank.length === 0) {
+    filteredBank = fullBank.slice();
+    currentMode = "all";
+  }
+
+  const finalCount = Math.min(numQuestionsRequested, filteredBank.length);
+
+  const ordered = filteredBank.slice(0, finalCount);
+  const randomd = shuffle(filteredBank.slice()).slice(0, finalCount);
+
+  if (orderMode.checked) currentBank = ordered;
+  else currentBank = randomd;
+
+  current = 0;
+}
+
+// ===============================
+// עדכון מצב העיגולים בהתאם לשאלה
+// ===============================
+function updateCircleState(questionTxt) {
+  const q = questionTxt.trim();
+
+  // אפס קודם
+  circleEasy.classList.remove("active");
+  circleHard.classList.remove("active");
+
+  if (easyQuestions.includes(q)) {
+    circleEasy.classList.add("active");
+  } else if (hardQuestions.includes(q)) {
+    circleHard.classList.add("active");
+  }
+}
+
+// ===============================
+// טעינת שאלה למסך
+// ===============================
 function loadQuestion() {
   const q = currentBank[current];
   if (!q) return;
 
   questionText.textContent = q.q;
+
   feedback.classList.remove("show");
   feedback.innerHTML = "";
   answerInput.value = "";
@@ -74,33 +133,33 @@ function loadQuestion() {
   nextBtn.disabled = current === currentBank.length - 1;
 
   updateProgress();
-  updateThumbState(q.q);
+  updateCircleState(q.q);
 }
 
-// === עדכון בר התקדמות ===
+// ===============================
+// בר התקדמות
+// ===============================
 function updateProgress() {
-  const progressPercent = ((current + 1) / currentBank.length) * 100;
-  progressBar.style.width = `${progressPercent}%`;
-  progressText.textContent = `שאלה ${current + 1} מתוך ${currentBank.length}`;
+  const total = currentBank.length;
+  const percent = ((current + 1) / total) * 100;
+  progressBar.style.width = percent + "%";
+  progressText.textContent = `שאלה ${current + 1} מתוך ${total}`;
 }
 
-// === הצגת תשובה ===
+// ===============================
+// כפתור הצגת / הסתרת תשובה
+// ===============================
+
 showAnswerBtn.onclick = () => {
   const q = currentBank[current];
-  const correct = q.a[q.correct] || q.a;
+
+  // תומך גם ב־answer וגם ב־a
+  const correct = q.answer || q.a;
 
   if (!feedback.classList.contains("show")) {
-    feedback.innerHTML = `
-      <div class="answer-wrapper">
-        ✅ <span class="correct-answer">${correct}</span>
-        <span class="info-icon" title="פירוט נוסף">❓</span>
-      </div>
-    `;
+    feedback.innerHTML = `✅ ${correct}`;
     feedback.classList.add("show");
     showAnswerBtn.textContent = "הסתר תשובה";
-
-    const infoIcon = document.querySelector(".info-icon");
-    infoIcon.addEventListener("click", showExplanationPopup);
   } else {
     feedback.innerHTML = "";
     feedback.classList.remove("show");
@@ -108,23 +167,9 @@ showAnswerBtn.onclick = () => {
   }
 };
 
-// === פופאפ הסבר מעמיק ===
-function showExplanationPopup() {
-  const popup = document.createElement("div");
-  popup.className = "explain-popup";
-  popup.innerHTML = `
-    <div class="popup-box">
-      <p>פירוט מעמיק לתשובה בקרוב...!</p>
-      <button id="closePopupBtn">סגור</button>
-    </div>
-  `;
-  document.body.appendChild(popup);
-  document
-    .getElementById("closePopupBtn")
-    .addEventListener("click", () => popup.remove());
-}
-
-// === ניווט קדימה / אחורה ===
+// ===============================
+// ניווט קדימה / אחורה
+// ===============================
 nextBtn.onclick = () => {
   if (current < currentBank.length - 1) {
     current++;
@@ -138,85 +183,76 @@ prevBtn.onclick = () => {
   }
 };
 
-// === מצב לפי סדר / אקראי ===
+// ===============================
+// עיגול ירוק — שאלה קלה
+// ===============================
+circleEasy.addEventListener("click", () => {
+  const qText = questionText.textContent.trim();
+
+  if (easyQuestions.includes(qText)) {
+    // ביטול
+    easyQuestions = easyQuestions.filter((q) => q !== qText);
+    circleEasy.classList.remove("active");
+  } else {
+    // אם מסומן קשה — הסר
+    hardQuestions = hardQuestions.filter((q) => q !== qText);
+
+    // הוסף לקלות
+    easyQuestions.push(qText);
+    circleEasy.classList.add("active");
+    circleHard.classList.remove("active");
+  }
+
+  localStorage.setItem("easyQuestions", JSON.stringify(easyQuestions));
+  localStorage.setItem("hardQuestions", JSON.stringify(hardQuestions));
+});
+
+// ===============================
+// עיגול אדום — שאלה קשה
+// ===============================
+circleHard.addEventListener("click", () => {
+  const qText = questionText.textContent.trim();
+
+  if (hardQuestions.includes(qText)) {
+    // ביטול
+    hardQuestions = hardQuestions.filter((q) => q !== qText);
+    circleHard.classList.remove("active");
+  } else {
+    // אם מסומן קל — הסר
+    easyQuestions = easyQuestions.filter((q) => q !== qText);
+
+    // הוסף לקשות
+    hardQuestions.push(qText);
+    circleHard.classList.add("active");
+    circleEasy.classList.remove("active");
+  }
+
+  localStorage.setItem("easyQuestions", JSON.stringify(easyQuestions));
+  localStorage.setItem("hardQuestions", JSON.stringify(hardQuestions));
+});
+
+// ===============================
+// שינוי לפי סדר / אקראי
+// ===============================
 orderMode.addEventListener("change", () => {
   if (orderMode.checked) {
-    currentBank = [...fullBank].slice(0, numQuestions);
+    currentBank = filteredBank.slice(0, currentBank.length);
     current = 0;
     loadQuestion();
   }
 });
 randomMode.addEventListener("change", () => {
   if (randomMode.checked) {
-    currentBank = shuffle([...fullBank]).slice(0, numQuestions);
+    currentBank = shuffle(filteredBank.slice()).slice(0, currentBank.length);
     current = 0;
     loadQuestion();
   }
 });
 
 // ===============================
-// מערכת אגודלים משודרגת
+// התחלה
 // ===============================
-let hardQuestions = JSON.parse(localStorage.getItem("hardQuestions") || "[]");
-let easyQuestions = JSON.parse(localStorage.getItem("easyQuestions") || "[]");
-
-// עדכון מצב אגודלים לפי השאלה הנוכחית
-function updateThumbState(questionText) {
-  if (hardQuestions.includes(questionText)) {
-    thumbDown.classList.add("active-down");
-    thumbUp.classList.remove("active-up");
-  } else if (easyQuestions.includes(questionText)) {
-    thumbUp.classList.add("active-up");
-    thumbDown.classList.remove("active-down");
-  } else {
-    thumbUp.classList.remove("active-up");
-    thumbDown.classList.remove("active-down");
-  }
-}
-
-// אגודל למעלה 👍 — שאלה קלה
-thumbUp.addEventListener("click", () => {
-  const qText = questionText.textContent.trim();
-
-  if (easyQuestions.includes(qText)) {
-    // אם כבר מסומן כקל — הסר לגמרי
-    easyQuestions = easyQuestions.filter((q) => q !== qText);
-    thumbUp.classList.remove("active-up");
-  } else {
-    // הסר אותו אם היה ברשימת קשות
-    hardQuestions = hardQuestions.filter((q) => q !== qText);
-    // הוסף לרשימת הקלות
-    easyQuestions.push(qText);
-    thumbUp.classList.add("active-up");
-    thumbDown.classList.remove("active-down");
-  }
-
-  localStorage.setItem("easyQuestions", JSON.stringify(easyQuestions));
-  localStorage.setItem("hardQuestions", JSON.stringify(hardQuestions));
-});
-
-// אגודל למטה 👎 — שאלה קשה
-thumbDown.addEventListener("click", () => {
-  const qText = questionText.textContent.trim();
-
-  if (hardQuestions.includes(qText)) {
-    // אם כבר מסומן כקשה — הסר לגמרי
-    hardQuestions = hardQuestions.filter((q) => q !== qText);
-    thumbDown.classList.remove("active-down");
-  } else {
-    // הסר אותו אם היה ברשימת קלות
-    easyQuestions = easyQuestions.filter((q) => q !== qText);
-    // הוסף לרשימת הקשות
-    hardQuestions.push(qText);
-    thumbDown.classList.add("active-down");
-    thumbUp.classList.remove("active-up");
-  }
-
-  localStorage.setItem("easyQuestions", JSON.stringify(easyQuestions));
-  localStorage.setItem("hardQuestions", JSON.stringify(hardQuestions));
-});
-
-// === התחלה ===
 window.addEventListener("DOMContentLoaded", () => {
+  buildFilteredBank();
   loadQuestion();
 });

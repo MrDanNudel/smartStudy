@@ -80,51 +80,6 @@ body {
   animation: fadeIn 0.5s ease;
   position: relative;
 }
-/* 🔹 אגודלים משני צידי הריבוע */
-.thumb-side {
-  position: absolute;
-  top: 45%;
-  font-size: 2em;
-  cursor: pointer;
-  user-select: none;
-  color: #7daeff; /* צבע כחול רגיל */
-  filter: drop-shadow(0 0 6px rgba(0, 200, 255, 0.3));
-  transition: transform 0.15s ease, color 0.25s ease, filter 0.25s ease;
-}
-
-/* מיקום */
-.thumb-right {
-  right: -60px; /* בצד ימין */
-}
-.thumb-left {
-  left: -60px; /* בצד שמאל */
-}
-
-/* ✅ ירוק מלא – היד עצמה */
-.thumb-side.active-up {
-  color: #00ff6a;
-  filter: drop-shadow(0 0 25px rgba(0, 255, 140, 1))
-    drop-shadow(0 0 25px rgba(0, 255, 140, 0.9));
-  transform: scale(1.2);
-}
-
-/* ❌ אדום מלא – היד עצמה */
-.thumb-side.active-down {
-  color: #ff4040;
-  filter: drop-shadow(0 0 25px rgba(255, 60, 60, 1))
-    drop-shadow(0 0 25px rgba(255, 60, 60, 0.9));
-  transform: scale(1.2);
-}
-
-/* ריחוף */
-.thumb-side:hover {
-  transform: scale(1.15);
-}
-
-/* אפקט קליק קטן */
-.thumb-side:active {
-  transform: scale(0.9) rotate(-4deg);
-}
 
 /* 🔹 בר התקדמות */
 .progress-container {
@@ -316,15 +271,14 @@ body {
     opacity: 1;
   }
 }
-/* 📱 ריספונסיביות לאייפון / טאבלטים */
+
+/* 🔹 ריספונסיביות */
 @media (max-width: 768px) {
-  /* קופסה ראשית */
   .qa-box {
     width: 90%;
     padding: 24px 20px 70px 20px;
   }
 
-  /* כפתורי ניווט עליון */
   #backBtn {
     left: 16px;
     font-size: 14px;
@@ -336,31 +290,16 @@ body {
     padding: 8px 14px;
   }
 
-  /* אגודלים — יתקרבו פנימה */
-  .thumb-right {
-    right: -30px;
-  }
-  .thumb-left {
-    left: -30px;
-  }
-  .thumb-side {
-    font-size: 1.6em;
-    top: 48%;
-  }
-
-  /* שדה תשובה */
   #answerInput {
     width: 90%;
     font-size: 0.95em;
     height: 42px;
   }
 
-  /* בר התקדמות */
   .progress-container {
     width: 95%;
   }
 
-  /* כפתורים */
   .inner-nav {
     flex-wrap: wrap;
     gap: 14px;
@@ -377,33 +316,47 @@ body {
   }
 }
 
-/* 📱 תיקון לאגודלים באייפון ומסכים קטנים */
-@media (max-width: 768px) {
-  .thumb-side {
-    font-size: 1.8em;
-    top: 48%;
-  }
-
-  .thumb-right {
-    right: -20px; /* במקום -60px */
-  }
-
-  .thumb-left {
-    left: -20px; /* במקום -60px */
-  }
+/* ============================
+   🔵 עיגולים: קל (ירוק) / קשה (אדום)
+   ============================ */
+.circle-easy,
+.circle-hard {
+  position: absolute;
+  top: 16px;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: 0.25s ease;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
 }
 
-@media (max-width: 480px) {
-  .thumb-side {
-    font-size: 1.6em;
-    top: 49%;
-  }
+/* ירוק כבוי */
+.circle-easy {
+  right: 16px;
+  background: rgba(0, 255, 120, 0.25);
+  border: 1px solid rgba(0, 255, 120, 0.35);
+}
 
-  .thumb-right {
-    right: -10px;
-  }
+/* אדום כבוי */
+.circle-hard {
+  left: 16px;
+  background: rgba(255, 60, 60, 0.25);
+  border: 1px solid rgba(255, 80, 80, 0.35);
+}
 
-  .thumb-left {
-    left: -10px;
-  }
+/* ירוק פעיל — בהיר */
+.circle-easy.active {
+  background: rgba(0, 255, 140, 0.85);
+  border-color: rgba(0, 255, 140, 1);
+  box-shadow: 0 0 12px rgba(0, 255, 140, 0.9);
+  transform: scale(1.12);
+}
+
+/* אדום פעיל — בהיר */
+.circle-hard.active {
+  background: rgba(255, 60, 60, 0.85);
+  border-color: rgba(255, 100, 100, 1);
+  box-shadow: 0 0 12px rgba(255, 60, 60, 0.9);
+  transform: scale(1.12);
 }

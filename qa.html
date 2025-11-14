@@ -39,11 +39,14 @@
 
     <!-- 🔹 קופסה ראשית -->
     <main class="qa-box">
-      <!-- אגודלים משני צידי הריבוע -->
-      <div class="thumb-side thumb-right" id="thumbUp">👍</div>
-      <div class="thumb-side thumb-left" id="thumbDown">👎</div>
+      <!-- 🎯 עיגול ירוק = שאלה קלה -->
+      <div class="circle-easy" id="circleEasy"></div>
+
+      <!-- 🎯 עיגול אדום = שאלה קשה -->
+      <div class="circle-hard" id="circleHard"></div>
 
       <div id="progressText" class="progress-text">שאלה 1 מתוך 10</div>
+
       <h2 id="questionText" class="question">טוען שאלה...</h2>
 
       <div id="feedback" class="feedback"></div>
@@ -73,7 +76,7 @@
     </div>
 
     <!-- 🔹 קישורים לקוד -->
-    <script src="data/exam-bank.js"></script>
+    <script src="data/qa-bank.js"></script>
     <script src="js/qa.js"></script>
   </body>
 </html>
