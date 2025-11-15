@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>הגדרות — שאלות-תשובות</title>
 
-    <!-- עיצוב -->
     <link rel="stylesheet" href="css/qa-settings.css" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   </head>
 
   <body>
@@ -18,21 +18,15 @@
 
       <header class="hero">
         <h1>
-          שאלות
+          תרגול שאלות-תשובות
           <span id="subjectLabel" class="subject-highlight">—</span>
         </h1>
-        <p class="sub">בחר/י את סוג התרגול ומספר השאלות הרצוי.</p>
+        <p class="sub">בחר/י את סוג ומספר השאלות הרצוי.</p>
       </header>
 
-      <!-- ⭐ תיבת סטטוס ממורכזת ופרוסה ⭐ -->
-      <div class="status-bar" id="statusBar">
-        <span class="hard">💪 שאלות קשות: 0</span>
-        <span class="easy">💡 שאלות קלות: 0</span>
-        <span class="unsorted">📄 שאלות שלא סומנו: 0</span>
-      </div>
-
+      <!-- ⭐ פאנל ההגדרות ⭐ -->
       <section class="panel">
-        <h2>הגדרות תרגול שאלות-תשובות</h2>
+        <h2>הגדרות</h2>
 
         <div class="grid">
           <div class="field">
@@ -64,163 +58,24 @@
         </div>
       </section>
 
+      <!-- ⭐ כאן יופיעו *אחרי* הפאנל ⭐ -->
+      <div class="qa-graph-box">
+        <h3>📊 התקדמות הלמידה</h3>
+        <canvas id="qaProgressChart"></canvas>
+      </div>
+
+      <div class="status-bar" id="statusBar">
+        <span class="unsorted">📄 שאלות שלא סומנו: 0</span>
+        <span class="easy">💡 שאלות קלות: 0</span>
+        <span class="hard">💪 שאלות קשות: 0</span>
+      </div>
+
       <footer class="foot">
         <span>Smart Study • Q&A Mode</span>
       </footer>
     </div>
 
     <script src="data/qa-bank.js"></script>
-
-    <script>
-      console.log("✅ QA Settings script loaded and running!");
-
-      function getSubjectKey() {
-        const url = new URL(window.location.href);
-        return url.searchParams.get("subject") || "chemistry";
-      }
-
-      const subjectTitles = {
-        anatomy: "אנטומיה",
-        chemistry: "כימיה",
-        psychology: "פסיכולוגיה",
-        literacy: "אוריינות שפתית",
-        basketball: "יסודות בכדורסל",
-        athletics: "יסודות באתלטיקה",
-        football: "יסודות בכדורגל",
-        statistics1: "סטטיסטיקה – חלק א׳",
-        physics: "פיזיקה",
-      };
-
-      const qaBanks = window.qaBanks || {};
-
-      const els = {
-        subjectLabel: document.getElementById("subjectLabel"),
-        numInput: document.getElementById("numQuestions"),
-        numHint: document.getElementById("numHint"),
-        modeSelect: document.getElementById("questionMode"),
-        startBtn: document.getElementById("startBtn"),
-        clearBtn: document.getElementById("clearStorageBtn"),
-        statusBar: document.getElementById("statusBar"),
-      };
-
-      (function init() {
-        const subjectKey = getSubjectKey();
-        const title = subjectTitles[subjectKey] || subjectKey;
-        els.subjectLabel.textContent = title;
-
-        const allQuestions = qaBanks[subjectKey] || [];
-        const hardQTexts = JSON.parse(
-          localStorage.getItem("hardQuestions") || "[]"
-        );
-        const easyQTexts = JSON.parse(
-          localStorage.getItem("easyQuestions") || "[]"
-        );
-
-        const hardQuestions = allQuestions.filter((q) =>
-          hardQTexts.includes(q.q)
-        );
-        const easyQuestions = allQuestions.filter((q) =>
-          easyQTexts.includes(q.q)
-        );
-
-        console.groupCollapsed("📊 QA Settings Debug Info");
-        console.log("נושא:", subjectKey);
-        console.log("סה״כ שאלות:", allQuestions.length);
-        console.log("💪 קשות:", hardQuestions.length);
-        console.log("💡 קלות:", easyQuestions.length);
-        console.groupEnd();
-
-        // עדכון תיבת הסטטוס
-        function updateStatusBar() {
-          // רשימות
-          const hardQ = hardQuestions.length;
-          const easyQ = easyQuestions.length;
-          const total = allQuestions.length;
-
-          // לא מסומנות = כלל השאלות - קלות - קשות
-          const unsorted = total - hardQ - easyQ;
-
-          // עדכון ה־DOM
-          els.statusBar.querySelector(
-            ".hard"
-          ).textContent = `💪 שאלות קשות: ${hardQ}`;
-          els.statusBar.querySelector(
-            ".easy"
-          ).textContent = `💡 שאלות קלות: ${easyQ}`;
-          els.statusBar.querySelector(
-            ".unsorted"
-          ).textContent = `📄 שאלות שלא סומנו: ${unsorted}`;
-        }
-
-        let selectedQuestions = [...allQuestions];
-        let currentMode = "all";
-
-        function updateRange() {
-          if (currentMode === "hard") selectedQuestions = hardQuestions;
-          else if (currentMode === "easy") selectedQuestions = easyQuestions;
-          else selectedQuestions = allQuestions;
-
-          const count = selectedQuestions.length;
-          if (count === 0) {
-            els.numHint.textContent = "⚠️ אין שאלות זמינות במצב זה";
-            els.numHint.classList.add("warning");
-            els.numInput.value = "";
-            els.numInput.disabled = true;
-            els.startBtn.disabled = true;
-            return;
-          }
-
-          els.numHint.classList.remove("warning");
-          els.numInput.disabled = false;
-          els.numInput.max = count;
-          els.numInput.min = 1;
-          els.numInput.value = Math.min(
-            parseInt(els.numInput.value) || 1,
-            count
-          );
-          els.numHint.textContent = `1–${count}`;
-          els.startBtn.disabled = false;
-        }
-
-        els.modeSelect.addEventListener("change", () => {
-          currentMode = els.modeSelect.value;
-          updateRange();
-        });
-
-        els.numInput.addEventListener("input", () => {
-          const max = parseInt(els.numInput.max) || 1;
-          const val = Math.max(
-            1,
-            Math.min(parseInt(els.numInput.value) || 1, max)
-          );
-          els.numInput.value = val;
-        });
-
-        els.startBtn.addEventListener("click", () => {
-          const count = parseInt(els.numInput.value) || 1;
-          const settings = {
-            mode: currentMode,
-            subject: subjectKey,
-            numQuestions: count,
-          };
-          localStorage.setItem("qa_settings", JSON.stringify(settings));
-          window.location.href = `qa.html?subject=${subjectKey}&mode=${currentMode}&questions=${count}`;
-        });
-
-        els.clearBtn.addEventListener("click", () => {
-          if (confirm("לנקות את כל השאלות שסומנו כקלות או קשות?")) {
-            localStorage.setItem("hardQuestions", "[]");
-            localStorage.setItem("easyQuestions", "[]");
-            alert("✅ כל הסימונים נמחקו בהצלחה!");
-            hardQuestions.length = 0;
-            easyQuestions.length = 0;
-            updateStatusBar();
-            updateRange();
-          }
-        });
-
-        updateRange();
-      })();
-    </script>
+    <script src="js/qa-settings.js"></script>
   </body>
 </html>

@@ -1,16 +1,20 @@
 // ===============================
-// Q&A Settings Logic — Smart Study (Deep Debug Mode)
+// Q&A Settings Logic — With Progress Chart
 // ===============================
 
-console.log("✅ QA Settings script loaded and running!");
+console.log("⚡ QA-Settings.js loaded");
 
-// קריאת פרמטר subject מה-URL
+// Utility
+const normalize = (s) => s?.trim()?.normalize("NFKC") || "";
+const clamp = (v, min, max) => Math.min(Math.max(v, min), max);
+
+// Subject from URL
 function getSubjectKey() {
   const url = new URL(window.location.href);
   return url.searchParams.get("subject") || "chemistry";
 }
 
-// שמות בעברית
+// Subject names
 const subjectTitles = {
   anatomy: "אנטומיה",
   chemistry: "כימיה",
@@ -23,124 +27,130 @@ const subjectTitles = {
   physics: "פיזיקה",
 };
 
-// מאגר השאלות
-const qaBanks = window.qaBanks || {};
-
-// אלמנטים מהדף
+// Elements
 const els = {
   subjectLabel: document.getElementById("subjectLabel"),
   numInput: document.getElementById("numQuestions"),
   numHint: document.getElementById("numHint"),
   startBtn: document.getElementById("startBtn"),
   modeSelect: document.getElementById("questionMode"),
+  clearBtn: document.getElementById("clearStorageBtn"),
   statusBar: document.getElementById("statusBar"),
 };
 
-// שמירה בטווח
-function clamp(v, a, b) {
-  return Math.min(Math.max(v, a), b);
+// ===============================
+// ⭐ גרף
+// ===============================
+function renderProgressChart(h, e, u) {
+  const ctx = document.getElementById("qaProgressChart");
+
+  new Chart(ctx, {
+    type: "bar",
+    data: {
+      labels: ["קשות", "קלות", "לא מסומן"],
+      datasets: [
+        {
+          label: "סטטוס התקדמות",
+          data: [h, e, u], // ← תוקן!
+          backgroundColor: ["#ff6b6b", "#4effc3", "#9fc6ff"],
+          borderRadius: 12,
+          barThickness: 70, // טיפה יותר דק
+        },
+      ],
+    },
+    options: {
+      plugins: { legend: { display: false } },
+      animation: { duration: 900 },
+      scales: {
+        x: { ticks: { color: "#fff" }, grid: { display: false } },
+        y: { beginAtZero: true, ticks: { color: "#9fdcff" } },
+      },
+    },
+  });
 }
 
+// ===============================
+// INIT
+// ===============================
 (function init() {
-  console.log("🚀 init() התחיל לפעול");
-
   const subjectKey = getSubjectKey();
-  const title = subjectTitles[subjectKey] || subjectKey;
-  if (els.subjectLabel) els.subjectLabel.textContent = title;
+  const allQuestions = window.qaBanks?.[subjectKey] || [];
 
-  // טעינת מאגר השאלות לנושא
-  const allQuestions = qaBanks[subjectKey] || [];
+  els.subjectLabel.textContent = subjectTitles[subjectKey] || subjectKey;
 
-  // טעינת שאלות שסומנו כקשות/קלות
-  const hardQTexts = JSON.parse(localStorage.getItem("hardQuestions") || "[]");
-  const easyQTexts = JSON.parse(localStorage.getItem("easyQuestions") || "[]");
+  const hardRaw = JSON.parse(localStorage.getItem("hardQuestions") || "[]");
+  const easyRaw = JSON.parse(localStorage.getItem("easyQuestions") || "[]");
 
-  const normalize = (s) => s?.trim()?.normalize("NFKC") || "";
+  const hardQuestions = allQuestions.filter((q) => hardRaw.includes(q.q));
+  const easyQuestions = allQuestions.filter((q) => easyRaw.includes(q.q));
 
-  const hardQuestions = allQuestions.filter((q) =>
-    hardQTexts.some((hq) => normalize(hq) === normalize(q.q))
-  );
+  const unsorted =
+    allQuestions.length - hardQuestions.length - easyQuestions.length;
 
-  const easyQuestions = allQuestions.filter((q) =>
-    easyQTexts.some((eq) => normalize(eq) === normalize(q.q))
-  );
-
-  const unsortedQuestions = allQuestions.filter(
-    (q) => !hardQTexts.includes(q.q) && !easyQTexts.includes(q.q)
-  );
-
-  // ==============
-  // תיבת סטטוס
-  // ==============
+  // Update status bar
   function updateStatusBar() {
-    if (!els.statusBar) return;
-
     els.statusBar.querySelector(
       ".hard"
     ).textContent = `💪 שאלות קשות: ${hardQuestions.length}`;
-
     els.statusBar.querySelector(
       ".easy"
     ).textContent = `💡 שאלות קלות: ${easyQuestions.length}`;
-
     els.statusBar.querySelector(
       ".unsorted"
-    ).textContent = `📄 שאלות שלא סומנו: ${unsortedQuestions.length}`;
+    ).textContent = `📄 שאלות שלא סומנו: ${unsorted}`;
   }
 
-  console.groupCollapsed("📊 QA Settings Debug Info");
-  console.log("נושא:", subjectKey);
-  console.log("סה״כ שאלות:", allQuestions.length);
-  console.log("קשות:", hardQuestions.length);
-  console.log("קלות:", easyQuestions.length);
-  console.log("לא מסומנות:", unsortedQuestions.length);
-  console.groupEnd();
-
-  // ⭐ מופעל כאן — כדי שהסטטוס יוצג מיד
   updateStatusBar();
 
-  // מצב ברירת מחדל
+  // גרף
+  renderProgressChart(hardQuestions.length, easyQuestions.length, unsorted);
+
+  // טווח שאלות
   let currentMode = "all";
 
-  // עדכון טווח
-  function updateRange() {
-    let selectedQuestions =
-      currentMode === "hard"
-        ? hardQuestions
-        : currentMode === "easy"
-        ? easyQuestions
-        : allQuestions;
+  function getActiveBank() {
+    if (currentMode === "hard") return hardQuestions;
+    if (currentMode === "easy") return easyQuestions;
+    return allQuestions;
+  }
 
-    const count = selectedQuestions.length;
+  function updateRange() {
+    const bank = getActiveBank();
+    const count = bank.length;
 
     if (count === 0) {
-      els.numHint.textContent = "⚠️ אין שאלות במצב זה";
-      els.numInput.value = "";
-      els.numInput.disabled = true;
+      els.numHint.textContent = "⚠️ אין שאלות";
       els.startBtn.disabled = true;
+      els.numInput.disabled = true;
       return;
     }
 
-    els.numInput.disabled = false;
-    els.numInput.min = "1";
-    els.numInput.max = count;
-    els.numInput.value = clamp(Number(els.numInput.value) || 1, 1, count);
-    els.numHint.textContent = `1–${count}`;
     els.startBtn.disabled = false;
+    els.numInput.disabled = false;
+
+    els.numInput.min = 1;
+    els.numInput.max = count;
+    els.numInput.value = clamp(Number(els.numInput.value), 1, count);
+
+    els.numHint.textContent = `1–${count}`;
   }
 
-  if (els.modeSelect) {
-    els.modeSelect.addEventListener("change", () => {
-      currentMode = els.modeSelect.value;
-      updateRange();
-    });
-  }
+  updateRange();
 
-  els.numInput.addEventListener("input", () => {
-    const v = clamp(Number(els.numInput.value), 1, Number(els.numInput.max));
-    els.numInput.value = v;
+  els.modeSelect.addEventListener("change", () => {
+    currentMode = els.modeSelect.value;
+    updateRange();
   });
 
+  els.numInput.addEventListener("input", () => {
+    els.numInput.value = clamp(
+      Number(els.numInput.value),
+      1,
+      Number(els.numInput.max)
+    );
+  });
+
+  // התחלת תרגול
   els.startBtn.addEventListener("click", () => {
     const count = clamp(
       Number(els.numInput.value),
@@ -149,15 +159,21 @@ function clamp(v, a, b) {
     );
 
     const settings = {
-      mode: currentMode,
       subject: subjectKey,
+      mode: currentMode,
       numQuestions: count,
-      timestamp: Date.now(),
     };
 
     localStorage.setItem("qa_settings", JSON.stringify(settings));
+
     window.location.href = `qa.html?subject=${subjectKey}&mode=${currentMode}&questions=${count}`;
   });
 
-  updateRange();
+  els.clearBtn.addEventListener("click", () => {
+    if (confirm("למחוק את כל השאלות שסומנו?")) {
+      localStorage.setItem("hardQuestions", "[]");
+      localStorage.setItem("easyQuestions", "[]");
+      location.reload();
+    }
+  });
 })();

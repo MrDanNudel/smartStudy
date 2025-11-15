@@ -104,7 +104,6 @@ function buildFilteredBank() {
 function updateCircleState(questionTxt) {
   const q = questionTxt.trim();
 
-  // אפס קודם
   circleEasy.classList.remove("active");
   circleHard.classList.remove("active");
 
@@ -149,11 +148,9 @@ function updateProgress() {
 // ===============================
 // כפתור הצגת / הסתרת תשובה
 // ===============================
-
 showAnswerBtn.onclick = () => {
   const q = currentBank[current];
 
-  // תומך גם ב־answer וגם ב־a
   const correct = q.answer || q.a;
 
   if (!feedback.classList.contains("show")) {
@@ -190,14 +187,11 @@ circleEasy.addEventListener("click", () => {
   const qText = questionText.textContent.trim();
 
   if (easyQuestions.includes(qText)) {
-    // ביטול
     easyQuestions = easyQuestions.filter((q) => q !== qText);
     circleEasy.classList.remove("active");
   } else {
-    // אם מסומן קשה — הסר
     hardQuestions = hardQuestions.filter((q) => q !== qText);
 
-    // הוסף לקלות
     easyQuestions.push(qText);
     circleEasy.classList.add("active");
     circleHard.classList.remove("active");
@@ -205,6 +199,8 @@ circleEasy.addEventListener("click", () => {
 
   localStorage.setItem("easyQuestions", JSON.stringify(easyQuestions));
   localStorage.setItem("hardQuestions", JSON.stringify(hardQuestions));
+
+  updateStatusBar();
 });
 
 // ===============================
@@ -214,14 +210,11 @@ circleHard.addEventListener("click", () => {
   const qText = questionText.textContent.trim();
 
   if (hardQuestions.includes(qText)) {
-    // ביטול
     hardQuestions = hardQuestions.filter((q) => q !== qText);
     circleHard.classList.remove("active");
   } else {
-    // אם מסומן קל — הסר
     easyQuestions = easyQuestions.filter((q) => q !== qText);
 
-    // הוסף לקשות
     hardQuestions.push(qText);
     circleHard.classList.add("active");
     circleEasy.classList.remove("active");
@@ -229,7 +222,28 @@ circleHard.addEventListener("click", () => {
 
   localStorage.setItem("easyQuestions", JSON.stringify(easyQuestions));
   localStorage.setItem("hardQuestions", JSON.stringify(hardQuestions));
+
+  updateStatusBar();
 });
+
+// ===============================
+// 🔵 סרגל סטטוס — קשות / קלות / לא מסומנות
+// ===============================
+function updateStatusBar() {
+  const hard = hardQuestions.length;
+  const easy = easyQuestions.length;
+
+  const total = fullBank.length;
+  const unmarked = total - hard - easy;
+
+  const hardEl = document.getElementById("hardCount");
+  const easyEl = document.getElementById("easyCount");
+  const unmarkedEl = document.getElementById("unmarkedCount");
+
+  if (hardEl) hardEl.textContent = `💪 שאלות קשות: ${hard}`;
+  if (easyEl) easyEl.textContent = `💡 שאלות קלות: ${easy}`;
+  if (unmarkedEl) unmarkedEl.textContent = `📄 שאלות שלא סומנו: ${unmarked}`;
+}
 
 // ===============================
 // שינוי לפי סדר / אקראי
@@ -255,4 +269,5 @@ randomMode.addEventListener("change", () => {
 window.addEventListener("DOMContentLoaded", () => {
   buildFilteredBank();
   loadQuestion();
+  updateStatusBar(); // ⬅️ חדש
 });

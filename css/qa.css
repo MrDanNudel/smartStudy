@@ -360,3 +360,28 @@ body {
   box-shadow: 0 0 12px rgba(255, 60, 60, 0.9);
   transform: scale(1.12);
 }
+
+/* 🔵 סרגל סטטוס בעמוד תרגול — גרסה מצומצמת יפה */
+.status-bar {
+  width: 80%;
+  max-width: 900px;
+  margin: 25px auto 0 auto;
+  padding: 14px 20px;
+
+  background: rgba(0, 50, 80, 0.55);
+  border: 1px solid rgba(80, 200, 255, 0.4);
+  border-radius: 14px;
+  backdrop-filter: blur(8px);
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  font-size: 18px;
+  font-weight: 600;
+  color: #dff8ff;
+  text-shadow: 0 0 8px rgba(80, 200, 255, 0.4);
+
+  /* שהטקסט לא ייצמד לשמאל/ימין בקיצון */
+  box-sizing: border-box;
+}
