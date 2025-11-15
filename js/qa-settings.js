@@ -1,11 +1,10 @@
 // ===============================
-// Q&A Settings Logic — With Progress Chart
+// Q&A Settings Logic — Full Updated Version
 // ===============================
 
-console.log("⚡ QA-Settings.js loaded");
+console.log("⚡ qa-settings.js loaded");
 
 // Utility
-const normalize = (s) => s?.trim()?.normalize("NFKC") || "";
 const clamp = (v, min, max) => Math.min(Math.max(v, min), max);
 
 // Subject from URL
@@ -36,10 +35,55 @@ const els = {
   modeSelect: document.getElementById("questionMode"),
   clearBtn: document.getElementById("clearStorageBtn"),
   statusBar: document.getElementById("statusBar"),
+
+  masteryLabel: document.getElementById("masteryLabel"),
+  masteryFill: document.getElementById("masteryFill"),
+  masteryNote: document.getElementById("masteryNote"),
 };
 
+// Global banks
+let fullBank = [];
+let hardRaw = [];
+let easyRaw = [];
+
+window.hardQuestions = [];
+window.easyQuestions = [];
+
 // ===============================
-// ⭐ גרף
+// ⭐ Mastery Bar (Dynamic)
+// ===============================
+function updateMastery() {
+  const total = fullBank.length;
+  const easy = window.easyQuestions.length;
+
+  const percent = total > 0 ? Math.round((easy / total) * 100) : 0;
+
+  els.masteryLabel.textContent = `אתה שולט על ${percent}% מהשאלות`;
+  els.masteryFill.style.width = percent + "%";
+
+  // Smart text
+  let smart = "";
+  if (percent <= 20) smart = "אתה רק בתחילת הדרך — קדימה!";
+  else if (percent <= 40) smart = "אתה מתחמם, יש התקדמות.";
+  else if (percent <= 60) smart = "הולך ומשתפר!";
+  else if (percent <= 80) smart = "יפה מאוד! שליטה טובה בחומר.";
+  else if (percent <= 95) smart = "כמעט שם! שליטה מצוינת.";
+  else smart = "אתה שולט בכל החומר! אלוף 🔥";
+
+  els.masteryNote.textContent = smart;
+
+  // Dynamic color
+  let color = "#29ccff";
+  if (percent <= 40) color = "#4ecbff";
+  else if (percent <= 70) color = "#00d4ff";
+  else if (percent <= 90) color = "#1affff";
+  else color = "#4effc3";
+
+  els.masteryFill.style.background = color;
+}
+
+// ===============================
+// ⭐ Graph
 // ===============================
 function renderProgressChart(h, e, u) {
   const ctx = document.getElementById("qaProgressChart");
@@ -50,7 +94,7 @@ function renderProgressChart(h, e, u) {
       labels: ["קשות", "קלות", "לא מסומן"],
       datasets: [
         {
-          label: "סטטוס התקדמות",
+          label: "סטטוס",
           data: [h, e, u],
           backgroundColor: ["#ff6b6b", "#4effc3", "#9fc6ff"],
           borderRadius: 12,
@@ -59,20 +103,11 @@ function renderProgressChart(h, e, u) {
       ],
     },
     options: {
-      plugins: {
-        legend: { display: false },
-        tooltip: { enabled: false }, // 🔥 לא מציג כלום בהעברת עכבר
-      },
+      plugins: { legend: { display: false }, tooltip: { enabled: false } },
       animation: { duration: 900 },
       scales: {
-        x: {
-          ticks: { color: "#fff" },
-          grid: { display: false },
-        },
-        y: {
-          beginAtZero: true,
-          ticks: { color: "#9fdcff" },
-        },
+        x: { ticks: { color: "#fff" }, grid: { display: false } },
+        y: { beginAtZero: true, ticks: { color: "#9fdcff" } },
       },
     },
   });
@@ -81,72 +116,74 @@ function renderProgressChart(h, e, u) {
 // ===============================
 // INIT
 // ===============================
-(function init() {
+window.addEventListener("DOMContentLoaded", () => {
   const subjectKey = getSubjectKey();
-  const allQuestions = window.qaBanks?.[subjectKey] || [];
 
-  els.subjectLabel.textContent = subjectTitles[subjectKey] || subjectKey;
+  fullBank = (window.qaBanks && window.qaBanks[subjectKey]) || [];
 
-  const hardRaw = JSON.parse(localStorage.getItem("hardQuestions") || "[]");
-  const easyRaw = JSON.parse(localStorage.getItem("easyQuestions") || "[]");
+  hardRaw = JSON.parse(localStorage.getItem("hardQuestions") || "[]");
+  easyRaw = JSON.parse(localStorage.getItem("easyQuestions") || "[]");
 
-  const hardQuestions = allQuestions.filter((q) => hardRaw.includes(q.q));
-  const easyQuestions = allQuestions.filter((q) => easyRaw.includes(q.q));
+  // Convert to usable arrays
+  window.hardQuestions = fullBank.filter((q) => hardRaw.includes(q.q));
+  window.easyQuestions = fullBank.filter((q) => easyRaw.includes(q.q));
 
   const unsorted =
-    allQuestions.length - hardQuestions.length - easyQuestions.length;
+    fullBank.length - window.hardQuestions.length - window.easyQuestions.length;
 
-  // Update status bar
-  function updateStatusBar() {
-    els.statusBar.querySelector(
-      ".hard"
-    ).textContent = `💪 שאלות קשות: ${hardQuestions.length}`;
-    els.statusBar.querySelector(
-      ".easy"
-    ).textContent = `💡 שאלות קלות: ${easyQuestions.length}`;
-    els.statusBar.querySelector(
-      ".unsorted"
-    ).textContent = `📄 שאלות שלא סומנו: ${unsorted}`;
-  }
+  // Title
+  els.subjectLabel.textContent = subjectTitles[subjectKey] || subjectKey;
 
-  updateStatusBar();
+  // Status bar update
+  els.statusBar.querySelector(
+    ".hard"
+  ).textContent = `💪 שאלות קשות: ${window.hardQuestions.length}`;
+  els.statusBar.querySelector(
+    ".easy"
+  ).textContent = `💡 שאלות קלות: ${window.easyQuestions.length}`;
+  els.statusBar.querySelector(
+    ".unsorted"
+  ).textContent = `📄 שאלות שלא סומנו: ${unsorted}`;
 
-  // גרף
-  renderProgressChart(hardQuestions.length, easyQuestions.length, unsorted);
+  // Graph
+  renderProgressChart(
+    window.hardQuestions.length,
+    window.easyQuestions.length,
+    unsorted
+  );
 
-  // טווח שאלות
+  // Mastery bar
+  updateMastery();
+
+  // Filtering
   let currentMode = "all";
 
   function getActiveBank() {
-    if (currentMode === "hard") return hardQuestions;
-    if (currentMode === "easy") return easyQuestions;
-
-    // ⭐ שאלות שלא סומנו
-    if (currentMode === "unsorted") {
-      return allQuestions.filter(
+    if (currentMode === "hard") return window.hardQuestions;
+    if (currentMode === "easy") return window.easyQuestions;
+    if (currentMode === "unsorted")
+      return fullBank.filter(
         (q) => !hardRaw.includes(q.q) && !easyRaw.includes(q.q)
       );
-    }
 
-    return allQuestions;
+    return fullBank;
   }
 
+  // Update range
   function updateRange() {
     const bank = getActiveBank();
     const count = bank.length;
 
     if (count === 0) {
       els.numHint.textContent = "⚠️ אין שאלות";
-      els.startBtn.disabled = true;
       els.numInput.disabled = true;
-
-      els.numInput.value = "-"; // 🔥 התיקון: מציג מקף במקום מספר
-
+      els.startBtn.disabled = true;
+      els.numInput.value = "-";
       return;
     }
 
-    els.startBtn.disabled = false;
     els.numInput.disabled = false;
+    els.startBtn.disabled = false;
 
     els.numInput.min = 1;
     els.numInput.max = count;
@@ -170,7 +207,7 @@ function renderProgressChart(h, e, u) {
     );
   });
 
-  // התחלת תרגול
+  // Start practice
   els.startBtn.addEventListener("click", () => {
     const count = clamp(
       Number(els.numInput.value),
@@ -189,11 +226,12 @@ function renderProgressChart(h, e, u) {
     window.location.href = `qa.html?subject=${subjectKey}&mode=${currentMode}&questions=${count}`;
   });
 
+  // Clear storage
   els.clearBtn.addEventListener("click", () => {
-    if (confirm("למחוק את כל השאלות שסומנו?")) {
+    if (confirm("למחוק את כל הסימונים?")) {
       localStorage.setItem("hardQuestions", "[]");
       localStorage.setItem("easyQuestions", "[]");
       location.reload();
     }
   });
-})();
+});
