@@ -122,7 +122,6 @@ function renderProgressChart(h, e, u) {
     if (currentMode === "easy") return easyQuestions;
     return allQuestions;
   }
-
   function updateRange() {
     const bank = getActiveBank();
     const count = bank.length;
@@ -131,6 +130,9 @@ function renderProgressChart(h, e, u) {
       els.numHint.textContent = "⚠️ אין שאלות";
       els.startBtn.disabled = true;
       els.numInput.disabled = true;
+
+      els.numInput.value = "-"; // 🔥 התיקון: מציג מקף במקום מספר
+
       return;
     }
 
