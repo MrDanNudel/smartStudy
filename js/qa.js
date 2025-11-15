@@ -275,3 +275,45 @@ window.addEventListener("DOMContentLoaded", () => {
   loadQuestion();
   updateStatusBar();
 });
+// ===============================
+// קיצורי מקלדת — Space / חצים / E / H
+// ===============================
+window.addEventListener("keydown", (e) => {
+  const key = e.key.toLowerCase(); // הופך לאות קטנה
+  const code = e.code.toLowerCase(); // קוד פיזי של המקש
+
+  // --- SPACE → הצג/הסתר תשובה
+  if (key === " " || code === "space") {
+    e.preventDefault();
+    showAnswerBtn.click();
+    return;
+  }
+
+  // --- חץ ימינה → שאלה קודמת
+  if (key === "arrowright" || code === "arrowright") {
+    e.preventDefault();
+    prevBtn.click();
+    return;
+  }
+
+  // --- חץ שמאלה → שאלה הבאה
+  if (key === "arrowleft" || code === "arrowleft") {
+    e.preventDefault();
+    nextBtn.click();
+    return;
+  }
+
+  // --- E → סימון כקל
+  if (key === "e" || code === "keye") {
+    e.preventDefault();
+    circleEasy.click();
+    return;
+  }
+
+  // --- H → סימון כקשה
+  if (key === "h" || code === "keyh") {
+    e.preventDefault();
+    circleHard.click();
+    return;
+  }
+});
