@@ -29,15 +29,33 @@
         <h2>הגדרות לתרגול</h2>
 
         <div class="grid">
+          <!-- ▼▼▼ SELECT עם חץ חדש ▼▼▼ -->
           <div class="field">
             <label for="questionMode">בחר סוג שאלות</label>
-            <select id="questionMode" class="select">
-              <option value="all">📚 כל השאלות בנושא</option>
-              <option value="hard">💪 שאלות שסומנו כמאתגרות</option>
-              <option value="easy">💡 שאלות שסומנו כקלות</option>
-            </select>
+
+            <div class="select-wrap">
+              <select id="questionMode" class="styled-select">
+                <option value="all">📚 כל השאלות בנושא</option>
+                <option value="hard">💪 שאלות שסומנו כמאתגרות</option>
+                <option value="easy">💡 שאלות שסומנו כקלות</option>
+              </select>
+
+              <!-- חץ SVG זוהר -->
+              <svg class="select-arrow" viewBox="0 0 24 24">
+                <path
+                  d="M6 9l6 6 6-6"
+                  stroke="currentColor"
+                  stroke-width="2.2"
+                  fill="none"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </div>
+
             <small class="hint">בחר אילו שאלות ברצונך לתרגל</small>
           </div>
+          <!-- ▲▲▲ END SELECT ▲▲▲ -->
 
           <div class="field">
             <label for="numQuestions">הגדר מספר שאלות</label>
@@ -67,12 +85,13 @@
         </span>
       </p>
 
-      <!-- ⭐ כאן יופיעו *אחרי* הפאנל ⭐ -->
+      <!-- ⭐ גרף ⭐ -->
       <div class="qa-graph-box">
         <h3>📊 גרף התקדמות תרגול שאלות - תשובות</h3>
         <canvas id="qaProgressChart"></canvas>
       </div>
 
+      <!-- ⭐ סטטוס ⭐ -->
       <div class="status-bar" id="statusBar">
         <span class="unsorted">📄 שאלות שלא סומנו: 0</span>
         <span class="easy">💡 שאלות קלות: 0</span>

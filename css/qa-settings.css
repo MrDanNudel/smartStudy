@@ -97,7 +97,6 @@ body {
   align-items: center;
 }
 
-/* הנושא (הכי גדול) */
 #subjectLabel {
   color: var(--accent);
   font-size: 50px;
@@ -106,7 +105,6 @@ body {
   text-shadow: 0 0 20px rgba(0, 200, 255, 0.45);
 }
 
-/* תרגול שאלות-תשובות (בינוני-גדול) */
 .main-title {
   font-size: 36px;
   font-weight: 800;
@@ -116,7 +114,6 @@ body {
   text-shadow: 0 0 12px rgba(146, 203, 242, 0.1);
 }
 
-/* הטקסט הקטן */
 .hero .sub {
   font-size: 17px;
   color: var(--muted);
@@ -171,7 +168,6 @@ body {
   color: #9fc6ff;
 }
 
-/* רספונסיביות ל-status bar */
 @media (max-width: 650px) {
   .status-bar {
     flex-direction: column;
@@ -223,6 +219,7 @@ body {
   font-weight: 700;
 }
 
+/* Original select */
 .field input[type="number"],
 .select {
   background: #0b1b31;
@@ -247,7 +244,6 @@ body {
   text-align: center;
 }
 
-/* primary */
 .primary {
   border-radius: 14px;
   border: 0;
@@ -357,4 +353,69 @@ body {
   .hero .sub {
     font-size: 15px;
   }
+}
+/* ============================================================
+   SELECT חדש — מעוצב ועם חץ מותאם
+============================================================ */
+
+.select-wrap {
+  position: relative;
+  width: 100%;
+}
+
+.styled-select {
+  appearance: none; /* מסתיר את חץ ברירת המחדל */
+  width: 100%;
+  padding: 14px 44px 14px 14px;
+  background: rgba(15, 31, 56, 0.72);
+  border: 1px solid rgba(120, 220, 255, 0.25);
+  border-radius: 14px;
+  color: var(--text);
+  font-size: 16px;
+  cursor: pointer;
+  outline: none;
+  transition: 0.25s ease;
+  backdrop-filter: blur(8px);
+
+  box-shadow: 0 0 14px rgba(0, 200, 255, 0.12);
+}
+
+.styled-select:hover {
+  border-color: rgba(120, 220, 255, 0.55);
+  background: rgba(22, 44, 74, 0.78);
+  box-shadow: 0 0 20px rgba(0, 200, 255, 0.22);
+}
+
+.styled-select:focus {
+  border-color: #4ecbff;
+  box-shadow: 0 0 22px rgba(0, 200, 255, 0.32);
+  background: rgba(25, 48, 82, 0.82);
+}
+
+/* עיצוב אפשרויות בתוך התפריט */
+.styled-select option {
+  background: #0b1c32;
+  color: var(--text);
+  padding: 10px;
+  font-size: 15px;
+}
+
+/* החץ */
+.select-arrow {
+  position: absolute;
+  right: 14px;
+  top: 50%;
+  width: 20px;
+  height: 20px;
+  pointer-events: none;
+  transform: translateY(-50%);
+  stroke: var(--accent);
+  opacity: 0.8;
+  filter: drop-shadow(0 0 6px rgba(0, 200, 255, 0.6));
+  transition: 0.25s ease;
+}
+
+.styled-select:hover ~ .select-arrow {
+  opacity: 1;
+  filter: drop-shadow(0 0 10px rgba(0, 200, 255, 1));
 }
