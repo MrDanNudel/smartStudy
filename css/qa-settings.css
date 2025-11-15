@@ -102,10 +102,24 @@ body {
 .hero #subjectLabel {
   color: var(--accent);
 }
+/* ===== FOOTER ===== */
+.foot {
+  margin-top: 60px; /* רווח גדול מלמעלה */
+  text-align: center;
+  color: var(--muted);
+  font-size: 20px;
+  opacity: 0.8;
+
+  /* אפקט עדין כמו שאר העיצוב */
+  padding-bottom: 20px;
+  letter-spacing: 0.3px;
+  text-shadow: 0 0 6px rgba(140, 200, 255, 0.25);
+}
 
 .sub {
   color: var(--muted);
   margin: 0;
+  font-size: 15px;
 }
 
 /* ⭐ STATUS BAR ⭐ */
@@ -113,21 +127,17 @@ body {
   margin: 34px auto 0;
   width: 700px;
   max-width: 95%;
-
   display: flex;
   justify-content: space-between;
   align-items: center;
   gap: 40px;
-
   background: rgba(19, 32, 54, 0.55);
   border: 1px solid rgba(120, 220, 255, 0.25);
   border-radius: 18px;
-
   padding: 15px 32px;
   color: var(--text);
   font-size: 19px;
   font-weight: 600;
-
   box-shadow: 0 0 20px rgba(0, 200, 255, 0.22);
   backdrop-filter: blur(10px);
 }
@@ -138,7 +148,7 @@ body {
   gap: 8px;
 }
 
-.status-bar span.easy {
+.status-bar .easy {
   margin: 0 auto;
 }
 
@@ -175,8 +185,10 @@ body {
 }
 
 .panel h2 {
-  margin: 0 0 30px; /* ⬅️ רווח גדול וברור יותר */
+  margin: 0 0 30px;
   text-align: center;
+  font-size: 22px;
+  color: var(--text);
 }
 
 /* GRID */
@@ -211,10 +223,8 @@ body {
   outline: none;
   font-size: 16px;
 }
-.field input[type="number"]:focus {
-  border-color: #89e2ff;
-}
 
+/* SELECT */
 .select {
   background: #0b1b31;
   border: 1px solid rgba(120, 220, 255, 0.25);
@@ -223,15 +233,6 @@ body {
   padding: 12px 14px;
   outline: none;
   font-size: 16px;
-}
-.select:focus {
-  border-color: #89e2ff;
-}
-
-/* HINTS */
-.hint {
-  color: var(--muted);
-  font-size: 13px;
 }
 
 /* BUTTONS */
@@ -242,31 +243,23 @@ body {
   gap: 14px;
 }
 .actions button {
-  min-width: 180px; /* ✨ שניהם עכשיו זהים */
-  padding: 14px 22px; /* ✨ אותו מרווח */
+  min-width: 180px;
+  padding: 14px 22px;
   text-align: center;
 }
 
+/* primary button */
 .primary {
-  padding: 12px 22px;
   border-radius: 14px;
   border: 0;
   background: linear-gradient(180deg, #29ccff, #1997ff);
   color: #00121f;
   font-weight: 900;
-  letter-spacing: 0.25px;
   cursor: pointer;
   box-shadow: 0 10px 22px rgba(25, 151, 255, 0.35);
 }
-.primary:hover {
-  filter: brightness(1.06);
-}
-.primary:active {
-  transform: translateY(1px);
-}
 
 #clearStorageBtn {
-  padding: 12px 22px;
   border-radius: 14px;
   background: rgba(255, 60, 60, 0.2);
   border: 1px solid rgba(255, 100, 100, 0.4);
@@ -274,20 +267,47 @@ body {
   font-weight: 600;
   cursor: pointer;
 }
-#clearStorageBtn:hover {
-  background: rgba(255, 80, 80, 0.35);
-  transform: scale(1.05);
-}
 
-/* FOOTER */
-.foot {
-  margin-top: 18px;
+/* ⭐ טקסט בין הפאנל לגרף ⭐ */
+.mid-info {
+  margin-top: 48px;
   text-align: center;
   color: var(--muted);
-  font-size: 13px;
+  font-size: 15px;
+  line-height: 1.6;
 }
 
-/* ⭐ גרף התקדמות ⭐ */
+/* חץ זוהר */
+.mid-arrow {
+  display: block;
+  margin: 12px auto 0;
+  width: 32px;
+}
+
+.mid-arrow svg {
+  width: 100%;
+  height: auto;
+  fill: #29ccff;
+  filter: drop-shadow(0 0 6px rgba(41, 204, 255, 0.9));
+  animation: mid-arrow-pulse 1.6s ease-in-out infinite;
+}
+
+@keyframes mid-arrow-pulse {
+  0% {
+    transform: translateY(0);
+    filter: drop-shadow(0 0 4px rgba(41, 204, 255, 0.6));
+  }
+  50% {
+    transform: translateY(4px);
+    filter: drop-shadow(0 0 10px rgba(41, 204, 255, 1));
+  }
+  100% {
+    transform: translateY(0);
+    filter: drop-shadow(0 0 4px rgba(41, 204, 255, 0.6));
+  }
+}
+
+/* ⭐ גרף ⭐ */
 .qa-graph-box {
   width: 92%;
   margin: 40px auto;
@@ -305,47 +325,26 @@ body {
   font-weight: 700;
 }
 
-/* ⭐ תיקון קריטי — הגדרת גובה לגרף ⭐ */
 #qaProgressChart {
   width: 100% !important;
-  height: 260px !important; /* אפשר להגדיל ל־300 אם תרצה */
-}
-.mid-info {
-  margin-top: 48px; /* רווח מלמעלה (אפשר להגדיל אם תרצה) */
-  text-align: center;
-  color: var(--muted);
-  font-size: 15px;
-  line-height: 1.6;
+  height: 260px !important;
 }
 
-/* החץ הזוהר ▽ */
-.mid-arrow {
-  display: block;
-  margin: 8px auto 0;
-  width: 32px; /* גודל החץ */
-}
-
-.mid-arrow svg {
-  width: 100%;
-  height: auto;
-  padding-top: 20px;
-  fill: #29ccff; /* כחול טורקיז כמו העיצוב שלך */
-  filter: drop-shadow(0 0 6px rgba(41, 204, 255, 0.9));
-  animation: mid-arrow-pulse 1.6s ease-in-out infinite;
-}
-
-/* אנימציה קטנה ועדינה */
-@keyframes mid-arrow-pulse {
-  0% {
-    transform: translateY(0);
-    filter: drop-shadow(0 0 4px rgba(41, 204, 255, 0.6));
+/* 📱 התאמה מלאה לאייפון */
+@media (max-width: 480px) {
+  .back-btn,
+  .home-btn {
+    top: 16px;
+    padding: 8px 14px;
   }
-  50% {
-    transform: translateY(3px);
-    filter: drop-shadow(0 0 10px rgba(41, 204, 255, 1));
+
+  .qa-graph-box {
+    padding: 20px;
   }
-  100% {
-    transform: translateY(0);
-    filter: drop-shadow(0 0 4px rgba(41, 204, 255, 0.6));
+
+  .status-bar {
+    flex-direction: column;
+    gap: 6px;
+    padding: 14px;
   }
 }
