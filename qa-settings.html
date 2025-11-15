@@ -38,6 +38,8 @@
                 <option value="all">📚 כל השאלות בנושא</option>
                 <option value="hard">💪 שאלות שסומנו כמאתגרות</option>
                 <option value="easy">💡 שאלות שסומנו כקלות</option>
+                <option value="unsorted">📄 שאלות שלא סומנו</option>
+                <!-- ⭐ חדש ⭐ -->
               </select>
 
               <!-- חץ SVG זוהר -->
@@ -71,8 +73,7 @@
         </div>
 
         <div class="actions">
-          <button id="startBtn" class="primary">התחל תרגול!</button>
-          <button id="clearStorageBtn">נקה שאלות מסומנות</button>
+          <button id="startBtn" class="primary">התחל תרגול !</button>
         </div>
       </section>
 
@@ -96,6 +97,12 @@
         <span class="unsorted">📄 שאלות שלא סומנו: 0</span>
         <span class="easy">💡 שאלות קלות: 0</span>
         <span class="hard">💪 שאלות קשות: 0</span>
+      </div>
+
+      <div class="clear-wrap">
+        <button id="clearStorageBtn" class="clear-btn">
+          נקה שאלות מסומנות
+        </button>
       </div>
 
       <footer class="foot">

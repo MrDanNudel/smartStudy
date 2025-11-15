@@ -5,7 +5,7 @@
 // === שליפת פרמטרים מה-URL ===
 const params = new URLSearchParams(window.location.search);
 const subjectKey = params.get("subject") || "chemistry";
-const modeFromUrl = params.get("mode") || "all";
+const currentModeFromUrl = params.get("mode") || "all";
 const numQuestionsRequested = parseInt(params.get("questions"), 10) || 10;
 
 let bank = (window.qaBanks && window.qaBanks[subjectKey]) || [];
@@ -25,7 +25,7 @@ function shuffle(arr) {
 
 // === מצב GLOBAL ===
 const fullBank = [...bank];
-let currentMode = modeFromUrl;
+let currentMode = currentModeFromUrl;
 
 let filteredBank = [];
 let currentBank = [];
@@ -50,7 +50,6 @@ const prevBtn = document.getElementById("prevQuestion");
 const orderMode = document.getElementById("orderMode");
 const randomMode = document.getElementById("randomMode");
 
-// 🔵 העיגולים החדשים
 const circleEasy = document.getElementById("circleEasy");
 const circleHard = document.getElementById("circleHard");
 
@@ -71,17 +70,24 @@ document.querySelector(".subject-name").textContent =
   SUBJECT_TITLES[subjectKey] || subjectKey;
 
 // ===============================
-// בניית מאגר לפי מצב (all / hard / easy)
+// ⭐ בניית מאגר שאלות לפי מצב (all / hard / easy / unsorted)
 // ===============================
 function buildFilteredBank() {
   if (currentMode === "hard") {
     filteredBank = fullBank.filter((q) => hardQuestions.includes(q.q.trim()));
   } else if (currentMode === "easy") {
     filteredBank = fullBank.filter((q) => easyQuestions.includes(q.q.trim()));
+  } else if (currentMode === "unsorted") {
+    filteredBank = fullBank.filter(
+      (q) =>
+        !hardQuestions.includes(q.q.trim()) &&
+        !easyQuestions.includes(q.q.trim())
+    );
   } else {
-    filteredBank = fullBank.slice();
+    filteredBank = fullBank.slice(); // all
   }
 
+  // אם אין שאלות — fallback
   if (filteredBank.length === 0) {
     filteredBank = fullBank.slice();
     currentMode = "all";
@@ -99,7 +105,7 @@ function buildFilteredBank() {
 }
 
 // ===============================
-// עדכון מצב העיגולים בהתאם לשאלה
+// עדכון צבע של העיגולים לפי השאלה
 // ===============================
 function updateCircleState(questionTxt) {
   const q = questionTxt.trim();
@@ -150,7 +156,6 @@ function updateProgress() {
 // ===============================
 showAnswerBtn.onclick = () => {
   const q = currentBank[current];
-
   const correct = q.answer || q.a;
 
   if (!feedback.classList.contains("show")) {
@@ -181,7 +186,7 @@ prevBtn.onclick = () => {
 };
 
 // ===============================
-// עיגול ירוק — שאלה קלה
+// עיגול ירוק — קל
 // ===============================
 circleEasy.addEventListener("click", () => {
   const qText = questionText.textContent.trim();
@@ -191,8 +196,8 @@ circleEasy.addEventListener("click", () => {
     circleEasy.classList.remove("active");
   } else {
     hardQuestions = hardQuestions.filter((q) => q !== qText);
-
     easyQuestions.push(qText);
+
     circleEasy.classList.add("active");
     circleHard.classList.remove("active");
   }
@@ -204,7 +209,7 @@ circleEasy.addEventListener("click", () => {
 });
 
 // ===============================
-// עיגול אדום — שאלה קשה
+// עיגול אדום — קשה
 // ===============================
 circleHard.addEventListener("click", () => {
   const qText = questionText.textContent.trim();
@@ -214,8 +219,8 @@ circleHard.addEventListener("click", () => {
     circleHard.classList.remove("active");
   } else {
     easyQuestions = easyQuestions.filter((q) => q !== qText);
-
     hardQuestions.push(qText);
+
     circleHard.classList.add("active");
     circleEasy.classList.remove("active");
   }
@@ -227,12 +232,11 @@ circleHard.addEventListener("click", () => {
 });
 
 // ===============================
-// 🔵 סרגל סטטוס — קשות / קלות / לא מסומנות
+// עדכון סרגל סטטוס
 // ===============================
 function updateStatusBar() {
   const hard = hardQuestions.length;
   const easy = easyQuestions.length;
-
   const total = fullBank.length;
   const unmarked = total - hard - easy;
 
@@ -246,7 +250,7 @@ function updateStatusBar() {
 }
 
 // ===============================
-// שינוי לפי סדר / אקראי
+// שינוי מצב סדר / אקראי
 // ===============================
 orderMode.addEventListener("change", () => {
   if (orderMode.checked) {
@@ -269,5 +273,5 @@ randomMode.addEventListener("change", () => {
 window.addEventListener("DOMContentLoaded", () => {
   buildFilteredBank();
   loadQuestion();
-  updateStatusBar(); // ⬅️ חדש
+  updateStatusBar();
 });

@@ -120,8 +120,17 @@ function renderProgressChart(h, e, u) {
   function getActiveBank() {
     if (currentMode === "hard") return hardQuestions;
     if (currentMode === "easy") return easyQuestions;
+
+    // ⭐ שאלות שלא סומנו
+    if (currentMode === "unsorted") {
+      return allQuestions.filter(
+        (q) => !hardRaw.includes(q.q) && !easyRaw.includes(q.q)
+      );
+    }
+
     return allQuestions;
   }
+
   function updateRange() {
     const bank = getActiveBank();
     const count = bank.length;

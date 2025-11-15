@@ -233,34 +233,45 @@ body {
 
 /* BUTTONS */
 .actions {
+  margin-top: 40px;
   display: flex;
   justify-content: center;
-  margin-top: 14px;
   gap: 14px;
 }
+
 .actions button {
   min-width: 180px;
   padding: 14px 22px;
   text-align: center;
 }
-
 .primary {
-  border-radius: 14px;
+  min-width: 290px; /* הרבה יותר רחב! */
+  width: 300px;
+  text-align: center;
+  font-size: 22px;
+  padding: 16px 28px;
+  border-radius: 16px;
   border: 0;
   background: linear-gradient(180deg, #29ccff, #1997ff);
   color: #00121f;
   font-weight: 900;
+  font-size: 18px;
   cursor: pointer;
-  box-shadow: 0 10px 22px rgba(25, 151, 255, 0.35);
+
+  box-shadow: 0 0 22px rgba(25, 151, 255, 0.35),
+    0 0 40px rgba(25, 151, 255, 0.18);
+
+  transition: 0.25s ease;
 }
 
-#clearStorageBtn {
-  border-radius: 14px;
-  background: rgba(255, 60, 60, 0.2);
-  border: 1px solid rgba(255, 100, 100, 0.4);
-  color: #ff8080;
-  font-weight: 600;
-  cursor: pointer;
+.primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 26px rgba(25, 171, 255, 0.55),
+    0 0 42px rgba(25, 171, 255, 0.32);
+}
+
+.primary:active {
+  transform: scale(0.97);
 }
 
 /* טקסט בין הפאנל לגרף */
@@ -418,4 +429,39 @@ body {
 .styled-select:hover ~ .select-arrow {
   opacity: 1;
   filter: drop-shadow(0 0 10px rgba(0, 200, 255, 1));
+}
+/* ----------------------------------------------------
+   כפתור ניקוי בעיצוב עדין ויוקרתי
+---------------------------------------------------- */
+.clear-wrap {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 26px;
+}
+.clear-btn {
+  padding: 14px 32px;
+  border-radius: 14px;
+  border: 1px solid rgba(120, 220, 255, 0.45);
+  background: rgba(25, 48, 82, 0.25);
+  color: #8fdcff;
+  font-weight: 800;
+  font-size: 17px;
+  cursor: pointer;
+  transition: 0.28s ease;
+  backdrop-filter: blur(6px);
+  box-shadow: 0 0 12px rgba(120, 220, 255, 0.25);
+}
+
+.clear-btn:hover {
+  background: rgba(40, 100, 160, 0.32);
+  border-color: rgba(160, 230, 255, 0.8);
+  color: #d9f8ff;
+  box-shadow: 0 0 18px rgba(120, 220, 255, 0.45);
+  transform: translateY(-2px);
+}
+
+.clear-btn:active {
+  transform: scale(0.97);
+  box-shadow: 0 0 6px rgba(80, 180, 255, 0.3);
 }
