@@ -86,43 +86,56 @@ body {
   border-color: #89e2ff;
 }
 
-/* כותרת עליונה */
+/* -----------------------------------------------------------------
+   🔥 כותרת עליונה — Subject > תרגול שאלות-תשובות > טקסט משני
+------------------------------------------------------------------- */
 .hero {
-  margin-top: 80px;
+  margin-top: 70px;
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-.hero h1 {
-  margin: 0 0 6px;
-  font-size: clamp(22px, 2.6vw, 34px);
-  font-weight: 800;
-  letter-spacing: 0.2px;
-}
-
-.hero #subjectLabel {
+/* הנושא (הכי גדול) */
+#subjectLabel {
   color: var(--accent);
+  font-size: 50px;
+  font-weight: 900;
+  margin-bottom: 10px;
+  text-shadow: 0 0 20px rgba(0, 200, 255, 0.45);
 }
-/* ===== FOOTER ===== */
+
+/* תרגול שאלות-תשובות (בינוני-גדול) */
+.main-title {
+  font-size: 36px;
+  font-weight: 800;
+  letter-spacing: 0.4px;
+  margin: 4px 0 12px;
+  color: var(--text);
+  text-shadow: 0 0 12px rgba(146, 203, 242, 0.1);
+}
+
+/* הטקסט הקטן */
+.hero .sub {
+  font-size: 17px;
+  color: var(--muted);
+  margin: 0;
+}
+
+/* FOOTER */
 .foot {
-  margin-top: 60px; /* רווח גדול מלמעלה */
+  margin-top: 60px;
   text-align: center;
   color: var(--muted);
-  font-size: 20px;
+  font-size: 16px;
   opacity: 0.8;
-
-  /* אפקט עדין כמו שאר העיצוב */
   padding-bottom: 20px;
   letter-spacing: 0.3px;
   text-shadow: 0 0 6px rgba(140, 200, 255, 0.25);
 }
 
-.sub {
-  color: var(--muted);
-  margin: 0;
-  font-size: 15px;
-}
-
-/* ⭐ STATUS BAR ⭐ */
+/* STATUS BAR */
 .status-bar {
   margin: 34px auto 0;
   width: 700px;
@@ -148,10 +161,6 @@ body {
   gap: 8px;
 }
 
-.status-bar .easy {
-  margin: 0 auto;
-}
-
 .status-bar .hard {
   color: #ff7979;
 }
@@ -162,7 +171,7 @@ body {
   color: #9fc6ff;
 }
 
-/* רספונסיבי */
+/* רספונסיביות ל-status bar */
 @media (max-width: 650px) {
   .status-bar {
     flex-direction: column;
@@ -203,7 +212,7 @@ body {
   }
 }
 
-/* FIELDS */
+/* FIELD INPUTS */
 .field {
   display: flex;
   flex-direction: column;
@@ -214,23 +223,13 @@ body {
   font-weight: 700;
 }
 
-.field input[type="number"] {
-  background: #0b1b31;
-  border: 1px solid rgba(120, 220, 255, 0.25);
-  border-radius: 12px;
-  padding: 12px 14px;
-  color: var(--text);
-  outline: none;
-  font-size: 16px;
-}
-
-/* SELECT */
+.field input[type="number"],
 .select {
   background: #0b1b31;
   border: 1px solid rgba(120, 220, 255, 0.25);
-  color: var(--text);
   border-radius: 12px;
   padding: 12px 14px;
+  color: var(--text);
   outline: none;
   font-size: 16px;
 }
@@ -248,7 +247,7 @@ body {
   text-align: center;
 }
 
-/* primary button */
+/* primary */
 .primary {
   border-radius: 14px;
   border: 0;
@@ -268,7 +267,7 @@ body {
   cursor: pointer;
 }
 
-/* ⭐ טקסט בין הפאנל לגרף ⭐ */
+/* טקסט בין הפאנל לגרף */
 .mid-info {
   margin-top: 48px;
   text-align: center;
@@ -283,7 +282,6 @@ body {
   margin: 12px auto 0;
   width: 32px;
 }
-
 .mid-arrow svg {
   width: 100%;
   height: auto;
@@ -307,7 +305,7 @@ body {
   }
 }
 
-/* ⭐ גרף ⭐ */
+/* גרף */
 .qa-graph-box {
   width: 92%;
   margin: 40px auto;
@@ -330,7 +328,7 @@ body {
   height: 260px !important;
 }
 
-/* 📱 התאמה מלאה לאייפון */
+/* אייפון */
 @media (max-width: 480px) {
   .back-btn,
   .home-btn {
@@ -346,5 +344,17 @@ body {
     flex-direction: column;
     gap: 6px;
     padding: 14px;
+  }
+
+  #subjectLabel {
+    font-size: 32px;
+  }
+
+  .main-title {
+    font-size: 26px;
+  }
+
+  .hero .sub {
+    font-size: 15px;
   }
 }
