@@ -316,6 +316,7 @@ body {
 .qa-graph-box {
   width: 92%;
   margin: 40px auto;
+  margin-top: 200px;
   background: rgba(0, 0, 0, 0.35);
   border-radius: 20px;
   padding: 25px;
