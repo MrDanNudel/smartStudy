@@ -83,22 +83,26 @@ function updateMastery() {
 }
 
 // ===============================
-// ⭐ Graph
+// ⭐ Graph (4 Columns in correct order)
 // ===============================
-function renderProgressChart(h, e, u) {
+function renderProgressChart(total, easy, hard, unsorted) {
   const ctx = document.getElementById("qaProgressChart");
 
   new Chart(ctx, {
     type: "bar",
     data: {
-      labels: ["קשות", "קלות", "לא מסומן"],
+      labels: ["סה״כ", "קלות", "קשות", "לא מסומן"],
       datasets: [
         {
-          label: "סטטוס",
-          data: [h, e, u],
-          backgroundColor: ["#ff6b6b", "#4effc3", "#9fc6ff"],
+          data: [total, easy, hard, unsorted],
+          backgroundColor: [
+            "#8cd0ff", // סה"כ
+            "#4effc3", // קלות
+            "#ff6b6b", // קשות
+            "#9fc6ff", // לא מסומן
+          ],
           borderRadius: 12,
-          barThickness: 70,
+          barThickness: 60,
         },
       ],
     },
@@ -124,35 +128,46 @@ window.addEventListener("DOMContentLoaded", () => {
   hardRaw = JSON.parse(localStorage.getItem("hardQuestions") || "[]");
   easyRaw = JSON.parse(localStorage.getItem("easyQuestions") || "[]");
 
-  // Convert to usable arrays
+  // Convert raw arrays → question objects
   window.hardQuestions = fullBank.filter((q) => hardRaw.includes(q.q));
   window.easyQuestions = fullBank.filter((q) => easyRaw.includes(q.q));
 
   const unsorted =
     fullBank.length - window.hardQuestions.length - window.easyQuestions.length;
 
+  const totalCount = fullBank.length;
+
   // Title
   els.subjectLabel.textContent = subjectTitles[subjectKey] || subjectKey;
 
-  // Status bar update
+  // ===============================
+  // ⭐ Update Status Bar (same order as graph)
+  // ===============================
   els.statusBar.querySelector(
-    ".hard"
-  ).textContent = `💪 שאלות קשות: ${window.hardQuestions.length}`;
+    ".total"
+  ).textContent = `📄 סה״כ שאלות: ${totalCount}`;
+
   els.statusBar.querySelector(
     ".easy"
   ).textContent = `💡 שאלות קלות: ${window.easyQuestions.length}`;
+
+  els.statusBar.querySelector(
+    ".hard"
+  ).textContent = `💪 שאלות קשות: ${window.hardQuestions.length}`;
+
   els.statusBar.querySelector(
     ".unsorted"
-  ).textContent = `📄 שאלות שלא סומנו: ${unsorted}`;
+  ).textContent = `❔ שאלות שלא סומנו: ${unsorted}`;
 
-  // Graph
+  // ⭐ Graph
   renderProgressChart(
-    window.hardQuestions.length,
+    totalCount,
     window.easyQuestions.length,
+    window.hardQuestions.length,
     unsorted
   );
 
-  // Mastery bar
+  // ⭐ Mastery bar
   updateMastery();
 
   // Filtering

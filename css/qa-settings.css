@@ -167,6 +167,9 @@ body {
 .status-bar .unsorted {
   color: #9fc6ff;
 }
+.status-bar .total {
+  color: #8cd0ff; /* צבע תכלת בהיר יפה */
+}
 
 @media (max-width: 650px) {
   .status-bar {
