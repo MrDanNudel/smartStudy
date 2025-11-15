@@ -51,19 +51,28 @@ function renderProgressChart(h, e, u) {
       datasets: [
         {
           label: "סטטוס התקדמות",
-          data: [h, e, u], // ← תוקן!
+          data: [h, e, u],
           backgroundColor: ["#ff6b6b", "#4effc3", "#9fc6ff"],
           borderRadius: 12,
-          barThickness: 70, // טיפה יותר דק
+          barThickness: 70,
         },
       ],
     },
     options: {
-      plugins: { legend: { display: false } },
+      plugins: {
+        legend: { display: false },
+        tooltip: { enabled: false }, // 🔥 לא מציג כלום בהעברת עכבר
+      },
       animation: { duration: 900 },
       scales: {
-        x: { ticks: { color: "#fff" }, grid: { display: false } },
-        y: { beginAtZero: true, ticks: { color: "#9fdcff" } },
+        x: {
+          ticks: { color: "#fff" },
+          grid: { display: false },
+        },
+        y: {
+          beginAtZero: true,
+          ticks: { color: "#9fdcff" },
+        },
       },
     },
   });

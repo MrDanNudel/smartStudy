@@ -310,3 +310,42 @@ body {
   width: 100% !important;
   height: 260px !important; /* אפשר להגדיל ל־300 אם תרצה */
 }
+.mid-info {
+  margin-top: 48px; /* רווח מלמעלה (אפשר להגדיל אם תרצה) */
+  text-align: center;
+  color: var(--muted);
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+/* החץ הזוהר ▽ */
+.mid-arrow {
+  display: block;
+  margin: 8px auto 0;
+  width: 32px; /* גודל החץ */
+}
+
+.mid-arrow svg {
+  width: 100%;
+  height: auto;
+  padding-top: 20px;
+  fill: #29ccff; /* כחול טורקיז כמו העיצוב שלך */
+  filter: drop-shadow(0 0 6px rgba(41, 204, 255, 0.9));
+  animation: mid-arrow-pulse 1.6s ease-in-out infinite;
+}
+
+/* אנימציה קטנה ועדינה */
+@keyframes mid-arrow-pulse {
+  0% {
+    transform: translateY(0);
+    filter: drop-shadow(0 0 4px rgba(41, 204, 255, 0.6));
+  }
+  50% {
+    transform: translateY(3px);
+    filter: drop-shadow(0 0 10px rgba(41, 204, 255, 1));
+  }
+  100% {
+    transform: translateY(0);
+    filter: drop-shadow(0 0 4px rgba(41, 204, 255, 0.6));
+  }
+}
