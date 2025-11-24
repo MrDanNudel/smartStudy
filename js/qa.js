@@ -1,5 +1,5 @@
 // ===============================
-// Q&A Practice Logic — Smart Study (Circles Edition)
+// Q&A Practice Logic — Smart Study (Subtopic + Circles Edition)
 // ===============================
 
 // === שליפת פרמטרים מה-URL ===
@@ -7,11 +7,19 @@ const params = new URLSearchParams(window.location.search);
 const subjectKey = params.get("subject") || "chemistry";
 const currentModeFromUrl = params.get("mode") || "all";
 const numQuestionsRequested = parseInt(params.get("questions"), 10) || 10;
+const selectedSubtopic = params.get("subtopic") || "all";
 
+// === טעינת מאגר ===
 let bank = (window.qaBanks && window.qaBanks[subjectKey]) || [];
+
 if (!bank || bank.length === 0) {
   alert("לא נמצאו שאלות לנושא זה");
   window.location.href = "index.html";
+}
+
+// ⭐ סינון לפי תת־נושא
+if (selectedSubtopic !== "all") {
+  bank = bank.filter((q) => q.subtopic === selectedSubtopic);
 }
 
 // === ערבוב ===
@@ -70,9 +78,10 @@ document.querySelector(".subject-name").textContent =
   SUBJECT_TITLES[subjectKey] || subjectKey;
 
 // ===============================
-// ⭐ בניית מאגר שאלות לפי מצב (all / hard / easy / unsorted)
+// ⭐ בניית מאגר שאלות לפי מצב (all / hard / easy / unsorted) + תת־נושא
 // ===============================
 function buildFilteredBank() {
+  // בסיס — רק תת־נושא שנבחר
   if (currentMode === "hard") {
     filteredBank = fullBank.filter((q) => hardQuestions.includes(q.q.trim()));
   } else if (currentMode === "easy") {
@@ -87,25 +96,24 @@ function buildFilteredBank() {
     filteredBank = fullBank.slice(); // all
   }
 
-  // אם אין שאלות — fallback
+  // fallback אם אין שאלות במצב הזה
   if (filteredBank.length === 0) {
     filteredBank = fullBank.slice();
     currentMode = "all";
   }
 
-  const finalCount = Math.min(numQuestionsRequested, filteredBank.length);
+  const maxCount = Math.min(numQuestionsRequested, filteredBank.length);
 
-  const ordered = filteredBank.slice(0, finalCount);
-  const randomd = shuffle(filteredBank.slice()).slice(0, finalCount);
+  const ordered = filteredBank.slice(0, maxCount);
+  const randomd = shuffle(filteredBank.slice()).slice(0, maxCount);
 
-  if (orderMode.checked) currentBank = ordered;
-  else currentBank = randomd;
+  currentBank = orderMode.checked ? ordered : randomd;
 
   current = 0;
 }
 
 // ===============================
-// עדכון צבע של העיגולים לפי השאלה
+// צבע עיגולים
 // ===============================
 function updateCircleState(questionTxt) {
   const q = questionTxt.trim();
@@ -170,7 +178,7 @@ showAnswerBtn.onclick = () => {
 };
 
 // ===============================
-// ניווט קדימה / אחורה
+// ניווט
 // ===============================
 nextBtn.onclick = () => {
   if (current < currentBank.length - 1) {
@@ -178,6 +186,7 @@ nextBtn.onclick = () => {
     loadQuestion();
   }
 };
+
 prevBtn.onclick = () => {
   if (current > 0) {
     current--;
@@ -186,7 +195,7 @@ prevBtn.onclick = () => {
 };
 
 // ===============================
-// עיגול ירוק — קל
+// סימון כקל
 // ===============================
 circleEasy.addEventListener("click", () => {
   const qText = questionText.textContent.trim();
@@ -209,7 +218,7 @@ circleEasy.addEventListener("click", () => {
 });
 
 // ===============================
-// עיגול אדום — קשה
+// סימון כקשה
 // ===============================
 circleHard.addEventListener("click", () => {
   const qText = questionText.textContent.trim();
@@ -232,7 +241,7 @@ circleHard.addEventListener("click", () => {
 });
 
 // ===============================
-// עדכון סרגל סטטוס
+// סטטוס תחתון
 // ===============================
 function updateStatusBar() {
   const hard = hardQuestions.length;
@@ -250,7 +259,7 @@ function updateStatusBar() {
 }
 
 // ===============================
-// שינוי מצב סדר / אקראי
+// מצב סדר / אקראי
 // ===============================
 orderMode.addEventListener("change", () => {
   if (orderMode.checked) {
@@ -259,6 +268,7 @@ orderMode.addEventListener("change", () => {
     loadQuestion();
   }
 });
+
 randomMode.addEventListener("change", () => {
   if (randomMode.checked) {
     currentBank = shuffle(filteredBank.slice()).slice(0, currentBank.length);
@@ -268,50 +278,46 @@ randomMode.addEventListener("change", () => {
 });
 
 // ===============================
-// התחלה
+// התחלת תרגול
 // ===============================
 window.addEventListener("DOMContentLoaded", () => {
   buildFilteredBank();
   loadQuestion();
   updateStatusBar();
 });
+
 // ===============================
-// קיצורי מקלדת — Space / חצים / E / H
+// קיצורי מקלדת
 // ===============================
 window.addEventListener("keydown", (e) => {
-  const key = e.key.toLowerCase(); // הופך לאות קטנה
-  const code = e.code.toLowerCase(); // קוד פיזי של המקש
+  const key = e.key.toLowerCase();
+  const code = e.code.toLowerCase();
 
-  // --- SPACE → הצג/הסתר תשובה
   if (key === " " || code === "space") {
     e.preventDefault();
     showAnswerBtn.click();
     return;
   }
 
-  // --- חץ ימינה → שאלה קודמת
-  if (key === "arrowright" || code === "arrowright") {
+  if (key === "arrowright") {
     e.preventDefault();
     prevBtn.click();
     return;
   }
 
-  // --- חץ שמאלה → שאלה הבאה
-  if (key === "arrowleft" || code === "arrowleft") {
+  if (key === "arrowleft") {
     e.preventDefault();
     nextBtn.click();
     return;
   }
 
-  // --- E → סימון כקל
-  if (key === "e" || code === "keye") {
+  if (key === "e") {
     e.preventDefault();
     circleEasy.click();
     return;
   }
 
-  // --- H → סימון כקשה
-  if (key === "h" || code === "keyh") {
+  if (key === "h") {
     e.preventDefault();
     circleHard.click();
     return;

@@ -18,10 +18,8 @@
 
       <header class="hero">
         <span id="subjectLabel"></span>
-
         <h1 class="main-title">תרגול שאלות־תשובות</h1>
-
-        <p class="sub">בחר/י את סוג ומספר השאלות הרצוי.</p>
+        <p class="sub">בחר/י תת־נושא, סוג שאלות ומספר שאלות.</p>
       </header>
 
       <!-- ⭐ פאנל ההגדרות ⭐ -->
@@ -29,7 +27,30 @@
         <h2>הגדרות לתרגול</h2>
 
         <div class="grid">
-          <!-- ▼▼▼ SELECT עם חץ חדש ▼▼▼ -->
+          <!-- ▼▼▼ תת־נושא ▼▼▼ -->
+          <div class="field">
+            <label for="subtopicSelect">בחר תת־נושא</label>
+
+            <div class="select-wrap">
+              <select id="subtopicSelect" class="styled-select"></select>
+
+              <svg class="select-arrow" viewBox="0 0 24 24">
+                <path
+                  d="M6 9l6 6 6-6"
+                  stroke="currentColor"
+                  stroke-width="2.2"
+                  fill="none"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </div>
+
+            <small class="hint">תתי נושאים נטענים מתוך המאגר</small>
+          </div>
+          <!-- ▲▲▲ END תת נושא ▲▲▲ -->
+
+          <!-- ▼▼▼ סוג שאלות ▼▼▼ -->
           <div class="field">
             <label for="questionMode">בחר סוג שאלות</label>
 
@@ -41,7 +62,6 @@
                 <option value="unsorted">📄 שאלות שלא סומנו</option>
               </select>
 
-              <!-- חץ SVG זוהר -->
               <svg class="select-arrow" viewBox="0 0 24 24">
                 <path
                   d="M6 9l6 6 6-6"
@@ -56,7 +76,7 @@
 
             <small class="hint">בחר אילו שאלות ברצונך לתרגל</small>
           </div>
-          <!-- ▲▲▲ END SELECT ▲▲▲ -->
+          <!-- ▲▲▲ END סוג שאלות ▲▲▲ -->
 
           <div class="field">
             <label for="numQuestions">הגדר מספר שאלות</label>
@@ -85,7 +105,7 @@
         </span>
       </p>
 
-      <!-- ⭐ מדד שליטה ⭐ -->
+      <!-- ⭐ מדד שליטה כללי ⭐ -->
       <div class="mastery-box">
         <p id="masteryLabel" class="mastery-title">אתה שולט על 0% מהשאלות</p>
 
@@ -97,6 +117,12 @@
           בוא נתחיל – יש עוד הרבה ללמוד ✨
         </p>
       </div>
+
+      <!-- ⭐ שליטה לפי תתי־נושא ⭐ -->
+      <section class="subtopic-mastery-section">
+        <h3 class="subtopic-mastery-title">שליטה לפי תתי־נושא</h3>
+        <div id="subtopicMasteryContainer" class="subtopic-mastery-list"></div>
+      </section>
 
       <!-- ⭐ גרף ⭐ -->
       <div class="qa-graph-box">
