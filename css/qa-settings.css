@@ -132,28 +132,35 @@ body {
   text-shadow: 0 0 6px rgba(140, 200, 255, 0.25);
 }
 
-/* STATUS BAR */
+/* ⚡ סטטוס נקי לחלוטין בשורה אחת — ללא מלבן ⚡ */
 .status-bar {
-  margin: 34px auto 0;
-  width: 700px;
-  max-width: 95%;
+  width: 100%;
+  max-width: 100%;
+  margin: 20px auto 0 auto;
+  padding: 0;
+
+  background: none;
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+  backdrop-filter: none;
+
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
+  gap: 40px; /* רווח יפה בין הפריטים */
   align-items: center;
-  gap: 40px;
-  background: rgba(19, 32, 54, 0.55);
-  border: 1px solid rgba(120, 220, 255, 0.25);
-  border-radius: 18px;
-  padding: 15px 32px;
-  color: var(--text);
-  font-size: 19px;
+
+  font-size: 18px;
   font-weight: 600;
-  box-shadow: 0 0 20px rgba(0, 200, 255, 0.22);
-  backdrop-filter: blur(10px);
+  color: #dff8ff;
+  text-shadow: 0 0 6px rgba(80, 200, 255, 0.3);
+
+  white-space: nowrap; /* לא מאפשר ירידת שורה */
+  margin-top: 50px;
 }
 
 .status-bar span {
-  display: flex;
+  display: inline-flex; /* שומר אייקון+טקסט יחד, בלי לשבור שורה */
   align-items: center;
   gap: 8px;
 }
@@ -168,17 +175,7 @@ body {
   color: #9fc6ff;
 }
 .status-bar .total {
-  color: #8cd0ff; /* צבע תכלת בהיר יפה */
-}
-
-@media (max-width: 650px) {
-  .status-bar {
-    flex-direction: column;
-    gap: 10px;
-    padding: 16px;
-    width: 92%;
-    font-size: 17px;
-  }
+  color: #8cd0ff;
 }
 
 /* PANEL */

@@ -44,6 +44,14 @@ body {
   margin-top: 4px;
   text-shadow: 0 0 10px rgba(0, 200, 255, 0.5);
 }
+.subtopic-name {
+  display: block;
+  margin-top: 4px;
+  font-size: 1.05em;
+  font-weight: 700;
+  color: #ffe082; /* זהוב עדין, אתה יכול לשנות לצבע אחר */
+  text-shadow: 0 0 10px rgba(255, 210, 120, 0.5);
+}
 
 /* 🔹 בחירת מצב שאלות */
 .mode-selector {
@@ -362,26 +370,52 @@ body {
 }
 
 /* 🔵 סרגל סטטוס בעמוד תרגול — גרסה מצומצמת יפה */
-.status-bar {
-  width: 80%;
-  max-width: 900px;
-  margin: 25px auto 0 auto;
-  padding: 14px 20px;
+/* ---------------------------
+   STATUS BAR — CLEAN VERSION
+----------------------------*/
 
-  background: rgba(0, 50, 80, 0.55);
-  border: 1px solid rgba(80, 200, 255, 0.4);
-  border-radius: 14px;
-  backdrop-filter: blur(8px);
+/* FORCE OVERRIDE FOR PRACTICE PAGE */
+#practice-status-bar.status-bar {
+  width: 100% !important;
+  padding: 0 !important;
+  background: none !important;
+  border: none !important;
+  box-shadow: none !important;
 
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
 
-  font-size: 18px;
-  font-weight: 600;
-  color: #dff8ff;
-  text-shadow: 0 0 8px rgba(80, 200, 255, 0.4);
+  gap: 20px !important;
+  white-space: nowrap !important;
 
-  /* שהטקסט לא ייצמד לשמאל/ימין בקיצון */
-  box-sizing: border-box;
+  font-size: 16px !important;
+  font-weight: 600 !important;
+}
+
+/* צבעים */
+#practice-status-bar .hard {
+  color: #ff7979 !important;
+}
+#practice-status-bar .easy {
+  color: #7dffb2 !important;
+}
+#practice-status-bar .unmarked,
+#practice-status-bar .unsorted {
+  color: #9fc6ff !important;
+}
+#practice-status-bar .total {
+  color: #8cd0ff !important;
+}
+
+/* מובייל */
+@media (max-width: 650px) {
+  .status-bar {
+    flex-direction: column;
+    gap: 8px;
+    padding: 12px 0;
+    width: 92%;
+    font-size: 17px;
+    white-space: normal; /* במובייל כן לשבור שורות */
+  }
 }

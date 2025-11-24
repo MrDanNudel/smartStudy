@@ -32,15 +32,15 @@ function shuffle(arr) {
 }
 
 // === מצב GLOBAL ===
-const fullBank = [...bank];
+const fullBank = [...bank]; // כל השאלות של הנושא + תת-הנושא (לא לפי מצב תרגול)
 let currentMode = currentModeFromUrl;
 
 let filteredBank = [];
 let currentBank = [];
 let current = 0;
 
-// === טעינת סימוני קל/קשה מהזיכרון ===
-let hardQuestions = JSON.parse(localStorage.getItem("hardQuestions") || "[]");
+// === טעינת סימוני קל/קשה מהזיכרון (GLOBAL לכל האפליקציה) ===
+let hardQuestions = JSON.parse(localStorage.getItem("hardQuestions") || "[]"); // ["שאלה 1", ...]
 let easyQuestions = JSON.parse(localStorage.getItem("easyQuestions") || "[]");
 
 // === אלמנטים ===
@@ -77,11 +77,22 @@ const SUBJECT_TITLES = {
 document.querySelector(".subject-name").textContent =
   SUBJECT_TITLES[subjectKey] || subjectKey;
 
+// === הצגת תת־נושא מתחת לכותרת ===
+const subtopicNameEl = document.getElementById("subtopicName");
+if (subtopicNameEl) {
+  if (selectedSubtopic !== "all") {
+    // תת־נושא ספציפי שנבחר
+    subtopicNameEl.textContent = selectedSubtopic;
+  } else {
+    // אם לא רוצים שורה בכלל במצב "כל תתי-הנושאים" אפשר לשים "".
+    subtopicNameEl.textContent = "כל תתי־הנושאים";
+  }
+}
+
 // ===============================
 // ⭐ בניית מאגר שאלות לפי מצב (all / hard / easy / unsorted) + תת־נושא
 // ===============================
 function buildFilteredBank() {
-  // בסיס — רק תת־נושא שנבחר
   if (currentMode === "hard") {
     filteredBank = fullBank.filter((q) => hardQuestions.includes(q.q.trim()));
   } else if (currentMode === "easy") {
@@ -108,7 +119,6 @@ function buildFilteredBank() {
   const randomd = shuffle(filteredBank.slice()).slice(0, maxCount);
 
   currentBank = orderMode.checked ? ordered : randomd;
-
   current = 0;
 }
 
@@ -241,13 +251,16 @@ circleHard.addEventListener("click", () => {
 });
 
 // ===============================
-// סטטוס תחתון
+// סטטוס תחתון — מחושב רק על השאלות של הנושא + תת־הנושא הנוכחי
 // ===============================
 function updateStatusBar() {
-  const hard = hardQuestions.length;
-  const easy = easyQuestions.length;
-  const total = fullBank.length;
-  const unmarked = total - hard - easy;
+  const total = fullBank.length; // כל השאלות של הנושא/תת-נושא הנוכחי
+  const bankTexts = fullBank.map((q) => q.q.trim());
+
+  const hard = hardQuestions.filter((q) => bankTexts.includes(q.trim())).length;
+  const easy = easyQuestions.filter((q) => bankTexts.includes(q.trim())).length;
+
+  const unmarked = Math.max(total - hard - easy, 0); // הגנה מפני מספר שלילי
 
   const hardEl = document.getElementById("hardCount");
   const easyEl = document.getElementById("easyCount");
