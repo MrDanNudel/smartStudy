@@ -24,6 +24,7 @@ const subjectTitles = {
   football: "יסודות בכדורגל",
   statistics1: "סטטיסטיקה – חלק א׳",
   physics: "פיזיקה",
+  statsDynamics: "יסודות בסטטיסטיקה ודינמיקה",
 };
 
 // Elements

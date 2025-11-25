@@ -58,13 +58,11 @@ document.querySelectorAll(".method-card").forEach((card) => {
     setTimeout(() => {
       // מעבר לעמוד ההגדרות אם זו שיטת המבחן האמריקאי
       if (methodKey === "exam") {
-        window.location.href = `exam-settings.html?subject=${encodeURIComponent(
-          subjectLabel
-        )}&key=${subjectKey}`;
+        window.location.href = `exam-settings.html?subject=${subjectKey}`;
       } else if (methodKey === "quiz") {
         window.location.href = "quiz-mode.html";
       } else {
-        window.location.href = "qa-settings.html";
+        window.location.href = `qa-settings.html?subject=${subjectKey}`;
       }
     }, 400);
   });
