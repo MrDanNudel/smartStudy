@@ -22,7 +22,7 @@ const subjectLabel =
   url.get("subject") || localStorage.getItem("selectedSubjectLabel") || "כימיה";
 
 // ================================
-// הפניות לאלמנטים
+// אלמנטים
 // ================================
 const subjectTitle = document.getElementById("subjectTitle");
 const qText = document.getElementById("questionText");
@@ -32,9 +32,13 @@ const barFill = document.getElementById("barFill");
 const timeLeft = document.getElementById("timeLeft");
 const failsView = document.getElementById("failsView");
 const progressView = document.getElementById("progressView");
+
 const endOverlay = document.getElementById("endOverlay");
 const endTitle = document.getElementById("endTitle");
 const endSub = document.getElementById("endSub");
+
+const circleEasy = document.getElementById("examCircleEasy");
+const circleHard = document.getElementById("examCircleHard");
 
 // ================================
 // ניווט עליון
@@ -49,14 +53,11 @@ document.getElementById("homeBtn").addEventListener("click", () => {
   location.href = "index.html";
 });
 
-// ================================
-// כותרת נושא
-// ================================
 subjectTitle.textContent = subjectLabel;
 requestAnimationFrame(() => subjectTitle.classList.add("visible"));
 
 // ================================
-// טעינת המאגר מתוך window.examBank
+// טעינת מאגר
 // ================================
 let bank = (window.examBank || []).slice();
 shuffle(bank);
@@ -67,7 +68,6 @@ let fails = 0;
 let timerId = null;
 let timeLeftSec = settings.timePerQuestion;
 
-// ================================
 updateHud();
 loadQuestion();
 
@@ -82,6 +82,7 @@ function startTimer() {
   const total = settings.timePerQuestion;
   timerId = setInterval(() => {
     timeLeftSec -= 0.05;
+
     if (timeLeftSec <= 0) {
       clearInterval(timerId);
       handleAnswer(-1);
@@ -112,57 +113,79 @@ function loadQuestion() {
   qText.textContent = item.q;
   qMeta.textContent = `שאלה ${current + 1} מתוך ${settings.numQuestions}`;
 
-  const answers = item.a || item.options; // תמיכה בשני פורמטים
-  const idxs = [0, 1, 2, 3];
-  shuffle(idxs);
+  const answers = item.a || item.options;
+
+  const order = [0, 1, 2, 3];
+  shuffle(order);
 
   optionsWrap.innerHTML = "";
-  idxs.forEach((i) => {
+
+  order.forEach((realIndex, visualIndex) => {
     const btn = document.createElement("button");
     btn.className = "option";
-    btn.textContent = answers[i];
-    btn.addEventListener("click", () => handleAnswer(i));
+    btn.textContent = answers[realIndex];
+
+    btn.dataset.realIndex = realIndex;
+    btn.dataset.visualIndex = visualIndex;
+
+    btn.addEventListener("click", () => handleAnswer(visualIndex));
     optionsWrap.appendChild(btn);
   });
 
+  resetCircles();
   startTimer();
 }
 
 // ================================
-// טיפול בבחירת תשובה
+// איפוס העיגולים
 // ================================
-function handleAnswer(chosenIndex) {
-  [...optionsWrap.children].forEach((b) => b.classList.add("disabled"));
+function resetCircles() {
+  circleEasy.classList.remove("active");
+  circleHard.classList.remove("active");
+}
+
+// ================================
+// טיפול בבחירת תשובה — מתוקן ✔
+// ================================
+function handleAnswer(visualIndex) {
+  const buttons = [...optionsWrap.children];
+
+  buttons.forEach((b) => b.classList.add("disabled"));
   clearInterval(timerId);
 
   const item = bank[current];
   const answers = item.a || item.options;
 
-  const buttons = [...optionsWrap.children];
-  const correctText = answers[item.correct];
+  const realChosenIndex =
+    visualIndex === -1 ? -1 : parseInt(buttons[visualIndex].dataset.realIndex);
 
-  let chosenBtn = null;
-  let correctBtn = null;
+  const correctBtn = buttons.find(
+    (b) => parseInt(b.dataset.realIndex) === item.correct
+  );
 
-  buttons.forEach((b) => {
-    if (b.textContent === correctText) correctBtn = b;
-  });
+  let isCorrect = realChosenIndex === item.correct;
 
-  if (chosenIndex === -1) {
-    // נגמר הזמן
-    fails++;
+  // ============================
+  // ⭐ הפעלת עיגולים לפי הצלחה ⭐
+  // ============================
+  if (isCorrect) {
+    circleEasy.classList.add("active");
   } else {
-    chosenBtn = buttons[chosenIndex];
-
-    if (chosenIndex === item.correct) {
-      chosenBtn.classList.add("correct");
-    } else {
-      fails++;
-      chosenBtn.classList.add("wrong");
-    }
+    circleHard.classList.add("active");
   }
 
-  if (chosenIndex !== item.correct) correctBtn.classList.add("correct");
+  // סימון בחירה
+  if (visualIndex !== -1) {
+    const chosenBtn = buttons[visualIndex];
+    if (isCorrect) chosenBtn.classList.add("correct");
+    else chosenBtn.classList.add("wrong");
+  } else {
+    fails++;
+  }
+
+  correctBtn.classList.add("correct");
+
+  if (!isCorrect) fails++;
 
   updateHud();
 
@@ -178,11 +201,11 @@ function handleAnswer(chosenIndex) {
     current++;
     updateHud();
     loadQuestion();
-  }, 1950);
+  }, 1800);
 }
 
 // ================================
-// עדכון HUD
+// HUD
 // ================================
 function updateHud() {
   if (settings.maxFails === 0) {
@@ -223,7 +246,7 @@ document.getElementById("backBtn").addEventListener("click", () => {
 });
 
 // ================================
-// פונקציה לעירבוב
+// shuffle
 // ================================
 function shuffle(arr) {
   for (let i = arr.length - 1; i > 0; i--) {

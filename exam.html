@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="css/exam.css" />
 
     <style>
-      /* ✨ עיצוב מודגש לנושא (זהה לעמוד ההגדרות) */
+      /* ✨ עיצוב מודגש לנושא */
       .subject-highlight {
         font-size: 46px;
         font-weight: 800;
@@ -34,15 +34,21 @@
     <!-- סרגל עליון -->
     <div class="top-bar">
       <button class="nav-btn" id="prevBtn">⟵ לעמוד הקודם</button>
+
       <div class="title">
         <div class="subject" id="subjectTitle"></div>
         <div class="subtitle">שאלון אמריקאי</div>
       </div>
+
       <button class="nav-btn" id="homeBtn">לעמוד הבית ⟶</button>
     </div>
 
     <!-- קלף השאלה -->
     <div class="card" id="card">
+      <!-- 🔵 עיגולים: קלה (ירוק), קשה (אדום) -->
+      <div class="circle-easy" id="examCircleEasy"></div>
+      <div class="circle-hard" id="examCircleHard"></div>
+
       <h2 class="qtext" id="questionText">טוען...</h2>
       <div class="qmeta" id="qMeta">שאלה 1 מתוך 20</div>
       <div class="options" id="options"></div>
@@ -50,7 +56,9 @@
 
     <!-- מד זמן -->
     <div class="timer-wrap">
-      <div class="bar"><span id="barFill"></span></div>
+      <div class="bar">
+        <span id="barFill"></span>
+      </div>
       <div class="time-left" id="timeLeft">..נשארו 30 שניות</div>
     </div>
 
@@ -65,6 +73,7 @@
       <div class="end-card">
         <div class="end-title" id="endTitle">המבחן נגמר</div>
         <div class="end-sub" id="endSub">כל הכבוד!</div>
+
         <div class="btn-row">
           <button class="btn" id="againBtn">נסה שוב</button>
           <button class="btn primary" id="backBtn">חזרה לבחירת שיטה</button>
@@ -72,11 +81,13 @@
       </div>
     </div>
 
-    <!-- סקריפטים -->
+    <!-- מאגר שאלות -->
     <script src="data/exam-bank.js"></script>
+
+    <!-- לוגיקה מלאה של מבחן כולל עיגולי קושי -->
     <script src="js/exam.js"></script>
 
-    <!-- ✅ תרגום + עיצוב נושא -->
+    <!-- כותרת נושא -->
     <script>
       const SUBJECT_TITLES = {
         anatomy: "אנטומיה",
@@ -85,7 +96,7 @@
         literacy: "אוריינות שפתית",
         basketball: "יסודות בכדורסל",
         athletics: "יסודות באתלטיקה",
-        statistics1: "סטטיסטיקה – חלק א׳", // ✅ תוספת חדשה
+        statistics1: "סטטיסטיקה – חלק א׳",
         football: "יסודות בכדורגל",
         physics: "פיזיקה",
       };
