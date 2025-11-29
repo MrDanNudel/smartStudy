@@ -20,8 +20,6 @@ const settings = {
 
 const subjectLabel =
   url.get("subject") || localStorage.getItem("selectedSubjectLabel") || "כימיה";
-const subjectKey =
-  url.get("key") || localStorage.getItem("selectedSubjectKey") || "chemistry";
 
 // ================================
 // הפניות לאלמנטים
@@ -57,7 +55,10 @@ document.getElementById("homeBtn").addEventListener("click", () => {
 subjectTitle.textContent = subjectLabel;
 requestAnimationFrame(() => subjectTitle.classList.add("visible"));
 
-let bank = (banks[subjectKey] || chemistryQuestions).slice();
+// ================================
+// טעינת המאגר מתוך window.examBank
+// ================================
+let bank = (window.examBank || []).slice();
 shuffle(bank);
 bank = bank.slice(0, settings.numQuestions);
 
@@ -66,6 +67,7 @@ let fails = 0;
 let timerId = null;
 let timeLeftSec = settings.timePerQuestion;
 
+// ================================
 updateHud();
 loadQuestion();
 
@@ -110,6 +112,7 @@ function loadQuestion() {
   qText.textContent = item.q;
   qMeta.textContent = `שאלה ${current + 1} מתוך ${settings.numQuestions}`;
 
+  const answers = item.a || item.options; // תמיכה בשני פורמטים
   const idxs = [0, 1, 2, 3];
   shuffle(idxs);
 
@@ -117,7 +120,7 @@ function loadQuestion() {
   idxs.forEach((i) => {
     const btn = document.createElement("button");
     btn.className = "option";
-    btn.textContent = item.a[i];
+    btn.textContent = answers[i];
     btn.addEventListener("click", () => handleAnswer(i));
     optionsWrap.appendChild(btn);
   });
@@ -133,35 +136,39 @@ function handleAnswer(chosenIndex) {
   clearInterval(timerId);
 
   const item = bank[current];
+  const answers = item.a || item.options;
+
   const buttons = [...optionsWrap.children];
-  const correctText = item.a[item.correct];
-  let chosenBtn = null,
-    correctBtn = null;
+  const correctText = answers[item.correct];
+
+  let chosenBtn = null;
+  let correctBtn = null;
 
   buttons.forEach((b) => {
     if (b.textContent === correctText) correctBtn = b;
   });
 
   if (chosenIndex === -1) {
+    // נגמר הזמן
     fails++;
   } else {
-    chosenBtn = buttons.find((b) => b.textContent === item.a[chosenIndex]);
+    chosenBtn = buttons[chosenIndex];
+
     if (chosenIndex === item.correct) {
       chosenBtn.classList.add("correct");
     } else {
       fails++;
-      chosenBtn && chosenBtn.classList.add("wrong");
+      chosenBtn.classList.add("wrong");
     }
   }
 
-  if (chosenIndex !== item.correct)
-    correctBtn && correctBtn.classList.add("correct");
+  if (chosenIndex !== item.correct) correctBtn.classList.add("correct");
 
   updateHud();
 
   if (settings.maxFails !== 0 && fails > settings.maxFails) {
     setTimeout(
-      () => endExam("חרגת ממספר הפסילות", "המבחן נגמר. נסה שוב מאוחר יותר ✋"),
+      () => endExam("חרגת ממספר הפסילות", "המבחן נגמר. נסה שוב ✋"),
       700
     );
     return;
@@ -179,11 +186,9 @@ function handleAnswer(chosenIndex) {
 // ================================
 function updateHud() {
   if (settings.maxFails === 0) {
-    // ללא הגבלת טעויות – מציג רק את כמות הטעויות שנעשו
-    failsView.textContent = `תשובות לא נכונות :  ${fails}`;
+    failsView.textContent = `תשובות לא נכונות: ${fails}`;
   } else {
-    // יש הגבלת טעויות
-    failsView.textContent = `תשובות לא נכונות : ${fails} / ${settings.maxFails}`;
+    failsView.textContent = `תשובות לא נכונות: ${fails} / ${settings.maxFails}`;
   }
 
   const progress = Math.round((current / settings.numQuestions) * 100);
@@ -203,9 +208,11 @@ function endExam(title, sub) {
 document.getElementById("againBtn").addEventListener("click", () => {
   current = 0;
   fails = 0;
-  bank = (banks[subjectKey] || chemistryQuestions).slice();
+
+  bank = (window.examBank || []).slice();
   shuffle(bank);
   bank = bank.slice(0, settings.numQuestions);
+
   endOverlay.classList.remove("show");
   updateHud();
   loadQuestion();
@@ -216,7 +223,7 @@ document.getElementById("backBtn").addEventListener("click", () => {
 });
 
 // ================================
-// פונקציה לעירבוב שאלות
+// פונקציה לעירבוב
 // ================================
 function shuffle(arr) {
   for (let i = arr.length - 1; i > 0; i--) {

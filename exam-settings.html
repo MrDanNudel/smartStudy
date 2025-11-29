@@ -5,64 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>הגדרות מבחן אמריקאי</title>
 
-    <!-- עיצוב -->
     <link rel="stylesheet" href="css/base.css" />
     <link rel="stylesheet" href="css/exam-settings.css" />
-
-    <style>
-      /* ✨ אפקט כניסה חלק לכותרת */
-      .page-title {
-        opacity: 0;
-        transform: translateY(-10px);
-        transition: opacity 0.6s ease, transform 0.6s ease;
-      }
-      .page-title.visible {
-        opacity: 1;
-        transform: translateY(0);
-      }
-
-      /* קו זוהר מתחת לכותרת */
-      .page-title::after {
-        content: "";
-        display: block;
-        width: 60px;
-        height: 3px;
-        margin: 10px auto 0;
-        background: linear-gradient(90deg, #00c6ff, #00e0ff);
-        border-radius: 2px;
-        box-shadow: 0 0 10px rgba(0, 200, 255, 0.5);
-      }
-      /* כותרת המשנה ("הגדרות לשאלון אמריקאי") */
-      .subtitle {
-        font-size: 28px;
-        color: #aee8ff;
-        margin-top: 60px; /* ↓ מוסיף רווח מלמעלה כך שתהיה מיושרת עם שאר האלמנטים */
-        margin-bottom: 40px;
-        text-align: center;
-        text-shadow: 0 0 10px rgba(0, 220, 255, 0.4);
-      }
-
-      /* ✨ תוספת חדשה — שם הנושא הנבחר */
-      .subject-highlight {
-        display: block;
-        font-size: 50px;
-        font-weight: 800;
-        color: #4ec8ff;
-        text-shadow: 0 0 16px rgba(80, 200, 255, 0.5);
-        margin-top: 10px;
-      }
-
-      /* ✨ רווח ברור בין הכותרת לבין החלק הבא */
-      .title-wrap {
-        margin-bottom: 60px; /* אפשר לשחק עם המספר - 60 זה נראה מושלם */
-      }
-
-      .subject-label {
-        font-size: 20px;
-        color: #b7dfff;
-        margin-bottom: -10px;
-      }
-    </style>
   </head>
 
   <body>
@@ -76,23 +20,54 @@
       <button class="nav-btn" id="home-page">לעמוד הבית ⟶</button>
     </div>
 
-    <!-- תוכן ראשי -->
-    <div class="settings-container">
-      <h2 class="subtitle">הגדרות לשאלון אמריקאי</h2>
+    <!-- כרטיס הגדרות -->
+    <div class="settings-card">
+      <h2 class="settings-title">הגדרות המבחן</h2>
 
-      <div class="settings-grid">
-        <button class="setting-btn" id="time-btn">
-          הגדר זמן לשאלה<br /><span id="time-value">30 שניות</span>
-        </button>
-        <button class="setting-btn" id="questions-btn">
-          הגדר מספר שאלות<br /><span id="questions-value">20 שאלות</span>
-        </button>
-        <button class="setting-btn" id="fails-btn">
-          הגדר מספר פסילות<br /><span id="fails-value">עד 5 פסילות</span>
+      <!-- תת נושא -->
+      <div class="form-row">
+        <label>בחר תת-נושא</label>
+        <select id="subtopicSelect">
+          <option value="all">כל התתי-נושאים</option>
+        </select>
+      </div>
+
+      <!-- סוג שאלות -->
+      <div class="form-row">
+        <label>סוג השאלות</label>
+        <select id="typeSelect">
+          <option value="all">כל השאלות</option>
+          <option value="easy">שאלות קלות</option>
+          <option value="hard">שאלות מאתגרות</option>
+        </select>
+      </div>
+
+      <!-- זמן לשאלה -->
+      <div class="form-row">
+        <label>זמן לכל שאלה</label>
+        <button class="mini-btn" id="time-btn">
+          <span id="time-value">30 שניות</span>
         </button>
       </div>
 
-      <button id="start-btn" class="start-btn">התחל מבחן !</button>
+      <!-- מספר שאלות -->
+      <div class="form-row">
+        <label>מספר שאלות</label>
+        <button class="mini-btn" id="questions-btn">
+          <span id="questions-value">20 שאלות</span>
+        </button>
+      </div>
+
+      <!-- פסילות -->
+      <div class="form-row">
+        <label>מספר פסילות</label>
+        <button class="mini-btn" id="fails-btn">
+          <span id="fails-value">עד 5 פסילות</span>
+        </button>
+      </div>
+
+      <!-- כפתור התחל -->
+      <button id="start-btn" class="start-btn">התחל מבחן</button>
     </div>
 
     <!-- חלון קלט -->
@@ -107,12 +82,11 @@
       </div>
     </div>
 
-    <!-- סקריפטים -->
     <script src="data/exam-bank.js"></script>
     <script src="js/exam-settings.js"></script>
 
-    <!-- הצגת הנושא הנבחר -->
     <script>
+      // כותרת הנושא מתוך ה-URL
       const SUBJECT_TITLES = {
         anatomy: "אנטומיה",
         chemistry: "כימיה",
@@ -122,33 +96,28 @@
         athletics: "יסודות באתלטיקה",
         football: "יסודות בכדורגל",
         physics: "פיזיקה",
-        statistics1: "סטטיסטיקה – חלק א׳", // ✅ תוספת חשובה!
+        statistics1: "סטטיסטיקה – חלק א׳",
       };
 
       window.addEventListener("load", () => {
-        // קבלת הנושא מה-URL
         const params = new URLSearchParams(window.location.search);
-        let subjectKey = params.get("subject") || "";
-        subjectKey = subjectKey.trim().toLowerCase();
+        const subject = params.get("subject");
+        document.getElementById("pageTitle").textContent =
+          SUBJECT_TITLES[subject] || "נושא לא מוגדר";
 
-        // מיפוי שם בעברית
-        const subjectLabel = SUBJECT_TITLES[subjectKey] || "נושא לא מוגדר";
+        // טעינת תתי נושאים
+        const select = document.getElementById("subtopicSelect");
+        select.innerHTML = `<option value="all">כל התתי-נושאים</option>`;
 
-        // הצגת הכותרת
-        const titleEl = document.getElementById("pageTitle");
-        if (titleEl) {
-          titleEl.textContent = subjectLabel;
-          titleEl.classList.add("subject-highlight");
-          setTimeout(() => titleEl.classList.add("visible"), 150);
+        if (window.examBank) {
+          const subtopics = [...new Set(examBank.map((q) => q.subtopic))];
+          subtopics.forEach((st) => {
+            const opt = document.createElement("option");
+            opt.value = st;
+            opt.textContent = st;
+            select.appendChild(opt);
+          });
         }
-
-        // ניווט עליון
-        document.getElementById("prev-page").addEventListener("click", () => {
-          window.history.back();
-        });
-        document.getElementById("home-page").addEventListener("click", () => {
-          window.location.href = "index.html";
-        });
       });
     </script>
   </body>
