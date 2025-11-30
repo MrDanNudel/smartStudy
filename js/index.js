@@ -1,9 +1,7 @@
 // ברגע שהמסמך נטען
 window.addEventListener("DOMContentLoaded", () => {
-  // מנקה את כל המחלקות מה-body
   document.body.classList.remove("fade-in", "fade-out");
 
-  // מוסיף את אפקט הכניסה אחרי שברור שאין fade-out
   requestAnimationFrame(() => {
     document.body.classList.add("fade-in");
   });
@@ -15,14 +13,17 @@ document.querySelectorAll(".tile").forEach((btn) => {
     const subjectKey = btn.dataset.key || "";
     const subjectLabel = btn.textContent.trim();
 
+    // שמירה לתוך localStorage
     localStorage.setItem("selectedSubjectKey", subjectKey);
     localStorage.setItem("selectedSubjectLabel", subjectLabel);
 
+    // אנימציה
     document.body.classList.remove("fade-in");
     document.body.classList.add("fade-out");
 
+    // מעבר לעמוד הבא
     setTimeout(() => {
-      window.location.href = "select-method.html";
+      window.location.href = `select-method.html?subject=${subjectKey}`;
     }, 400);
   });
 });

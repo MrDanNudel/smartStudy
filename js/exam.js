@@ -5,14 +5,14 @@ const url = new URLSearchParams(location.search);
 const saved = JSON.parse(localStorage.getItem("examSettings") || "{}");
 
 const settings = {
+  subtopic: decodeURIComponent(url.get("subtopic") || "all"),
+  type: url.get("type") || "all",
   timePerQuestion: !isNaN(parseInt(url.get("time")))
     ? parseInt(url.get("time"))
     : saved.timePerQuestion || 30,
-
   numQuestions: !isNaN(parseInt(url.get("questions")))
     ? parseInt(url.get("questions"))
     : saved.numQuestions || 20,
-
   maxFails: !isNaN(parseInt(url.get("fails")))
     ? parseInt(url.get("fails"))
     : saved.maxFails || 5,
@@ -41,6 +41,15 @@ const circleEasy = document.getElementById("examCircleEasy");
 const circleHard = document.getElementById("examCircleHard");
 
 // ================================
+// טעינת סטטוס קל/קשה
+// ================================
+let difficultyMap = JSON.parse(localStorage.getItem("easyHardStats") || "{}");
+
+function saveDifficulty() {
+  localStorage.setItem("easyHardStats", JSON.stringify(difficultyMap));
+}
+
+// ================================
 // ניווט עליון
 // ================================
 document.getElementById("prevBtn").addEventListener("click", () => {
@@ -57,17 +66,47 @@ subjectTitle.textContent = subjectLabel;
 requestAnimationFrame(() => subjectTitle.classList.add("visible"));
 
 // ================================
-// טעינת מאגר
+// טעינת המאגר
 // ================================
 let bank = (window.examBank || []).slice();
+
+// ---------- סינון תת־נושא ----------
+if (settings.subtopic !== "all") {
+  bank = bank.filter((q) => q.subtopic === settings.subtopic);
+}
+
+// ---------- סינון קל / קשה ----------
+if (settings.type === "easy") {
+  bank = bank.filter((q) => difficultyMap[q.id] === "easy");
+} else if (settings.type === "hard") {
+  bank = bank.filter((q) => difficultyMap[q.id] === "hard");
+}
+
+// Fallback אם הסינון רוקן את המאגר
+if (bank.length === 0) {
+  bank = window.examBank.slice();
+}
+
+// ערבוב
 shuffle(bank);
+
+// בחירת מספר שאלות
 bank = bank.slice(0, settings.numQuestions);
 
+// בקרה אם יש בעיה
+if (bank.length === 0) {
+  alert("לא נמצאו שאלות מתאימות למסננים שבחרת!");
+}
+
+// ================================
+// סטייט
+// ================================
 let current = 0;
 let fails = 0;
 let timerId = null;
 let timeLeftSec = settings.timePerQuestion;
 
+// הפעלה
 updateHud();
 loadQuestion();
 
@@ -80,6 +119,7 @@ function startTimer() {
   drawTime();
 
   const total = settings.timePerQuestion;
+
   timerId = setInterval(() => {
     timeLeftSec -= 0.05;
 
@@ -110,11 +150,24 @@ function loadQuestion() {
     return;
   }
 
+  // ---- הגנה על שאלה פגומה ----
+  if (!item.options || item.options.length < 4) {
+    console.error("❌ שאלה פגומה:", item);
+    endExam("שגיאה במבחן", "שאלה חסרה או לא תקינה.");
+    return;
+  }
+
+  // כותרת
   qText.textContent = item.q;
   qMeta.textContent = `שאלה ${current + 1} מתוך ${settings.numQuestions}`;
 
-  const answers = item.a || item.options;
+  // עיגולים
+  resetCircles();
+  if (difficultyMap[item.id] === "easy") circleEasy.classList.add("active");
+  if (difficultyMap[item.id] === "hard") circleHard.classList.add("active");
 
+  // תשובות
+  const answers = item.options;
   const order = [0, 1, 2, 3];
   shuffle(order);
 
@@ -132,7 +185,6 @@ function loadQuestion() {
     optionsWrap.appendChild(btn);
   });
 
-  resetCircles();
   startTimer();
 }
 
@@ -145,16 +197,15 @@ function resetCircles() {
 }
 
 // ================================
-// טיפול בבחירת תשובה — מתוקן ✔
+// טיפול בבחירת תשובה
 // ================================
 function handleAnswer(visualIndex) {
-  const buttons = [...optionsWrap.children];
+  const item = bank[current];
+  const id = item.id;
 
+  const buttons = [...optionsWrap.children];
   buttons.forEach((b) => b.classList.add("disabled"));
   clearInterval(timerId);
-
-  const item = bank[current];
-  const answers = item.a || item.options;
 
   const realChosenIndex =
     visualIndex === -1 ? -1 : parseInt(buttons[visualIndex].dataset.realIndex);
@@ -165,30 +216,30 @@ function handleAnswer(visualIndex) {
 
   let isCorrect = realChosenIndex === item.correct;
 
-  // ============================
-  // ⭐ הפעלת עיגולים לפי הצלחה ⭐
-  // ============================
-  if (isCorrect) {
-    circleEasy.classList.add("active");
-  } else {
-    circleHard.classList.add("active");
-  }
-
-  // סימון בחירה
+  // סימון ויזואלי
   if (visualIndex !== -1) {
     const chosenBtn = buttons[visualIndex];
-    if (isCorrect) chosenBtn.classList.add("correct");
-    else chosenBtn.classList.add("wrong");
-  } else {
-    fails++;
+    chosenBtn.classList.add(isCorrect ? "correct" : "wrong");
   }
-
   correctBtn.classList.add("correct");
 
   if (!isCorrect) fails++;
 
+  // עדכון רמת שאלה
+  const prev = difficultyMap[id] || "neutral";
+
+  if (isCorrect) {
+    if (prev === "neutral") difficultyMap[id] = "easy";
+    else if (prev === "hard") difficultyMap[id] = "neutral";
+  } else {
+    if (prev === "neutral") difficultyMap[id] = "hard";
+    else if (prev === "easy") difficultyMap[id] = "neutral";
+  }
+
+  saveDifficulty();
   updateHud();
 
+  // בדיקת פסילות
   if (settings.maxFails !== 0 && fails > settings.maxFails) {
     setTimeout(
       () => endExam("חרגת ממספר הפסילות", "המבחן נגמר. נסה שוב ✋"),
@@ -197,11 +248,12 @@ function handleAnswer(visualIndex) {
     return;
   }
 
+  // לשאלה הבאה
   setTimeout(() => {
     current++;
     updateHud();
     loadQuestion();
-  }, 1800);
+  }, 1500);
 }
 
 // ================================
@@ -232,10 +284,7 @@ document.getElementById("againBtn").addEventListener("click", () => {
   current = 0;
   fails = 0;
 
-  bank = (window.examBank || []).slice();
   shuffle(bank);
-  bank = bank.slice(0, settings.numQuestions);
-
   endOverlay.classList.remove("show");
   updateHud();
   loadQuestion();

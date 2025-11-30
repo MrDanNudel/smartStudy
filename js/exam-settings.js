@@ -154,7 +154,6 @@ failsBtn.addEventListener("click", () =>
 
 // ===============================
 // כפתור התחל מבחן
-// ===============================
 document.getElementById("start-btn").addEventListener("click", () => {
   localStorage.setItem("examSettings", JSON.stringify(settings));
 
@@ -162,7 +161,7 @@ document.getElementById("start-btn").addEventListener("click", () => {
   const subject = params.get("subject") || "none";
 
   const query = new URLSearchParams({
-    subject,
+    subject: subject,
     subtopic: settings.subtopic,
     type: settings.type,
     time: settings.timePerQuestion,
