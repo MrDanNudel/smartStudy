@@ -4,6 +4,7 @@
 const url = new URLSearchParams(location.search);
 const saved = JSON.parse(localStorage.getItem("examSettings") || "{}");
 
+// פרמטרים
 const settings = {
   subtopic: decodeURIComponent(url.get("subtopic") || "all"),
   type: url.get("type") || "all",
@@ -19,7 +20,7 @@ const settings = {
 };
 
 const subjectLabel =
-  url.get("subject") || localStorage.getItem("selectedSubjectLabel") || "כימיה";
+  url.get("subject") || localStorage.getItem("selectedSubjectLabel") || "נושא";
 
 // ================================
 // אלמנטים
@@ -66,36 +67,49 @@ subjectTitle.textContent = subjectLabel;
 requestAnimationFrame(() => subjectTitle.classList.add("visible"));
 
 // ================================
-// טעינת המאגר
+// טעינת המאגר — examBank
 // ================================
 let bank = (window.examBank || []).slice();
 
-// ---------- סינון תת־נושא ----------
+// ================================
+// ⭐ שלב 1 — סינון לפי תת־נושא
+// ================================
 if (settings.subtopic !== "all") {
   bank = bank.filter((q) => q.subtopic === settings.subtopic);
 }
 
-// ---------- סינון קל / קשה ----------
+// אם תת־נושא לא קיים → fallback
+if (bank.length === 0) {
+  console.warn("⚠️ No questions for subtopic:", settings.subtopic);
+  bank = (window.examBank || []).slice();
+}
+
+// ================================
+// ⭐ שלב 2 — סינון לפי קל/קשה
+// ================================
 if (settings.type === "easy") {
   bank = bank.filter((q) => difficultyMap[q.id] === "easy");
 } else if (settings.type === "hard") {
   bank = bank.filter((q) => difficultyMap[q.id] === "hard");
 }
 
-// Fallback אם הסינון רוקן את המאגר
+// fallback אם הסינון מחק את הכול
 if (bank.length === 0) {
-  bank = window.examBank.slice();
+  console.warn("⚠️ Difficulty filter empty → using all");
+  bank = (window.examBank || []).slice();
+  if (settings.subtopic !== "all") {
+    bank = bank.filter((q) => q.subtopic === settings.subtopic);
+  }
 }
 
-// ערבוב
+// ================================
+// ⭐ שלב 3 — ערבוב + חיתוך כמות
+// ================================
 shuffle(bank);
-
-// בחירת מספר שאלות
 bank = bank.slice(0, settings.numQuestions);
 
-// בקרה אם יש בעיה
 if (bank.length === 0) {
-  alert("לא נמצאו שאלות מתאימות למסננים שבחרת!");
+  alert("❗ לא נמצאו שאלות מתאימות למסננים שבחרת!");
 }
 
 // ================================
@@ -106,7 +120,7 @@ let fails = 0;
 let timerId = null;
 let timeLeftSec = settings.timePerQuestion;
 
-// הפעלה
+// התחלה
 updateHud();
 loadQuestion();
 
@@ -137,7 +151,7 @@ function startTimer() {
 
 function drawTime() {
   const sec = Math.max(0, Math.ceil(timeLeftSec));
-  timeLeft.textContent = `..נשארו ${sec} שניות`;
+  timeLeft.textContent = `נשארו ${sec} שניות...`;
 }
 
 // ================================
@@ -150,18 +164,17 @@ function loadQuestion() {
     return;
   }
 
-  // ---- הגנה על שאלה פגומה ----
   if (!item.options || item.options.length < 4) {
     console.error("❌ שאלה פגומה:", item);
-    endExam("שגיאה במבחן", "שאלה חסרה או לא תקינה.");
+    endExam("שגיאה במבחן", "שאלה חסרה/לא תקינה.");
     return;
   }
 
-  // כותרת
+  // טקסט שאלה
   qText.textContent = item.q;
   qMeta.textContent = `שאלה ${current + 1} מתוך ${settings.numQuestions}`;
 
-  // עיגולים
+  // עיגולי סטטוס
   resetCircles();
   if (difficultyMap[item.id] === "easy") circleEasy.classList.add("active");
   if (difficultyMap[item.id] === "hard") circleHard.classList.add("active");
@@ -189,7 +202,7 @@ function loadQuestion() {
 }
 
 // ================================
-// איפוס העיגולים
+// איפוס עיגולים
 // ================================
 function resetCircles() {
   circleEasy.classList.remove("active");
@@ -214,9 +227,8 @@ function handleAnswer(visualIndex) {
     (b) => parseInt(b.dataset.realIndex) === item.correct
   );
 
-  let isCorrect = realChosenIndex === item.correct;
+  const isCorrect = realChosenIndex === item.correct;
 
-  // סימון ויזואלי
   if (visualIndex !== -1) {
     const chosenBtn = buttons[visualIndex];
     chosenBtn.classList.add(isCorrect ? "correct" : "wrong");
@@ -225,7 +237,7 @@ function handleAnswer(visualIndex) {
 
   if (!isCorrect) fails++;
 
-  // עדכון רמת שאלה
+  // עדכון רמת השאלה
   const prev = difficultyMap[id] || "neutral";
 
   if (isCorrect) {
@@ -239,7 +251,6 @@ function handleAnswer(visualIndex) {
   saveDifficulty();
   updateHud();
 
-  // בדיקת פסילות
   if (settings.maxFails !== 0 && fails > settings.maxFails) {
     setTimeout(
       () => endExam("חרגת ממספר הפסילות", "המבחן נגמר. נסה שוב ✋"),
@@ -248,7 +259,6 @@ function handleAnswer(visualIndex) {
     return;
   }
 
-  // לשאלה הבאה
   setTimeout(() => {
     current++;
     updateHud();

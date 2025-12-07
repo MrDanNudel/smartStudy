@@ -15,6 +15,11 @@ const timeValue = document.getElementById("time-value");
 const questionsValue = document.getElementById("questions-value");
 const failsValue = document.getElementById("fails-value");
 
+// ===============================
+// טעינת סטטוס קל/קשה מה-localStorage
+// ===============================
+let difficultyMap = JSON.parse(localStorage.getItem("easyHardStats") || "{}");
+
 let settings = {
   subtopic: "all",
   type: "all", // all / easy / hard
@@ -76,7 +81,7 @@ function updateUI() {
 }
 
 // ===============================
-// טוען כמות שאלות זמינות בהתאם למסננים
+// חישוב מחדש של מספר שאלות זמינות
 // ===============================
 function recalcMaxQuestions() {
   if (!window.examBank) {
@@ -84,18 +89,28 @@ function recalcMaxQuestions() {
     return;
   }
 
-  let filtered = examBank;
+  let filtered = examBank.slice();
 
-  // תת נושא
+  // --- סינון לפי נושא ---
+  const subject = localStorage.getItem("selectedSubjectKey");
+  if (subject) {
+    filtered = filtered.filter((q) => q.subject === subject);
+  }
+
+  // --- סינון לפי תת־נושא ---
   if (settings.subtopic !== "all") {
     filtered = filtered.filter((q) => q.subtopic === settings.subtopic);
   }
 
-  // סוג שאלה
+  // --- סינון לפי רמת קושי ---
   if (settings.type === "easy") {
-    filtered = filtered.filter((q) => q.correct === 0); // אתה יכול לשנות את זה
+    // easy = שאלות שלא סומנו עדיין או שסומנו כקלות
+    filtered = filtered.filter(
+      (q) => !difficultyMap[q.id] || difficultyMap[q.id] === "easy"
+    );
   } else if (settings.type === "hard") {
-    filtered = filtered.filter((q) => q.correct !== 0); // לפי המדד שלך
+    // hard = רק שאלות שסומנו כקשות
+    filtered = filtered.filter((q) => difficultyMap[q.id] === "hard");
   }
 
   maxQuestionsAvailable = filtered.length;
@@ -111,20 +126,17 @@ function recalcMaxQuestions() {
 // טעינה ראשונית
 // ===============================
 window.addEventListener("load", () => {
-  // טענת הגדרות שמורות
   const saved = localStorage.getItem("examSettings");
   if (saved) settings = JSON.parse(saved);
 
   updateUI();
   recalcMaxQuestions();
 
-  // העדפת תת נושא
   document.getElementById("subtopicSelect").addEventListener("change", (e) => {
     settings.subtopic = e.target.value;
     recalcMaxQuestions();
   });
 
-  // סוג שאלות
   document.getElementById("typeSelect").addEventListener("change", (e) => {
     settings.type = e.target.value;
     recalcMaxQuestions();
@@ -132,7 +144,7 @@ window.addEventListener("load", () => {
 });
 
 // ===============================
-// לחצני פתיחת ההגדרות
+// כפתורי פתיחת מודאלים
 // ===============================
 timeBtn.addEventListener("click", () =>
   openModal("timePerQuestion", "הגדר זמן לכל שאלה", 10, 90, " שניות")
@@ -154,11 +166,11 @@ failsBtn.addEventListener("click", () =>
 
 // ===============================
 // כפתור התחל מבחן
+// ===============================
 document.getElementById("start-btn").addEventListener("click", () => {
   localStorage.setItem("examSettings", JSON.stringify(settings));
 
-  const params = new URLSearchParams(window.location.search);
-  const subject = params.get("subject") || "none";
+  const subject = localStorage.getItem("selectedSubjectKey") || "none";
 
   const query = new URLSearchParams({
     subject: subject,
