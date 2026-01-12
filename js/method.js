@@ -58,6 +58,12 @@ document.querySelectorAll(".method-card").forEach((card) => {
   card.addEventListener("click", () => {
     const methodKey = card.dataset.method;
 
+    // ✅ אם לוחצים על "quiz" -> הודעה שהדף עדיין בבנייה + עצירת מעבר
+    if (methodKey === "quiz") {
+      alert("הדף המבוקש עדיין בבנייה 🚧\nחוזרים אליך בקרוב!");
+      return;
+    }
+
     const subjectKey = localStorage.getItem("selectedSubjectKey") || "";
     const subjectLabel = localStorage.getItem("selectedSubjectLabel") || "";
 
@@ -67,17 +73,14 @@ document.querySelectorAll(".method-card").forEach((card) => {
     document.body.classList.add("fade-out");
 
     setTimeout(() => {
-      // מעבר לעמוד ההגדרות למבחן אמריקאי
-      if (methodKey === "exam") {
-        window.location.href = `exam-settings.html?subject=${subjectKey}`;
+      // ✅ מעבר לעמוד ההגדרות של שאלות-תשובות (הכפתור אצלך נקרא show)
+      if (methodKey === "show") {
+        window.location.href = `qa-settings.html?subject=${encodeURIComponent(
+          subjectKey
+        )}`;
       }
 
-      // מעבר למצב שאלות־תשובות
-      else if (methodKey === "qa") {
-        window.location.href = `qa-settings.html?subject=${subjectKey}`;
-      }
-
-      // מצב "בקרוב"
+      // מצב "בקרוב" (כל דבר אחר)
       else {
         window.location.href = "quiz-mode.html";
       }
