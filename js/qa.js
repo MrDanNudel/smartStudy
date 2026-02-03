@@ -73,7 +73,7 @@ const SUBJECT_TITLES = {
   physics: "פיזיקה",
   statistics1: "סטטיסטיקה – חלק א׳",
   statsDynamics: "יסודות בסטטיסטיקה ודינמיקה",
-  ClassEducation: "חינוך כיתה",
+  ClassEducation: "ניהול כיתה",
 };
 
 document.querySelector(".subject-name").textContent =
@@ -103,7 +103,7 @@ function buildFilteredBank() {
     filteredBank = fullBank.filter(
       (q) =>
         !hardQuestions.includes(q.q.trim()) &&
-        !easyQuestions.includes(q.q.trim())
+        !easyQuestions.includes(q.q.trim()),
     );
   } else {
     filteredBank = fullBank.slice(); // all
