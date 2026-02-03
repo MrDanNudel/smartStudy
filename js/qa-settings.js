@@ -25,6 +25,7 @@ const subjectTitles = {
   statistics1: "סטטיסטיקה – חלק א׳",
   physics: "פיזיקה",
   statsDynamics: "יסודות בסטטיסטיקה ודינמיקה",
+  ClassEducation: "ניהול כיתה",
 };
 
 // Elements
