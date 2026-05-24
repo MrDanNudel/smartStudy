@@ -27,6 +27,8 @@ const subjectTitles = {
   statsDynamics: "יסודות בסטטיסטיקה ודינמיקה",
   ClassEducation: "ניהול כיתה",
   volleyball: "כדור עף",
+  handball: "כדור יד",
+  developmentalPsychology: "פסיכולוגיה התפתחותית",
 };
 
 // Elements
