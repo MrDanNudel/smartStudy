@@ -74,6 +74,7 @@ const SUBJECT_TITLES = {
   statistics1: "סטטיסטיקה – חלק א׳",
   statsDynamics: "יסודות בסטטיסטיקה ודינמיקה",
   ClassEducation: "ניהול כיתה",
+  volleyball: "כדור עף",
 };
 
 document.querySelector(".subject-name").textContent =

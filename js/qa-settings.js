@@ -26,6 +26,7 @@ const subjectTitles = {
   physics: "פיזיקה",
   statsDynamics: "יסודות בסטטיסטיקה ודינמיקה",
   ClassEducation: "ניהול כיתה",
+  volleyball: "כדור עף",
 };
 
 // Elements
@@ -127,7 +128,7 @@ function updateSubtopicMastery() {
 
     // משתמשים ב-easyRaw (מחרוזות) כדי לבדוק אילו שאלות סומנו כקלות
     const easyCount = questionsInTopic.filter((q) =>
-      easyRaw.includes(q.q)
+      easyRaw.includes(q.q),
     ).length;
 
     const percent = total > 0 ? Math.round((easyCount / total) * 100) : 0;
@@ -200,7 +201,7 @@ function getActiveBank() {
   else if (currentMode === "easy") bank = window.easyQuestions;
   else if (currentMode === "unsorted")
     bank = fullBank.filter(
-      (q) => !hardRaw.includes(q.q) && !easyRaw.includes(q.q)
+      (q) => !hardRaw.includes(q.q) && !easyRaw.includes(q.q),
     );
   else bank = fullBank;
 
@@ -261,25 +262,21 @@ window.addEventListener("DOMContentLoaded", () => {
   loadSubtopics(subjectKey);
 
   // Status bar
-  els.statusBar.querySelector(
-    ".total"
-  ).textContent = `📄 סה״כ שאלות: ${totalCount}`;
-  els.statusBar.querySelector(
-    ".easy"
-  ).textContent = `💡 שאלות קלות: ${window.easyQuestions.length}`;
-  els.statusBar.querySelector(
-    ".hard"
-  ).textContent = `💪 שאלות קשות: ${window.hardQuestions.length}`;
-  els.statusBar.querySelector(
-    ".unsorted"
-  ).textContent = `❔ שאלות שלא סומנו: ${unsorted}`;
+  els.statusBar.querySelector(".total").textContent =
+    `📄 סה״כ שאלות: ${totalCount}`;
+  els.statusBar.querySelector(".easy").textContent =
+    `💡 שאלות קלות: ${window.easyQuestions.length}`;
+  els.statusBar.querySelector(".hard").textContent =
+    `💪 שאלות קשות: ${window.hardQuestions.length}`;
+  els.statusBar.querySelector(".unsorted").textContent =
+    `❔ שאלות שלא סומנו: ${unsorted}`;
 
   // Graph + mastery
   renderProgressChart(
     totalCount,
     window.easyQuestions.length,
     window.hardQuestions.length,
-    unsorted
+    unsorted,
   );
 
   updateMastery();
@@ -305,7 +302,7 @@ window.addEventListener("DOMContentLoaded", () => {
     els.numInput.value = clamp(
       Number(els.numInput.value),
       1,
-      Number(els.numInput.max)
+      Number(els.numInput.max),
     );
   });
 
@@ -314,7 +311,7 @@ window.addEventListener("DOMContentLoaded", () => {
     const count = clamp(
       Number(els.numInput.value),
       1,
-      Number(els.numInput.max)
+      Number(els.numInput.max),
     );
 
     const selectedSubtopic = els.subtopicSelect.value;
