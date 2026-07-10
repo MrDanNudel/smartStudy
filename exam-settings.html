@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="he" dir="rtl">
   <head>
     <meta charset="UTF-8" />
@@ -84,41 +84,5 @@
 
     <script src="data/exam-bank.js"></script>
     <script src="js/exam-settings.js"></script>
-
-    <script>
-      // כותרת הנושא מתוך ה-URL
-      const SUBJECT_TITLES = {
-        anatomy: "אנטומיה",
-        chemistry: "כימיה",
-        psychology: "פסיכולוגיה",
-        literacy: "אוריינות שפתית",
-        basketball: "יסודות בכדורסל",
-        athletics: "יסודות באתלטיקה",
-        football: "יסודות בכדורגל",
-        physics: "פיזיקה",
-        statistics1: "סטטיסטיקה – חלק א׳",
-      };
-
-      window.addEventListener("load", () => {
-        const params = new URLSearchParams(window.location.search);
-        const subject = params.get("subject");
-        document.getElementById("pageTitle").textContent =
-          SUBJECT_TITLES[subject] || "נושא לא מוגדר";
-
-        // טעינת תתי נושאים
-        const select = document.getElementById("subtopicSelect");
-        select.innerHTML = `<option value="all">כל התתי-נושאים</option>`;
-
-        if (window.examBank) {
-          const subtopics = [...new Set(examBank.map((q) => q.subtopic))];
-          subtopics.forEach((st) => {
-            const opt = document.createElement("option");
-            opt.value = st;
-            opt.textContent = st;
-            select.appendChild(opt);
-          });
-        }
-      });
-    </script>
   </body>
 </html>

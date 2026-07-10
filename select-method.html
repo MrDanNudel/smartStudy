@@ -1,26 +1,28 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="he" dir="rtl">
   <head>
     <meta charset="UTF-8" />
+
     <meta
       name="viewport"
       content="width=device-width, initial-scale=1, viewport-fit=cover"
     />
+
     <title>בחר שיטת תרגול</title>
 
-    <!-- ✅ קישורים נכונים ל־CSS -->
     <link rel="stylesheet" href="css/base.css" />
     <link rel="stylesheet" href="css/method.css?v=2" />
 
     <style>
-      /* ✨ אפקט כניסה ויציאה חלק */
       body {
         opacity: 0;
         transition: opacity 0.4s ease;
       }
+
       body.fade-in {
         opacity: 1;
       }
+
       body.fade-out {
         opacity: 0;
       }
@@ -39,73 +41,34 @@
 
       <header class="hero method-hero">
         <div class="method-emoji" aria-hidden="true">🗣️</div>
+
         <h1>בחר שיטת תרגול</h1>
+
         <p class="chosen-subject" id="chosenSubject"></p>
       </header>
 
       <section class="method-grid" aria-label="שיטות תרגול">
-        <button class="method-card" data-method="quiz" id="quizBtn" disabled>
+        <button
+          class="method-card"
+          data-method="quiz"
+          id="quizBtn"
+          type="button"
+        >
           <div class="method-title">מבחן שאלות אמריקאיות</div>
         </button>
 
-        <button class="method-card" data-method="show" id="showBtn">
-          <div class="method-title">הצגת שאלות תשובות</div>
+        <button
+          class="method-card"
+          data-method="show"
+          id="showBtn"
+          type="button"
+        >
+          <div class="method-title">הצגת שאלות ותשובות</div>
         </button>
       </section>
     </main>
 
-    <script>
-      // ✨ אפקט כניסה חלק לדף
-      window.addEventListener("DOMContentLoaded", () => {
-        document.body.classList.add("fade-in");
-      });
-
-      // 🧠 קריאה מהנושא שנשמר בדף הקודם
-      const chosenSubject =
-        localStorage.getItem("selectedSubjectLabel") || "נושא לא מוגדר";
-      const subjectKey = localStorage.getItem("selectedSubjectKey") || "";
-
-      // מציג את הנושא בכותרת
-      document.getElementById(
-        "chosenSubject"
-      ).textContent = `נושא נבחר: ${chosenSubject}`;
-
-      // מעבר למסכי תרגול
-      const quizBtn = document.getElementById("quizBtn");
-      const showBtn = document.getElementById("showBtn");
-
-      quizBtn.addEventListener("click", () => {
-        // אפקט מעבר חלק
-        document.body.classList.remove("fade-in");
-        document.body.classList.add("fade-out");
-        setTimeout(() => {
-          // מעבר לעמוד ההגדרות של המבחן
-          window.location.href = `exam-settings.html?subject=${encodeURIComponent(
-            subjectKey
-          )}`;
-        }, 400);
-      });
-
-      showBtn.addEventListener("click", () => {
-        // אפקט מעבר חלק
-        document.body.classList.remove("fade-in");
-        document.body.classList.add("fade-out");
-        setTimeout(() => {
-          // ✅ מעבר לעמוד ההגדרות של שאלות-תשובות
-          window.location.href = `qa-settings.html?subject=${encodeURIComponent(
-            subjectKey
-          )}`;
-        }, 400);
-      });
-
-      // כפתור חזרה עם אפקט יציאה
-      document.querySelector(".back-btn").addEventListener("click", () => {
-        document.body.classList.remove("fade-in");
-        document.body.classList.add("fade-out");
-        setTimeout(() => {
-          window.history.back();
-        }, 400);
-      });
-    </script>
+    <!-- אצלך הקובץ נקרא method.js ונמצא בתיקיית js -->
+    <script src="js/method.js"></script>
   </body>
 </html>

@@ -29,6 +29,7 @@ const subjectTitles = {
   volleyball: "כדור עף",
   handball: "כדור יד",
   developmentalPsychology: "פסיכולוגיה התפתחותית",
+  sportHistory: "היסטוריה של הספורט",
 };
 
 // Elements

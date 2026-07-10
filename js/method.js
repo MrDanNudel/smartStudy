@@ -1,89 +1,97 @@
-// אנימציית כניסה
 window.addEventListener("DOMContentLoaded", () => {
-  document.body.classList.add("fade-in");
+  // איפוס מחלקות אנימציה
+  document.body.classList.remove("fade-in", "fade-out");
 
-  // תמיד מעדכן את המקצוע מה-URL
+  // אנימציית כניסה
+  requestAnimationFrame(() => {
+    document.body.classList.add("fade-in");
+  });
+
+  // קריאת הנושא מהכתובת
   const params = new URLSearchParams(window.location.search);
   const subjectFromUrl = params.get("subject");
 
+  // אם הנושא הגיע מהכתובת, שומרים אותו
   if (subjectFromUrl) {
-    // שמירת ה-Key
     localStorage.setItem("selectedSubjectKey", subjectFromUrl);
-
-    // ניסיון למציאת ה-TILE כדי להוציא את השם
-    const subjectTile = document.querySelector(
-      `.tile[data-key="${subjectFromUrl}"]`
-    );
-
-    if (subjectTile) {
-      // שמירת ה-Label
-      localStorage.setItem(
-        "selectedSubjectLabel",
-        subjectTile.textContent.trim()
-      );
-    }
   }
 
-  // הצגת הנושא שנבחר בחלק העליון
-  const label = localStorage.getItem("selectedSubjectLabel");
-  const chosen = document.getElementById("chosenSubject");
+  // קבלת מפתח הנושא
+  const subjectKey =
+    subjectFromUrl || localStorage.getItem("selectedSubjectKey") || "";
 
-  if (chosen) {
-    if (label) {
-      chosen.textContent = `נושא שנבחר: ${label}`;
-      chosen.style.opacity = 0;
-      setTimeout(() => {
-        chosen.style.transition = "opacity 0.8s ease";
-        chosen.style.opacity = 1;
-      }, 150);
-    } else {
-      chosen.textContent = "";
-    }
+  // קבלת שם הנושא
+  const subjectLabel =
+    localStorage.getItem("selectedSubjectLabel") || "נושא לא מוגדר";
+
+  // הצגת שם הנושא שנבחר
+  const chosenSubject = document.getElementById("chosenSubject");
+
+  if (chosenSubject) {
+    chosenSubject.textContent = `נושא נבחר: ${subjectLabel}`;
+
+    chosenSubject.style.opacity = "0";
+
+    setTimeout(() => {
+      chosenSubject.style.transition = "opacity 0.8s ease";
+      chosenSubject.style.opacity = "1";
+    }, 150);
   }
-});
 
-// חזרה אחורה — איפוס בחירה
-document.querySelector(".back-btn")?.addEventListener("click", () => {
-  localStorage.removeItem("selectedSubjectKey");
-  localStorage.removeItem("selectedSubjectLabel");
+  // איתור הכפתורים
+  const quizBtn = document.getElementById("quizBtn");
+  const showBtn = document.getElementById("showBtn");
+  const backBtn = document.querySelector(".back-btn");
 
-  document.body.classList.add("fade-out");
-  setTimeout(() => {
-    window.location.href = "index.html";
-  }, 300);
-});
-
-// בחירת שיטת תרגול
-document.querySelectorAll(".method-card").forEach((card) => {
-  card.addEventListener("click", () => {
-    const methodKey = card.dataset.method;
-
-    // ✅ אם לוחצים על "quiz" -> הודעה שהדף עדיין בבנייה + עצירת מעבר
-    if (methodKey === "quiz") {
-      alert("הדף המבוקש עדיין בבנייה 🚧\nחוזרים אליך בקרוב!");
+  // שאלות אמריקאיות
+  quizBtn?.addEventListener("click", () => {
+    if (!subjectKey) {
+      alert("לא נבחר נושא לתרגול.");
       return;
     }
 
-    const subjectKey = localStorage.getItem("selectedSubjectKey") || "";
-    const subjectLabel = localStorage.getItem("selectedSubjectLabel") || "";
+    localStorage.setItem("selectedMethodKey", "quiz");
+    localStorage.setItem("selectedMethodLabel", "מבחן שאלות אמריקאיות");
 
-    localStorage.setItem("selectedMethodKey", methodKey);
-    localStorage.setItem("selectedMethodLabel", card.innerText.trim());
+    navigateWithFade(
+      `exam-settings.html?subject=${encodeURIComponent(subjectKey)}`,
+    );
+  });
 
-    document.body.classList.add("fade-out");
+  // שאלות ותשובות
+  showBtn?.addEventListener("click", () => {
+    if (!subjectKey) {
+      alert("לא נבחר נושא לתרגול.");
+      return;
+    }
 
-    setTimeout(() => {
-      // ✅ מעבר לעמוד ההגדרות של שאלות-תשובות (הכפתור אצלך נקרא show)
-      if (methodKey === "show") {
-        window.location.href = `qa-settings.html?subject=${encodeURIComponent(
-          subjectKey
-        )}`;
-      }
+    localStorage.setItem("selectedMethodKey", "show");
+    localStorage.setItem("selectedMethodLabel", "הצגת שאלות ותשובות");
 
-      // מצב "בקרוב" (כל דבר אחר)
-      else {
-        window.location.href = "quiz-mode.html";
-      }
-    }, 300);
+    navigateWithFade(
+      `qa-settings.html?subject=${encodeURIComponent(subjectKey)}`,
+    );
+  });
+
+  // חזרה לדף הראשי
+  backBtn?.addEventListener("click", () => {
+    localStorage.removeItem("selectedMethodKey");
+    localStorage.removeItem("selectedMethodLabel");
+
+    navigateWithFade("index.html");
   });
 });
+
+/**
+ * מעבר לדף אחר עם אנימציית יציאה.
+ *
+ * @param {string} url כתובת היעד
+ */
+function navigateWithFade(url) {
+  document.body.classList.remove("fade-in");
+  document.body.classList.add("fade-out");
+
+  setTimeout(() => {
+    window.location.href = url;
+  }, 400);
+}

@@ -8,19 +8,20 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-top: 90px;
+  padding-top: 140px;
   overflow-x: hidden;
 }
 
 /* ===== סרגל עליון ===== */
 .top-bar {
-  position: fixed;
+  position: absolute;
   top: 20px;
+  left: 4%;
   width: 92%;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  z-index: 999;
+  z-index: 10;
 }
 
 .nav-btn {
@@ -34,6 +35,7 @@ body {
   font-weight: 600;
   transition: 0.25s ease;
 }
+
 .nav-btn:hover {
   transform: scale(1.05);
   background: rgba(30, 60, 110, 0.7);
@@ -43,12 +45,14 @@ body {
 .title-wrap {
   text-align: center;
 }
+
 .page-title {
   font-size: 2.2rem;
   font-weight: 800;
   color: #4ec8ff;
   text-shadow: 0 0 16px rgba(80, 200, 255, 0.5);
 }
+
 .subject-label {
   margin-bottom: -10px;
   font-size: 0.9rem;
@@ -57,14 +61,19 @@ body {
 
 /* ===== כרטיס מרכזי ===== */
 .settings-card {
+  position: relative;
+  z-index: 1;
   width: 480px;
+  max-width: calc(100% - 40px);
   background: rgba(10, 20, 40, 0.6);
   border-radius: 20px;
   padding: 35px 30px;
   margin-top: 40px;
+  margin-bottom: 40px;
   box-shadow: 0 0 25px rgba(0, 150, 255, 0.15);
   backdrop-filter: blur(8px);
   border: 1px solid rgba(255, 255, 255, 0.08);
+  box-sizing: border-box;
 }
 
 .settings-title {
@@ -90,6 +99,8 @@ body {
 
 /* ===== Select ===== */
 .form-row select {
+  position: relative;
+  z-index: 20;
   width: 100%;
   padding: 12px 14px;
   background: rgba(20, 50, 85, 0.65);
@@ -99,7 +110,9 @@ body {
   font-size: 1.05rem;
   outline: none;
   transition: 0.25s ease;
+  box-sizing: border-box;
 }
+
 .form-row select:hover {
   background: rgba(40, 80, 140, 0.78);
   border-color: rgba(170, 230, 255, 0.45);
@@ -117,7 +130,9 @@ body {
   color: #dff6ff;
   font-size: 1.05rem;
   transition: 0.25s ease;
+  box-sizing: border-box;
 }
+
 .mini-btn:hover {
   background: rgba(40, 80, 140, 0.85);
 }
@@ -137,6 +152,7 @@ body {
   box-shadow: 0 0 18px rgba(0, 150, 220, 0.35);
   transition: 0.3s ease;
 }
+
 .start-btn:hover {
   transform: scale(1.05);
   box-shadow: 0 0 25px rgba(0, 200, 255, 0.55);
@@ -151,6 +167,11 @@ body {
   justify-content: center;
   align-items: center;
   backdrop-filter: blur(6px);
+  z-index: 1000;
+}
+
+.modal.show {
+  display: flex;
 }
 
 .modal-content {
@@ -158,8 +179,10 @@ body {
   padding: 25px;
   border-radius: 16px;
   width: 320px;
+  max-width: calc(100% - 40px);
   border: 1px solid rgba(120, 200, 255, 0.35);
   text-align: center;
+  box-sizing: border-box;
 }
 
 .modal-content input {
@@ -171,6 +194,7 @@ body {
   background: rgba(5, 15, 35, 0.8);
   border: 1px solid #00baff;
   color: #eaf6ff;
+  box-sizing: border-box;
 }
 
 .modal-actions {
@@ -192,4 +216,31 @@ body {
 .primary {
   background: #0096ff;
   color: white;
+}
+
+/* ===== התאמה למסכים קטנים ===== */
+@media (max-width: 700px) {
+  body {
+    padding-top: 170px;
+  }
+
+  .top-bar {
+    width: 94%;
+    left: 3%;
+    gap: 10px;
+  }
+
+  .page-title {
+    font-size: 1.6rem;
+  }
+
+  .nav-btn {
+    padding: 8px 12px;
+    font-size: 0.9rem;
+  }
+
+  .settings-card {
+    width: calc(100% - 24px);
+    padding: 28px 20px;
+  }
 }

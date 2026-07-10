@@ -75,6 +75,9 @@ const SUBJECT_TITLES = {
   statsDynamics: "יסודות בסטטיסטיקה ודינמיקה",
   ClassEducation: "ניהול כיתה",
   volleyball: "כדור עף",
+  handball: "כדור יד",
+  developmentalPsychology: "פסיכולוגיה התפתחותית",
+  sportHistory: "היסטוריה של הספורט",
 };
 
 document.querySelector(".subject-name").textContent =
