@@ -49,20 +49,63 @@
       <div id="progressView">התקדמות: 0%</div>
     </div>
 
-    <div class="overlay" id="endOverlay">
-      <div class="end-card">
-        <div class="end-title" id="endTitle">המבחן נגמר</div>
+    <!-- מסך סיום המבחן -->
+    <div
+      class="end-overlay"
+      id="endOverlay"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="endTitle"
+    >
+      <section class="end-panel">
+        <div class="end-icon" aria-hidden="true">🏁</div>
 
-        <div class="end-sub" id="endSub">כל הכבוד!</div>
+        <h2 class="end-title" id="endTitle">המבחן הסתיים</h2>
 
-        <div class="btn-row">
-          <button class="btn" id="againBtn" type="button">נסה שוב</button>
+        <p class="end-subtitle" id="endSub">סיימת את המבחן</p>
 
-          <button class="btn primary" id="backBtn" type="button">
-            חזרה לבחירת שיטה
+        <div class="end-actions">
+          <button
+            class="end-action end-action--primary"
+            id="againBtn"
+            type="button"
+          >
+            <span class="end-action__icon" aria-hidden="true">🔄</span>
+
+            <span class="end-action__content">
+              <strong>נסה שוב</strong>
+              <small>התחל מחדש עם אותן ההגדרות</small>
+            </span>
+          </button>
+
+          <button class="end-action" id="settingsBtn" type="button">
+            <span class="end-action__icon" aria-hidden="true">⚙️</span>
+
+            <span class="end-action__content">
+              <strong>הגדרות מבחן</strong>
+              <small>שנה זמן, שאלות וסינון</small>
+            </span>
+          </button>
+
+          <button class="end-action" id="methodBtn" type="button">
+            <span class="end-action__icon" aria-hidden="true">📚</span>
+
+            <span class="end-action__content">
+              <strong>שיטת תרגול</strong>
+              <small>בחר דרך למידה אחרת</small>
+            </span>
+          </button>
+
+          <button class="end-action" id="endHomeBtn" type="button">
+            <span class="end-action__icon" aria-hidden="true">🏠</span>
+
+            <span class="end-action__content">
+              <strong>דף הבית</strong>
+              <small>חזור לבחירת הנושא</small>
+            </span>
           </button>
         </div>
-      </div>
+      </section>
     </div>
 
     <script src="data/exam-bank.js"></script>

@@ -81,7 +81,9 @@ const circleHard = document.getElementById("examCircleHard");
 const prevBtn = document.getElementById("prevBtn");
 const homeBtn = document.getElementById("homeBtn");
 const againBtn = document.getElementById("againBtn");
-const backBtn = document.getElementById("backBtn");
+const settingsBtn = document.getElementById("settingsBtn");
+const methodBtn = document.getElementById("methodBtn");
+const endHomeBtn = document.getElementById("endHomeBtn");
 
 // ================================
 // טעינת סטטוס קל/קשה
@@ -90,6 +92,21 @@ let difficultyMap = JSON.parse(localStorage.getItem("easyHardStats") || "{}");
 
 function saveDifficulty() {
   localStorage.setItem("easyHardStats", JSON.stringify(difficultyMap));
+}
+
+// ================================
+// קבלת מצב השאלה
+// ================================
+// כל ערך שאינו easy או hard נחשב "לא סומנה".
+// הדבר מטפל גם בערכים ישנים מסוג neutral.
+function getQuestionStatus(question) {
+  const status = difficultyMap[question.id];
+
+  if (status === "easy" || status === "hard") {
+    return status;
+  }
+
+  return "unsorted";
 }
 
 // ================================
@@ -132,41 +149,15 @@ const originalBank = Array.isArray(window.examBank)
   ? window.examBank.slice()
   : [];
 
-let bank = originalBank.slice();
+let bank = originalBank.filter((question) => {
+  const matchesSubtopic =
+    settings.subtopic === "all" || question.subtopic === settings.subtopic;
 
-// ================================
-// שלב 1 — סינון לפי תת־נושא
-// ================================
-if (settings.subtopic !== "all") {
-  bank = bank.filter((question) => question.subtopic === settings.subtopic);
-}
+  const matchesType =
+    settings.type === "all" || getQuestionStatus(question) === settings.type;
 
-// אם תת־הנושא לא קיים
-if (bank.length === 0 && settings.subtopic !== "all") {
-  console.warn("⚠️ לא נמצאו שאלות לתת־הנושא:", settings.subtopic);
-
-  bank = originalBank.slice();
-}
-
-// ================================
-// שלב 2 — סינון לפי קל/קשה
-// ================================
-if (settings.type === "easy") {
-  bank = bank.filter((question) => difficultyMap[question.id] === "easy");
-} else if (settings.type === "hard") {
-  bank = bank.filter((question) => difficultyMap[question.id] === "hard");
-}
-
-// fallback אם סינון הקושי מחק הכול
-if (bank.length === 0 && settings.type !== "all") {
-  console.warn("⚠️ לא נמצאו שאלות ברמת הקושי שנבחרה.");
-
-  bank = originalBank.slice();
-
-  if (settings.subtopic !== "all") {
-    bank = bank.filter((question) => question.subtopic === settings.subtopic);
-  }
-}
+  return matchesSubtopic && matchesType;
+});
 
 // ================================
 // שלב 3 — ערבוב וחיתוך כמות
@@ -186,6 +177,7 @@ if (bank.length === 0) {
 // ================================
 let current = 0;
 let fails = 0;
+let correctAnswers = 0;
 let timerId = null;
 let timeLeftSec = settings.timePerQuestion;
 
@@ -237,7 +229,54 @@ function drawTime() {
     timeLeft.textContent = `נשארו ${seconds} שניות...`;
   }
 }
+function getExamResultText(percent) {
+  if (percent === 100) {
+    return {
+      title: "מושלם! 🏆",
+      subtitle: `ענית נכון על ${percent}% מהמבחן. שליטה מלאה בחומר!`,
+    };
+  }
 
+  if (percent >= 90) {
+    return {
+      title: "מצוין! 🌟",
+      subtitle: `ענית נכון על ${percent}% מהמבחן. הישג מרשים מאוד!`,
+    };
+  }
+
+  if (percent >= 75) {
+    return {
+      title: "כל הכבוד! 👏",
+      subtitle: `ענית נכון על ${percent}% מהמבחן. יש לך שליטה טובה בחומר.`,
+    };
+  }
+
+  if (percent >= 60) {
+    return {
+      title: "עבודה טובה 👍",
+      subtitle: `ענית נכון על ${percent}% מהמבחן. עוד קצת תרגול ותשתפר משמעותית.`,
+    };
+  }
+
+  if (percent >= 40) {
+    return {
+      title: "יש מקום לשיפור 📚",
+      subtitle: `ענית נכון על ${percent}% מהמבחן. כדאי לחזור על הנושאים שבהם טעית.`,
+    };
+  }
+
+  if (percent >= 20) {
+    return {
+      title: "ממשיכים להתאמן 💪",
+      subtitle: `ענית נכון על ${percent}% מהמבחן. חזרה נוספת על החומר תעזור לך.`,
+    };
+  }
+
+  return {
+    title: "כדאי לנסות שוב 🔄",
+    subtitle: `ענית נכון על ${percent}% מהמבחן. מומלץ לעבור שוב על החומר לפני ניסיון נוסף.`,
+  };
+}
 // ================================
 // הצגת שאלה
 // ================================
@@ -245,7 +284,13 @@ function loadQuestion() {
   const item = bank[current];
 
   if (!item) {
-    endExam("המבחן נגמר", `סיימת ${bank.length} שאלות. כל הכבוד 👏`);
+    const correctPercent =
+      bank.length > 0 ? Math.round((correctAnswers / bank.length) * 100) : 0;
+
+    const resultText = getExamResultText(correctPercent);
+
+    endExam(resultText.title, resultText.subtitle);
+
     return;
   }
 
@@ -271,11 +316,13 @@ function loadQuestion() {
 
   resetCircles();
 
-  if (difficultyMap[item.id] === "easy") {
+  const currentStatus = getQuestionStatus(item);
+
+  if (currentStatus === "easy") {
     circleEasy?.classList.add("active");
   }
 
-  if (difficultyMap[item.id] === "hard") {
+  if (currentStatus === "hard") {
     circleHard?.classList.add("active");
   }
 
@@ -327,8 +374,10 @@ function handleAnswer(visualIndex) {
   const id = item.id;
   const buttons = [...optionsWrap.children];
 
+  // מונע לחיצה נוספת לאחר בחירת תשובה
   buttons.forEach((button) => {
     button.classList.add("disabled");
+    button.disabled = true;
   });
 
   clearInterval(timerId);
@@ -344,48 +393,79 @@ function handleAnswer(visualIndex) {
 
   const isCorrect = realChosenIndex === item.correct;
 
+  // סימון התשובה שנבחרה
   if (visualIndex !== -1) {
     const chosenButton = buttons[visualIndex];
 
     chosenButton?.classList.add(isCorrect ? "correct" : "wrong");
   }
 
+  // הצגת התשובה הנכונה
   correctButton?.classList.add("correct");
 
-  if (!isCorrect) {
+  // ================================
+  // ספירת תשובות נכונות ושגויות
+  // ================================
+  if (isCorrect) {
+    correctAnswers += 1;
+  } else {
     fails += 1;
   }
 
   // ================================
   // עדכון רמת השאלה
   // ================================
-  const previousStatus = difficultyMap[id] || "neutral";
+  const previousStatus = getQuestionStatus(item);
+  let nextStatus = previousStatus;
 
   if (isCorrect) {
-    if (previousStatus === "neutral") {
-      difficultyMap[id] = "easy";
+    if (previousStatus === "unsorted") {
+      nextStatus = "easy";
     } else if (previousStatus === "hard") {
-      difficultyMap[id] = "neutral";
+      nextStatus = "unsorted";
     }
   } else {
-    if (previousStatus === "neutral") {
-      difficultyMap[id] = "hard";
+    if (previousStatus === "unsorted") {
+      nextStatus = "hard";
     } else if (previousStatus === "easy") {
-      difficultyMap[id] = "neutral";
+      nextStatus = "unsorted";
     }
+  }
+
+  // מצב ללא סימון נשמר באמצעות מחיקת הרשומה
+  if (nextStatus === "unsorted") {
+    delete difficultyMap[id];
+  } else {
+    difficultyMap[id] = nextStatus;
   }
 
   saveDifficulty();
   updateHud();
 
+  // ================================
+  // בדיקת מספר הפסילות
+  // ================================
   if (settings.maxFails !== 0 && fails > settings.maxFails) {
     setTimeout(() => {
-      endExam("חרגת ממספר הפסילות", "המבחן נגמר. נסה שוב ✋");
+      const answeredQuestions = correctAnswers + fails;
+
+      const correctPercent =
+        answeredQuestions > 0
+          ? Math.round((correctAnswers / answeredQuestions) * 100)
+          : 0;
+
+      endExam(
+        "חרגת ממספר הפסילות",
+        `ענית נכון על ${correctPercent}% מהשאלות שענית עליהן.`,
+      );
     }, 700);
 
     return;
   }
 
+  // ================================
+  // מעבר לשאלה הבאה
+  // ================================
   setTimeout(() => {
     current += 1;
 
@@ -429,6 +509,7 @@ function endExam(title, subtitle) {
 againBtn?.addEventListener("click", () => {
   current = 0;
   fails = 0;
+  correctAnswers = 0;
 
   shuffle(bank);
 
@@ -441,8 +522,30 @@ againBtn?.addEventListener("click", () => {
 // ================================
 // חזרה לבחירת שיטה
 // ================================
-backBtn?.addEventListener("click", () => {
+// ================================
+// מעבר להגדרות המבחן
+// ================================
+settingsBtn?.addEventListener("click", () => {
+  location.href = `exam-settings.html?subject=${encodeURIComponent(subjectKey)}`;
+});
+
+// ================================
+// מעבר לבחירת שיטת התרגול
+// ================================
+methodBtn?.addEventListener("click", () => {
   location.href = `select-method.html?subject=${encodeURIComponent(subjectKey)}`;
+});
+
+// ================================
+// מעבר לדף הבית
+// ================================
+endHomeBtn?.addEventListener("click", () => {
+  localStorage.removeItem("selectedSubjectKey");
+  localStorage.removeItem("selectedSubjectLabel");
+  localStorage.removeItem("selectedMethodKey");
+  localStorage.removeItem("selectedMethodLabel");
+
+  location.href = "index.html";
 });
 
 // ================================
