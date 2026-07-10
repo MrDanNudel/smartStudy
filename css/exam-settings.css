@@ -9,6 +9,7 @@ body {
   flex-direction: column;
   align-items: center;
   padding-top: 140px;
+  padding-bottom: 50px;
   overflow-x: hidden;
 }
 
@@ -153,9 +154,222 @@ body {
   transition: 0.3s ease;
 }
 
-.start-btn:hover {
+.start-btn:hover:not(:disabled) {
   transform: scale(1.05);
   box-shadow: 0 0 25px rgba(0, 200, 255, 0.55);
+}
+
+.start-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* ===== טקסט התקדמות ===== */
+.mid-info {
+  margin: 12px 0 0;
+  text-align: center;
+  color: #a7c3d6;
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+.mid-arrow {
+  display: block;
+  margin: 12px auto 0;
+  width: 32px;
+}
+
+.mid-arrow svg {
+  width: 100%;
+  height: auto;
+  fill: #29ccff;
+  filter: drop-shadow(0 0 6px rgba(41, 204, 255, 0.9));
+  animation: mid-arrow-pulse 1.6s ease-in-out infinite;
+}
+
+@keyframes mid-arrow-pulse {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(4px);
+  }
+}
+
+/* ===== שליטה כללית ===== */
+.mastery-box {
+  width: 90%;
+  max-width: 680px;
+  margin: 36px auto 0;
+  text-align: center;
+}
+
+.mastery-title {
+  font-size: 26px;
+  font-weight: 800;
+  margin-bottom: 16px;
+  color: #eaf6ff;
+  text-shadow:
+    0 0 14px rgba(120, 220, 255, 0.35),
+    0 0 6px rgba(120, 220, 255, 0.25);
+}
+
+.mastery-bar {
+  width: 100%;
+  height: 24px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 14px;
+  border: 1px solid rgba(120, 220, 255, 0.25);
+  overflow: hidden;
+  backdrop-filter: blur(6px);
+  margin-bottom: 14px;
+}
+
+#masteryFill {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, #28c0ff, #1997ff);
+  border-radius: 14px;
+  transition: width 0.5s ease;
+  box-shadow: 0 0 12px rgba(41, 204, 255, 0.6);
+}
+
+.mastery-note {
+  margin-top: 6px;
+  font-size: 15px;
+  color: #a7c3d6;
+}
+
+/* ===== שליטה לפי תתי־נושא ===== */
+.subtopic-mastery-section {
+  width: 90%;
+  max-width: 680px;
+  margin: 32px auto 0;
+}
+
+.subtopic-mastery-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: #eaf6ff;
+  text-align: center;
+  margin-bottom: 14px;
+  text-shadow: 0 0 10px rgba(120, 220, 255, 0.35);
+}
+
+.subtopic-mastery-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.subtopic-item {
+  width: 100%;
+}
+
+.subtopic-label {
+  font-size: 16px;
+  font-weight: 700;
+  color: #eaf6ff;
+  margin-bottom: 6px;
+}
+
+.subtopic-bar-outer {
+  width: 100%;
+  height: 10px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(120, 220, 255, 0.2);
+  overflow: hidden;
+  backdrop-filter: blur(4px);
+}
+
+.subtopic-bar-inner {
+  height: 100%;
+  width: 0%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, #28c0ff, #1997ff);
+  box-shadow: 0 0 8px rgba(41, 204, 255, 0.45);
+  transition:
+    width 0.4s ease,
+    background 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.subtopic-bar-inner.subtopic-bar-full {
+  background: linear-gradient(90deg, #24ff9d, #18c06a);
+  box-shadow: 0 0 12px rgba(36, 255, 160, 0.7);
+}
+
+/* ===== שורת סטטוס ===== */
+.status-bar {
+  width: 100%;
+  max-width: 960px;
+  margin: 50px auto 0;
+  padding: 0 20px;
+  display: flex;
+  justify-content: center;
+  gap: 34px;
+  align-items: center;
+  flex-wrap: wrap;
+  font-size: 17px;
+  font-weight: 600;
+  color: #dff8ff;
+  text-shadow: 0 0 6px rgba(80, 200, 255, 0.3);
+  box-sizing: border-box;
+}
+
+.status-bar span {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.status-bar .hard {
+  color: #ff7979;
+}
+
+.status-bar .easy {
+  color: #7dffb2;
+}
+
+.status-bar .unsorted {
+  color: #9fc6ff;
+}
+
+.status-bar .total {
+  color: #8cd0ff;
+}
+
+/* ===== ניקוי התקדמות ===== */
+.clear-wrap {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 26px;
+}
+
+.clear-btn {
+  padding: 14px 32px;
+  border-radius: 14px;
+  border: 1px solid rgba(120, 220, 255, 0.45);
+  background: rgba(25, 48, 82, 0.25);
+  color: #8fdcff;
+  font-weight: 800;
+  font-size: 17px;
+  cursor: pointer;
+  transition: 0.28s ease;
+  backdrop-filter: blur(6px);
+  box-shadow: 0 0 12px rgba(120, 220, 255, 0.25);
+}
+
+.clear-btn:hover {
+  background: rgba(40, 100, 160, 0.32);
+  border-color: rgba(160, 230, 255, 0.8);
+  color: #d9f8ff;
+  box-shadow: 0 0 18px rgba(120, 220, 255, 0.45);
+  transform: translateY(-2px);
 }
 
 /* ===== Modal ===== */
@@ -242,5 +456,23 @@ body {
   .settings-card {
     width: calc(100% - 24px);
     padding: 28px 20px;
+  }
+
+  .mastery-title {
+    font-size: 22px;
+  }
+
+  .subtopic-mastery-section,
+  .mastery-box {
+    width: calc(100% - 32px);
+  }
+
+  .subtopic-label {
+    font-size: 15px;
+  }
+
+  .status-bar {
+    flex-direction: column;
+    gap: 8px;
   }
 }

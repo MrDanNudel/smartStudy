@@ -3,6 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
     <title>הגדרות מבחן אמריקאי</title>
 
     <link rel="stylesheet" href="css/base.css" />
@@ -12,72 +13,118 @@
   <body>
     <!-- סרגל עליון -->
     <div class="top-bar">
-      <button class="nav-btn" id="prev-page">⟵ לעמוד הקודם</button>
+      <button class="nav-btn" id="prev-page" type="button">
+        ⟵ לעמוד הקודם
+      </button>
+
       <div class="title-wrap">
         <p class="subject-label">הנושא הנבחר</p>
         <h1 class="page-title" id="pageTitle">—</h1>
       </div>
-      <button class="nav-btn" id="home-page">לעמוד הבית ⟶</button>
+
+      <button class="nav-btn" id="home-page" type="button">לעמוד הבית ⟶</button>
     </div>
 
     <!-- כרטיס הגדרות -->
     <div class="settings-card">
       <h2 class="settings-title">הגדרות המבחן</h2>
 
-      <!-- תת נושא -->
       <div class="form-row">
-        <label>בחר תת-נושא</label>
+        <label for="subtopicSelect">בחר תת־נושא</label>
         <select id="subtopicSelect">
-          <option value="all">כל התתי-נושאים</option>
+          <option value="all">כל התתי־נושאים</option>
         </select>
       </div>
 
-      <!-- סוג שאלות -->
       <div class="form-row">
-        <label>סוג השאלות</label>
+        <label for="typeSelect">סוג השאלות</label>
         <select id="typeSelect">
           <option value="all">כל השאלות</option>
           <option value="easy">שאלות קלות</option>
           <option value="hard">שאלות מאתגרות</option>
+          <option value="unsorted">שאלות שלא סומנו</option>
         </select>
       </div>
 
-      <!-- זמן לשאלה -->
       <div class="form-row">
         <label>זמן לכל שאלה</label>
-        <button class="mini-btn" id="time-btn">
+        <button class="mini-btn" id="time-btn" type="button">
           <span id="time-value">30 שניות</span>
         </button>
       </div>
 
-      <!-- מספר שאלות -->
       <div class="form-row">
         <label>מספר שאלות</label>
-        <button class="mini-btn" id="questions-btn">
+        <button class="mini-btn" id="questions-btn" type="button">
           <span id="questions-value">20 שאלות</span>
         </button>
       </div>
 
-      <!-- פסילות -->
       <div class="form-row">
         <label>מספר פסילות</label>
-        <button class="mini-btn" id="fails-btn">
+        <button class="mini-btn" id="fails-btn" type="button">
           <span id="fails-value">עד 5 פסילות</span>
         </button>
       </div>
 
-      <!-- כפתור התחל -->
-      <button id="start-btn" class="start-btn">התחל מבחן</button>
+      <button id="start-btn" class="start-btn" type="button">התחל מבחן</button>
+    </div>
+
+    <!-- אזור התקדמות -->
+    <p class="mid-info">
+      לפניך נתונים המשקפים את ההתקדמות שלך
+      <span class="mid-arrow" aria-hidden="true">
+        <svg viewBox="0 0 40 20" xmlns="http://www.w3.org/2000/svg">
+          <path d="M2 2 L20 18 L38 2 Z"></path>
+        </svg>
+      </span>
+    </p>
+
+    <!-- מדד שליטה כללי -->
+    <div class="mastery-box">
+      <p id="masteryLabel" class="mastery-title">אתה שולט על 0% מהשאלות</p>
+
+      <div class="mastery-bar">
+        <div id="masteryFill"></div>
+      </div>
+
+      <p id="masteryNote" class="mastery-note">
+        בוא נתחיל – יש עוד הרבה ללמוד ✨
+      </p>
+    </div>
+
+    <!-- שליטה לפי תתי־נושא -->
+    <section class="subtopic-mastery-section">
+      <h3 class="subtopic-mastery-title">שליטה לפי תתי־נושא</h3>
+
+      <div id="subtopicMasteryContainer" class="subtopic-mastery-list"></div>
+    </section>
+
+    <!-- סטטוס -->
+    <div class="status-bar" id="statusBar">
+      <span class="total">📄 סה״כ שאלות: 0</span>
+      <span class="easy">💡 שאלות קלות: 0</span>
+      <span class="hard">💪 שאלות קשות: 0</span>
+      <span class="unsorted">❔ שאלות שלא סומנו: 0</span>
+    </div>
+
+    <div class="clear-wrap">
+      <button id="clearProgressBtn" class="clear-btn" type="button">
+        נקה התקדמות במבחן
+      </button>
     </div>
 
     <!-- חלון קלט -->
     <div class="modal" id="modal">
       <div class="modal-content">
         <h3 id="modal-title"></h3>
+
         <input type="number" id="modal-input" />
+
         <div class="modal-actions">
-          <button id="save-btn" class="primary">שמור</button>
-          <button id="cancel-btn">בטל</button>
+          <button id="save-btn" class="primary" type="button">שמור</button>
+
+          <button id="cancel-btn" type="button">בטל</button>
         </div>
       </div>
     </div>

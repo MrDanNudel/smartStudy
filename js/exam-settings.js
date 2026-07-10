@@ -47,6 +47,17 @@ window.addEventListener("DOMContentLoaded", () => {
   const prevPageBtn = document.getElementById("prev-page");
   const homePageBtn = document.getElementById("home-page");
 
+  const masteryLabel = document.getElementById("masteryLabel");
+  const masteryFill = document.getElementById("masteryFill");
+  const masteryNote = document.getElementById("masteryNote");
+
+  const subtopicMasteryContainer = document.getElementById(
+    "subtopicMasteryContainer",
+  );
+
+  const statusBar = document.getElementById("statusBar");
+  const clearProgressBtn = document.getElementById("clearProgressBtn");
+
   pageTitle.textContent =
     SUBJECT_TITLES[subjectKey] ||
     localStorage.getItem("selectedSubjectLabel") ||
@@ -60,26 +71,37 @@ window.addEventListener("DOMContentLoaded", () => {
     bank = window.examBank;
   }
 
+  let difficultyMap = readDifficultyMap();
+
   console.log("נושא:", subjectKey);
   console.log("מספר שאלות במאגר:", bank.length);
   console.log("שאלה ראשונה:", bank[0]);
 
   loadSubtopics(bank);
+  updateProgressDisplay();
 
   let timePerQuestion = 30;
-  let numQuestions = Math.min(20, bank.length || 20);
+
+  // מציג מראש את כל השאלות הזמינות
+  let numQuestions = bank.length || 1;
+
   let maxFails = 5;
+  let currentSetting = "";
 
   updateSettingsDisplay();
-
-  let currentSetting = "";
+  updateAvailableQuestionCount();
 
   timeBtn?.addEventListener("click", () => {
     openModal("בחר זמן לכל שאלה", timePerQuestion, 5, 300, "time");
   });
 
   questionsBtn?.addEventListener("click", () => {
-    const maximum = Math.max(1, getFilteredBank().length);
+    const maximum = getFilteredBank().length;
+
+    if (maximum === 0) {
+      alert("אין שאלות המתאימות לסינון שבחרת.");
+      return;
+    }
 
     openModal(
       "בחר מספר שאלות",
@@ -131,22 +153,14 @@ window.addEventListener("DOMContentLoaded", () => {
     }
   });
 
+  // בבחירת תת־נושא מציגים מיד את המקסימום הזמין
   subtopicSelect?.addEventListener("change", () => {
-    const availableCount = getFilteredBank().length;
-
-    if (availableCount > 0 && numQuestions > availableCount) {
-      numQuestions = availableCount;
-      updateSettingsDisplay();
-    }
+    setQuestionsToMaximum();
   });
 
+  // גם בשינוי סוג שאלות מציגים את המקסימום הזמין
   typeSelect?.addEventListener("change", () => {
-    const availableCount = getFilteredBank().length;
-
-    if (availableCount > 0 && numQuestions > availableCount) {
-      numQuestions = availableCount;
-      updateSettingsDisplay();
-    }
+    setQuestionsToMaximum();
   });
 
   startBtn?.addEventListener("click", () => {
@@ -162,7 +176,7 @@ window.addEventListener("DOMContentLoaded", () => {
       return;
     }
 
-    numQuestions = Math.min(numQuestions, filteredBank.length);
+    numQuestions = Math.min(Math.max(numQuestions, 1), filteredBank.length);
 
     const settings = {
       subject: subjectKey,
@@ -187,6 +201,22 @@ window.addEventListener("DOMContentLoaded", () => {
     window.location.href = `exam.html?${query.toString()}`;
   });
 
+  clearProgressBtn?.addEventListener("click", () => {
+    const approved = confirm(
+      "למחוק את כל סימוני הקושי וההתקדמות במבחנים האמריקאיים?",
+    );
+
+    if (!approved) {
+      return;
+    }
+
+    localStorage.setItem("easyHardStats", "{}");
+    difficultyMap = {};
+
+    updateProgressDisplay();
+    setQuestionsToMaximum();
+  });
+
   prevPageBtn?.addEventListener("click", () => {
     window.location.href = `select-method.html?subject=${encodeURIComponent(subjectKey)}`;
   });
@@ -200,8 +230,20 @@ window.addEventListener("DOMContentLoaded", () => {
     window.location.href = "index.html";
   });
 
+  function readDifficultyMap() {
+    try {
+      const parsed = JSON.parse(localStorage.getItem("easyHardStats") || "{}");
+
+      return parsed && typeof parsed === "object" ? parsed : {};
+    } catch (error) {
+      console.error("שגיאה בקריאת easyHardStats:", error);
+
+      return {};
+    }
+  }
+
   function loadSubtopics(questionBank) {
-    subtopicSelect.innerHTML = `<option value="all">כל התתי-נושאים</option>`;
+    subtopicSelect.innerHTML = `<option value="all">כל התתי־נושאים</option>`;
 
     const subtopics = [
       ...new Set(
@@ -230,6 +272,16 @@ window.addEventListener("DOMContentLoaded", () => {
     }
   }
 
+  function getQuestionStatus(question) {
+    const status = difficultyMap[question.id];
+
+    if (status === "easy" || status === "hard") {
+      return status;
+    }
+
+    return "unsorted";
+  }
+
   function getFilteredBank() {
     let filtered = [...bank];
 
@@ -243,16 +295,215 @@ window.addEventListener("DOMContentLoaded", () => {
     }
 
     if (selectedType !== "all") {
-      const difficultyMap = JSON.parse(
-        localStorage.getItem("easyHardStats") || "{}",
-      );
-
       filtered = filtered.filter(
-        (question) => difficultyMap[question.id] === selectedType,
+        (question) => getQuestionStatus(question) === selectedType,
       );
     }
 
     return filtered;
+  }
+
+  function setQuestionsToMaximum() {
+    const availableCount = getFilteredBank().length;
+
+    if (availableCount === 0) {
+      questionsValue.textContent = "אין שאלות מתאימות";
+
+      startBtn.disabled = true;
+      questionsBtn.disabled = true;
+
+      return;
+    }
+
+    startBtn.disabled = false;
+    questionsBtn.disabled = false;
+
+    // קובע את מספר השאלות למקסימום לפי הסינון
+    numQuestions = availableCount;
+
+    updateSettingsDisplay();
+  }
+
+  function updateAvailableQuestionCount() {
+    const availableCount = getFilteredBank().length;
+
+    if (availableCount === 0) {
+      questionsValue.textContent = "אין שאלות מתאימות";
+
+      startBtn.disabled = true;
+      questionsBtn.disabled = true;
+
+      return;
+    }
+
+    startBtn.disabled = false;
+    questionsBtn.disabled = false;
+
+    if (numQuestions > availableCount) {
+      numQuestions = availableCount;
+    }
+
+    if (numQuestions < 1) {
+      numQuestions = 1;
+    }
+
+    updateSettingsDisplay();
+  }
+
+  function updateProgressDisplay() {
+    const total = bank.length;
+
+    const easyCount = bank.filter(
+      (question) => getQuestionStatus(question) === "easy",
+    ).length;
+
+    const hardCount = bank.filter(
+      (question) => getQuestionStatus(question) === "hard",
+    ).length;
+
+    const unsortedCount = total - easyCount - hardCount;
+
+    const masteryPercent =
+      total > 0 ? Math.round((easyCount / total) * 100) : 0;
+
+    if (masteryLabel) {
+      masteryLabel.textContent = `אתה שולט על ${masteryPercent}% מהשאלות`;
+    }
+
+    if (masteryFill) {
+      masteryFill.style.width = `${masteryPercent}%`;
+    }
+
+    if (masteryNote) {
+      masteryNote.textContent = getMasteryMessage(masteryPercent);
+    }
+
+    if (statusBar) {
+      const totalElement = statusBar.querySelector(".total");
+
+      const easyElement = statusBar.querySelector(".easy");
+
+      const hardElement = statusBar.querySelector(".hard");
+
+      const unsortedElement = statusBar.querySelector(".unsorted");
+
+      if (totalElement) {
+        totalElement.textContent = `📄 סה״כ שאלות: ${total}`;
+      }
+
+      if (easyElement) {
+        easyElement.textContent = `💡 שאלות קלות: ${easyCount}`;
+      }
+
+      if (hardElement) {
+        hardElement.textContent = `💪 שאלות קשות: ${hardCount}`;
+      }
+
+      if (unsortedElement) {
+        unsortedElement.textContent = `❔ שאלות שלא סומנו: ${unsortedCount}`;
+      }
+    }
+
+    updateSubtopicMastery();
+  }
+
+  function getMasteryMessage(percent) {
+    if (percent <= 20) {
+      return "אתה רק בתחילת הדרך — קדימה!";
+    }
+
+    if (percent <= 40) {
+      return "אתה מתחמם, יש התקדמות.";
+    }
+
+    if (percent <= 60) {
+      return "הולך ומשתפר!";
+    }
+
+    if (percent <= 80) {
+      return "יפה מאוד! שליטה טובה בחומר.";
+    }
+
+    if (percent <= 95) {
+      return "כמעט שם! שליטה מצוינת.";
+    }
+
+    return "אתה שולט בכל החומר! אלוף 🔥";
+  }
+
+  function updateSubtopicMastery() {
+    if (!subtopicMasteryContainer) {
+      return;
+    }
+
+    subtopicMasteryContainer.innerHTML = "";
+
+    if (bank.length === 0) {
+      return;
+    }
+
+    const subtopics = [
+      ...new Set(
+        bank
+          .map((question) => question.subtopic)
+          .filter(
+            (subtopic) =>
+              typeof subtopic === "string" && subtopic.trim() !== "",
+          ),
+      ),
+    ];
+
+    subtopics
+      .sort((a, b) => a.localeCompare(b, "he"))
+      .forEach((subtopic) => {
+        const questionsInSubtopic = bank.filter(
+          (question) => question.subtopic === subtopic,
+        );
+
+        const total = questionsInSubtopic.length;
+
+        const easyCount = questionsInSubtopic.filter(
+          (question) => getQuestionStatus(question) === "easy",
+        ).length;
+
+        const hardCount = questionsInSubtopic.filter(
+          (question) => getQuestionStatus(question) === "hard",
+        ).length;
+
+        const percent = total > 0 ? Math.round((easyCount / total) * 100) : 0;
+
+        const item = document.createElement("div");
+
+        item.className = "subtopic-item";
+
+        const label = document.createElement("div");
+
+        label.className = "subtopic-label";
+
+        label.textContent =
+          `${subtopic} — ${percent}% ` +
+          `(קלות ${easyCount}, קשות ${hardCount})`;
+
+        const barOuter = document.createElement("div");
+
+        barOuter.className = "subtopic-bar-outer";
+
+        const barInner = document.createElement("div");
+
+        barInner.className = "subtopic-bar-inner";
+
+        barInner.style.width = `${percent}%`;
+
+        if (percent === 100) {
+          barInner.classList.add("subtopic-bar-full");
+        }
+
+        barOuter.appendChild(barInner);
+        item.appendChild(label);
+        item.appendChild(barOuter);
+
+        subtopicMasteryContainer.appendChild(item);
+      });
   }
 
   function openModal(title, value, min, max, setting) {
@@ -264,6 +515,7 @@ window.addEventListener("DOMContentLoaded", () => {
     modalInput.max = max;
 
     modal.classList.add("show");
+
     modalInput.focus();
     modalInput.select();
   }

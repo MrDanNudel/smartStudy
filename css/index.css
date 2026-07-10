@@ -26,11 +26,8 @@ body {
   height: 100%;
   min-height: 100%;
   /* רקע גדול שלא נשבר על אייפד/מסכים גדולים */
-  background: radial-gradient(
-      60vmax 60vmax at 20% 15%,
-      #0f2240 0%,
-      transparent 60%
-    ),
+  background:
+    radial-gradient(60vmax 60vmax at 20% 15%, #0f2240 0%, transparent 60%),
     radial-gradient(70vmax 70vmax at 80% 80%, #00121f 0%, transparent 65%),
     var(--bg);
   background-repeat: no-repeat;
@@ -79,7 +76,8 @@ body {
   height: 35vmax;
   left: -8vmax;
   bottom: -10vmax;
-  background: radial-gradient(circle at 30% 30%, #0066ff, transparent 60%),
+  background:
+    radial-gradient(circle at 30% 30%, #0066ff, transparent 60%),
     radial-gradient(circle at 70% 70%, #00ffd5, transparent 60%);
   border-radius: 50%;
   mix-blend-mode: screen;
@@ -148,12 +146,17 @@ h1 {
   font-size: clamp(14px, 2.1vw, 18px);
   padding: clamp(14px, 2.6vw, 20px);
   border-radius: var(--radius);
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05), var(--tile-shadow);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.05),
+    var(--tile-shadow);
   backdrop-filter: blur(6px) saturate(120%);
   -webkit-backdrop-filter: blur(6px) saturate(120%);
   cursor: pointer;
-  transition: transform 0.18s ease, box-shadow 0.18s ease,
-    background-color 0.18s ease, border-color 0.18s ease;
+  transition:
+    transform 0.18s ease,
+    box-shadow 0.18s ease,
+    background-color 0.18s ease,
+    border-color 0.18s ease;
   text-align: center;
   outline: none;
 }
@@ -161,17 +164,38 @@ h1 {
   transform: translateY(-2px) scale(1.02);
   background-color: var(--tile-hover);
   border-color: rgba(120, 220, 255, 0.75);
-  box-shadow: 0 16px 40px rgba(0, 255, 234, 0.25),
+  box-shadow:
+    0 16px 40px rgba(0, 255, 234, 0.25),
     inset 0 0 0 1px rgba(255, 255, 255, 0.04);
 }
 .tile:active {
   transform: translateY(0) scale(0.99);
 }
 .tile:focus-visible {
-  box-shadow: 0 0 0 3px rgba(53, 255, 224, 0.55),
+  box-shadow:
+    0 0 0 3px rgba(53, 255, 224, 0.55),
     0 12px 30px rgba(0, 180, 255, 0.25);
 }
+/* מסתיר נושאים זמנית בלי למחוק אותם מה־HTML */
+.hidden-topic {
+  display: none !important;
+}
 
+/* כאשר מוצגים רק שני כפתורים */
+.grid {
+  grid-template-columns: repeat(2, minmax(220px, 320px));
+  justify-content: center;
+  align-items: stretch;
+  max-width: 700px;
+}
+
+/* טאבלטים וטלפונים */
+@media (max-width: 700px) {
+  .grid {
+    grid-template-columns: 1fr;
+    max-width: 420px;
+  }
+}
 /* ===============  Responsiveness Tweaks  =============== */
 @media (max-width: 520px) {
   .grid {
