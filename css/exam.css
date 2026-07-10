@@ -10,7 +10,9 @@
   --bad: #ff4d6d;
 }
 
-/* ===== מבנה כללי ===== */
+/* ==================================================
+   מבנה כללי
+   ================================================== */
 
 * {
   box-sizing: border-box;
@@ -24,7 +26,9 @@ body {
   min-height: 100vh;
   margin: 0;
   padding: 28px 20px 50px;
+
   background: radial-gradient(circle at center, var(--bg1) 0%, var(--bg2) 100%);
+
   font-family: "Rubik", system-ui, sans-serif;
   color: var(--text);
 
@@ -35,12 +39,24 @@ body {
   overflow-x: hidden;
 }
 
-/* ===== סרגל עליון ===== */
+body.mistakes-open {
+  overflow: hidden;
+}
+
+button {
+  font: inherit;
+}
+
+/* ==================================================
+   סרגל עליון
+   ================================================== */
 
 .top-bar {
   position: relative;
+
   width: min(1180px, 96%);
   min-height: 150px;
+
   margin: 0 auto 24px;
 
   display: grid;
@@ -58,47 +74,66 @@ body {
   gap: 8px;
 
   padding: 11px 16px;
-  border-radius: 16px;
+
   border: 1px solid rgba(120, 220, 255, 0.35);
+  border-radius: 16px;
 
   background: rgba(19, 32, 54, 0.7);
   color: var(--text);
 
   font-family: inherit;
-  font-weight: 600;
   font-size: 0.95rem;
+  font-weight: 600;
 
   cursor: pointer;
+
   box-shadow: 0 0 10px rgba(0, 200, 255, 0.15);
+
   backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+
   transition:
     transform 0.25s ease,
-    background 0.25s ease;
+    background-color 0.25s ease,
+    border-color 0.25s ease;
 }
 
 .nav-btn:hover {
   transform: scale(1.04);
+
   background: rgba(28, 48, 78, 0.9);
+  border-color: rgba(120, 220, 255, 0.65);
 }
 
-/* ===== כותרת ===== */
+.nav-btn:focus-visible {
+  outline: 3px solid var(--accent2);
+  outline-offset: 4px;
+}
+
+/* ==================================================
+   כותרת
+   ================================================== */
 
 .title {
-  text-align: center;
   margin: 0;
+
   align-self: center;
+
+  text-align: center;
 }
 
 .subject {
+  color: #4ec8ff;
+
   font-size: clamp(2.2rem, 4vw, 3.5rem);
   font-weight: 800;
-  color: #4ec8ff;
   line-height: 1.1;
 
   text-shadow: 0 0 18px rgba(0, 230, 255, 0.35);
 
   opacity: 0;
   transform: translateY(-8px);
+
   transition:
     opacity 0.6s ease,
     transform 0.6s ease;
@@ -111,27 +146,34 @@ body {
 
 .subject::after {
   content: "";
+
   display: block;
 
   width: 130px;
   height: 4px;
+
   margin: 14px auto 0;
+
+  border-radius: 3px;
 
   background: linear-gradient(90deg, var(--accent1), var(--accent2));
 
-  border-radius: 3px;
   box-shadow: 0 0 18px rgba(0, 220, 255, 0.7);
 }
 
 .subtitle {
   margin-top: 18px;
+
   color: var(--sub);
+
   font-size: 1.25rem;
-  text-align: center;
   letter-spacing: 0.5px;
+  text-align: center;
 }
 
-/* ===== כרטיס השאלה ===== */
+/* ==================================================
+   כרטיס השאלה
+   ================================================== */
 
 .card {
   position: relative;
@@ -143,29 +185,31 @@ body {
   margin: 0 auto;
   padding: 42px 38px 34px;
 
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  overflow: visible;
+
+  border: 1px solid rgba(120, 220, 255, 0.22);
+  border-radius: 24px;
+
   background: linear-gradient(
     180deg,
     rgba(16, 26, 46, 0.94),
     rgba(13, 24, 49, 0.96)
   );
 
-  border: 1px solid rgba(120, 220, 255, 0.22);
-  border-radius: 24px;
-
   box-shadow:
     0 10px 40px rgba(0, 0, 0, 0.35),
     inset 0 0 25px rgba(0, 160, 255, 0.05);
 
   text-align: center;
-
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-
-  overflow: visible;
 }
 
-/* ===== סימוני קושי ===== */
+/* ==================================================
+   סימוני קושי
+   ================================================== */
 
 .circle-easy,
 .circle-hard {
@@ -176,46 +220,83 @@ body {
   height: 30px;
 
   border-radius: 50%;
+
   pointer-events: none;
-  transition: 0.25s ease;
 
   box-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
+
+  transition:
+    transform 0.25s ease,
+    background-color 0.25s ease,
+    border-color 0.25s ease,
+    box-shadow 0.25s ease;
 }
 
 .circle-easy {
   right: 18px;
-  background: rgba(0, 255, 120, 0.25);
+
   border: 1px solid rgba(0, 255, 120, 0.35);
+
+  background: rgba(0, 255, 120, 0.25);
 }
 
 .circle-hard {
   left: 18px;
-  background: rgba(255, 60, 60, 0.25);
+
   border: 1px solid rgba(255, 80, 80, 0.35);
+
+  background: rgba(255, 60, 60, 0.25);
 }
 
 .circle-easy.active {
-  background: rgba(0, 255, 140, 0.85);
   border-color: rgba(0, 255, 140, 1);
+
+  background: rgba(0, 255, 140, 0.85);
+
   box-shadow: 0 0 12px rgba(0, 255, 140, 0.9);
+
   transform: scale(1.12);
 }
 
 .circle-hard.active {
-  background: rgba(255, 60, 60, 0.85);
   border-color: rgba(255, 100, 100, 1);
+
+  background: rgba(255, 60, 60, 0.85);
+
   box-shadow: 0 0 12px rgba(255, 60, 60, 0.9);
+
   transform: scale(1.12);
 }
 
-/* ===== טקסט השאלה ===== */
+/* ==================================================
+   תת־נושא וטקסט השאלה
+   ================================================== */
+
+.question-subtopic {
+  width: fit-content;
+
+  margin: 0 auto;
+  padding: 7px 14px;
+
+  border: 1px solid rgba(78, 200, 255, 0.26);
+  border-radius: 999px;
+
+  background: rgba(20, 52, 87, 0.58);
+
+  color: #9fdfff;
+
+  font-size: 0.9rem;
+  font-weight: 700;
+  line-height: 1.3;
+}
 
 .qtext {
+  width: 100%;
+  max-height: none;
+
   margin: 12px auto 0;
   padding: 0 36px;
 
-  width: 100%;
-  max-height: none;
   overflow: visible;
 
   font-size: clamp(1.35rem, 2.2vw, 1.9rem);
@@ -227,24 +308,28 @@ body {
 
 .qmeta {
   margin: 0;
+
   color: #d3eaff;
+
   font-size: 1.08rem;
 }
 
-/* ===== תשובות ===== */
+/* ==================================================
+   תשובות
+   ================================================== */
 
 .options {
   width: 100%;
+  height: auto;
+  max-height: none;
+
+  padding: 0;
 
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 16px;
 
-  max-height: none;
-  height: auto;
   overflow: visible;
-
-  padding: 0;
 }
 
 .option {
@@ -257,10 +342,11 @@ body {
   align-items: center;
   justify-content: center;
 
-  border-radius: 16px;
   border: 1px solid rgba(120, 220, 255, 0.25);
+  border-radius: 16px;
 
   background: rgba(20, 40, 70, 0.78);
+
   color: var(--text);
 
   font-family: inherit;
@@ -275,14 +361,24 @@ body {
 
   transition:
     transform 0.2s ease,
-    background 0.2s ease,
-    border-color 0.2s ease;
+    background-color 0.2s ease,
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
 }
 
 .option:hover {
   transform: translateY(-2px);
+
   background: rgba(40, 70, 120, 0.9);
+
   border-color: rgba(120, 220, 255, 0.5);
+
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.18);
+}
+
+.option:focus-visible {
+  outline: 3px solid var(--accent2);
+  outline-offset: 3px;
 }
 
 .option.disabled {
@@ -291,23 +387,32 @@ body {
 }
 
 .option.correct {
-  background: rgba(0, 200, 140, 0.85) !important;
   border-color: rgba(0, 255, 200, 0.8) !important;
+
+  background: rgba(0, 200, 140, 0.85) !important;
+
   color: #001a10 !important;
+
   animation: pulseCorrect 0.6s ease-out;
 }
 
 .option.wrong {
-  background: rgba(255, 80, 120, 0.85) !important;
   border-color: rgba(255, 120, 140, 0.9) !important;
+
+  background: rgba(255, 80, 120, 0.85) !important;
+
   color: #2a0008 !important;
+
   animation: pulseWrong 0.6s ease-out;
 }
 
-/* ===== מד זמן ===== */
+/* ==================================================
+   מד זמן
+   ================================================== */
 
 .timer-wrap {
   width: min(880px, 90vw);
+
   margin: 28px auto 0;
 }
 
@@ -315,125 +420,51 @@ body {
   width: 100%;
   height: 16px;
 
-  border-radius: 12px;
+  overflow: hidden;
+
   border: 1px solid rgba(120, 220, 255, 0.25);
+  border-radius: 12px;
 
   background: #16243f;
-  overflow: hidden;
 }
 
 .bar > span {
   display: block;
+
+  width: 100%;
   height: 100%;
 
   background: linear-gradient(90deg, var(--accent1), var(--accent2));
 
   box-shadow: 0 0 20px rgba(0, 220, 255, 0.55);
 
-  transform-origin: right center;
   transform: scaleX(1);
+  transform-origin: right center;
 }
 
 .time-left {
   margin-top: 12px;
+
   color: #cfeeff;
 
-  text-align: center;
   font-size: 1.1rem;
   font-weight: 700;
+  text-align: center;
 }
 
-/* ===== נתוני מבחן ===== */
+/* ==================================================
+   נתוני מבחן
+   ================================================== */
 
 .footer-stats {
   width: min(880px, 90vw);
+
   margin: 10px auto 0;
 
-  text-align: center;
   font-size: 1.05rem;
   line-height: 1.7;
-}
-
-/* ===== מסך סיום ===== */
-
-.overlay {
-  position: fixed;
-  inset: 0;
-
-  display: none;
-  align-items: center;
-  justify-content: center;
-
-  padding: 20px;
-
-  background: rgba(0, 0, 0, 0.72);
-  backdrop-filter: blur(4px);
-
-  z-index: 1000;
-}
-
-.overlay.show {
-  display: flex;
-}
-
-.end-card {
-  width: min(560px, 92vw);
-  padding: 28px;
-
-  background: #0e1a33;
-
-  border: 1px solid rgba(120, 220, 255, 0.3);
-  border-radius: 18px;
-
   text-align: center;
-
-  box-shadow: 0 0 30px rgba(0, 200, 255, 0.15);
 }
-
-.end-title {
-  margin-bottom: 8px;
-  font-size: 1.7rem;
-  font-weight: 800;
-}
-
-.end-sub {
-  margin-bottom: 20px;
-  color: #bcd5ff;
-}
-
-.btn-row {
-  display: flex;
-  justify-content: center;
-  gap: 12px;
-}
-
-.btn {
-  padding: 11px 18px;
-
-  border-radius: 12px;
-  border: 1px solid rgba(120, 220, 255, 0.35);
-
-  background: rgba(19, 32, 54, 0.75);
-  color: var(--text);
-
-  font-family: inherit;
-  cursor: pointer;
-
-  transition: transform 0.2s ease;
-}
-
-.btn.primary {
-  border: none;
-  background: linear-gradient(90deg, var(--accent1), var(--accent2));
-  color: #001021;
-  font-weight: 800;
-}
-
-.btn:hover {
-  transform: translateY(-2px);
-}
-
-/* ===== אנימציות ===== */
 
 /* ==================================================
    מסך סיום מבחן
@@ -470,8 +501,6 @@ body {
   pointer-events: auto;
 }
 
-/* החלון הגדול */
-
 .end-panel {
   position: relative;
 
@@ -495,16 +524,12 @@ body {
 
   transform: translateY(24px) scale(0.96);
 
-  transition:
-    transform 0.38s cubic-bezier(0.22, 1, 0.36, 1),
-    box-shadow 0.3s ease;
+  transition: transform 0.38s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .end-overlay.show .end-panel {
   transform: translateY(0) scale(1);
 }
-
-/* אייקון עליון */
 
 .end-icon {
   width: 76px;
@@ -528,8 +553,6 @@ body {
     inset 0 0 20px rgba(0, 160, 255, 0.1);
 }
 
-/* כותרות */
-
 .end-title {
   margin: 0;
 
@@ -543,7 +566,7 @@ body {
 }
 
 .end-subtitle {
-  margin: 12px 0 30px;
+  margin: 12px 0;
 
   color: #bcd4e7;
 
@@ -552,7 +575,79 @@ body {
   line-height: 1.5;
 }
 
-/* ארבעת הכפתורים */
+/* ==================================================
+   טקסט לחיץ "במה טעיתי?"
+   ללא מראה של כפתור
+   ================================================== */
+
+.review-mistakes-btn {
+  appearance: none;
+  -webkit-appearance: none;
+
+  margin: 4px auto 26px;
+  padding: 0;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+
+  border: none;
+  border-radius: 0;
+
+  background: transparent;
+  box-shadow: none;
+
+  color: #71e9ff;
+
+  font-size: 15px;
+  font-weight: 750;
+  line-height: 1.3;
+
+  text-decoration: none;
+
+  cursor: pointer;
+
+  transition:
+    color 0.22s ease,
+    transform 0.22s ease,
+    text-shadow 0.22s ease;
+}
+
+.review-mistakes-btn:hover {
+  color: #ffffff;
+
+  background: transparent;
+  box-shadow: none;
+
+  transform: translateY(-1px);
+
+  text-shadow: 0 0 10px rgba(53, 255, 224, 0.5);
+}
+
+.review-mistakes-btn:active {
+  transform: translateY(0);
+}
+
+.review-mistakes-btn:focus {
+  outline: none;
+}
+
+.review-mistakes-btn:focus-visible {
+  color: #ffffff;
+
+  outline: none;
+
+  text-shadow: 0 0 10px rgba(53, 255, 224, 0.7);
+}
+
+.review-mistakes-btn[hidden] {
+  display: none !important;
+}
+
+/* ==================================================
+   ארבעת כפתורי הסיום
+   ================================================== */
 
 .end-actions {
   display: grid;
@@ -560,8 +655,6 @@ body {
 
   gap: 16px;
 }
-
-/* כפתור */
 
 .end-action {
   appearance: none;
@@ -618,8 +711,6 @@ body {
   outline-offset: 4px;
 }
 
-/* כפתור נסה שוב */
-
 .end-action--primary {
   border-color: rgba(53, 255, 224, 0.58);
 
@@ -644,8 +735,6 @@ body {
   );
 }
 
-/* אייקון בתוך כפתור */
-
 .end-action__icon {
   flex: 0 0 auto;
 
@@ -661,8 +750,6 @@ body {
 
   font-size: 25px;
 }
-
-/* טקסט בתוך כפתור */
 
 .end-action__content {
   min-width: 0;
@@ -688,67 +775,333 @@ body {
   line-height: 1.35;
 }
 
-/* טלפון */
+/* ==================================================
+   חלון סיכום הטעויות
+   ================================================== */
 
-@media (max-width: 620px) {
-  .end-overlay {
-    padding: 16px;
-  }
+.mistakes-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 11000;
 
-  .end-panel {
-    width: 100%;
+  padding: 24px;
 
-    max-height: calc(100dvh - 32px);
-    overflow-y: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
-    padding: 28px 20px;
+  background: rgba(1, 5, 13, 0.86);
 
-    border-radius: 23px;
-  }
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
 
-  .end-icon {
-    width: 64px;
-    height: 64px;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
 
-    margin-bottom: 14px;
-
-    font-size: 35px;
-    border-radius: 20px;
-  }
-
-  .end-subtitle {
-    margin-bottom: 23px;
-  }
-
-  .end-actions {
-    grid-template-columns: 1fr;
-
-    gap: 12px;
-  }
-
-  .end-action {
-    min-height: 76px;
-
-    padding: 13px 15px;
-  }
-
-  .end-action__icon {
-    width: 42px;
-    height: 42px;
-
-    font-size: 22px;
-  }
+  transition:
+    opacity 0.28s ease,
+    visibility 0.28s ease;
 }
 
-/* ביטול אנימציות לפי הגדרת המשתמש */
-
-@media (prefers-reduced-motion: reduce) {
-  .end-overlay,
-  .end-panel,
-  .end-action {
-    transition: none;
-  }
+.mistakes-overlay.show {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
 }
+
+.mistakes-panel {
+  position: relative;
+
+  width: min(880px, 100%);
+  max-height: min(86dvh, 900px);
+
+  display: flex;
+  flex-direction: column;
+
+  overflow: hidden;
+
+  border: 1px solid rgba(66, 206, 255, 0.5);
+  border-radius: 28px;
+
+  background:
+    radial-gradient(circle at 50% 0%, rgba(0, 174, 255, 0.14), transparent 38%),
+    linear-gradient(145deg, rgba(13, 31, 59, 0.99), rgba(5, 16, 34, 0.99));
+
+  box-shadow:
+    0 0 45px rgba(0, 160, 255, 0.2),
+    0 40px 100px rgba(0, 0, 0, 0.7);
+
+  transform: translateY(20px) scale(0.97);
+
+  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.mistakes-overlay.show .mistakes-panel {
+  transform: translateY(0) scale(1);
+}
+
+.mistakes-close-btn {
+  appearance: none;
+  -webkit-appearance: none;
+
+  position: absolute;
+  top: 18px;
+  left: 18px;
+  z-index: 4;
+
+  width: 42px;
+  height: 42px;
+
+  display: grid;
+  place-items: center;
+
+  padding: 0;
+
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 13px;
+
+  background: rgba(255, 255, 255, 0.07);
+
+  color: #ffffff;
+
+  font-size: 29px;
+  font-weight: 400;
+  line-height: 1;
+
+  cursor: pointer;
+
+  transition:
+    transform 0.2s ease,
+    background-color 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.mistakes-close-btn:hover {
+  transform: scale(1.07);
+
+  border-color: rgba(255, 112, 126, 0.7);
+
+  background: rgba(255, 65, 84, 0.16);
+}
+
+.mistakes-close-btn:focus-visible {
+  outline: 3px solid #35ffe0;
+  outline-offset: 3px;
+}
+
+.mistakes-header {
+  flex: 0 0 auto;
+
+  padding: 31px 76px 25px 31px;
+
+  display: flex;
+  align-items: center;
+  gap: 16px;
+
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+
+  text-align: right;
+}
+
+.mistakes-header__icon {
+  flex: 0 0 auto;
+
+  width: 58px;
+  height: 58px;
+
+  display: grid;
+  place-items: center;
+
+  border: 1px solid rgba(53, 255, 224, 0.36);
+  border-radius: 18px;
+
+  background: rgba(53, 255, 224, 0.07);
+
+  font-size: 30px;
+
+  box-shadow: 0 0 20px rgba(53, 255, 224, 0.1);
+}
+
+.mistakes-header h2 {
+  margin: 0;
+
+  color: #ffffff;
+
+  font-size: clamp(24px, 4vw, 34px);
+  font-weight: 900;
+}
+
+.mistakes-header p {
+  margin: 6px 0 0;
+
+  color: #a9c4d9;
+
+  font-size: 14px;
+  font-weight: 550;
+}
+
+.mistakes-list {
+  min-height: 0;
+
+  padding: 24px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+
+  overflow-y: auto;
+
+  scrollbar-width: thin;
+  scrollbar-color: rgba(53, 255, 224, 0.48) rgba(255, 255, 255, 0.05);
+}
+
+.mistake-card {
+  padding: 22px;
+
+  border: 1px solid rgba(128, 190, 232, 0.2);
+  border-radius: 20px;
+
+  background: rgba(10, 31, 58, 0.72);
+
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.04),
+    0 14px 30px rgba(0, 0, 0, 0.22);
+}
+
+.mistake-card__header {
+  margin-bottom: 13px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.mistake-card__number {
+  padding: 5px 11px;
+
+  border-radius: 999px;
+
+  background: rgba(0, 160, 255, 0.13);
+
+  color: #7edcff;
+
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.mistake-card__subtopic {
+  color: #8da9bf;
+
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.mistake-card__question {
+  margin: 0 0 18px;
+
+  color: #ffffff;
+
+  font-size: clamp(17px, 2.3vw, 21px);
+  font-weight: 800;
+  line-height: 1.55;
+}
+
+/* ==================================================
+   תשובות בסיכום
+   ================================================== */
+
+.mistake-answer {
+  padding: 14px 16px;
+
+  display: flex;
+  align-items: flex-start;
+  gap: 13px;
+
+  border: 1px solid transparent;
+  border-radius: 15px;
+}
+
+.mistake-answer + .mistake-answer {
+  margin-top: 10px;
+}
+
+.mistake-answer--wrong {
+  border-color: rgba(255, 86, 105, 0.32);
+
+  background: rgba(255, 50, 75, 0.09);
+}
+
+.mistake-answer--correct {
+  border-color: rgba(53, 255, 151, 0.3);
+
+  background: rgba(34, 220, 126, 0.09);
+}
+
+.mistake-answer__icon {
+  flex: 0 0 auto;
+
+  width: 31px;
+  height: 31px;
+
+  display: grid;
+  place-items: center;
+
+  border-radius: 10px;
+
+  font-size: 17px;
+  font-weight: 900;
+}
+
+.mistake-answer--wrong .mistake-answer__icon {
+  background: rgba(255, 68, 91, 0.16);
+
+  color: #ff7385;
+}
+
+.mistake-answer--correct .mistake-answer__icon {
+  background: rgba(46, 230, 137, 0.14);
+
+  color: #58f0a3;
+}
+
+.mistake-answer__content {
+  min-width: 0;
+
+  text-align: right;
+}
+
+.mistake-answer__content strong {
+  display: block;
+
+  margin-bottom: 4px;
+
+  font-size: 12px;
+  font-weight: 850;
+}
+
+.mistake-answer--wrong strong {
+  color: #ff8291;
+}
+
+.mistake-answer--correct strong {
+  color: #64efaa;
+}
+
+.mistake-answer__content p {
+  margin: 0;
+
+  color: #e7f1f8;
+
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1.55;
+}
+
+/* ==================================================
+   אנימציות
+   ================================================== */
 
 @keyframes pulseCorrect {
   0% {
@@ -770,21 +1123,26 @@ body {
   }
 }
 
-/* ===== התאמה למסכים בינוניים ===== */
+/* ==================================================
+   התאמה למסכים בינוניים
+   ================================================== */
 
 @media (max-width: 900px) {
   .top-bar {
-    grid-template-columns: 145px 1fr 145px;
     width: 100%;
+
+    grid-template-columns: 145px 1fr 145px;
   }
 
   .nav-btn {
     padding: 9px 10px;
+
     font-size: 0.85rem;
   }
 
   .card {
     width: 96vw;
+
     padding: 40px 24px 28px;
   }
 
@@ -793,7 +1151,9 @@ body {
   }
 }
 
-/* ===== התאמה לטלפונים ===== */
+/* ==================================================
+   התאמה לטלפונים
+   ================================================== */
 
 @media (max-width: 700px) {
   body {
@@ -802,6 +1162,7 @@ body {
 
   .top-bar {
     min-height: auto;
+
     margin-bottom: 22px;
 
     grid-template-columns: 1fr 1fr;
@@ -820,6 +1181,7 @@ body {
 
   .title {
     grid-area: title;
+
     margin-top: 20px;
   }
 
@@ -834,11 +1196,13 @@ body {
   .card {
     width: 96vw;
     min-height: auto;
+
     padding: 40px 16px 22px;
   }
 
   .qtext {
     padding: 0 18px;
+
     font-size: 1.25rem;
   }
 
@@ -849,7 +1213,9 @@ body {
 
   .option {
     min-height: 68px;
+
     padding: 14px 16px;
+
     font-size: 1rem;
   }
 
@@ -862,5 +1228,119 @@ body {
   .circle-hard {
     width: 25px;
     height: 25px;
+  }
+
+  .end-overlay {
+    padding: 16px;
+  }
+
+  .end-panel {
+    width: 100%;
+    max-height: calc(100dvh - 32px);
+
+    padding: 28px 20px;
+
+    overflow-y: auto;
+
+    border-radius: 23px;
+  }
+
+  .end-icon {
+    width: 64px;
+    height: 64px;
+
+    margin-bottom: 14px;
+
+    border-radius: 20px;
+
+    font-size: 35px;
+  }
+
+  .end-actions {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .end-action {
+    min-height: 76px;
+
+    padding: 13px 15px;
+  }
+
+  .end-action__icon {
+    width: 42px;
+    height: 42px;
+
+    font-size: 22px;
+  }
+
+  .mistakes-overlay {
+    padding: 12px;
+  }
+
+  .mistakes-panel {
+    max-height: calc(100dvh - 24px);
+
+    border-radius: 22px;
+  }
+
+  .mistakes-close-btn {
+    top: 13px;
+    left: 13px;
+
+    width: 38px;
+    height: 38px;
+  }
+
+  .mistakes-header {
+    padding: 23px 59px 20px 18px;
+  }
+
+  .mistakes-header__icon {
+    width: 48px;
+    height: 48px;
+
+    font-size: 25px;
+  }
+
+  .mistakes-list {
+    padding: 15px;
+    gap: 14px;
+  }
+
+  .mistake-card {
+    padding: 17px;
+
+    border-radius: 17px;
+  }
+
+  .mistake-card__header {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 7px;
+  }
+}
+
+/* ==================================================
+   ביטול אנימציות לפי הגדרות המשתמש
+   ================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  .subject,
+  .nav-btn,
+  .option,
+  .end-overlay,
+  .end-panel,
+  .end-action,
+  .review-mistakes-btn,
+  .mistakes-overlay,
+  .mistakes-panel,
+  .mistakes-close-btn {
+    transition: none;
+  }
+
+  .option.correct,
+  .option.wrong {
+    animation: none;
   }
 }

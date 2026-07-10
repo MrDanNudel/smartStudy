@@ -4,6 +4,7 @@
 const url = new URLSearchParams(location.search);
 const saved = JSON.parse(localStorage.getItem("examSettings") || "{}");
 const questionSubtopic = document.getElementById("questionSubtopic");
+
 // ================================
 // שמות נושאים
 // ================================
@@ -60,7 +61,7 @@ const settings = {
 };
 
 // ================================
-// אלמנטים
+// אלמנטים ראשיים
 // ================================
 const subjectTitle = document.getElementById("subjectTitle");
 const qText = document.getElementById("questionText");
@@ -71,22 +72,37 @@ const timeLeft = document.getElementById("timeLeft");
 const failsView = document.getElementById("failsView");
 const progressView = document.getElementById("progressView");
 
-const endOverlay = document.getElementById("endOverlay");
-const endTitle = document.getElementById("endTitle");
-const endSub = document.getElementById("endSub");
-
 const circleEasy = document.getElementById("examCircleEasy");
 const circleHard = document.getElementById("examCircleHard");
 
 const prevBtn = document.getElementById("prevBtn");
 const homeBtn = document.getElementById("homeBtn");
+
+// ================================
+// אלמנטים של מסך הסיום
+// ================================
+const endOverlay = document.getElementById("endOverlay");
+const endTitle = document.getElementById("endTitle");
+const endSub = document.getElementById("endSub");
+
 const againBtn = document.getElementById("againBtn");
 const settingsBtn = document.getElementById("settingsBtn");
 const methodBtn = document.getElementById("methodBtn");
 const endHomeBtn = document.getElementById("endHomeBtn");
 
 // ================================
-// טעינת סטטוס קל/קשה
+// אלמנטים של סיכום הטעויות
+// ================================
+const reviewMistakesBtn = document.getElementById("reviewMistakesBtn");
+const reviewMistakesText = document.getElementById("reviewMistakesText");
+
+const mistakesOverlay = document.getElementById("mistakesOverlay");
+const mistakesCloseBtn = document.getElementById("mistakesCloseBtn");
+const mistakesSummary = document.getElementById("mistakesSummary");
+const mistakesList = document.getElementById("mistakesList");
+
+// ================================
+// טעינת סטטוס קל / קשה
 // ================================
 let difficultyMap = JSON.parse(localStorage.getItem("easyHardStats") || "{}");
 
@@ -110,6 +126,16 @@ function getQuestionStatus(question) {
 }
 
 // ================================
+// ניקוי בחירות ניווט
+// ================================
+function clearSelectedNavigation() {
+  localStorage.removeItem("selectedSubjectKey");
+  localStorage.removeItem("selectedSubjectLabel");
+  localStorage.removeItem("selectedMethodKey");
+  localStorage.removeItem("selectedMethodLabel");
+}
+
+// ================================
 // ניווט עליון
 // ================================
 prevBtn?.addEventListener("click", () => {
@@ -123,11 +149,7 @@ prevBtn?.addEventListener("click", () => {
 });
 
 homeBtn?.addEventListener("click", () => {
-  localStorage.removeItem("selectedSubjectKey");
-  localStorage.removeItem("selectedSubjectLabel");
-  localStorage.removeItem("selectedMethodKey");
-  localStorage.removeItem("selectedMethodLabel");
-
+  clearSelectedNavigation();
   location.href = "index.html";
 });
 
@@ -149,6 +171,7 @@ const originalBank = Array.isArray(window.examBank)
   ? window.examBank.slice()
   : [];
 
+// סינון מדויק לפי תת־נושא ולפי מצב השאלה.
 let bank = originalBank.filter((question) => {
   const matchesSubtopic =
     settings.subtopic === "all" || question.subtopic === settings.subtopic;
@@ -160,7 +183,7 @@ let bank = originalBank.filter((question) => {
 });
 
 // ================================
-// שלב 3 — ערבוב וחיתוך כמות
+// ערבוב וחיתוך כמות
 // ================================
 shuffle(bank);
 
@@ -178,8 +201,11 @@ if (bank.length === 0) {
 let current = 0;
 let fails = 0;
 let correctAnswers = 0;
+let mistakes = [];
+
 let timerId = null;
 let timeLeftSec = settings.timePerQuestion;
+let answerLocked = false;
 
 // ================================
 // התחלה
@@ -193,6 +219,7 @@ loadQuestion();
 function startTimer() {
   clearInterval(timerId);
 
+  answerLocked = false;
   timeLeftSec = settings.timePerQuestion;
 
   if (barFill) {
@@ -229,6 +256,10 @@ function drawTime() {
     timeLeft.textContent = `נשארו ${seconds} שניות...`;
   }
 }
+
+// ================================
+// טקסט תוצאה לפי אחוז
+// ================================
 function getExamResultText(percent) {
   if (percent === 100) {
     return {
@@ -277,6 +308,7 @@ function getExamResultText(percent) {
     subtitle: `ענית נכון על ${percent}% מהמבחן. מומלץ לעבור שוב על החומר לפני ניסיון נוסף.`,
   };
 }
+
 // ================================
 // הצגת שאלה
 // ================================
@@ -307,12 +339,16 @@ function loadQuestion() {
   }
 
   if (questionSubtopic) {
-    questionSubtopic.textContent = `${item.subtopic || "ללא תת־נושא"}`;
+    questionSubtopic.textContent = item.subtopic || "ללא תת־נושא";
   }
 
-  qText.textContent = item.q;
+  if (qText) {
+    qText.textContent = item.q;
+  }
 
-  qMeta.textContent = `שאלה ${current + 1} מתוך ${bank.length}`;
+  if (qMeta) {
+    qMeta.textContent = `שאלה ${current + 1} מתוך ${bank.length}`;
+  }
 
   resetCircles();
 
@@ -331,7 +367,9 @@ function loadQuestion() {
 
   shuffle(order);
 
-  optionsWrap.innerHTML = "";
+  if (optionsWrap) {
+    optionsWrap.innerHTML = "";
+  }
 
   order.forEach((realIndex, visualIndex) => {
     const button = document.createElement("button");
@@ -341,13 +379,14 @@ function loadQuestion() {
     button.textContent = answers[realIndex];
 
     button.dataset.realIndex = String(realIndex);
+
     button.dataset.visualIndex = String(visualIndex);
 
     button.addEventListener("click", () => {
       handleAnswer(visualIndex);
     });
 
-    optionsWrap.appendChild(button);
+    optionsWrap?.appendChild(button);
   });
 
   startTimer();
@@ -365,22 +404,26 @@ function resetCircles() {
 // טיפול בבחירת תשובה
 // ================================
 function handleAnswer(visualIndex) {
-  const item = bank[current];
-
-  if (!item) {
+  if (answerLocked) {
     return;
   }
+
+  const item = bank[current];
+
+  if (!item || !optionsWrap) {
+    return;
+  }
+
+  answerLocked = true;
+  clearInterval(timerId);
 
   const id = item.id;
   const buttons = [...optionsWrap.children];
 
-  // מונע לחיצה נוספת לאחר בחירת תשובה
   buttons.forEach((button) => {
     button.classList.add("disabled");
     button.disabled = true;
   });
-
-  clearInterval(timerId);
 
   const realChosenIndex =
     visualIndex === -1
@@ -393,29 +436,41 @@ function handleAnswer(visualIndex) {
 
   const isCorrect = realChosenIndex === item.correct;
 
-  // סימון התשובה שנבחרה
   if (visualIndex !== -1) {
     const chosenButton = buttons[visualIndex];
 
     chosenButton?.classList.add(isCorrect ? "correct" : "wrong");
   }
 
-  // הצגת התשובה הנכונה
   correctButton?.classList.add("correct");
 
   // ================================
-  // ספירת תשובות נכונות ושגויות
+  // ספירת תשובות ושמירת טעויות
   // ================================
   if (isCorrect) {
     correctAnswers += 1;
   } else {
     fails += 1;
+
+    const chosenAnswer =
+      realChosenIndex === -1
+        ? "לא נבחרה תשובה — הזמן הסתיים"
+        : item.options[realChosenIndex];
+
+    mistakes.push({
+      questionNumber: current + 1,
+      question: item.q,
+      subtopic: item.subtopic || "",
+      chosenAnswer,
+      correctAnswer: item.options[item.correct],
+    });
   }
 
   // ================================
   // עדכון רמת השאלה
   // ================================
   const previousStatus = getQuestionStatus(item);
+
   let nextStatus = previousStatus;
 
   if (isCorrect) {
@@ -432,7 +487,6 @@ function handleAnswer(visualIndex) {
     }
   }
 
-  // מצב ללא סימון נשמר באמצעות מחיקת הרשומה
   if (nextStatus === "unsorted") {
     delete difficultyMap[id];
   } else {
@@ -478,17 +532,21 @@ function handleAnswer(visualIndex) {
 // HUD
 // ================================
 function updateHud() {
-  if (settings.maxFails === 0) {
-    failsView.textContent = `תשובות לא נכונות: ${fails}`;
-  } else {
-    failsView.textContent = `תשובות לא נכונות: ${fails} / ${settings.maxFails}`;
+  if (failsView) {
+    if (settings.maxFails === 0) {
+      failsView.textContent = `תשובות לא נכונות: ${fails}`;
+    } else {
+      failsView.textContent = `תשובות לא נכונות: ${fails} / ${settings.maxFails}`;
+    }
   }
 
   const total = bank.length || 1;
 
   const progress = Math.round((current / total) * 100);
 
-  progressView.textContent = `התקדמות: ${progress}%`;
+  if (progressView) {
+    progressView.textContent = `התקדמות: ${progress}%`;
+  }
 }
 
 // ================================
@@ -496,11 +554,27 @@ function updateHud() {
 // ================================
 function endExam(title, subtitle) {
   clearInterval(timerId);
+  answerLocked = true;
 
-  endTitle.textContent = title;
-  endSub.textContent = subtitle;
+  if (endTitle) {
+    endTitle.textContent = title;
+  }
 
-  endOverlay.classList.add("show");
+  if (endSub) {
+    endSub.textContent = subtitle;
+  }
+
+  const hasMistakes = mistakes.length > 0;
+
+  if (reviewMistakesBtn) {
+    reviewMistakesBtn.hidden = !hasMistakes;
+  }
+
+  if (reviewMistakesText && hasMistakes) {
+    reviewMistakesText.textContent = "במה טעיתי?";
+  }
+
+  endOverlay?.classList.add("show");
 }
 
 // ================================
@@ -510,18 +584,24 @@ againBtn?.addEventListener("click", () => {
   current = 0;
   fails = 0;
   correctAnswers = 0;
+  mistakes = [];
+
+  answerLocked = false;
+
+  if (reviewMistakesBtn) {
+    reviewMistakesBtn.hidden = true;
+  }
+
+  closeMistakesReview(false);
 
   shuffle(bank);
 
-  endOverlay.classList.remove("show");
+  endOverlay?.classList.remove("show");
 
   updateHud();
   loadQuestion();
 });
 
-// ================================
-// חזרה לבחירת שיטה
-// ================================
 // ================================
 // מעבר להגדרות המבחן
 // ================================
@@ -540,12 +620,169 @@ methodBtn?.addEventListener("click", () => {
 // מעבר לדף הבית
 // ================================
 endHomeBtn?.addEventListener("click", () => {
-  localStorage.removeItem("selectedSubjectKey");
-  localStorage.removeItem("selectedSubjectLabel");
-  localStorage.removeItem("selectedMethodKey");
-  localStorage.removeItem("selectedMethodLabel");
-
+  clearSelectedNavigation();
   location.href = "index.html";
+});
+
+// ================================
+// בניית סיכום הטעויות
+// ================================
+function renderMistakesReview() {
+  if (!mistakesList || !mistakesSummary) {
+    return;
+  }
+
+  mistakesList.innerHTML = "";
+
+  const answeredQuestions = correctAnswers + mistakes.length;
+
+  mistakesSummary.textContent =
+    mistakes.length === 1
+      ? `טעות אחת מתוך ${answeredQuestions} שאלות שהוצגו.`
+      : `${mistakes.length} טעויות מתוך ${answeredQuestions} שאלות שהוצגו.`;
+
+  mistakes.forEach((mistake) => {
+    const card = document.createElement("article");
+
+    card.className = "mistake-card";
+
+    const cardHeader = document.createElement("div");
+
+    cardHeader.className = "mistake-card__header";
+
+    const number = document.createElement("span");
+
+    number.className = "mistake-card__number";
+
+    number.textContent = `שאלה ${mistake.questionNumber}`;
+
+    cardHeader.appendChild(number);
+
+    if (mistake.subtopic) {
+      const subtopic = document.createElement("span");
+
+      subtopic.className = "mistake-card__subtopic";
+
+      subtopic.textContent = mistake.subtopic;
+
+      cardHeader.appendChild(subtopic);
+    }
+
+    const question = document.createElement("h3");
+
+    question.className = "mistake-card__question";
+
+    question.textContent = mistake.question;
+
+    const wrongAnswer = createAnswerReview(
+      "התשובה שלך",
+      mistake.chosenAnswer,
+      "wrong",
+      "✕",
+    );
+
+    const correctAnswer = createAnswerReview(
+      "התשובה הנכונה",
+      mistake.correctAnswer,
+      "correct",
+      "✓",
+    );
+
+    card.appendChild(cardHeader);
+    card.appendChild(question);
+    card.appendChild(wrongAnswer);
+    card.appendChild(correctAnswer);
+
+    mistakesList.appendChild(card);
+  });
+}
+
+// ================================
+// יצירת תיבת תשובה בסיכום
+// ================================
+function createAnswerReview(labelText, answerText, status, iconText) {
+  const answer = document.createElement("div");
+
+  answer.className = `mistake-answer mistake-answer--${status}`;
+
+  const icon = document.createElement("span");
+
+  icon.className = "mistake-answer__icon";
+
+  icon.textContent = iconText;
+
+  const content = document.createElement("div");
+
+  content.className = "mistake-answer__content";
+
+  const label = document.createElement("strong");
+
+  label.textContent = labelText;
+
+  const text = document.createElement("p");
+
+  text.textContent = answerText;
+
+  content.appendChild(label);
+  content.appendChild(text);
+
+  answer.appendChild(icon);
+  answer.appendChild(content);
+
+  return answer;
+}
+
+// ================================
+// פתיחת סיכום הטעויות
+// ================================
+function openMistakesReview() {
+  if (mistakes.length === 0) {
+    return;
+  }
+
+  renderMistakesReview();
+
+  mistakesOverlay?.classList.add("show");
+
+  mistakesOverlay?.setAttribute("aria-hidden", "false");
+
+  document.body.classList.add("mistakes-open");
+
+  mistakesCloseBtn?.focus();
+}
+
+// ================================
+// סגירת סיכום הטעויות
+// ================================
+function closeMistakesReview(returnFocus = true) {
+  mistakesOverlay?.classList.remove("show");
+
+  mistakesOverlay?.setAttribute("aria-hidden", "true");
+
+  document.body.classList.remove("mistakes-open");
+
+  if (returnFocus) {
+    reviewMistakesBtn?.focus();
+  }
+}
+
+// ================================
+// אירועים של חלון הטעויות
+// ================================
+reviewMistakesBtn?.addEventListener("click", openMistakesReview);
+
+mistakesCloseBtn?.addEventListener("click", () => closeMistakesReview());
+
+mistakesOverlay?.addEventListener("click", (event) => {
+  if (event.target === mistakesOverlay) {
+    closeMistakesReview();
+  }
+});
+
+document.addEventListener("keydown", (event) => {
+  if (event.key === "Escape" && mistakesOverlay?.classList.contains("show")) {
+    closeMistakesReview();
+  }
 });
 
 // ================================

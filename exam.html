@@ -2,6 +2,7 @@
 <html lang="he" dir="rtl">
   <head>
     <meta charset="UTF-8" />
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <title>מבחן אמריקאי</title>
@@ -11,30 +12,40 @@
   </head>
 
   <body>
+    <!-- סרגל עליון -->
     <div class="top-bar">
       <button class="nav-btn" id="prevBtn" type="button">⟵ לעמוד הקודם</button>
 
       <div class="title">
         <div class="subject" id="subjectTitle"></div>
+
         <div class="subtitle">שאלון אמריקאי</div>
       </div>
 
       <button class="nav-btn" id="homeBtn" type="button">לעמוד הבית ⟶</button>
     </div>
 
+    <!-- כרטיס השאלה -->
     <div class="card" id="card">
+      <!-- עיגולי מצב השאלה -->
       <div class="circle-easy" id="examCircleEasy"></div>
+
       <div class="circle-hard" id="examCircleHard"></div>
 
+      <!-- תת־נושא -->
       <div class="question-subtopic" id="questionSubtopic">תת־נושא</div>
 
+      <!-- השאלה -->
       <h2 class="qtext" id="questionText">טוען...</h2>
 
+      <!-- מספר השאלה -->
       <div class="qmeta" id="qMeta">שאלה 1 מתוך 20</div>
 
+      <!-- אפשרויות התשובה -->
       <div class="options" id="options"></div>
     </div>
 
+    <!-- טיימר -->
     <div class="timer-wrap">
       <div class="bar">
         <span id="barFill"></span>
@@ -43,13 +54,17 @@
       <div class="time-left" id="timeLeft">נשארו 30 שניות...</div>
     </div>
 
+    <!-- נתוני המבחן -->
     <div class="footer-stats">
       <div id="failsView">תשובות לא נכונות: 0 / 5</div>
 
       <div id="progressView">התקדמות: 0%</div>
     </div>
 
-    <!-- מסך סיום המבחן -->
+    <!-- ==================================================
+         מסך סיום המבחן
+         ================================================== -->
+
     <div
       class="end-overlay"
       id="endOverlay"
@@ -64,50 +79,119 @@
 
         <p class="end-subtitle" id="endSub">סיימת את המבחן</p>
 
+        <!--
+          הכפתור מופיע רק כאשר המשתמש
+          טעה לפחות בשאלה אחת
+        -->
+        <button
+          class="review-mistakes-btn"
+          id="reviewMistakesBtn"
+          type="button"
+          hidden
+        >
+          <span id="reviewMistakesText">במה טעיתי?</span>
+          <span aria-hidden="true">📋</span>
+        </button>
+
         <div class="end-actions">
+          <!-- נסה שוב -->
           <button
             class="end-action end-action--primary"
             id="againBtn"
             type="button"
           >
-            <span class="end-action__icon" aria-hidden="true">🔄</span>
+            <span class="end-action__icon" aria-hidden="true"> 🔄 </span>
 
             <span class="end-action__content">
               <strong>נסה שוב</strong>
-              <small>התחל מחדש עם אותן ההגדרות</small>
+
+              <small> התחל מחדש עם אותן ההגדרות </small>
             </span>
           </button>
 
+          <!-- הגדרות מבחן -->
           <button class="end-action" id="settingsBtn" type="button">
-            <span class="end-action__icon" aria-hidden="true">⚙️</span>
+            <span class="end-action__icon" aria-hidden="true"> ⚙️ </span>
 
             <span class="end-action__content">
               <strong>הגדרות מבחן</strong>
-              <small>שנה זמן, שאלות וסינון</small>
+
+              <small> שנה זמן, שאלות וסינון </small>
             </span>
           </button>
 
+          <!-- שיטת תרגול -->
           <button class="end-action" id="methodBtn" type="button">
-            <span class="end-action__icon" aria-hidden="true">📚</span>
+            <span class="end-action__icon" aria-hidden="true"> 📚 </span>
 
             <span class="end-action__content">
               <strong>שיטת תרגול</strong>
-              <small>בחר דרך למידה אחרת</small>
+
+              <small> בחר דרך למידה אחרת </small>
             </span>
           </button>
 
+          <!-- דף הבית -->
           <button class="end-action" id="endHomeBtn" type="button">
-            <span class="end-action__icon" aria-hidden="true">🏠</span>
+            <span class="end-action__icon" aria-hidden="true"> 🏠 </span>
 
             <span class="end-action__content">
               <strong>דף הבית</strong>
-              <small>חזור לבחירת הנושא</small>
+
+              <small> חזור לבחירת הנושא </small>
             </span>
           </button>
         </div>
       </section>
     </div>
 
+    <!-- ==================================================
+         חלון סיכום הטעויות
+         ================================================== -->
+
+    <div
+      class="mistakes-overlay"
+      id="mistakesOverlay"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="mistakesTitle"
+      aria-hidden="true"
+    >
+      <section class="mistakes-panel">
+        <!-- כפתור סגירה -->
+        <button
+          class="mistakes-close-btn"
+          id="mistakesCloseBtn"
+          type="button"
+          aria-label="סגירת סיכום הטעויות"
+          title="סגירה"
+        >
+          ×
+        </button>
+
+        <!-- כותרת חלון הטעויות -->
+        <header class="mistakes-header">
+          <div class="mistakes-header__icon" aria-hidden="true">📋</div>
+
+          <div>
+            <h2 id="mistakesTitle">סיכום הטעויות</h2>
+
+            <p id="mistakesSummary"></p>
+          </div>
+        </header>
+
+        <!--
+          כאן JavaScript יציג את השאלות,
+          התשובה השגויה והתשובה הנכונה
+        -->
+        <div class="mistakes-list" id="mistakesList"></div>
+      </section>
+    </div>
+
+    <!--
+      מאגר השאלות חייב להיטען
+      לפני קובץ המבחן
+    -->
     <script src="data/exam-bank.js"></script>
     <script src="js/exam.js"></script>
   </body>
