@@ -9,6 +9,7 @@ window.addEventListener("DOMContentLoaded", () => {
   }
 
   const SUBJECT_TITLES = {
+    educationalThought: "מחשבת החינוך",
     anatomy: "אנטומיה",
     chemistry: "כימיה",
     psychology: "פסיכולוגיה",

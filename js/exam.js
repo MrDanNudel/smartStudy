@@ -22,6 +22,7 @@ const SUBJECT_TITLES = {
   handball: "כדור יד",
   developmentalPsychology: "פסיכולוגיה התפתחותית",
   sportHistory: "היסטוריה של הספורט",
+  educationalThought: "מחשבת החינוך",
 };
 
 // ================================
