@@ -3,7 +3,7 @@
 // ================================
 const url = new URLSearchParams(location.search);
 const saved = JSON.parse(localStorage.getItem("examSettings") || "{}");
-
+const questionSubtopic = document.getElementById("questionSubtopic");
 // ================================
 // שמות נושאים
 // ================================
@@ -258,6 +258,10 @@ function loadQuestion() {
     endExam("שגיאה במבחן", "אחת השאלות חסרה או אינה תקינה.");
 
     return;
+  }
+
+  if (questionSubtopic) {
+    questionSubtopic.textContent = `${item.subtopic || "ללא תת־נושא"}`;
   }
 
   qText.textContent = item.q;
