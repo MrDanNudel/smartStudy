@@ -111,9 +111,14 @@ window.addEventListener("DOMContentLoaded", () => {
       "questions",
     );
   });
-
   failsBtn?.addEventListener("click", () => {
-    openModal("בחר מספר פסילות — 0 ללא הגבלה", maxFails, 0, 100, "fails");
+    openModal(
+      "בחר מספר פסילות בין 1 ל־20.<br>אם ברצונך להיבחן ללא הגבלת פסילות, בחר 0.",
+      maxFails,
+      0,
+      20,
+      "fails",
+    );
   });
 
   saveBtn?.addEventListener("click", () => {
@@ -152,13 +157,15 @@ window.addEventListener("DOMContentLoaded", () => {
       closeModal();
     }
   });
-
-  // בבחירת תת־נושא מציגים מיד את המקסימום הזמין
+  // שינוי תת־נושא
   subtopicSelect?.addEventListener("change", () => {
+    // מחזיר אוטומטית להצגת כל השאלות בתת־הנושא החדש
+    typeSelect.value = "all";
+
     setQuestionsToMaximum();
   });
 
-  // גם בשינוי סוג שאלות מציגים את המקסימום הזמין
+  // שינוי סוג שאלות
   typeSelect?.addEventListener("change", () => {
     setQuestionsToMaximum();
   });
@@ -318,7 +325,6 @@ window.addEventListener("DOMContentLoaded", () => {
     startBtn.disabled = false;
     questionsBtn.disabled = false;
 
-    // קובע את מספר השאלות למקסימום לפי הסינון
     numQuestions = availableCount;
 
     updateSettingsDisplay();
@@ -509,7 +515,7 @@ window.addEventListener("DOMContentLoaded", () => {
   function openModal(title, value, min, max, setting) {
     currentSetting = setting;
 
-    modalTitle.textContent = title;
+    modalTitle.innerHTML = title;
     modalInput.value = value;
     modalInput.min = min;
     modalInput.max = max;
