@@ -17,73 +17,52 @@
   <body>
     <main class="wrap">
       <!-- רקעי זוהר דקורטיביים -->
-      <div class="glow glow-a"></div>
-      <div class="glow glow-b"></div>
+      <div class="glow glow-a" aria-hidden="true"></div>
+      <div class="glow glow-b" aria-hidden="true"></div>
 
+      <!-- כותרת ראשית -->
       <header class="hero">
-        <div class="emoji" aria-hidden="true">😎</div>
-        <h1>בחר נושא לתרגול</h1>
+        <h1 class="brand-title">Smart Study</h1>
+
+        <p class="brand-subtitle">למידה אינטראקטיבית</p>
+
+        <h2 class="choose-title">בחר נושא</h2>
       </header>
 
-      <section class="grid" aria-label="רשימת נושאים">
-        <!--
-        <button class="tile" data-key="biochemistry" type="button">
-          ביוכימיה
+      <!-- כרטיסי הנושאים -->
+      <section class="subject-grid" aria-label="רשימת נושאים">
+        <button
+          class="subject-card"
+          data-key="sportHistory"
+          type="button"
+          style="background-image: url(&quot;./imgs/sport-history.jpg&quot;)"
+        >
+          <span class="subject-card__overlay"></span>
+          <span class="subject-card__title">היסטוריה של הספורט</span>
         </button>
 
-        <button class="tile" data-key="athletics" type="button">
-          יסודות אתלטיקה
+        <button
+          class="subject-card"
+          data-key="developmentalPsychology"
+          type="button"
+          style="
+            background-image: url(&quot;./imgs/developmental-psychology.jpg&quot;);
+          "
+        >
+          <span class="subject-card__overlay"></span>
+          <span class="subject-card__title">פסיכולוגיה התפתחותית</span>
         </button>
 
-        <button class="tile" data-key="basketball" type="button">
-          יסודות בכדורסל
-        </button>
-
-        <button class="tile" data-key="football" type="button">
-          יסודות בכדורגל
-        </button>
-
-        <button class="tile" data-key="statistics1" type="button">
-          סטטיסטיקה – חלק א'
-        </button>
-
-        <button class="tile" data-key="anatomy" type="button">
-          אנטומיה
-        </button>
-
-        <button class="tile" data-key="psychology" type="button">
-          פסיכולוגיה
-        </button>
-
-        <button class="tile" data-key="chemistry" type="button">
-          כימיה
-        </button>
-
-        <button class="tile" data-key="volleyball" type="button">
-          כדור עף
-        </button>
-
-        <button class="tile" data-key="handball" type="button">
-          כדור יד
-        </button>
-
-        <button class="tile" data-key="statsDynamics" type="button">
-          יסודות בסטטיסטיקה ודינמיקה
-        </button>
-
-        <button class="tile" data-key="literacy" type="button">
-          אוריינות שפתית
-        </button>
-        -->
-        <button class="tile" data-key="educationalThought" type="button">
-          מחשבת החינוך
-        </button>
-        <button class="tile" data-key="sportHistory" type="button">
-          היסטוריה של הספורט
-        </button>
-
-        <button class="tile" data-key="developmentalPsychology" type="button">
-          פסיכולוגיה התפתחותית
+        <button
+          class="subject-card"
+          data-key="educationalThought"
+          type="button"
+          style="
+            background-image: url(&quot;./imgs/educational-thought.jpg&quot;);
+          "
+        >
+          <span class="subject-card__overlay"></span>
+          <span class="subject-card__title">מחשבת החינוך</span>
         </button>
       </section>
     </main>

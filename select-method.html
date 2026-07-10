@@ -11,7 +11,7 @@
     <title>בחר שיטת תרגול</title>
 
     <link rel="stylesheet" href="css/base.css" />
-    <link rel="stylesheet" href="css/method.css?v=2" />
+    <link rel="stylesheet" href="css/method.css?v=3" />
 
     <style>
       body {
@@ -48,27 +48,32 @@
       </header>
 
       <section class="method-grid" aria-label="שיטות תרגול">
-        <button
-          class="method-card"
-          data-method="quiz"
-          id="quizBtn"
-          type="button"
-        >
-          <div class="method-title">מבחן שאלות אמריקאיות</div>
+        <button class="method-card" id="quizBtn" type="button">
+          <span class="method-card__icon" aria-hidden="true">📝</span>
+
+          <span class="method-card__content">
+            <span class="method-card__title">מבחן אמריקאי</span>
+
+            <span class="method-card__description">
+              שאלות עם ארבע אפשרויות ותשובה נכונה אחת
+            </span>
+          </span>
         </button>
 
-        <button
-          class="method-card"
-          data-method="show"
-          id="showBtn"
-          type="button"
-        >
-          <div class="method-title">הצגת שאלות ותשובות</div>
+        <button class="method-card" id="showBtn" type="button">
+          <span class="method-card__icon" aria-hidden="true">📚</span>
+
+          <span class="method-card__content">
+            <span class="method-card__title">שאלות ותשובות</span>
+
+            <span class="method-card__description">
+              מעבר על שאלות עם הסברים ותשובות מלאות
+            </span>
+          </span>
         </button>
       </section>
     </main>
 
-    <!-- אצלך הקובץ נקרא method.js ונמצא בתיקיית js -->
     <script src="js/method.js"></script>
   </body>
 </html>
