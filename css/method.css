@@ -1,188 +1,438 @@
 /* =====================================================
-   SMART STUDY — METHOD PAGE (Glass & Neon Edition)
+   Smart Study — Method Page
    ===================================================== */
 
-/* מבנה כללי */
+/* ================================
+   מעבר בין עמודים
+   ================================ */
+
+body {
+  opacity: 0;
+
+  transition: opacity 0.35s ease;
+}
+
+body.fade-in {
+  opacity: 1;
+}
+
+body.fade-out {
+  opacity: 0;
+
+  pointer-events: none;
+}
+
+/* ================================
+   מעטפת העמוד
+   ================================ */
+
 .method-wrap {
+  position: relative;
+
+  width: 100%;
+  min-height: 100vh;
+  min-height: 100dvh;
+
+  padding-top: 110px;
+  padding-right: 32px;
+  padding-bottom: 80px;
+  padding-left: 32px;
+
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: flex-start;
-  gap: 60px;
-  min-height: 100vh;
+
+  gap: 48px;
+
   text-align: center;
-  padding-bottom: 60px;
 }
 
-/* כפתור חזרה */
+/* ================================
+   כפתור חזרה
+   ================================ */
+
 .back-btn {
   position: absolute;
-  top: 54px;
-  left: 24px;
+
+  top: 28px;
+  right: 28px;
+
+  z-index: 10;
+
   display: flex;
   align-items: center;
+
   gap: 8px;
+
   padding: 10px 18px;
-  border: 1px solid rgba(120, 220, 255, 0.35);
-  border-radius: 18px;
-  background: rgba(19, 32, 54, 0.55);
-  color: var(--text);
-  font-weight: 600;
-  font-size: 14px;
-  cursor: pointer;
-  transition: 0.25s ease;
-  box-shadow: 0 8px 25px rgba(0, 255, 234, 0.18);
-  backdrop-filter: blur(10px) saturate(120%);
-  -webkit-backdrop-filter: blur(10px) saturate(120%);
-}
-.back-btn:hover {
-  transform: translateY(-2px) scale(1.03);
-  background-color: rgba(18, 210, 200, 0.16);
-  border-color: rgba(120, 220, 255, 0.65);
-  box-shadow: 0 14px 40px rgba(0, 255, 234, 0.3);
-}
 
-/* כותרת */
-.method-hero {
-  text-align: center;
-  margin-top: 90px;
-}
-.method-emoji {
-  font-size: clamp(48px, 6vw, 80px);
-  margin-bottom: 24px;
-}
-.chosen-subject {
-  font-size: 18px;
-  color: var(--muted);
-  margin-top: 12px;
-}
+  border: 1px solid rgba(80, 200, 255, 0.5);
+  border-radius: 999px;
 
-/* גריד */
-.method-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-  gap: 32px;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  max-width: 700px;
-}
-/* קלפים (כפתורי שיטה) */
-.method-card {
-  border: 1px solid rgba(120, 220, 255, 0.35);
-  border-radius: 18px;
-  background: linear-gradient(
-    180deg,
-    rgba(19, 32, 54, 0.55),
-    rgba(10, 18, 30, 0.45)
-  );
-  color: var(--text);
+  color: white;
+
+  font-size: 0.95rem;
   font-weight: 700;
-  font-size: 20px;
-  padding: 60px 0;
-  text-align: center;
+
+  background: rgba(15, 40, 70, 0.78);
+
+  box-shadow:
+    0 8px 25px rgba(0, 255, 234, 0.14),
+    inset 0 1px 0 rgba(255, 255, 255, 0.06);
+
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+
   cursor: pointer;
+
   transition:
     transform 0.25s ease,
-    box-shadow 0.25s ease,
     background 0.25s ease,
-    border-color 0.25s ease;
-  box-shadow: 0 10px 30px rgba(0, 255, 234, 0.18);
-  backdrop-filter: blur(8px) saturate(120%);
-  -webkit-backdrop-filter: blur(8px) saturate(120%);
-
-  /* אפקט כניסה אחיד ומהיר */
-  opacity: 0;
-  transform: scale(0.94);
-  animation: fadeCard 0.6s ease forwards;
+    border-color 0.25s ease,
+    box-shadow 0.25s ease;
 }
 
-/* אפקט ריחוף */
-.method-card:hover {
-  transform: scale(1.05);
-  background: rgba(18, 210, 200, 0.16);
-  border-color: rgba(120, 220, 255, 0.75);
-  box-shadow: 0 16px 45px rgba(0, 255, 234, 0.25);
+.back-btn:hover {
+  transform: translateY(-2px);
+
+  border-color: rgba(120, 220, 255, 0.8);
+
+  background: rgba(25, 65, 105, 0.95);
+
+  box-shadow:
+    0 12px 34px rgba(0, 255, 234, 0.22),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
 }
 
-/* אנימציית כניסה אחידה */
-@keyframes fadeCard {
+.back-btn:active {
+  transform: translateY(0) scale(0.98);
+}
+
+.back-btn:focus-visible {
+  outline: 3px solid white;
+  outline-offset: 4px;
+}
+
+.back-icon {
+  font-size: 0.88rem;
+}
+
+/* ================================
+   לוגו עליון
+   ================================ */
+
+.page-brand {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  text-align: center;
+
+  animation: brandEnter 0.45s ease both;
+}
+
+@keyframes brandEnter {
   from {
     opacity: 0;
-    transform: scale(0.94) translateY(15px);
+    transform: translateY(12px);
   }
+
   to {
     opacity: 1;
-    transform: scale(1) translateY(0);
+    transform: translateY(0);
   }
 }
 
-/* רספונסיביות */
-@media (max-width: 600px) {
-  .method-grid {
-    grid-template-columns: 1fr;
-    gap: 20px;
+.brand-title {
+  margin: 0;
+
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  font-weight: 950;
+  line-height: 1;
+  letter-spacing: 0.015em;
+
+  background: linear-gradient(
+    90deg,
+    #ffffff 0%,
+    #79fff0 35%,
+    #35ffe0 58%,
+    #00a0ff 100%
+  );
+
+  -webkit-background-clip: text;
+  background-clip: text;
+
+  color: transparent;
+
+  filter: drop-shadow(0 0 16px rgba(53, 255, 224, 0.22));
+}
+
+.brand-subtitle {
+  margin: 14px 0 0;
+
+  color: var(--muted);
+
+  font-size: clamp(1rem, 2vw, 1.35rem);
+  font-weight: 600;
+  letter-spacing: 0.035em;
+
+  text-shadow: 0 0 15px rgba(0, 160, 255, 0.3);
+}
+
+/* ================================
+   אזור פרטי הנושא
+   ================================ */
+
+.subject-intro {
+  width: min(100%, 1100px);
+
+  display: grid;
+  grid-template-columns: minmax(260px, 390px) minmax(0, 1fr);
+  align-items: center;
+
+  gap: 55px;
+
+  padding: 36px;
+
+  border: 1px solid rgba(86, 215, 255, 0.28);
+  border-radius: 34px;
+
+  background: linear-gradient(
+    145deg,
+    rgba(20, 43, 73, 0.82),
+    rgba(7, 19, 35, 0.86)
+  );
+
+  box-shadow:
+    0 28px 70px rgba(0, 0, 0, 0.34),
+    0 0 40px rgba(53, 255, 224, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.07);
+
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+
+  animation: subjectIntroEnter 0.55s ease both;
+}
+
+@keyframes subjectIntroEnter {
+  from {
+    opacity: 0;
+    transform: translateY(18px) scale(0.985);
   }
-  .method-card {
-    padding: 40px 0;
-    font-size: 18px;
-  }
-  .back-btn {
-    top: 20px;
-    left: 16px;
-    padding: 8px 14px;
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
   }
 }
-.method-wrap {
-  min-height: 100vh;
+
+/* ================================
+   תמונת הנושא
+   ================================ */
+
+.subject-intro__image-wrap {
   position: relative;
-  padding: 32px;
+  isolation: isolate;
+
+  width: 100%;
+  aspect-ratio: 4 / 5;
+
+  overflow: hidden;
+
+  border: 3px solid rgba(53, 255, 224, 0.74);
+  border-radius: 28px;
+
+  background: #13233b;
+
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.14),
+    0 0 28px rgba(53, 255, 224, 0.22),
+    0 22px 45px rgba(0, 0, 0, 0.38);
+}
+
+.subject-intro__image-wrap::after {
+  content: "";
+
+  position: absolute;
+  inset: 8px;
+
+  z-index: 2;
+
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: 20px;
+
+  pointer-events: none;
+}
+
+.subject-intro__image {
+  width: 100%;
+  height: 100%;
+
+  display: block;
+
+  object-fit: cover;
+  object-position: center;
+
+  transition:
+    transform 0.55s ease,
+    filter 0.55s ease;
+}
+
+.subject-intro__image-wrap:hover .subject-intro__image {
+  transform: scale(1.035);
+
+  filter: brightness(1.05);
+}
+
+.subject-intro__shine {
+  position: absolute;
+  inset: 0;
+
+  z-index: 1;
+
+  background:
+    linear-gradient(
+      120deg,
+      transparent 18%,
+      rgba(255, 255, 255, 0.1) 42%,
+      transparent 60%
+    ),
+    linear-gradient(to top, rgba(0, 0, 0, 0.45), transparent 42%);
+
+  pointer-events: none;
+}
+
+/* ================================
+   תוכן הנושא
+   ================================ */
+
+.subject-intro__content {
+  text-align: right;
+}
+
+.subject-intro__eyebrow {
+  margin: 0 0 12px;
+
+  color: var(--accent);
+
+  font-size: 0.92rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+
+  text-transform: uppercase;
+
+  text-shadow: 0 0 13px rgba(53, 255, 224, 0.25);
+}
+
+.subject-intro__title {
+  margin: 0;
+
+  color: white;
+
+  font-size: clamp(2.35rem, 5vw, 4.4rem);
+  font-weight: 950;
+  line-height: 1.08;
+
+  text-shadow:
+    0 4px 16px rgba(0, 0, 0, 0.45),
+    0 0 20px rgba(53, 255, 224, 0.13);
+}
+
+.subject-intro__description {
+  max-width: 650px;
+
+  margin: 24px 0 0;
+
+  color: rgba(226, 242, 250, 0.88);
+
+  font-size: clamp(1.03rem, 1.8vw, 1.25rem);
+  font-weight: 500;
+  line-height: 1.9;
+}
+
+/* ================================
+   אזור שיטות התרגול
+   ================================ */
+
+.method-section {
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  gap: 38px;
 }
 
 .method-hero {
+  margin: 0;
+
   text-align: center;
-  margin-top: 90px;
 }
 
 .method-emoji {
-  font-size: 4rem;
   margin-bottom: 12px;
+
+  font-size: clamp(3.1rem, 5vw, 4.4rem);
+
+  filter: drop-shadow(0 0 12px rgba(53, 255, 224, 0.18));
 }
 
-.method-hero h1 {
+.method-hero h2 {
   margin: 0;
-  font-size: clamp(2rem, 4vw, 3.2rem);
+
+  color: white;
+
+  font-size: clamp(2.1rem, 4vw, 3.35rem);
+  font-weight: 950;
+
+  text-shadow:
+    0 4px 14px rgba(0, 0, 0, 0.35),
+    0 0 18px rgba(53, 255, 224, 0.12);
 }
 
 .chosen-subject {
-  margin-top: 14px;
-  font-size: 1.15rem;
-  opacity: 0.85;
+  margin: 14px 0 0;
+
+  color: var(--muted);
+
+  font-size: 1.1rem;
+  font-weight: 600;
 }
+
+/* ================================
+   גריד שיטות
+   ================================ */
 
 .method-grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(280px, 440px));
-  justify-content: center;
-  gap: 36px;
+  width: min(1200px, 96%);
 
-  width: min(1000px, 94%);
-  margin: 55px auto 0;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(250px, 360px));
+  justify-content: center;
+
+  gap: 30px;
 }
 
+/* ================================
+   כרטיס שיטת תרגול
+   ================================ */
+
 .method-card {
+  min-height: 330px;
+
+  padding: 36px 28px;
+
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
 
-  min-height: 330px;
-  padding: 36px 28px;
-
-  border: 1px solid rgba(255, 255, 255, 0.16);
+  border: 1px solid rgba(120, 220, 255, 0.32);
   border-radius: 28px;
 
   color: white;
+
   background: linear-gradient(
     145deg,
     rgba(30, 64, 110, 0.9),
@@ -191,31 +441,66 @@
 
   box-shadow:
     0 18px 42px rgba(0, 0, 0, 0.25),
+    0 0 24px rgba(0, 255, 234, 0.1),
     inset 0 1px 0 rgba(255, 255, 255, 0.08);
 
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+
   cursor: pointer;
+
+  opacity: 0;
+
+  animation: methodCardEnter 0.55s ease forwards;
 
   transition:
     transform 0.28s ease,
     box-shadow 0.28s ease,
     border-color 0.28s ease,
-    filter 0.28s ease;
+    filter 0.28s ease,
+    background 0.28s ease;
+}
+
+.method-card:nth-child(2) {
+  animation-delay: 0.08s;
+}
+
+.method-card:nth-child(3) {
+  animation-delay: 0.16s;
+}
+
+@keyframes methodCardEnter {
+  from {
+    opacity: 0;
+    transform: translateY(18px) scale(0.965);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
 }
 
 .method-card:hover {
-  transform: translateY(-12px) scale(1.055);
+  transform: translateY(-10px) scale(1.035);
 
-  border-color: rgba(90, 205, 255, 0.65);
+  border-color: rgba(90, 205, 255, 0.72);
+
+  background: linear-gradient(
+    145deg,
+    rgba(36, 79, 133, 0.96),
+    rgba(12, 32, 59, 0.97)
+  );
 
   box-shadow:
     0 28px 58px rgba(0, 0, 0, 0.34),
-    0 0 28px rgba(55, 190, 255, 0.18);
+    0 0 32px rgba(55, 190, 255, 0.2);
 
-  filter: brightness(1.08);
+  filter: brightness(1.06);
 }
 
 .method-card:active {
-  transform: translateY(-4px) scale(1.01);
+  transform: translateY(-3px) scale(1.01);
 }
 
 .method-card:focus-visible {
@@ -223,75 +508,157 @@
   outline-offset: 5px;
 }
 
+/* ================================
+   תוכן הכרטיס
+   ================================ */
+
 .method-card__icon {
-  font-size: 5rem;
   margin-bottom: 25px;
+
+  font-size: 5rem;
+
+  filter: drop-shadow(0 8px 13px rgba(0, 0, 0, 0.28));
 }
 
 .method-card__content {
   display: flex;
   flex-direction: column;
   align-items: center;
+
   gap: 12px;
 }
 
 .method-card__title {
   font-size: 2rem;
-  font-weight: 800;
+  font-weight: 850;
 }
 
 .method-card__description {
   max-width: 320px;
+
+  color: rgba(231, 244, 251, 0.82);
+
   font-size: 1.05rem;
-  line-height: 1.6;
+  font-weight: 500;
+  line-height: 1.65;
   text-align: center;
-  opacity: 0.82;
 }
 
-.back-btn {
-  position: absolute;
-  top: 28px;
-  right: 28px;
+/* ================================
+   מסכים בינוניים
+   ================================ */
 
-  display: flex;
-  align-items: center;
-  gap: 8px;
-
-  padding: 10px 18px;
-  border: 1px solid rgba(80, 200, 255, 0.5);
-  border-radius: 999px;
-
-  color: white;
-  background: rgba(15, 40, 70, 0.8);
-
-  cursor: pointer;
-}
-
-.back-btn:hover {
-  background: rgba(25, 65, 105, 0.95);
-}
-
-@media (max-width: 760px) {
-  .method-wrap {
-    padding: 22px;
+@media (max-width: 1050px) {
+  .method-grid {
+    grid-template-columns: repeat(2, minmax(280px, 400px));
   }
 
-  .method-hero {
-    margin-top: 100px;
+  .method-card:nth-child(3) {
+    grid-column: 1 / -1;
+
+    width: min(100%, 400px);
+
+    justify-self: center;
+  }
+}
+
+/* ================================
+   טאבלט
+   ================================ */
+
+@media (max-width: 850px) {
+  .subject-intro {
+    grid-template-columns: minmax(220px, 320px) minmax(0, 1fr);
+
+    gap: 34px;
+
+    padding: 28px;
+  }
+
+  .subject-intro__description {
+    line-height: 1.75;
+  }
+}
+
+/* ================================
+   טלפון
+   ================================ */
+
+@media (max-width: 700px) {
+  .method-wrap {
+    padding-top: 95px;
+    padding-right: 18px;
+    padding-bottom: 60px;
+    padding-left: 18px;
+
+    gap: 40px;
+  }
+
+  .back-btn {
+    top: 20px;
+    right: 18px;
+
+    padding: 9px 15px;
+  }
+
+  .brand-subtitle {
+    margin-top: 10px;
+  }
+
+  .subject-intro {
+    grid-template-columns: 1fr;
+
+    gap: 30px;
+
+    padding: 22px;
+
+    border-radius: 26px;
+  }
+
+  .subject-intro__image-wrap {
+    width: min(100%, 340px);
+
+    margin-inline: auto;
+  }
+
+  .subject-intro__content {
+    text-align: center;
+  }
+
+  .subject-intro__description {
+    margin-right: auto;
+    margin-left: auto;
+
+    line-height: 1.75;
+  }
+
+  .method-section {
+    gap: 30px;
   }
 
   .method-grid {
-    grid-template-columns: 1fr;
+    width: 100%;
     max-width: 480px;
+
+    grid-template-columns: 1fr;
+
     gap: 24px;
   }
 
   .method-card {
     min-height: 260px;
+
+    padding: 32px 22px;
+  }
+
+  .method-card:nth-child(3) {
+    grid-column: auto;
+
+    width: 100%;
   }
 
   .method-card:hover {
-    transform: translateY(-6px) scale(1.025);
+    transform: translateY(-5px) scale(1.02);
   }
 
   .method-card__icon {
@@ -301,9 +668,66 @@
   .method-card__title {
     font-size: 1.65rem;
   }
+}
+
+/* ================================
+   טלפונים קטנים
+   ================================ */
+
+@media (max-width: 390px) {
+  .method-wrap {
+    padding-right: 14px;
+    padding-left: 14px;
+  }
 
   .back-btn {
-    top: 20px;
-    right: 20px;
+    right: 14px;
+
+    font-size: 0.86rem;
+  }
+
+  .subject-intro {
+    padding: 17px;
+  }
+
+  .subject-intro__title {
+    font-size: 2.15rem;
+  }
+
+  .subject-intro__description {
+    font-size: 1rem;
+  }
+
+  .method-card {
+    min-height: 235px;
+  }
+}
+
+/* ================================
+   הפחתת אנימציות
+   ================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  body,
+  .back-btn,
+  .subject-intro__image,
+  .method-card {
+    transition: none;
+  }
+
+  .page-brand,
+  .subject-intro,
+  .method-card {
+    opacity: 1;
+
+    animation: none;
+
+    transform: none;
+  }
+
+  .method-card:hover,
+  .method-card:active,
+  .subject-intro__image-wrap:hover .subject-intro__image {
+    transform: none;
   }
 }

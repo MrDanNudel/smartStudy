@@ -11,66 +11,94 @@
     <title>בחר שיטת תרגול</title>
 
     <link rel="stylesheet" href="css/base.css" />
-    <link rel="stylesheet" href="css/method.css?v=3" />
-
-    <style>
-      body {
-        opacity: 0;
-        transition: opacity 0.4s ease;
-      }
-
-      body.fade-in {
-        opacity: 1;
-      }
-
-      body.fade-out {
-        opacity: 0;
-      }
-    </style>
+    <link rel="stylesheet" href="css/method.css?v=6" />
   </head>
 
   <body>
     <main class="wrap method-wrap">
-      <div class="glow glow-a"></div>
-      <div class="glow glow-b"></div>
+      <div class="glow glow-a" aria-hidden="true"></div>
+      <div class="glow glow-b" aria-hidden="true"></div>
 
       <button class="back-btn" type="button" aria-label="לעמוד הקודם">
         <span class="back-icon" aria-hidden="true">◀</span>
         <span>לעמוד הקודם</span>
       </button>
 
-      <header class="hero method-hero">
-        <div class="method-emoji" aria-hidden="true">🗣️</div>
-
-        <h1>בחר שיטת תרגול</h1>
-
-        <p class="chosen-subject" id="chosenSubject"></p>
+      <!-- לוגו עליון -->
+      <header class="page-brand" aria-label="מיתוג האתר">
+        <h1 class="brand-title">Smart Study</h1>
+        <p class="brand-subtitle">למידה אינטראקטיבית</p>
       </header>
 
-      <section class="method-grid" aria-label="שיטות תרגול">
-        <button class="method-card" id="quizBtn" type="button">
-          <span class="method-card__icon" aria-hidden="true">📝</span>
+      <!-- פרטי הנושא שנבחר -->
+      <section class="subject-intro" aria-labelledby="subjectTitle">
+        <div class="subject-intro__image-wrap">
+          <img id="subjectImage" class="subject-intro__image" src="" alt="" />
 
-          <span class="method-card__content">
-            <span class="method-card__title">מבחן אמריקאי</span>
+          <span class="subject-intro__shine" aria-hidden="true"></span>
+        </div>
 
-            <span class="method-card__description">
-              שאלות עם ארבע אפשרויות ותשובה נכונה אחת
+        <div class="subject-intro__content">
+          <p class="subject-intro__eyebrow">הנושא שנבחר</p>
+
+          <h2 id="subjectTitle" class="subject-intro__title">נושא לא מוגדר</h2>
+
+          <p id="subjectDescription" class="subject-intro__description">
+            טוען את פרטי הנושא...
+          </p>
+        </div>
+      </section>
+
+      <!-- בחירת שיטת תרגול -->
+      <section class="method-section" aria-labelledby="methodSectionTitle">
+        <header class="method-hero">
+          <div class="method-emoji" aria-hidden="true">🧠</div>
+
+          <h2 id="methodSectionTitle">בחר שיטת תרגול</h2>
+
+          <p class="chosen-subject" id="chosenSubject"></p>
+        </header>
+
+        <div class="method-grid" aria-label="שיטות תרגול">
+          <!-- מבחן אמריקאי -->
+          <button class="method-card" id="quizBtn" type="button">
+            <span class="method-card__icon" aria-hidden="true">📝</span>
+
+            <span class="method-card__content">
+              <span class="method-card__title">מבחן אמריקאי</span>
+
+              <span class="method-card__description">
+                שאלות עם ארבע אפשרויות ותשובה נכונה אחת
+              </span>
             </span>
-          </span>
-        </button>
+          </button>
 
-        <button class="method-card" id="showBtn" type="button">
-          <span class="method-card__icon" aria-hidden="true">📚</span>
+          <!-- שאלות ותשובות -->
+          <button class="method-card" id="showBtn" type="button">
+            <span class="method-card__icon" aria-hidden="true">📚</span>
 
-          <span class="method-card__content">
-            <span class="method-card__title">שאלות ותשובות</span>
+            <span class="method-card__content">
+              <span class="method-card__title">שאלות ותשובות</span>
 
-            <span class="method-card__description">
-              מעבר על שאלות עם הסברים ותשובות מלאות
+              <span class="method-card__description">
+                מעבר על שאלות עם הסברים ותשובות מלאות
+              </span>
             </span>
-          </span>
-        </button>
+          </button>
+
+          <!-- למידה ויזואלית -->
+          <button class="method-card" id="visualBtn" type="button">
+            <span class="method-card__icon" aria-hidden="true">👁️</span>
+
+            <span class="method-card__content">
+              <span class="method-card__title">למידה ויזואלית</span>
+
+              <span class="method-card__description">
+                למידה באמצעות תמונות, תרשימים והמחשות חזותיות
+              </span>
+            </span>
+          </button>
+        </div>
       </section>
     </main>
 
