@@ -63,7 +63,8 @@ body {
   text-rendering: optimizeLegibility;
 }
 
-button {
+button,
+input {
   font: inherit;
 }
 
@@ -100,6 +101,7 @@ button {
   z-index: -1;
 
   border-radius: 50%;
+
   filter: blur(95px);
   opacity: 0.55;
 
@@ -135,7 +137,7 @@ button {
 }
 
 /* ==================================================
-   אזור הכותרת הראשית
+   אזור הכותרת
    ================================================== */
 
 .hero {
@@ -150,8 +152,6 @@ button {
   text-align: center;
 }
 
-/* שורה משותפת לכותרת ולאימוג׳י */
-
 .brand-row {
   display: flex;
   align-items: center;
@@ -159,32 +159,32 @@ button {
 
   gap: 16px;
 
-  /*
-    הכותרת מופיעה משמאל,
-    והמוח מופיע מימין.
-  */
   direction: ltr;
 }
-
-/* אימוג׳י המוח */
 
 .brand-icon {
   width: auto;
   height: auto;
+
   margin: 0;
   padding: 0;
+
   display: block;
-  font-size: clamp(54px, 5vw, 70px);
-  line-height: 1;
+
   border: none;
   border-radius: 0;
+
+  font-size: clamp(54px, 5vw, 70px);
+  line-height: 1;
+
   background: transparent;
+
   box-shadow: none;
+
   filter: drop-shadow(0 0 13px rgba(53, 255, 224, 0.3));
+
   transform: translateY(-2px);
 }
-
-/* כותרת Smart Study */
 
 .brand-title {
   margin: 0;
@@ -210,8 +210,6 @@ button {
   filter: drop-shadow(0 0 16px rgba(53, 255, 224, 0.22));
 }
 
-/* תת־כותרת */
-
 .brand-subtitle {
   margin: 14px 0 0;
 
@@ -223,8 +221,6 @@ button {
 
   text-shadow: 0 0 15px rgba(0, 160, 255, 0.3);
 }
-
-/* בחר נושא */
 
 .choose-title {
   position: relative;
@@ -241,12 +237,11 @@ button {
   text-shadow: 0 0 14px rgba(53, 255, 224, 0.25);
 }
 
-/* הפס הזוהר מתחת לבחר נושא */
-
 .choose-title::after {
   content: "";
 
   position: absolute;
+
   right: 50%;
   bottom: 0;
 
@@ -271,7 +266,353 @@ button {
 }
 
 /* ==================================================
-   גריד כרטיסי הנושאים
+   שורת החיפוש
+   ================================================== */
+
+.subject-search {
+  position: relative;
+
+  width: min(100%, 520px);
+
+  margin-top: 28px;
+}
+
+/* אייקון חיפוש */
+
+.subject-search::before {
+  content: "⌕";
+
+  position: absolute;
+  z-index: 2;
+
+  top: 50%;
+  right: 18px;
+
+  color: rgba(182, 216, 232, 0.78);
+
+  font-size: 1.65rem;
+  line-height: 1;
+
+  transform: translateY(-52%);
+
+  pointer-events: none;
+}
+
+.subject-search__input {
+  width: 100%;
+  height: 58px;
+
+  padding: 0 55px 0 58px;
+
+  border: 2px solid rgba(53, 255, 224, 0.5);
+  border-radius: 18px;
+
+  outline: none;
+
+  color: var(--text);
+
+  font-size: 1.05rem;
+  font-weight: 600;
+  text-align: right;
+
+  caret-color: var(--accent);
+
+  background: linear-gradient(
+    135deg,
+    rgba(16, 31, 53, 0.97),
+    rgba(8, 22, 39, 0.97)
+  );
+
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.05),
+    0 0 22px rgba(53, 255, 224, 0.14),
+    inset 0 0 18px rgba(0, 160, 255, 0.05);
+
+  transition:
+    border-color 0.22s ease,
+    box-shadow 0.22s ease,
+    background 0.22s ease;
+}
+
+.subject-search__input::placeholder {
+  color: rgba(182, 216, 232, 0.68);
+
+  font-weight: 500;
+}
+
+.subject-search__input:hover {
+  border-color: rgba(53, 255, 224, 0.8);
+}
+
+.subject-search__input:focus {
+  border-color: var(--accent);
+
+  background: linear-gradient(
+    135deg,
+    rgba(18, 36, 60, 0.99),
+    rgba(8, 25, 44, 0.99)
+  );
+
+  box-shadow:
+    0 0 0 4px rgba(53, 255, 224, 0.09),
+    0 0 29px rgba(53, 255, 224, 0.24),
+    inset 0 0 20px rgba(0, 160, 255, 0.08);
+}
+
+/* מצב חיפוש פעיל */
+
+.subject-search__input.is-searching {
+  border-color: #79fff0;
+
+  background: linear-gradient(
+    135deg,
+    rgba(21, 43, 70, 0.99),
+    rgba(8, 29, 50, 0.99)
+  );
+
+  box-shadow:
+    0 0 0 4px rgba(53, 255, 224, 0.11),
+    0 0 34px rgba(53, 255, 224, 0.34),
+    inset 0 0 22px rgba(0, 160, 255, 0.12);
+}
+
+.subject-search:has(.subject-search__input.is-searching)::before {
+  animation: searchIconPulse 0.3s ease;
+}
+
+@keyframes searchIconPulse {
+  0% {
+    opacity: 0.55;
+    transform: translateY(-52%) scale(0.9);
+  }
+
+  50% {
+    opacity: 1;
+    transform: translateY(-52%) scale(1.12);
+  }
+
+  100% {
+    opacity: 0.78;
+    transform: translateY(-52%) scale(1);
+  }
+}
+
+/* הסתרת האיקס המובנה של הדפדפן */
+
+.subject-search__input::-webkit-search-cancel-button {
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+/* כפתור X */
+
+.subject-search__clear {
+  position: absolute;
+  z-index: 3;
+
+  top: 50%;
+  left: 13px;
+
+  width: 35px;
+  height: 35px;
+
+  padding: 0;
+
+  display: grid;
+  place-items: center;
+
+  border: 1px solid rgba(255, 255, 255, 0.17);
+  border-radius: 50%;
+
+  color: #dffcff;
+
+  font-size: 1.65rem;
+  font-weight: 400;
+  line-height: 1;
+
+  background: rgba(255, 255, 255, 0.07);
+
+  box-shadow: 0 0 10px rgba(0, 160, 255, 0.08);
+
+  cursor: pointer;
+
+  transform: translateY(-50%);
+
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease,
+    color 0.2s ease,
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.subject-search__clear:hover {
+  color: white;
+
+  border-color: rgba(53, 255, 224, 0.75);
+
+  background: rgba(53, 255, 224, 0.14);
+
+  box-shadow: 0 0 15px rgba(53, 255, 224, 0.2);
+
+  transform: translateY(-50%) scale(1.07);
+}
+
+.subject-search__clear:active {
+  transform: translateY(-50%) scale(0.95);
+}
+
+.subject-search__clear:focus {
+  outline: none;
+}
+
+.subject-search__clear:focus-visible {
+  outline: 3px solid white;
+  outline-offset: 3px;
+}
+
+.subject-search__clear[hidden] {
+  display: none;
+}
+
+/* ==================================================
+   הודעה כשאין תוצאות
+   ================================================== */
+
+.no-subjects-message {
+  margin: 22px 0 0;
+  padding: 13px 22px;
+
+  border: 1px solid rgba(182, 216, 232, 0.16);
+  border-radius: 14px;
+
+  color: var(--muted);
+
+  font-size: 1.05rem;
+  font-weight: 650;
+
+  text-align: center;
+
+  background: rgba(8, 20, 36, 0.62);
+
+  box-shadow:
+    0 0 18px rgba(0, 160, 255, 0.08),
+    inset 0 0 15px rgba(0, 160, 255, 0.03);
+
+  animation: noSubjectsEnter 0.2s ease both;
+}
+
+.no-subjects-message[hidden] {
+  display: none;
+}
+
+@keyframes noSubjectsEnter {
+  from {
+    opacity: 0;
+    transform: translateY(5px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ==================================================
+   אייקון טעינה
+   ================================================== */
+
+.subjects-loader {
+  width: 100%;
+  min-height: 94px;
+
+  margin: 22px auto 0;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  gap: 12px;
+
+  color: var(--muted);
+
+  animation: loaderEnter 0.16s ease both;
+}
+
+.subjects-loader[hidden] {
+  display: none;
+}
+
+.subjects-loader__spinner {
+  width: 40px;
+  height: 40px;
+
+  display: block;
+
+  border: 4px solid rgba(182, 216, 232, 0.16);
+  border-top-color: var(--accent);
+  border-right-color: var(--accent-2);
+  border-radius: 50%;
+
+  box-shadow:
+    0 0 19px rgba(53, 255, 224, 0.27),
+    inset 0 0 8px rgba(0, 160, 255, 0.12);
+
+  animation: subjectsLoaderSpin 0.65s linear infinite;
+}
+
+.subjects-loader__text {
+  color: var(--muted);
+
+  font-size: 0.98rem;
+  font-weight: 650;
+
+  text-shadow: 0 0 12px rgba(0, 160, 255, 0.25);
+}
+
+@keyframes subjectsLoaderSpin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes loaderEnter {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ==================================================
+   טקסט נגיש לקוראי מסך
+   ================================================== */
+
+.sr-only {
+  position: absolute;
+
+  width: 1px;
+  height: 1px;
+
+  padding: 0;
+  margin: -1px;
+
+  overflow: hidden;
+
+  clip: rect(0, 0, 0, 0);
+
+  white-space: nowrap;
+
+  border: 0;
+}
+
+/* ==================================================
+   גריד הכרטיסים
    ================================================== */
 
 .subject-grid {
@@ -281,6 +622,7 @@ button {
   margin: 0 auto;
 
   display: grid;
+
   grid-template-columns: repeat(3, minmax(0, var(--card-width)));
 
   justify-content: center;
@@ -290,6 +632,43 @@ button {
   gap: 30px;
 
   direction: rtl;
+
+  opacity: 1;
+  transform: translateY(0);
+
+  overflow: visible;
+
+  transition:
+    opacity 0.14s ease,
+    transform 0.14s ease;
+}
+
+/* כל הגריד נעלם בזמן החיפוש */
+
+.subject-grid.is-hiding {
+  opacity: 0;
+
+  transform: translateY(5px);
+
+  pointer-events: none;
+}
+
+/* הגריד חוזר לאחר שהכרטיסים כבר סודרו */
+
+.subject-grid.is-visible {
+  animation: subjectGridEnter 0.2s ease both;
+}
+
+@keyframes subjectGridEnter {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* ==================================================
@@ -313,6 +692,7 @@ button {
   border-radius: 26px;
 
   overflow: hidden;
+
   cursor: pointer;
 
   background-color: #172033;
@@ -328,17 +708,51 @@ button {
     0 22px 45px rgba(0, 0, 0, 0.42),
     inset 0 0 0 1px rgba(255, 255, 255, 0.08);
 
-  transition:
-    transform 0.25s ease,
-    box-shadow 0.25s ease,
-    border-color 0.25s ease,
-    filter 0.25s ease;
-
+  transform: translateY(0) scale(1);
   transform-origin: center;
+
+  transition:
+    transform 0.3s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.3s ease,
+    border-color 0.3s ease,
+    filter 0.3s ease;
+
   will-change: transform;
 }
 
-/* מסגרת פנימית עדינה */
+/* כרטיסים שאינם מתאימים לתוצאות */
+
+.subject-card[hidden] {
+  display: none;
+}
+
+/* אפקט קצר בעת בחירת נושא */
+
+.subject-card.is-opening {
+  pointer-events: none;
+
+  animation: selectedCardPulse 0.15s ease both;
+}
+
+@keyframes selectedCardPulse {
+  0% {
+    transform: translateY(0) scale(1);
+  }
+
+  50% {
+    transform: translateY(-3px) scale(1.02);
+
+    border-color: white;
+
+    filter: brightness(1.1);
+  }
+
+  100% {
+    transform: translateY(-1px) scale(1.01);
+  }
+}
+
+/* מסגרת פנימית */
 
 .subject-card::after {
   content: "";
@@ -409,28 +823,23 @@ button {
 }
 
 /* ==================================================
-   מעבר עכבר על כרטיס
+   מעבר עכבר
    ================================================== */
 
 .subject-card:hover {
   z-index: 10;
 
-  /*
-    הגדלה קטנה ועדינה של הכרטיס.
-  */
-  transform: translateY(-6px) scale(1.025);
+  transform: translateY(-6px) scale(1.035);
 
   border-color: #8ffff3;
 
-  filter: brightness(1.07) saturate(1.05);
+  filter: brightness(1.06) saturate(1.04);
 
   box-shadow:
-    0 0 0 1px rgba(255, 255, 255, 0.22),
-    0 0 34px rgba(53, 255, 224, 0.4),
+    0 0 0 1px rgba(255, 255, 255, 0.2),
+    0 0 32px rgba(53, 255, 224, 0.38),
     0 28px 55px rgba(0, 0, 0, 0.5);
 }
-
-/* מעט פחות כהות בזמן מעבר עכבר */
 
 .subject-card:hover .subject-card__overlay {
   background: linear-gradient(
@@ -442,8 +851,6 @@ button {
   );
 }
 
-/* גם שם הנושא עולה מעט */
-
 .subject-card:hover .subject-card__title {
   transform: translateY(-3px);
 
@@ -452,13 +859,11 @@ button {
     0 0 12px rgba(53, 255, 224, 0.38);
 }
 
-/* מצב לחיצה */
-
 .subject-card:active {
-  transform: translateY(-2px) scale(1.01);
-}
+  transform: translateY(-2px) scale(1.015);
 
-/* ניווט באמצעות מקלדת */
+  transition-duration: 0.12s;
+}
 
 .subject-card:focus {
   outline: none;
@@ -483,6 +888,7 @@ button {
 
   .subject-grid {
     max-width: 760px;
+
     gap: 22px;
   }
 
@@ -510,6 +916,10 @@ button {
     grid-template-columns: repeat(2, minmax(0, var(--card-width)));
 
     gap: 24px;
+  }
+
+  .subject-search {
+    max-width: 520px;
   }
 }
 
@@ -546,6 +956,50 @@ button {
 
   .choose-title {
     margin-top: 24px;
+  }
+
+  .subject-search {
+    width: 100%;
+    max-width: 410px;
+
+    margin-top: 24px;
+  }
+
+  .subject-search__input {
+    height: 54px;
+
+    padding-right: 51px;
+    padding-left: 54px;
+
+    border-radius: 16px;
+
+    font-size: 1rem;
+  }
+
+  .subject-search::before {
+    right: 16px;
+
+    font-size: 1.5rem;
+  }
+
+  .subject-search__clear {
+    left: 11px;
+
+    width: 33px;
+    height: 33px;
+
+    font-size: 1.55rem;
+  }
+
+  .subjects-loader {
+    min-height: 84px;
+
+    margin-top: 18px;
+  }
+
+  .subjects-loader__spinner {
+    width: 36px;
+    height: 36px;
   }
 
   .subject-grid {
@@ -592,6 +1046,12 @@ button {
     font-size: 16px;
   }
 
+  .subject-search__input {
+    height: 52px;
+
+    font-size: 0.96rem;
+  }
+
   .subject-card {
     height: 315px;
   }
@@ -609,62 +1069,42 @@ button {
 
   .subject-grid {
     max-width: 1050px;
+
     gap: 36px;
+  }
+
+  .subject-search {
+    width: min(100%, 560px);
   }
 }
 
 /* ==================================================
-   ביטול אנימציות לפי הגדרות המכשיר
+   הפחתת אנימציות לפי הגדרות המכשיר
    ================================================== */
 
 @media (prefers-reduced-motion: reduce) {
+  .subject-grid,
   .subject-card,
   .subject-card__overlay,
-  .subject-card__title {
+  .subject-card__title,
+  .subject-search__input,
+  .subject-search__clear {
     transition: none;
   }
 
+  .subject-grid.is-visible,
+  .subject-card.is-opening,
+  .subjects-loader,
+  .subjects-loader__spinner,
+  .no-subjects-message,
+  .subject-search:has(.subject-search__input.is-searching)::before {
+    animation: none;
+  }
+
+  .subject-grid.is-hiding,
   .subject-card:hover,
   .subject-card:active,
   .subject-card:hover .subject-card__title {
     transform: none;
   }
-}
-/* הגדלה עדינה וחלקה במעבר עכבר */
-
-.subject-grid {
-  overflow: visible;
-}
-
-.subject-card {
-  transform: translateY(0) scale(1);
-
-  transition:
-    transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
-    box-shadow 0.35s ease,
-    border-color 0.35s ease,
-    filter 0.35s ease;
-
-  will-change: transform;
-}
-
-.subject-card:hover {
-  z-index: 10;
-
-  /* הגדלה קטנה והדרגתית */
-  transform: translateY(-6px) scale(1.035);
-
-  filter: brightness(1.06) saturate(1.04);
-  border-color: #8ffff3;
-
-  box-shadow:
-    0 0 0 1px rgba(255, 255, 255, 0.2),
-    0 0 32px rgba(53, 255, 224, 0.38),
-    0 28px 55px rgba(0, 0, 0, 0.5);
-}
-
-.subject-card:active {
-  transform: translateY(-2px) scale(1.015);
-
-  transition-duration: 0.12s;
 }

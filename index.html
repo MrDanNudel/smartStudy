@@ -27,9 +27,48 @@
         <p class="brand-subtitle">למידה אינטראקטיבית</p>
 
         <h2 class="choose-title">בחר נושא</h2>
+
+        <!-- שורת חיפוש נושאים -->
+        <div class="subject-search">
+          <label class="sr-only" for="subjectSearch">חיפוש נושא</label>
+
+          <input
+            id="subjectSearch"
+            class="subject-search__input"
+            type="search"
+            placeholder="חיפוש נושא..."
+            autocomplete="off"
+            spellcheck="false"
+          />
+
+          <button
+            id="clearSubjectSearch"
+            class="subject-search__clear"
+            type="button"
+            aria-label="ניקוי החיפוש"
+            hidden
+          >
+            ×
+          </button>
+        </div>
+
+        <!-- הודעה כאשר אין תוצאות -->
+        <p id="noSubjectsMessage" class="no-subjects-message" hidden>
+          לא נמצאו נושאים מתאימים
+        </p>
+
+        <div
+          id="subjectsLoader"
+          class="subjects-loader"
+          role="status"
+          aria-live="polite"
+          hidden
+        >
+          <span class="subjects-loader__spinner" aria-hidden="true"></span>
+          <span class="subjects-loader__text">מחפש נושאים...</span>
+        </div>
       </header>
 
-      <!-- כרטיסי הנושאים -->
       <!-- כרטיסי הנושאים -->
       <section class="subject-grid" aria-label="רשימת נושאים">
         <!-- היסטוריה של הספורט -->
@@ -168,10 +207,10 @@
           <span class="subject-card__title">סטטיקה ודינמיקה</span>
         </button>
 
-        <!-- ניהול כיתה -->
+        <!-- ביוכימיה -->
         <button
           class="subject-card"
-          data-key="Biochemistry"
+          data-key="biochemistry"
           type="button"
           style="background-image: url(&quot;./imgs/biochemistry.png&quot;)"
         >
