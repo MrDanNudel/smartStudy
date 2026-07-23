@@ -19,7 +19,7 @@ window.addEventListener("DOMContentLoaded", () => {
     football: "יסודות בכדורגל",
     physics: "פיזיקה",
     statistics1: "סטטיסטיקה – חלק א׳",
-    biochemistry: "ביוכימיה",
+    Biochemistry: "ביוכימיה",
     volleyball: "כדור עף",
     handball: "כדור יד",
     developmentalPsychology: "פסיכולוגיה התפתחותית",

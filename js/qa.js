@@ -74,7 +74,7 @@ const SUBJECT_TITLES = {
   physics: "פיזיקה",
   statistics1: "סטטיסטיקה – חלק א׳",
   statsDynamics: "יסודות בסטטיסטיקה ודינמיקה",
-  ClassEducation: "ניהול כיתה",
+  Biochemistry: "ביוכימיה",
   volleyball: "כדור עף",
   handball: "כדור יד",
   developmentalPsychology: "פסיכולוגיה התפתחותית",

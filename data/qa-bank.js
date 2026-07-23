@@ -14906,7 +14906,7 @@ const statistics1QA = [
   { q: "מהי טעות מדידה?", a: "הבדל בין הערך הנמדד לערך האמיתי." },
 ];
 
-const ClassEducationQA = [
+const BiochemistryQA = [
   {
     id: "acid-1",
     subtopic: "חומצות ובסיסים",
@@ -24892,7 +24892,7 @@ window.qaBanks = {
   football: footballQA,
   statistics1: statistics1QA,
   statsDynamics: statsDynamicsQA,
-  ClassEducation: ClassEducationQA,
+  Biochemistry: BiochemistryQA,
   volleyball: volleyballQA,
   handball: handballQA,
   developmentalPsychology: developmentalPsychologyQA,

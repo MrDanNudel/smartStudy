@@ -25,7 +25,7 @@ const subjectTitles = {
   statistics1: "סטטיסטיקה – חלק א׳",
   physics: "פיזיקה",
   statsDynamics: "יסודות בסטטיסטיקה ודינמיקה",
-  ClassEducation: "ניהול כיתה",
+  Biochemistry: "ביוכימיה",
   volleyball: "כדור עף",
   handball: "כדור יד",
   developmentalPsychology: "פסיכולוגיה התפתחותית",
