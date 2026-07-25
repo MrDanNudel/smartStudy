@@ -5,13 +5,13 @@ window.visualLearningSubjects = {
     title: "למידה ויזואלית – היסטוריה של הספורט",
 
     description:
-      "יוון העתיקה • רומא • ימי הביניים • הספורט המודרני • המשחקים האולימפיים",
+      "יוון העתיקה • רומא • ימי הביניים והרנסנס • הספורט המודרני • התנועה האולימפית • ספורט ולאומיות",
 
     defaultTopic: "all",
 
     topics: {
       /* =====================================================
-         יוון העתיקה
+         יוון העתיקה — 5 שקופיות עשירות
       ===================================================== */
 
       ancientGreece: {
@@ -25,37 +25,30 @@ window.visualLearningSubjects = {
 
             titleHe: "הספורט ביוון העתיקה",
 
-            subtitle: "הקשר בין ספורט, חינוך, דת ותרבות",
+            subtitle: "חינוך, דת, תרבות ואידיאל האדם השלם",
 
             slides: [
               {
-                id: "greek-sport-overview-1",
+                id: "greek-sport-overview-main",
 
                 image:
-                  "imgs/visual-learning/sport-history/ancient-greece/greek-sport-overview-1.jpg",
+                  "imgs/visual-learning/sport-history/ancient-greece/greek-sport-overview.png",
 
-                altHe: "ספורטאים ביוון העתיקה",
+                altHe:
+                  "אינפוגרפיקה על הקשר בין ספורט, חינוך, דת ותרבות ביוון העתיקה",
 
-                explanationHe:
-                  "ביוון העתיקה הפעילות הגופנית הייתה חלק משמעותי מהחינוך, מהדת ומהחיים הציבוריים. תחרויות ספורט נערכו במסגרת פסטיבלים דתיים ונועדו גם לכבד את האלים.",
+                explanationHe: `ביוון העתיקה הפעילות הגופנית לא נתפסה רק כדרך לחזק את השרירים או להכין את הגוף למאמץ. היא הייתה חלק מרכזי מהחינוך, מהדת, מהתרבות ומהחיים הציבוריים. היוונים האמינו שאדם ראוי צריך לפתח גם את גופו וגם את שכלו, ולכן פעילות גופנית שולבה לצד לימודי מוזיקה, פילוסופיה, קריאה, כתיבה ורטוריקה.
 
-                explanation:
-                  "In Ancient Greece, physical activity was closely connected to education, religion and public life.",
-              },
+מרכזי האימון נקראו גימנסיונים ופלאייסטרות. בהם התאמנו צעירים בענפי ריצה, היאבקות, קפיצה, זריקות ותרגילים נוספים. האימון נועד לפתח כוח, סיבולת, משמעת, שליטה עצמית ואומץ, אך גם להכין את הצעיר להשתתפות בחיי העיר ולשירות צבאי בעת הצורך.
 
-              {
-                id: "greek-sport-overview-2",
+הספורט היה קשור גם לדת. תחרויות גדולות נערכו כחלק מפסטיבלים דתיים לכבוד האלים. המשחקים האולימפיים, למשל, נערכו באולימפיה לכבוד זאוס. מבחינת היוונים, עצם ההשתתפות וההצטיינות בתחרות היו דרך לבטא כבוד לאלים, לעיר ולמשפחה.
 
-                image:
-                  "imgs/visual-learning/sport-history/ancient-greece/greek-athletes.jpg",
+הניצחון העניק לספורטאי יוקרה רבה. הוא לא קיבל בדרך כלל פרס כספי במשחקים עצמם, אלא זר סמלי וכבוד ציבורי. לאחר שחזר לעירו, הוא היה עשוי לקבל הטבות, מתנות ומעמד מיוחד. לכן הניצחון נחשב הישג אישי וגם הישג של הקהילה שממנה הגיע הספורטאי.
 
-                altHe: "ספורטאים יוונים מתחרים",
-
-                explanationHe:
-                  "היוונים העריכו שילוב בין גוף מפותח, יכולת גופנית, משמעת וחינוך אינטלקטואלי. האידיאל היה לפתח אדם מאוזן בגופו ובנפשו.",
+הרעיון החשוב ביותר לזכור הוא שהספורט ביוון העתיקה היה דרך חיים. הוא שילב חינוך, דת, תרבות, זהות קהילתית ושאיפה למצוינות. אידיאל האדם השלם היה אדם חזק, ממושמע, משכיל ובעל אופי.`,
 
                 explanation:
-                  "Greek culture valued the development of both the body and the mind.",
+                  "In Ancient Greece, sport was deeply connected to education, religion, culture and civic life.",
               },
             ],
           },
@@ -65,54 +58,31 @@ window.visualLearningSubjects = {
 
             title: "Athens and Sparta",
 
-            titleHe: "אתונה וספרטה",
+            titleHe: "אתונה מול ספרטה",
 
             subtitle: "שתי תפיסות שונות של חינוך גופני",
 
             slides: [
               {
-                id: "athens-education",
-
-                image:
-                  "imgs/visual-learning/sport-history/ancient-greece/athens-education.jpg",
-
-                altHe: "חינוך באתונה העתיקה",
-
-                explanationHe:
-                  "בא אתונה החינוך נועד לפתח אדם רחב אופקים. החינוך כלל פעילות גופנית, מוזיקה, פילוסופיה, קריאה וכתיבה. הדגש היה על איזון בין גוף לנפש.",
-
-                explanation:
-                  "Athens emphasized a balanced education combining physical, intellectual and artistic development.",
-              },
-
-              {
-                id: "sparta-education",
-
-                image:
-                  "imgs/visual-learning/sport-history/ancient-greece/sparta-training.jpg",
-
-                altHe: "אימונים צבאיים בספרטה",
-
-                explanationHe:
-                  "בספרטה החינוך התמקד בעיקר בהכשרה צבאית, משמעת, כוח, סיבולת וציות. כבר מגיל צעיר הילדים הוכנו לחיי לוחם.",
-
-                explanation:
-                  "Spartan education focused on military preparation, discipline, strength and endurance.",
-              },
-
-              {
                 id: "athens-sparta-comparison",
 
                 image:
-                  "imgs/visual-learning/sport-history/ancient-greece/athens-sparta-comparison.jpg",
+                  "imgs/visual-learning/sport-history/ancient-greece/athens-sparta-comparison.png",
 
-                altHe: "השוואה בין אתונה לספרטה",
+                altHe: "השוואה חזותית בין החינוך הגופני באתונה ובספרטה",
 
-                explanationHe:
-                  "אתונה הדגישה חינוך מאוזן ורב־תחומי, בעוד ספרטה הדגישה הכנה צבאית וחוסן גופני. בשתי הערים הפעילות הגופנית הייתה חשובה, אך מטרתה הייתה שונה.",
+                explanationHe: `גם באתונה וגם בספרטה ייחסו חשיבות רבה לפעילות הגופנית, אך המטרה שלה הייתה שונה.
+
+באתונה שאפו לפתח אדם רחב אופקים ומאוזן. החינוך כלל פעילות גופנית לצד מוזיקה, ספרות, פילוסופיה, קריאה וכתיבה. הפעילות הגופנית נועדה לחזק את הגוף, לשפר את הבריאות, לפתח משמעת ולתרום לאידיאל של איזון בין גוף לנפש. האתונאים רצו להכין אזרחים שיוכלו להשתתף בחיי הציבור, לחשוב, לדבר, להגן על העיר ולתרום לתרבות.
+
+בספרטה החינוך היה צבאי הרבה יותר. המדינה ביקשה ליצור לוחמים ממושמעים, חזקים וצייתנים. ילדים הוכנסו למסגרת חינוכית קשוחה מגיל צעיר, ובה הודגשו סיבולת, עמידה בכאב, משמעת, אומץ, עבודת צוות וצייתנות. הפעילות הגופנית הייתה כלי ישיר להכנה למלחמה.
+
+גם לנשים הספרטניות היה תפקיד ייחודי. הן השתתפו בפעילות גופנית יותר מנשים בערים יווניות אחרות, מתוך אמונה שגוף חזק יסייע להן ללדת ילדים חזקים ובריאים.
+
+לסיכום, אתונה הדגישה חינוך מאוזן ופיתוח האדם השלם, ואילו ספרטה הדגישה הכשרה צבאית וחוסן. בשתי הערים הספורט היה חשוב, אך הוא שירת מטרות חברתיות ופוליטיות שונות.`,
 
                 explanation:
-                  "Athens and Sparta both valued physical education, but they used it for different purposes.",
+                  "Athens emphasized balanced education, while Sparta used physical training primarily for military preparation.",
               },
             ],
           },
@@ -124,52 +94,31 @@ window.visualLearningSubjects = {
 
             titleHe: "המשחקים האולימפיים העתיקים",
 
-            subtitle: "התחרויות שנערכו באולימפיה",
+            subtitle: "אולימפיה, זאוס, הפסקת האש והענפים המרכזיים",
 
             slides: [
               {
-                id: "olympia-location",
+                id: "ancient-olympics-overview",
 
                 image:
-                  "imgs/visual-learning/sport-history/ancient-greece/olympia.jpg",
+                  "imgs/visual-learning/sport-history/ancient-greece/ancient-olympics-overview.png",
 
-                altHe: "האתר העתיק באולימפיה",
+                altHe: "אינפוגרפיקה על המשחקים האולימפיים העתיקים",
 
-                explanationHe:
-                  "המשחקים האולימפיים העתיקים נערכו באולימפיה לכבוד האל זאוס. הם היו חלק מפסטיבל דתי ומשכו משתתפים וצופים מרחבי העולם היווני.",
+                explanationHe: `המשחקים האולימפיים העתיקים נערכו באולימפיה, מרכז דתי חשוב שהוקדש לזאוס. לפי המסורת המקובלת, המשחקים המתועדים הראשונים נערכו בשנת 776 לפנה״ס, והם התקיימו אחת לארבע שנים.
 
-                explanation:
-                  "The Ancient Olympic Games were held at Olympia in honor of Zeus.",
-              },
+המשחקים היו חלק מפסטיבל דתי ולא רק אירוע ספורטיבי. לפני התחרויות נערכו טקסים, תפילות והקרבת קורבנות. הספורטאים נשבעו להתחרות לפי הכללים, והניצחון נתפס כביטוי לכבוד, מצוינות וברכת האלים.
 
-              {
-                id: "olympic-truce",
+לקראת המשחקים הוכרזה הפסקת אש אולימפית. מטרתה הייתה לאפשר לספורטאים, לשופטים ולצופים לעבור בין ערי יוון ולהגיע לאולימפיה בבטחה. הפסקת האש לא ביטלה בהכרח את כל המלחמות, אך היא העניקה הגנה למסע אל המשחקים ומהם.
 
-                image:
-                  "imgs/visual-learning/sport-history/ancient-greece/olympic-truce.jpg",
+במשחקים התקיימו תחרויות ריצה למרחקים שונים, היאבקות, אגרוף, פנקראטיון, מרוצי מרכבות, מרוצי סוסים וקרב חמש. חלק מהתחרויות היו קשות ואלימות בהרבה מהמקובל כיום.
 
-                altHe: "הפסקת האש האולימפית",
+המנצחים קיבלו זר מענפי זית, אך הפרס האמיתי היה הכבוד. ניצחון אולימפי העניק לספורטאי תהילה, ולפעמים גם הטבות בעירו. המשחקים חיזקו תחושת שייכות משותפת בין היוונים, אף שהם חיו בערי־מדינה נפרדות ולעיתים יריבות.
 
-                explanationHe:
-                  "לקראת המשחקים הוכרזה הפסקת אש אולימפית. מטרתה הייתה לאפשר לספורטאים ולצופים להגיע לאולימפיה ולחזור ממנה בבטחה.",
+חשוב לזכור: המשחקים האולימפיים העתיקים שילבו דת, תחרות, זהות יוונית ויוקרה חברתית.`,
 
                 explanation:
-                  "The Olympic truce allowed athletes and spectators to travel safely to and from Olympia.",
-              },
-
-              {
-                id: "ancient-olympic-events",
-
-                image:
-                  "imgs/visual-learning/sport-history/ancient-greece/ancient-events.jpg",
-
-                altHe: "ענפי תחרות במשחקים העתיקים",
-
-                explanationHe:
-                  "במשחקים נערכו תחרויות ריצה, היאבקות, אגרוף, פנקראטיון, מרוצי מרכבות וקרב חמש. התחרויות ביטאו כוח, מהירות, אומץ ומיומנות.",
-
-                explanation:
-                  "Events included running, wrestling, boxing, pankration, chariot racing and the pentathlon.",
+                  "The Ancient Olympic Games were a religious festival at Olympia, held in honor of Zeus every four years.",
               },
             ],
           },
@@ -181,22 +130,27 @@ window.visualLearningSubjects = {
 
             titleHe: "קרב החמש העתיק",
 
-            subtitle: "חמש תחרויות שבחנו יכולות מגוונות",
+            subtitle: "ריצה, קפיצה, דיסקוס, כידון והיאבקות",
 
             slides: [
               {
-                id: "pentathlon-events",
+                id: "ancient-pentathlon-main",
 
                 image:
-                  "imgs/visual-learning/sport-history/ancient-greece/pentathlon-events.jpg",
+                  "imgs/visual-learning/sport-history/ancient-greece/ancient-pentathlon.png",
 
-                altHe: "ענפי קרב החמש ביוון העתיקה",
+                altHe: "חמשת ענפי קרב החמש ביוון העתיקה",
 
-                explanationHe:
-                  "קרב החמש כלל ריצת סטדיון, קפיצה לרוחק, זריקת דיסקוס, הטלת כידון והיאבקות. הוא נחשב לתחרות שבחנה ספורטאי שלם ומגוון.",
+                explanationHe: `קרב החמש העתיק נחשב לתחרות שבחנה ספורטאי מגוון ושלם. הוא כלל חמישה ענפים: ריצת סטדיון, קפיצה לרוחק, זריקת דיסקוס, הטלת כידון והיאבקות.
+
+ריצת הסטדיון בחנה מהירות. הקפיצה לרוחק בוצעה כנראה בעזרת משקולות יד קטנות שנקראו הלטרס. זריקת הדיסקוס בדקה כוח, תזמון וטכניקה. הטלת הכידון דרשה דיוק, תנועה מתואמת ושליטה בכלי. ההיאבקות בחנה כוח, שיווי משקל, זריזות וטקטיקה.
+
+לא כל פרטי שיטת הניקוד העתיקה ידועים בוודאות, אך ברור שהמנצח נדרש להפגין יכולת בכמה תחומים ולא להצטיין רק בענף אחד. משום כך קרב החמש התאים במיוחד לאידיאל היווני של גוף מאוזן, חזק, זריז ומיומן.
+
+מה שחשוב לזכור למבחן הוא רשימת חמשת הענפים והרעיון המרכזי: קרב החמש נועד לבחון ספורטאי רב־גוני ולא מומחה בתחום יחיד.`,
 
                 explanation:
-                  "The ancient pentathlon included running, long jump, discus, javelin and wrestling.",
+                  "The ancient pentathlon tested a complete athlete through running, jumping, discus, javelin and wrestling.",
               },
             ],
           },
@@ -208,116 +162,100 @@ window.visualLearningSubjects = {
 
             titleHe: "מקור ריצת המרתון",
 
-            subtitle: "הסיפור ההיסטורי שהפך למקצה אולימפי",
+            subtitle: "האגדה ההיסטורית והפיכתה למקצה מודרני",
 
             slides: [
               {
-                id: "marathon-story",
+                id: "marathon-origin-main",
 
                 image:
-                  "imgs/visual-learning/sport-history/ancient-greece/marathon-story.jpg",
+                  "imgs/visual-learning/sport-history/ancient-greece/marathon-origin.png",
 
-                altHe: "רץ יווני המבשר על ניצחון",
+                altHe: "רץ יווני בדרכו ממרתון לאתונה",
 
-                explanationHe:
-                  "ריצת המרתון המודרנית מבוססת על סיפורו של שליח שרץ מאזור מרתון לאתונה כדי להודיע על ניצחון היוונים בקרב מרתון.",
+                explanationHe: `ריצת המרתון המודרנית קשורה לסיפור על שליח יווני שרץ מאזור מרתון לאתונה כדי לבשר על ניצחון היוונים על הפרסים בקרב מרתון בשנת 490 לפנה״ס. לפי הגרסה הפופולרית, השליח הגיע לאתונה, הכריז על הניצחון ומת מיד לאחר מכן.
+
+חשוב להבין שמדובר במסורת שהתפתחה לאורך זמן, ולא בתיאור היסטורי ודאי בכל פרטיו. מקורות עתיקים שונים מספרים סיפורים שונים על שליחים ועל מסלולי ריצה, ולכן יש להבחין בין האירוע ההיסטורי של הקרב לבין האגדה שנבנתה סביב הרץ.
+
+כאשר חודשו המשחקים האולימפיים בעת החדשה, שולב באולימפיאדת אתונה 1896 מקצה ריצה בהשראת הסיפור. המרחק המדויק לא היה קבוע בתחילה. רק מאוחר יותר נקבע המרחק הרשמי של 42.195 קילומטר.
+
+המרתון הפך לסמל של סיבולת, נחישות ויכולת להתמיד לאורך זמן. לכן הסיפור העתיק ממשיך לחיות גם בספורט המודרני, אף שהמקצה עצמו הוא יצירה מודרנית המבוססת על השראה מן העבר.`,
 
                 explanation:
-                  "The modern marathon was inspired by the story of a messenger running from Marathon to Athens.",
+                  "The modern marathon was inspired by a legendary messenger associated with the Battle of Marathon.",
               },
             ],
           },
         ],
       },
-
-      /* =====================================================
-         רומא העתיקה
-      ===================================================== */
-
       ancientRome: {
         label: "רומא העתיקה",
 
         items: [
           {
-            id: "roman-sport-overview",
+            id: "roman-sport-and-spectacle",
 
-            title: "Sport in Ancient Rome",
+            title: "Sport and Spectacle in Ancient Rome",
 
-            titleHe: "הספורט ברומא העתיקה",
+            titleHe: "ספורט, בידור וראווה ברומא העתיקה",
 
-            subtitle: "בידור המוני, כוח וראווה",
+            subtitle: "קולוסיאום, גלדיאטורים, מרוצי מרכבות ופוליטיקה",
 
             slides: [
               {
-                id: "roman-sport-overview-1",
+                id: "roman-sport-overview",
 
                 image:
-                  "imgs/visual-learning/sport-history/ancient-rome/roman-sport.jpg",
+                  "imgs/visual-learning/sport-history/ancient-rome/roman-sport-overview.png",
 
-                altHe: "אירועי ספורט ובידור ברומא העתיקה",
+                altHe: "אינפוגרפיקה על אירועי הספורט והבידור ברומא העתיקה",
 
-                explanationHe:
-                  "ברומא העתיקה הפעילות הגופנית הייתה קשורה להכשרה צבאית, אך אירועי הספורט הציבוריים התמקדו בעיקר בבידור, ראווה ושליטה בהמונים.",
+                explanationHe: `ברומא העתיקה הפעילות הגופנית שימשה בין השאר להכשרה צבאית, אך אירועי הציבור הגדולים התמקדו בעיקר בבידור, ראווה והפגנת כוח. המונים הגיעו לאמפיתיאטראות ולמסלולי מרוצים כדי לצפות בקרבות גלדיאטורים, ציד חיות, מופעים ומרוצי מרכבות.
 
-                explanation:
-                  "Roman public sport focused heavily on mass entertainment, spectacle and political power.",
-              },
+הקולוסיאום היה אחד האתרים המזוהים ביותר עם תרבות הראווה הרומית. הוא יכול היה להכיל קהל עצום, והאירועים שנערכו בו שימשו גם כלי פוליטי. שליטים מימנו מופעים כדי לזכות באהדת הציבור, להפגין עושר וכוח ולהסיח את הדעת מבעיות חברתיות.
 
-              {
-                id: "greek-roman-comparison",
+הגלדיאטורים היו לוחמים שהתאמנו בבתי ספר מיוחדים. רבים מהם היו עבדים, שבויי מלחמה או נידונים, אך היו גם אנשים שבחרו להצטרף מתוך תקווה לפרסום, כסף או שיפור מעמדם. הקרבות היו מסוכנים ולעיתים קטלניים, אך לא כל קרב הסתיים בהכרח במוות.
 
-                image:
-                  "imgs/visual-learning/sport-history/ancient-rome/greek-roman-comparison.jpg",
+מרוצי המרכבות היו פופולריים במיוחד ונערכו בזירות גדולות כמו הקירקוס מקסימוס. הקהל הזדהה עם קבוצות שונות, והמרוצים עוררו התלהבות עזה.
 
-                altHe: "השוואה בין הספורט היווני לרומי",
-
-                explanationHe:
-                  "אצל היוונים הספורט היה קשור לחינוך, לדת ולאידיאל האדם. אצל הרומאים אירועי הספורט הפכו במקרים רבים למופעי בידור המוניים ולעיתים אלימים.",
+הרעיון המרכזי הוא שהספורט והבידור ברומא היו מחוברים לפוליטיקה, לשליטה בהמונים ולתרבות הראווה, ולא רק לחינוך גופני או למצוינות אישית.`,
 
                 explanation:
-                  "Greek sport emphasized education and personal excellence, while Roman spectacles emphasized entertainment.",
+                  "Roman public sport became mass entertainment closely connected to politics, spectacle and imperial power.",
               },
             ],
           },
 
           {
-            id: "colosseum",
+            id: "greece-vs-rome",
 
-            title: "The Colosseum",
+            title: "Greece versus Rome",
 
-            titleHe: "הקולוסיאום",
+            titleHe: "יוון מול רומא",
 
-            subtitle: "זירת הבידור הגדולה של רומא",
+            subtitle: "חינוך ומצוינות לעומת בידור המוני וראווה",
 
             slides: [
               {
-                id: "colosseum-building",
+                id: "greece-rome-comparison",
 
                 image:
-                  "imgs/visual-learning/sport-history/ancient-rome/colosseum.jpg",
+                  "imgs/visual-learning/sport-history/ancient-rome/greece-rome-comparison.png",
 
-                altHe: "הקולוסיאום ברומא",
+                altHe: "טבלת השוואה בין הספורט היווני לספורט הרומי",
 
-                explanationHe:
-                  "הקולוסיאום היה אמפיתיאטרון עצום שבו נערכו קרבות גלדיאטורים, ציד חיות ומופעי ראווה. המבנה אפשר לעשרות אלפי צופים לצפות באירועים.",
+                explanationHe: `היוונים והרומאים העריכו כוח, אומץ ומיומנות, אך תפסו את הספורט באופן שונה.
 
-                explanation:
-                  "The Colosseum hosted gladiatorial contests, animal hunts and large public spectacles.",
-              },
+ביוון הספורט היה קשור לחינוך, לדת ולאידיאל האדם השלם. הספורטאי שאף למצוינות אישית, והמשחקים נערכו כחלק מפסטיבלים דתיים. התחרות הייתה דרך להעניק כבוד לאלים, לעיר ולמשפחה.
 
-              {
-                id: "gladiators",
+ברומא, לעומת זאת, אירועי הספורט הציבוריים הפכו למופעי בידור עצומים. הדגש היה על דרמה, סכנה, קהל גדול והפגנת כוחו של השלטון. המשתתפים היו לעיתים מקצוענים, עבדים או שבויים, בעוד הצופים מילאו תפקיד מרכזי בתרבות האירוע.
 
-                image:
-                  "imgs/visual-learning/sport-history/ancient-rome/gladiators.jpg",
+הבדל נוסף הוא שהיוונים הדגישו השתתפות של אזרחים חופשיים בתחרות, ואילו ברומא חלק גדול מהבידור התבסס על הופעתם של אחרים בפני הקהל.
 
-                altHe: "גלדיאטורים בזירה",
-
-                explanationHe:
-                  "הגלדיאטורים היו לוחמים שהשתתפו בקרבות מול לוחמים אחרים ולעיתים מול בעלי חיים. חלקם היו עבדים, שבויי מלחמה או אנשים שבחרו במקצוע.",
+למרות ההבדלים, הרומאים הושפעו מאוד מהתרבות היוונית ואימצו ממנה רעיונות, מבנים וענפי פעילות. לכן נכון לראות את רומא גם כממשיכה של מסורות יווניות וגם כמי ששינתה אותן בהתאם לצרכיה החברתיים והפוליטיים.`,
 
                 explanation:
-                  "Gladiators fought other combatants and sometimes animals in public arenas.",
+                  "Greek sport emphasized education and excellence, while Roman spectacles emphasized entertainment and political power.",
               },
             ],
           },
@@ -325,7 +263,7 @@ window.visualLearningSubjects = {
       },
 
       /* =====================================================
-         ימי הביניים והרנסנס
+         ימי הביניים והרנסנס — 2 שקופיות עשירות
       ===================================================== */
 
       middleAgesAndRenaissance: {
@@ -333,43 +271,35 @@ window.visualLearningSubjects = {
 
         items: [
           {
-            id: "sport-in-middle-ages",
+            id: "middle-ages-sport",
 
             title: "Sport in the Middle Ages",
 
-            titleHe: "ספורט בימי הביניים",
+            titleHe: "הפעילות הגופנית בימי הביניים",
 
-            subtitle: "לחימה, אבירות ומשחקים עממיים",
+            subtitle: "אבירות, לחימה, משחקים עממיים והבדלי מעמדות",
 
             slides: [
               {
-                id: "medieval-tournaments",
+                id: "middle-ages-overview",
 
                 image:
-                  "imgs/visual-learning/sport-history/middle-ages/knight-tournament.jpg",
+                  "imgs/visual-learning/sport-history/middle-ages/middle-ages-overview.png",
 
-                altHe: "טורניר אבירים בימי הביניים",
+                altHe: "אבירים ומשחקים עממיים בימי הביניים",
 
-                explanationHe:
-                  "בימי הביניים חלק גדול מהפעילות הגופנית של בני המעמדות הגבוהים היה קשור להכשרה צבאית, רכיבה, סיוף וטורנירי אבירים.",
+                explanationHe: `בימי הביניים הפעילות הגופנית לא הייתה מערכת ספורט מאורגנת ואחידה כמו בעולם המודרני. היא השתנתה לפי מעמד, אזור ומטרה.
 
-                explanation:
-                  "Medieval physical activity often focused on military skills, riding and knightly tournaments.",
-              },
+בני האצולה התאמנו בעיקר ברכיבה, שימוש בנשק, סיוף, ציד וטורנירי אבירים. הפעילויות הללו שימשו להכשרה צבאית, להפגנת מעמד ולבניית זהות של לוחם ואביר. טורנירים הפכו גם למופעי ראווה שהביאו קהל רב.
 
-              {
-                id: "folk-games",
+בקרב האוכלוסייה הרחבה התקיימו משחקים עממיים, תחרויות כוח, מרוצי רגל, היאבקות ומשחקי כדור. החוקים השתנו ממקום למקום, ולעיתים השתתפו בהם כפרים שלמים. חלק מהמשחקים היו אלימים, ללא שופטים קבועים או מגרש מוגדר.
 
-                image:
-                  "imgs/visual-learning/sport-history/middle-ages/folk-games.jpg",
+הכנסייה התייחסה לפעילויות מסוימות בחשד, במיוחד כאשר הן נקשרו להימורים, אלימות או הפרעה לסדר הציבורי. עם זאת, פעילות גופנית לא נעלמה, אלא המשיכה להתקיים בצורות שונות.
 
-                altHe: "משחקים עממיים בימי הביניים",
-
-                explanationHe:
-                  "לצד פעילות האבירים התקיימו משחקים עממיים, תחרויות כוח ומשחקי כדור. הכללים לא תמיד היו קבועים ולעיתים המשחקים היו אלימים.",
+חשוב לזכור שבימי הביניים הפעילות הגופנית הייתה קשורה בעיקר להכשרה צבאית, למעמד חברתי, לפנאי מקומי ולמסורת עממית, ולא עדיין למערכת ספורט מודרנית בעלת חוקים אחידים.`,
 
                 explanation:
-                  "Folk games and early ball games were also popular, often with few fixed rules.",
+                  "Medieval physical activity included knightly training, military skills and local folk games with few standardized rules.",
               },
             ],
           },
@@ -381,140 +311,130 @@ window.visualLearningSubjects = {
 
             titleHe: "החינוך הגופני בתקופת הרנסנס",
 
-            subtitle: "חזרה לאידיאל של גוף ונפש",
+            subtitle: "חזרה לאידיאל הקלאסי של גוף ונפש",
 
             slides: [
               {
-                id: "renaissance-humanism",
+                id: "renaissance-overview",
 
                 image:
-                  "imgs/visual-learning/sport-history/renaissance/renaissance-humanism.jpg",
+                  "imgs/visual-learning/sport-history/renaissance/renaissance-overview.png",
 
-                altHe: "חינוך ופעילות גופנית ברנסנס",
+                altHe: "חינוך הומניסטי ופעילות גופנית בתקופת הרנסנס",
 
-                explanationHe:
-                  "בתקופת הרנסנס התחדש העניין בתרבות יוון ורומא. הוגים ומחנכים החלו להדגיש שוב את חשיבות הפעילות הגופנית כחלק מחינוך האדם השלם.",
+                explanationHe: `בתקופת הרנסנס התחדש העניין בתרבות יוון ורומא, באדם, בגוף ובחינוך רחב. הוגים הומניסטיים טענו שהחינוך צריך לפתח את האדם כולו ולא לעסוק רק בלימוד דתי או עיוני.
+
+בהשפעת האידיאל הקלאסי, פעילות גופנית חזרה להיחשב חלק חשוב מהחינוך. רכיבה, שחייה, ריצה, משחקי כדור, סיוף וריקוד נתפסו ככלים לשיפור הבריאות, היציבה, המשמעת והיכולת החברתית.
+
+השינוי המרכזי היה רעיוני: הגוף כבר לא נתפס רק כמקור לחטא או כחלק משני באדם. הוא נתפס כחלק מהותי מהאישיות ומהיכולת לחיות חיים מלאים.
+
+הרנסנס לא יצר עדיין את הספורט המודרני, אך הוא תרם להתפתחות הרעיון של חינוך גופני מסודר. בכך הוא שימש גשר בין העולם של ימי הביניים לבין מערכות החינוך והספורט שהתפתחו בעת החדשה.`,
 
                 explanation:
-                  "Renaissance humanism renewed interest in physical education as part of a complete education.",
+                  "Renaissance humanism restored physical education as part of developing the whole person.",
               },
             ],
           },
         ],
       },
-
-      /* =====================================================
-         הספורט המודרני
-      ===================================================== */
-
       modernSport: {
         label: "התפתחות הספורט המודרני",
 
         items: [
           {
-            id: "thomas-arnold",
+            id: "thomas-arnold-and-school-sport",
 
-            title: "Thomas Arnold",
+            title: "Thomas Arnold and School Sport",
 
-            titleHe: "תומאס ארנולד",
+            titleHe: "תומאס ארנולד והספורט בבתי הספר",
 
-            subtitle: "ספורט, חינוך ואופי בבתי הספר באנגליה",
+            subtitle: "משמעת, מנהיגות, עבודת צוות ואופי",
 
             slides: [
               {
-                id: "thomas-arnold-rugby-school",
+                id: "thomas-arnold-overview",
 
                 image:
-                  "imgs/visual-learning/sport-history/modern-sport/thomas-arnold.jpg",
+                  "imgs/visual-learning/sport-history/modern-sport/thomas-arnold-overview.png",
 
-                altHe: "תומאס ארנולד ובית הספר ראגבי",
+                altHe: "תומאס ארנולד ובית הספר ראגבי באנגליה",
 
-                explanationHe:
-                  "תומאס ארנולד היה מנהל בית הספר ראגבי באנגליה. הספורט בבית הספר שימש ככלי לפיתוח משמעת, אחריות, מנהיגות, עבודת צוות ואופי.",
+                explanationHe: `תומאס ארנולד היה מנהל בית הספר ראגבי באנגליה במאה ה־19. הוא מזוהה עם השימוש בספורט ככלי חינוכי לפיתוח אופי, אחריות, משמעת, מנהיגות ועבודת צוות.
+
+בתי הספר הציבוריים באנגליה מילאו תפקיד מרכזי בהתפתחות הספורט המודרני. תלמידים שיחקו משחקי כדור שונים, אך לכל מוסד היו כללים משלו. עם הזמן נוצר צורך לנסח חוקים קבועים כדי שבתי ספר ומועדונים יוכלו להתחרות זה בזה.
+
+הספורט שימש גם להעברת ערכים חברתיים. הוא לימד את התלמיד לציית לחוקים, לשתף פעולה, להתמודד עם ניצחון והפסד ולפעול למען הקבוצה. רעיון זה מזוהה לעיתים עם התפיסה של "נצרות שרירית", ששילבה מוסר, גבריות, שירות וחינוך גופני.
+
+החשיבות ההיסטורית אינה בכך שתומאס ארנולד המציא ענף מסוים, אלא בכך שבתי הספר האנגליים הפכו את המשחקים למסגרת חינוכית מסודרת. תהליך זה תרם להפיכת משחקים מקומיים לענפי ספורט מודרניים בעלי חוקים, מוסדות ותחרויות.`,
 
                 explanation:
-                  "Thomas Arnold promoted school sport as a tool for discipline, leadership, teamwork and character.",
+                  "English schools used sport to teach discipline, leadership, teamwork and character.",
               },
             ],
           },
 
           {
-            id: "rugby-football-split",
+            id: "football-rugby-american-football",
 
-            title: "Rugby and Association Football",
+            title: "From Folk Games to Modern Football Codes",
 
-            titleHe: "ההפרדה בין ראגבי לכדורגל",
+            titleHe: "ממשחקי כדור לכדורגל, ראגבי ופוטבול אמריקאי",
 
-            subtitle: "היווצרותם של ענפי ספורט בעלי חוקים קבועים",
+            subtitle: "קביעת חוקים והיפרדות לענפים שונים",
 
             slides: [
               {
-                id: "football-rules",
+                id: "football-codes-overview",
 
                 image:
-                  "imgs/visual-learning/sport-history/modern-sport/rugby-football.jpg",
+                  "imgs/visual-learning/sport-history/modern-sport/football-codes-overview.png",
 
-                altHe: "משחקי ראגבי וכדורגל",
+                altHe: "התפתחות הכדורגל, הראגבי והפוטבול האמריקאי",
 
-                explanationHe:
-                  "במהלך המאה ה־19 בתי ספר ומועדונים באנגליה שיחקו גרסאות שונות של משחקי כדור. קביעת חוקים אחידים הובילה להפרדה בין כדורגל לבין ראגבי.",
+                explanationHe: `באנגליה של המאה ה־19 התקיימו גרסאות רבות של משחקי כדור. בחלקן היה מותר לשאת את הכדור בידיים, ובאחרות הדגש היה על בעיטה. כאשר בתי ספר ומועדונים ביקשו להתחרות זה בזה, הם נדרשו להסכים על חוקים משותפים.
+
+בשנת 1863 הוקמה התאחדות הכדורגל האנגלית, ונוסחו חוקים שהדגישו משחק ברגל והגבילו נשיאת כדור ביד. מכאן התפתח הכדורגל המודרני.
+
+קבוצות אחרות העדיפו חוקים שאפשרו נשיאת כדור ומגע גופני, ומהן התפתח הראגבי. בהמשך הראגבי עצמו התפצל לגרסאות שונות.
+
+בארצות הברית התפתח הפוטבול האמריקאי מתוך משחקי ראגבי וכדורגל. וולטר קמפ היה דמות מרכזית בעיצוב חוקי המשחק, ובהם קו ההתקפה, מספר שחקנים קבוע ומבנה מהלכים שונה.
+
+הרעיון החשוב הוא שהספורט המודרני לא נולד ברגע אחד. הוא נוצר בתהליך של קביעת חוקים, הקמת התאחדויות והפרדה בין גרסאות שונות של אותו משחק.`,
 
                 explanation:
-                  "Standardized rules in nineteenth-century England led to the separation of association football and rugby.",
+                  "Standardized rules transformed local ball games into association football, rugby and American football.",
               },
             ],
           },
 
           {
-            id: "walter-camp",
+            id: "turnen-and-national-gymnastics",
 
-            title: "Walter Camp",
+            title: "Turnen and National Gymnastics",
 
-            titleHe: "וולטר קמפ",
+            titleHe: "תנועת הטורנֶן וההתעמלות הלאומית",
 
-            subtitle: "אבי הפוטבול האמריקאי",
-
-            slides: [
-              {
-                id: "walter-camp-football",
-
-                image:
-                  "imgs/visual-learning/sport-history/modern-sport/walter-camp.jpg",
-
-                altHe: "וולטר קמפ והפוטבול האמריקאי",
-
-                explanationHe:
-                  "וולטר קמפ היה דמות מרכזית בעיצוב חוקי הפוטבול האמריקאי. הוא סייע להבדיל את המשחק מהראגבי באמצעות שינויים בחוקים ובמבנה המשחק.",
-
-                explanation:
-                  "Walter Camp helped shape American football by developing rules that separated it from rugby.",
-              },
-            ],
-          },
-
-          {
-            id: "turnen-movement",
-
-            title: "The Turnen Movement",
-
-            titleHe: "תנועת הטורנֶן",
-
-            subtitle: "התעמלות, לאומיות וחינוך גופני בגרמניה",
+            subtitle: "גוף, חינוך, לאומיות ותרגול מאורגן",
 
             slides: [
               {
-                id: "turnen-gymnastics",
+                id: "turnen-overview",
 
                 image:
-                  "imgs/visual-learning/sport-history/modern-sport/turnen.jpg",
+                  "imgs/visual-learning/sport-history/modern-sport/turnen-overview.png",
 
-                altHe: "מתעמלים בתנועת הטורנן",
+                altHe: "מתעמלים ומתקני התעמלות בתנועת הטורנן",
 
-                explanationHe:
-                  "תנועת הטורנן התפתחה בגרמניה ושילבה התעמלות, חינוך גופני ורעיונות לאומיים. היא השפיעה על התפתחות ההתעמלות והמוסדות לחינוך גופני.",
+                explanationHe: `תנועת הטורנֶן התפתחה בגרמניה בראשית המאה ה־19. היא שילבה התעמלות, חינוך גופני, משמעת ורעיונות לאומיים.
+
+פרידריך לודוויג יאן, המזוהה עם התנועה, הקים מתקני אימון פתוחים שבהם צעירים ביצעו תרגילי כוח, טיפוס, קפיצה והתעמלות על מכשירים. הפעילות נועדה לחזק את הגוף, אך גם לטפח אחדות, זהות לאומית ומוכנות לשירות.
+
+התנועה השפיעה על התפתחות מכשירי ההתעמלות ועל הקמת אגודות ומוסדות לחינוך גופני. מהגרים גרמנים הפיצו את רעיונותיה גם למדינות אחרות.
+
+הטורנֶן מדגים כיצד פעילות גופנית יכולה לשרת לא רק מטרות בריאותיות, אלא גם מטרות חברתיות ולאומיות. היא הייתה חלק מתהליך רחב שבו הספורט והחינוך הגופני הפכו למאורגנים, מוסדיים ופוליטיים יותר.`,
 
                 explanation:
-                  "The German Turnen movement combined gymnastics, physical education and nationalism.",
+                  "The German Turnen movement combined gymnastics, physical education and national identity.",
               },
             ],
           },
@@ -522,7 +442,7 @@ window.visualLearningSubjects = {
       },
 
       /* =====================================================
-         התנועה האולימפית המודרנית
+         התנועה האולימפית המודרנית — 3 שקופיות עשירות
       ===================================================== */
 
       modernOlympics: {
@@ -530,203 +450,134 @@ window.visualLearningSubjects = {
 
         items: [
           {
-            id: "pierre-de-coubertin",
+            id: "coubertin-and-revival",
 
-            title: "Pierre de Coubertin",
+            title: "Coubertin and the Olympic Revival",
 
-            titleHe: "פייר דה קוברטן",
+            titleHe: "פייר דה קוברטן וחידוש המשחקים האולימפיים",
 
-            subtitle: "מחדש המשחקים האולימפיים",
+            subtitle: "מאידיאל חינוכי לאתונה 1896",
 
             slides: [
               {
-                id: "coubertin-portrait",
+                id: "coubertin-revival-overview",
 
                 image:
-                  "imgs/visual-learning/sport-history/modern-olympics/coubertin.jpg",
+                  "imgs/visual-learning/sport-history/modern-olympics/coubertin-revival-overview.png",
 
-                altHe: "פייר דה קוברטן",
+                altHe: "פייר דה קוברטן והמשחקים האולימפיים באתונה 1896",
 
-                explanationHe:
-                  "פייר דה קוברטן היה מחנך צרפתי שפעל לחידוש המשחקים האולימפיים. הוא האמין שספורט בין־לאומי יכול לקדם חינוך, מצוינות והבנה בין עמים.",
+                explanationHe: `פייר דה קוברטן היה מחנך צרפתי שפעל בסוף המאה ה־19 לחידוש המשחקים האולימפיים. הוא הושפע ממערכות החינוך והספורט באנגליה והאמין שספורט יכול לפתח אופי, משמעת והבנה בין עמים.
 
-                explanation:
-                  "Pierre de Coubertin led the revival of the modern Olympic Games.",
-              },
+בשנת 1894 הוקם הוועד האולימפי הבין־לאומי. שנתיים לאחר מכן נערכו באתונה המשחקים האולימפיים המודרניים הראשונים. הבחירה באתונה חיברה בין התנועה החדשה לבין המסורת של יוון העתיקה.
 
-              {
-                id: "first-modern-olympics",
+עם הזמן התפתחה התנועה האולימפית למערכת עולמית הכוללת מדינות, התאחדויות, טקסים, סמלים וחוקים. הדגל האולימפי וחמש הטבעות הפכו לסמלים של המפגש הבין־לאומי דרך ספורט.
 
-                image:
-                  "imgs/visual-learning/sport-history/modern-olympics/athens-1896.jpg",
-
-                altHe: "המשחקים האולימפיים באתונה 1896",
-
-                explanationHe:
-                  "המשחקים האולימפיים המודרניים הראשונים נערכו באתונה בשנת 1896. הם סימנו את תחילתה של התנועה האולימפית המודרנית.",
+קוברטן ראה במשחקים יותר מתחרות. מבחינתו הם היו פרויקט חינוכי ותרבותי שנועד לקדם מצוינות, כבוד ושלום. בפועל, התנועה האולימפית הושפעה גם מפוליטיקה, לאומיות ואינטרסים כלכליים.`,
 
                 explanation:
-                  "The first modern Olympic Games were held in Athens in 1896.",
+                  "Pierre de Coubertin led the revival of the Olympic Games as an international educational movement.",
               },
             ],
           },
 
           {
-            id: "olympic-symbols",
+            id: "olympics-politics-and-tragedy",
 
-            title: "Olympic Symbols",
+            title: "Olympics, Politics and Tragedy",
 
-            titleHe: "הסמלים האולימפיים",
+            titleHe: "האולימפיאדה, פוליטיקה וטרגדיה",
 
-            subtitle: "הדגל, הטבעות והרוח האולימפית",
+            subtitle: "מינכן 1972 והחרם על מוסקבה 1980",
 
             slides: [
               {
-                id: "olympic-rings",
+                id: "olympics-politics-overview",
 
                 image:
-                  "imgs/visual-learning/sport-history/modern-olympics/olympic-rings.jpg",
+                  "imgs/visual-learning/sport-history/modern-olympics/olympics-politics-overview.png",
 
-                altHe: "חמש הטבעות האולימפיות",
+                altHe: "אינפוגרפיקה על מינכן 1972 ומוסקבה 1980",
 
-                explanationHe:
-                  "הסמל האולימפי מורכב מחמש טבעות שלובות. הוא מבטא את המפגש בין ספורטאים ממדינות ומאזורים שונים במסגרת המשחקים האולימפיים.",
+                explanationHe: `למרות האידיאל של אחדות ושלום, המשחקים האולימפיים הושפעו לאורך השנים מעימותים פוליטיים.
 
-                explanation:
-                  "The five interlocking Olympic rings symbolize the international Olympic movement.",
-              },
+באולימפיאדת מינכן 1972 נרצחו 11 מחברי המשלחת הישראלית לאחר שנלקחו כבני ערובה בידי ארגון הטרור ספטמבר השחור. האירוע זעזע את העולם והשפיע עמוקות על מערכי האבטחה באירועי ספורט בין־לאומיים.
 
-              {
-                id: "olympic-flag",
+באולימפיאדת מוסקבה 1980 הובילה ארצות הברית חרם של מדינות רבות בעקבות הפלישה הסובייטית לאפגניסטן. ארבע שנים לאחר מכן החרימה ברית המועצות את אולימפיאדת לוס אנג׳לס יחד עם מדינות נוספות.
 
-                image:
-                  "imgs/visual-learning/sport-history/modern-olympics/olympic-flag.jpg",
-
-                altHe: "הדגל האולימפי",
-
-                explanationHe:
-                  "הדגל האולימפי כולל את חמש הטבעות על רקע לבן. הוא הפך לאחד הסמלים המזוהים ביותר עם המשחקים האולימפיים.",
+האירועים הללו ממחישים שהספורט אינו מנותק מהעולם. מדינות משתמשות באירועי ספורט כדי לבטא כוח, מחאה, זהות או עמדה מדינית. גם כאשר המטרה הרשמית היא תחרות ידידותית, הפוליטיקה ממשיכה להשפיע על המשתתפים ועל הקהל.`,
 
                 explanation:
-                  "The Olympic flag displays the five rings on a white background.",
+                  "Munich 1972 and the Moscow 1980 boycott demonstrate the strong connection between sport and politics.",
               },
             ],
           },
 
           {
-            id: "munich-1972",
+            id: "nadia-and-olympic-excellence",
 
-            title: "Munich 1972",
+            title: "Nadia Comăneci and Olympic Excellence",
 
-            titleHe: "אולימפיאדת מינכן 1972",
+            titleHe: "נדיה קומנץ׳ והציון המושלם",
 
-            subtitle: "הטרגדיה ששינתה את אבטחת אירועי הספורט",
-
-            slides: [
-              {
-                id: "munich-1972-overview",
-
-                image:
-                  "imgs/visual-learning/sport-history/modern-olympics/munich-1972.jpg",
-
-                altHe: "הכפר האולימפי במינכן 1972",
-
-                explanationHe:
-                  "באולימפיאדת מינכן 1972 נרצחו 11 מחברי המשלחת הישראלית. האירוע השפיע עמוקות על עולם הספורט והוביל לשינויים משמעותיים באבטחת אירועים בין־לאומיים.",
-
-                explanation:
-                  "The murder of eleven members of the Israeli Olympic delegation in Munich changed security at international sport events.",
-              },
-            ],
-          },
-
-          {
-            id: "moscow-1980-boycott",
-
-            title: "Moscow 1980 Boycott",
-
-            titleHe: "החרם על אולימפיאדת מוסקבה 1980",
-
-            subtitle: "הקשר בין ספורט לפוליטיקה",
+            subtitle: "רגע היסטורי בהתעמלות ובשידורי הספורט",
 
             slides: [
               {
-                id: "moscow-boycott",
+                id: "nadia-perfect-ten-overview",
 
                 image:
-                  "imgs/visual-learning/sport-history/modern-olympics/moscow-1980.jpg",
+                  "imgs/visual-learning/sport-history/modern-olympics/nadia-perfect-ten.png",
 
-                altHe: "אולימפיאדת מוסקבה 1980",
+                altHe: "נדיה קומנץ׳ מבצעת תרגיל התעמלות באולימפיאדת 1976",
 
-                explanationHe:
-                  "מדינות רבות, בהובלת ארצות הברית, החרימו את אולימפיאדת מוסקבה 1980 בעקבות הפלישה הסובייטית לאפגניסטן. האירוע המחיש את הקשר בין ספורט לפוליטיקה.",
+                explanationHe: `נדיה קומנץ׳, מתעמלת מרומניה, הפכה באולימפיאדת מונטריאול 1976 למתעמלת הראשונה שקיבלה ציון 10 מושלם במשחקים האולימפיים.
 
-                explanation:
-                  "Many countries boycotted the 1980 Moscow Olympics after the Soviet invasion of Afghanistan.",
-              },
-            ],
-          },
+לוח התוצאות לא תוכנן להציג 10.00 ולכן הציון הופיע כ־1.00, דבר שהוסיף לדרמה של הרגע. קומנץ׳ קיבלה במהלך המשחקים כמה ציונים מושלמים והפכה לכוכבת עולמית.
 
-          {
-            id: "nadia-comaneci",
+הישגה סימל רמה חדשה של דיוק, קושי ושליטה בהתעמלות. הוא גם המחיש את כוחם של שידורי הטלוויזיה להפוך רגע ספורטיבי לאירוע תרבותי עולמי.
 
-            title: "Nadia Comăneci",
-
-            titleHe: "נדיה קומנץ׳",
-
-            subtitle: "ציון 10 מושלם בהתעמלות",
-
-            slides: [
-              {
-                id: "nadia-perfect-ten",
-
-                image:
-                  "imgs/visual-learning/sport-history/modern-olympics/nadia-comaneci.jpg",
-
-                altHe: "נדיה קומנץ׳ בתרגיל התעמלות",
-
-                explanationHe:
-                  "נדיה קומנץ׳ הייתה המתעמלת הראשונה שקיבלה ציון 10 מושלם במשחקים האולימפיים. הישגה באולימפיאדת מונטריאול 1976 הפך לרגע היסטורי.",
+הסיפור חשוב לא רק בגלל המספר 10, אלא מפני שהוא מראה כיצד ספורטאי יחיד יכול לשנות את הציפיות מענף שלם ולהפוך לסמל של מצוינות.`,
 
                 explanation:
-                  "Nadia Comăneci became the first gymnast to receive a perfect 10 at the Olympic Games.",
+                  "Nadia Comăneci became the first Olympic gymnast to receive a perfect 10.",
               },
             ],
           },
         ],
       },
-
-      /* =====================================================
-         ספורט ולאומיות
-      ===================================================== */
-
       sportAndNationalIdentity: {
         label: "ספורט, לאומיות וארגונים",
 
         items: [
           {
-            id: "gaelic-athletic-association",
+            id: "gaa-and-national-identity",
 
-            title: "Gaelic Athletic Association",
+            title: "The GAA and Irish National Identity",
 
-            titleHe: "איגוד האתלטיקה הגאלית",
+            titleHe: "איגוד האתלטיקה הגאלית וזהות אירית",
 
-            subtitle: "ספורט וזהות לאומית באירלנד",
+            subtitle: "ספורט כמכשיר לשימור תרבות ולאומיות",
 
             slides: [
               {
-                id: "gaa-ireland",
+                id: "gaa-overview",
 
                 image:
-                  "imgs/visual-learning/sport-history/national-identity/gaa.jpg",
+                  "imgs/visual-learning/sport-history/national-identity/gaa-overview.png",
 
-                altHe: "משחק ספורט גאלי באירלנד",
+                altHe: "משחקים גאליים וסמלים של התרבות האירית",
 
-                explanationHe:
-                  "איגוד האתלטיקה הגאלית הוקם כדי לקדם ענפי ספורט איריים מסורתיים ולחזק את התרבות והזהות הלאומית האירית.",
+                explanationHe: `איגוד האתלטיקה הגאלית (GAA) הוקם באירלנד בשנת 1884 במטרה לשמר ולקדם ענפי ספורט איריים מסורתיים, ובראשם כדורגל גאלי והרלינג.
+
+הארגון לא עסק רק בספורט. הוא היה חלק מתנועה רחבה שחיזקה את התרבות, השפה והזהות הלאומית האירית בתקופה שבה אירלנד הייתה תחת שלטון בריטי.
+
+באמצעות מועדונים מקומיים, תחרויות ואירועים קהילתיים הצליח הארגון לחבר בין ספורט לבין תחושת שייכות לאומית.
+
+המקרה של ה־GAA מדגים שספורט יכול להיות הרבה מעבר לפעילות גופנית. הוא עשוי לשמש כלי לחיזוק תרבות, זהות, ערכים ומאבק לאומי.`,
 
                 explanation:
-                  "The Gaelic Athletic Association promoted Irish sports and national cultural identity.",
+                  "The Gaelic Athletic Association strengthened Irish national identity through traditional sports.",
               },
             ],
           },
@@ -738,22 +589,31 @@ window.visualLearningSubjects = {
 
             titleHe: "מכבי, הפועל ובית״ר",
 
-            subtitle: "מרכזי הספורט המרכזיים ביישוב ובישראל",
+            subtitle: "ספורט, חברה ואידאולוגיה ביישוב ובישראל",
 
             slides: [
               {
-                id: "israeli-sport-centers",
+                id: "israeli-sport-centers-overview",
 
                 image:
-                  "imgs/visual-learning/sport-history/israel/maccabi-hapoel-beitar.jpg",
+                  "imgs/visual-learning/sport-history/israel/israeli-sport-centers-overview.png",
 
-                altHe: "סמלי מרכזי הספורט מכבי, הפועל וביתר",
+                altHe: "מרכזי הספורט מכבי, הפועל ובית״ר",
 
-                explanationHe:
-                  "מכבי, הפועל ובית״ר היו מרכזי ספורט בעלי זהות חברתית ואידאולוגית שונה. הם מילאו תפקיד מרכזי בהתפתחות תרבות הספורט ביישוב ובמדינת ישראל.",
+                explanationHe: `במהלך תקופת היישוב ובהמשך במדינת ישראל פעלו שלושה מרכזי ספורט גדולים – מכבי, הפועל ובית״ר. כל אחד מהם היה קשור לזרם חברתי ואידאולוגי אחר.
+
+מכבי הדגישה את רעיון היהודי החדש – אדם בריא, חזק ופעיל, ופעלה גם בזירה הבין־לאומית באמצעות משחקי המכביה.
+
+הפועל הייתה מזוהה עם תנועת העבודה והקימה אגודות ספורט רבות בקרב העובדים וההתיישבות.
+
+בית״ר הייתה קשורה לתנועה הרוויזיוניסטית והדגישה ערכים של לאומיות, משמעת והדר.
+
+למרות ששלושת המרכזים עסקו בספורט, הם גם ייצגו תפיסות עולם שונות והשפיעו על עיצוב החברה הישראלית.
+
+הנושא ממחיש כיצד ספורט אינו מתקיים בוואקום – הוא מושפע מהחברה, מהפוליטיקה ומהזהות הלאומית.`,
 
                 explanation:
-                  "Maccabi, Hapoel and Beitar became major sport organizations with different social and ideological identities.",
+                  "Maccabi, Hapoel and Beitar reflected different ideological movements in Jewish and Israeli society.",
               },
             ],
           },
