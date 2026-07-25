@@ -1,0 +1,323 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover"
+    />
+
+    <!-- הכותרת תתעדכן לפי המקצוע שנבחר -->
+    <title>למידה ויזואלית</title>
+
+    <link rel="stylesheet" href="css/visual-learning.css" />
+  </head>
+
+  <body>
+    <main class="app">
+      <!-- רקעי זוהר דקורטיביים -->
+      <div class="glow glow-a" aria-hidden="true"></div>
+      <div class="glow glow-b" aria-hidden="true"></div>
+
+      <!-- כותרת העמוד -->
+      <header class="hero">
+        <h1 id="pageTitle">למידה ויזואלית</h1>
+
+        <p id="pageDescription">
+          בחרו תת־נושא והתחילו ללמוד באמצעות תמונות, סרטונים והסברים
+        </p>
+
+        <!-- בחירת תת־נושא -->
+        <div class="topic-selector">
+          <label for="topicSelect" class="visually-hidden">
+            בחירת תת־נושא
+          </label>
+
+          <select id="topicSelect" aria-label="בחירת תת־נושא">
+            <option value="">טוען תתי־נושאים...</option>
+          </select>
+        </div>
+      </header>
+
+      <!-- סינון לפי דירוג -->
+      <nav class="filter-bar" aria-label="סינון פריטי הלמידה">
+        <button
+          type="button"
+          class="filter-btn active"
+          data-filter="all"
+          aria-pressed="true"
+        >
+          הכול
+        </button>
+
+        <button
+          type="button"
+          class="filter-btn"
+          data-filter="easy"
+          aria-pressed="false"
+        >
+          קלות
+        </button>
+
+        <button
+          type="button"
+          class="filter-btn"
+          data-filter="hard"
+          aria-pressed="false"
+        >
+          קשות
+        </button>
+
+        <button
+          type="button"
+          class="filter-btn"
+          data-filter="unmarked"
+          aria-pressed="false"
+        >
+          לא סומנו
+        </button>
+
+        <button
+          type="button"
+          id="randomBtn"
+          class="filter-btn random-btn"
+          aria-pressed="false"
+        >
+          רנדומלי
+        </button>
+
+        <button type="button" id="resetBtn" class="reset-btn">איפוס</button>
+      </nav>
+
+      <!-- הודעה במקרה שאין פריטים בסינון -->
+      <section id="emptyState" class="empty-state" hidden>
+        <h2>לא נמצאו פריטים</h2>
+
+        <p id="emptyStateText">אין כרגע פריטים שמתאימים לסינון שבחרת.</p>
+
+        <button type="button" id="showAllBtn">הצג את כל הפריטים</button>
+      </section>
+
+      <!-- כרטיס הלמידה -->
+      <section id="learningCard" class="card">
+        <!-- שורה עליונה: מונה ועיגול סטטוס -->
+        <div class="top-row">
+          <span id="progressText" class="progress-text"> פריט 1 מתוך 1 </span>
+
+          <div class="status-area">
+            <span id="statusText" class="status-text"> לא סומן </span>
+
+            <span
+              id="levelBadge"
+              class="status-dot unmarked"
+              aria-label="הפריט עדיין לא סומן"
+              title="לא סומן"
+            ></span>
+          </div>
+        </div>
+
+        <!-- כותרת הפריט -->
+        <div class="item-heading">
+          <h2 id="itemTitle">שם הפריט</h2>
+
+          <h3 id="itemSubtitle" class="sub-title"></h3>
+        </div>
+
+        <!-- אזור התמונה או הסרטון -->
+        <div
+          id="mediaBox"
+          class="media-box"
+          tabindex="0"
+          aria-label="אזור המדיה. ניתן להשתמש בחצים כדי לעבור בין הפריטים"
+        >
+          <!-- אזור לחיצה למעבר לפריט הקודם -->
+          <button
+            type="button"
+            id="previousMediaArea"
+            class="media-navigation-area media-navigation-previous"
+            aria-label="מעבר לפריט הקודם"
+          ></button>
+
+          <!-- תמונה -->
+          <img
+            id="itemImage"
+            class="media-element"
+            src=""
+            alt=""
+            draggable="false"
+            hidden
+          />
+
+          <!-- סרטון -->
+          <video
+            id="itemVideo"
+            class="media-element"
+            controls
+            playsinline
+            preload="metadata"
+            hidden
+          >
+            הדפדפן שלך אינו תומך בהצגת סרטונים.
+          </video>
+
+          <!-- הודעת שגיאה במקרה שהמדיה לא נטענה -->
+          <div id="mediaFallback" class="media-fallback" hidden>
+            <span class="media-fallback-icon" aria-hidden="true">🖼️</span>
+
+            <p>לא ניתן להציג את המדיה של הפריט הזה.</p>
+          </div>
+
+          <!-- אזור לחיצה למעבר לפריט הבא -->
+          <button
+            type="button"
+            id="nextMediaArea"
+            class="media-navigation-area media-navigation-next"
+            aria-label="מעבר לפריט הבא"
+          ></button>
+
+          <!-- חצי ניווט שיופיעו מעל המדיה -->
+          <button
+            type="button"
+            id="previousBtn"
+            class="navigation-btn previous-btn"
+            aria-label="הפריט הקודם"
+            title="הפריט הקודם"
+          >
+            <span aria-hidden="true">‹</span>
+          </button>
+
+          <button
+            type="button"
+            id="nextBtn"
+            class="navigation-btn next-btn"
+            aria-label="הפריט הבא"
+            title="הפריט הבא"
+          >
+            <span aria-hidden="true">›</span>
+          </button>
+        </div>
+
+        <!-- פס התקדמות -->
+        <div class="progress-section">
+          <div class="progress-details">
+            <span id="progressLabel">התקדמות</span>
+
+            <span id="progressPercentage">0%</span>
+          </div>
+
+          <div
+            id="progressTrack"
+            class="progress-container"
+            role="progressbar"
+            aria-label="התקדמות בלמידה"
+            aria-valuemin="0"
+            aria-valuemax="100"
+            aria-valuenow="0"
+            tabindex="0"
+          >
+            <div id="progressBar" class="progress-bar"></div>
+          </div>
+        </div>
+
+        <!-- אזור ההסבר -->
+        <article id="explanationBox" class="explanation-box">
+          <div class="explanation-header">
+            <div class="explanation-title">
+              <span class="explanation-icon" aria-hidden="true">🧠</span>
+              <h3 id="explanationHeading">הסבר</h3>
+            </div>
+          </div>
+
+          <div id="explanationContent" class="explanation-content">
+            <p>ההסבר של הפריט יוצג כאן.</p>
+          </div>
+        </article>
+
+        <!-- דירוג הפריט -->
+        <div class="rating-section">
+          <p class="rating-title">איך היה לך הפריט הזה?</p>
+
+          <div class="rating-buttons">
+            <button
+              type="button"
+              id="easyBtn"
+              class="rating-btn easy-btn"
+              data-rating="easy"
+              aria-pressed="false"
+              title="סימון הפריט כקל"
+            >
+              <span class="rating-key" aria-hidden="true">E</span>
+
+              <span class="rating-label">קל</span>
+            </button>
+
+            <button
+              type="button"
+              id="hardBtn"
+              class="rating-btn hard-btn"
+              data-rating="hard"
+              aria-pressed="false"
+              title="סימון הפריט כקשה"
+            >
+              <span class="rating-key" aria-hidden="true">H</span>
+
+              <span class="rating-label">קשה</span>
+            </button>
+          </div>
+
+          <p class="keyboard-hint">
+            ניתן לסמן גם באמצעות המקשים
+            <kbd>E</kbd>
+            ו־
+            <kbd>H</kbd>
+          </p>
+        </div>
+
+        <!-- ניווט תחתון -->
+        <div class="bottom-navigation">
+          <button
+            type="button"
+            id="bottomPreviousBtn"
+            class="bottom-navigation-btn"
+          >
+            <span aria-hidden="true">→</span>
+            הקודם
+          </button>
+
+          <button
+            type="button"
+            id="bottomNextBtn"
+            class="bottom-navigation-btn primary"
+          >
+            הבא
+            <span aria-hidden="true">←</span>
+          </button>
+        </div>
+      </section>
+    </main>
+
+    <!--
+      כרגע נשארים קובצי הנתונים של אנטומיה,
+      כדי שתוכל להשתמש בהם כבסיס בזמן בניית המערכת.
+
+      בהמשך נוכל לטעון רק את קובץ הנתונים הרלוונטי
+      לפי המקצוע שנבחר.
+    -->
+    <script src="data/abdominalMusclesData.js"></script>
+    <script src="data/upperBodyMuscles.js"></script>
+    <script src="data/upperBodyData.js"></script>
+    <script src="data/circulatorySystemData.js"></script>
+    <script src="data/nervousSystem.js"></script>
+    <script src="data/respiratorySystem.js"></script>
+    <script src="data/lowerBodyLigaments.js"></script>
+    <script src="data/general.js"></script>
+    <script src="data/muscle.js"></script>
+    <script src="data/lowerBodyBones.js"></script>
+    <script src="data/foot.js"></script>
+
+    <!-- קוד העמוד -->
+    <script src="data/visual-learning-bank.js"></script>
+    <script src="js/visual-learning.js"></script>
+  </body>
+</html>
