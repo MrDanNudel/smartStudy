@@ -25,12 +25,13 @@ const subjectTitles = {
   statistics1: "סטטיסטיקה – חלק א׳",
   physics: "פיזיקה",
   statsDynamics: "יסודות בסטטיסטיקה ודינמיקה",
-  Biochemistry: "ביוכימיה",
+  biochemistry: "ביוכימיה",
   volleyball: "כדור עף",
   handball: "כדור יד",
   developmentalPsychology: "פסיכולוגיה התפתחותית",
   sportHistory: "היסטוריה של הספורט",
   educationalThought: "מחשבת החינוך",
+  english: "אנגלית",
 };
 
 // Elements

@@ -24880,6 +24880,1463 @@ const educationalThoughtData = [
       "היעד הוא לפתח אדם המסוגל לזהות בעיות, לחשוב באופן רפלקטיבי, לשתף פעולה, לבחון תוצאות ולהמשיך ללמוד לאורך חייו. הדגש אינו רק על כמות המידע שצבר אלא על יכולתו להשתמש בו ולהרחיבו. הרעיון מדגיש שלא כל פעילות היא למידה: יש צורך לקשר באופן מודע בין פעולה, תוצאה ומסקנה.",
   },
 ];
+
+const englishQA = [
+  // =========================================================
+  // אוצר מילים – Motivation in PE
+  // =========================================================
+
+  {
+    id: "english-motivation-001",
+    subtopic: "אוצר מילים – Motivation in PE",
+    q: "motivation",
+    answer:
+      "Meaning: The reason or desire that makes a person act or behave in a certain way.\n\nפירוש: מוטיבציה / הנעה\n\nExample: Strong motivation can help students remain physically active.",
+  },
+
+  {
+    id: "english-motivation-002",
+    subtopic: "אוצר מילים – Motivation in PE",
+    q: "responsibility",
+    answer:
+      "Meaning: The duty to take ownership of your actions and behave appropriately.\n\nפירוש: אחריות\n\nExample: Physical education can help students develop personal and social responsibility.",
+  },
+
+  {
+    id: "english-motivation-003",
+    subtopic: "אוצר מילים – Motivation in PE",
+    q: "resilience",
+    answer:
+      "Meaning: The ability to recover and adapt positively after difficulties or setbacks.\n\nפירוש: חוסן / יכולת התאוששות\n\nExample: Resilience helps students recover after difficult experiences.",
+  },
+
+  {
+    id: "english-motivation-004",
+    subtopic: "אוצר מילים – Motivation in PE",
+    q: "autonomy",
+    answer:
+      "Meaning: The freedom or ability to make your own choices and act independently.\n\nפירוש: אוטונומיה / עצמאות בבחירה\n\nExample: Students experience autonomy when they are allowed to make meaningful choices.",
+  },
+
+  {
+    id: "english-motivation-005",
+    subtopic: "אוצר מילים – Motivation in PE",
+    q: "competence",
+    answer:
+      "Meaning: A basic psychological need to feel able to perform tasks effectively.\n\nפירוש: תחושת מסוגלות / יכולת\n\nExample: Students develop competence when they feel capable of completing a task successfully.",
+  },
+
+  {
+    id: "english-motivation-006",
+    subtopic: "אוצר מילים – Motivation in PE",
+    q: "relatedness",
+    answer:
+      "Meaning: The feeling of connection and belonging to other people.\n\nפירוש: תחושת שייכות / קשר לאחרים\n\nExample: Team activities can strengthen students' sense of relatedness.",
+  },
+
+  {
+    id: "english-motivation-007",
+    subtopic: "אוצר מילים – Motivation in PE",
+    q: "Self-Determination Theory",
+    answer:
+      "Meaning: A psychological theory that explains motivation through needs such as autonomy, competence, and relatedness.\n\nפירוש: תיאוריית ההכוונה העצמית\n\nExample: Self-Determination Theory explains why students participate more willingly when their psychological needs are supported.",
+  },
+
+  {
+    id: "english-motivation-008",
+    subtopic: "אוצר מילים – Motivation in PE",
+    q: "emotional intelligence",
+    answer:
+      "Meaning: The ability to notice, understand, and manage emotions effectively.\n\nפירוש: אינטליגנציה רגשית\n\nExample: Emotional intelligence can help students understand and regulate their emotions.",
+  },
+
+  {
+    id: "english-motivation-009",
+    subtopic: "אוצר מילים – Motivation in PE",
+    q: "self-report",
+    answer:
+      "Meaning: Information that participants provide about themselves, usually through questionnaires or surveys.\n\nפירוש: דיווח עצמי\n\nExample: The study relied on self-report questionnaires completed by the participants.",
+  },
+
+  {
+    id: "english-motivation-010",
+    subtopic: "אוצר מילים – Motivation in PE",
+    q: "amotivation",
+    answer:
+      "Meaning: A lack of motivation or intention to act.\n\nפירוש: חוסר מוטיבציה\n\nExample: A student experiencing amotivation may see no reason to participate in an activity.",
+  },
+
+  {
+    id: "english-motivation-011",
+    subtopic: "אוצר מילים – Motivation in PE",
+    q: "controlled motivation",
+    answer:
+      "Meaning: Motivation driven mainly by external pressure, rules, rewards, or expectations.\n\nפירוש: מוטיבציה נשלטת / מוטיבציה הנובעת מלחץ חיצוני\n\nExample: Controlled motivation may occur when a student participates only because of rewards or pressure.",
+  },
+
+  {
+    id: "english-motivation-012",
+    subtopic: "אוצר מילים – Motivation in PE",
+    q: "cross-sectional",
+    answer:
+      "Meaning: A type of research in which data are collected at one point in time.\n\nפירוש: מחקר חתך / מחקר רוחבי\n\nExample: The researchers used a cross-sectional design rather than following the students over time.",
+  },
+
+  {
+    id: "english-motivation-013",
+    subtopic: "אוצר מילים – Motivation in PE",
+    q: "longitudinal",
+    answer:
+      "Meaning: A type of research that follows the same participants over a longer period of time.\n\nפירוש: מחקר אורך\n\nExample: A longitudinal study could examine how students' motivation changes over several years.",
+  },
+
+  {
+    id: "english-motivation-014",
+    subtopic: "אוצר מילים – Motivation in PE",
+    q: "correlation",
+    answer:
+      "Meaning: A statistical relationship between two variables.\n\nפירוש: מתאם\n\nExample: The study found a positive correlation between autonomous motivation and responsibility.",
+  },
+
+  {
+    id: "english-motivation-015",
+    subtopic: "אוצר מילים – Motivation in PE",
+    q: "effect size",
+    answer:
+      "Meaning: A measure that shows how large or substantial a difference or relationship is.\n\nפירוש: גודל אפקט\n\nExample: The researchers reported effect sizes to show how substantial the differences were.",
+  },
+
+  {
+    id: "english-motivation-016",
+    subtopic: "אוצר מילים – Motivation in PE",
+    q: "intervention",
+    answer:
+      "Meaning: A planned action or program designed to create or test a change.\n\nפירוש: התערבות\n\nExample: Future research may use an intervention to test whether the teaching model improves responsibility.",
+  },
+
+  {
+    id: "english-motivation-017",
+    subtopic: "אוצר מילים – Motivation in PE",
+    q: "well-being",
+    answer:
+      "Meaning: A state of feeling healthy, comfortable, and emotionally positive.\n\nפירוש: רווחה נפשית / רווחה כללית\n\nExample: Emotional intelligence is associated with students' well-being.",
+  },
+
+  {
+    id: "english-motivation-018",
+    subtopic: "אוצר מילים – Motivation in PE",
+    q: "generalisability",
+    answer:
+      "Meaning: The extent to which findings from a study can be applied to other people, places, or situations.\n\nפירוש: יכולת הכללה\n\nExample: Using participants from only two countries limits the generalisability of the study.",
+  },
+
+  {
+    id: "english-motivation-019",
+    subtopic: "אוצר מילים – Motivation in PE",
+    q: "reflection",
+    answer:
+      "Meaning: Careful thought about an experience, action, or idea in order to understand or learn from it.\n\nפירוש: רפלקציה / התבוננות וחשיבה\n\nExample: Reflection can help students think about their behaviour and learn from their experiences.",
+  },
+
+  {
+    id: "english-motivation-020",
+    subtopic: "אוצר מילים – Motivation in PE",
+    q: "autonomous motivation",
+    answer:
+      "Meaning: Motivation that comes from genuine interest or from personally valuing an activity.\n\nפירוש: מוטיבציה אוטונומית\n\nExample: Autonomous motivation was more strongly related to responsibility and resilience.",
+  },
+
+  {
+    id: "english-motivation-021",
+    subtopic: "אוצר מילים – Motivation in PE",
+    q: "bullying",
+    answer:
+      "Meaning: Repeated harmful or aggressive behaviour intended to hurt, intimidate, or control another person.\n\nפירוש: בריונות\n\nExample: The authors discuss teaching approaches that may help reduce bullying and violence.",
+  },
+  // =========================================================
+  // מילים מהמאמר – Motivation in PE
+  // =========================================================
+
+  {
+    id: "english-motivation-XXX",
+    subtopic: "מילים מהמאמר – Motivation in PE",
+    q: "autonomous motivation",
+    answer:
+      "Meaning: Motivation that comes from genuine interest or personal value.\n\nפירוש: מוטיבציה אוטונומית – עשיית דבר מתוך עניין אמיתי או משום שהוא חשוב לאדם.\n\nExample: Autonomous motivation is stronger when students participate because they genuinely value the activity.",
+  },
+
+  {
+    id: "english-motivation-XXX",
+    subtopic: "מילים מהמאמר – Motivation in PE",
+    q: "controlled motivation",
+    answer:
+      "Meaning: Motivation driven mainly by external pressure, rules, rewards, or expectations.\n\nפירוש: מוטיבציה נשלטת – עשיית דבר בעיקר בגלל לחץ חיצוני, חוקים, תגמולים או ציפיות.\n\nExample: Controlled motivation may occur when a student participates mainly because of external pressure.",
+  },
+
+  {
+    id: "english-motivation-XXX",
+    subtopic: "מילים מהמאמר – Motivation in PE",
+    q: "confined",
+    answer:
+      "Meaning: Limited or restricted to something.\n\nפירוש: מוגבל / תחום.\n\nExample: The benefits of PE should not be confined to physical skill alone.",
+  },
+
+  {
+    id: "english-motivation-XXX",
+    subtopic: "מילים מהמאמר – Motivation in PE",
+    q: "intrinsic",
+    answer:
+      "Meaning: Coming from within rather than from external pressure or rewards.\n\nפירוש: פנימי / נובע מתוך האדם.\n\nExample: Positive experiences in PE can strengthen intrinsic motivation.",
+  },
+
+  {
+    id: "english-motivation-XXX",
+    subtopic: "מילים מהמאמר – Motivation in PE",
+    q: "cultivate",
+    answer:
+      "Meaning: To develop or encourage something gradually.\n\nפירוש: לטפח / לפתח בהדרגה.\n\nExample: PE can cultivate cooperation, self-discipline and responsibility.",
+  },
+
+  {
+    id: "english-motivation-XXX",
+    subtopic: "מילים מהמאמר – Motivation in PE",
+    q: "fertile",
+    answer:
+      "Meaning: Able to support growth or development.\n\nפירוש: פורה / מאפשר התפתחות. בביטוי fertile ground: קרקע פורייה להתפתחות.\n\nExample: PE provides fertile ground for emotional development.",
+  },
+
+  {
+    id: "english-motivation-XXX",
+    subtopic: "מילים מהמאמר – Motivation in PE",
+    q: "cultivated",
+    answer:
+      "Meaning: Developed or encouraged over time.\n\nפירוש: טופח / פותח בהדרגה.\n\nExample: These qualities are not fixed; they can be cultivated.",
+  },
+
+  {
+    id: "english-motivation-XXX",
+    subtopic: "מילים מהמאמר – Motivation in PE",
+    q: "transmit",
+    answer:
+      "Meaning: To pass something from one person to another.\n\nפירוש: להעביר / למסור, למשל רעיון, ערך או עיקרון.\n\nExample: Active teachers may find it easier to transmit these principles to their students.",
+  },
+
+  {
+    id: "english-motivation-XXX",
+    subtopic: "מילים מהמאמר – Motivation in PE",
+    q: "decentralisation",
+    answer:
+      "Meaning: The transfer of authority from a central body to regional or local bodies.\n\nפירוש: ביזור / ביזור סמכויות.\n\nExample: Spain moved towards greater decentralisation and regional autonomy.",
+  },
+
+  {
+    id: "english-motivation-XXX",
+    subtopic: "מילים מהמאמר – Motivation in PE",
+    q: "regional",
+    answer:
+      "Meaning: Relating to a particular region or area.\n\nפירוש: אזורי / הקשור לאזור מסוים.\n\nExample: Spain moved towards greater decentralisation and regional autonomy.",
+  },
+
+  {
+    id: "english-motivation-XXX",
+    subtopic: "מילים מהמאמר – Motivation in PE",
+    q: "divergence",
+    answer:
+      "Meaning: A difference or separation that develops between things.\n\nפירוש: התפצלות / התרחקות / הבדל שנוצר בין דברים.\n\nExample: This historical divergence may still influence students today.",
+  },
+
+  {
+    id: "english-motivation-XXX",
+    subtopic: "מילים מהמאמר – Motivation in PE",
+    q: "converged",
+    answer:
+      "Meaning: Became more similar or moved closer together.\n\nפירוש: התקרבו / התכנסו / נעשו דומים יותר.\n\nExample: The two countries may have since converged.",
+  },
+
+  {
+    id: "english-motivation-XXX",
+    subtopic: "מילים מהמאמר – Motivation in PE",
+    q: "quantitative",
+    answer:
+      "Meaning: Based on numerical data and measurement.\n\nפירוש: כמותי – מבוסס על נתונים מספריים ומדידות.\n\nExample: The study used a quantitative research design.",
+  },
+
+  {
+    id: "english-motivation-XXX",
+    subtopic: "מילים מהמאמר – Motivation in PE",
+    q: "mean",
+    answer:
+      "Meaning: The average value of a set of numbers.\n\nפירוש: ממוצע.\n\nExample: Their mean age was 22.7 years.",
+  },
+
+  {
+    id: "english-motivation-XXX",
+    subtopic: "מילים מהמאמר – Motivation in PE",
+    q: "questionnaires were administered",
+    answer:
+      "Meaning: The questionnaires were given to participants to complete.\n\nפירוש: השאלונים הועברו / ניתנו לנבדקים למילוי.\n\nExample: Seven questionnaires were administered.",
+  },
+
+  {
+    id: "english-motivation-XXX",
+    subtopic: "מילים מהמאמר – Motivation in PE",
+    q: "subdivided",
+    answer:
+      "Meaning: Divided into smaller sections or categories.\n\nפירוש: מחולק לתת־חלקים / לתת־קטגוריות.\n\nExample: The motivation scale is subdivided into different types of motivation.",
+  },
+
+  {
+    id: "english-motivation-XXX",
+    subtopic: "מילים מהמאמר – Motivation in PE",
+    q: "instruments",
+    answer:
+      "Meaning: Tools used to measure or collect data in research.\n\nפירוש: כלי מחקר / כלי מדידה.\n\nExample: The instruments were originally in English.",
+  },
+
+  {
+    id: "english-motivation-XXX",
+    subtopic: "מילים מהמאמר – Motivation in PE",
+    q: "bilingual",
+    answer:
+      "Meaning: Able to speak or use two languages.\n\nפירוש: דו־לשוני.\n\nExample: A bilingual speaker translated each instrument.",
+  },
+
+  {
+    id: "english-motivation-XXX",
+    subtopic: "מילים מהמאמר – Motivation in PE",
+    q: "disagreements",
+    answer:
+      "Meaning: Situations in which people have different opinions.\n\nפירוש: חילוקי דעות / אי־הסכמות.\n\nExample: Disagreements were resolved by discussion.",
+  },
+
+  {
+    id: "english-motivation-XXX",
+    subtopic: "מילים מהמאמר – Motivation in PE",
+    q: "equivalent",
+    answer:
+      "Meaning: Equal in meaning, value, or function.\n\nפירוש: שווה ערך / מקביל.\n\nExample: The researchers tried to preserve equivalent meaning across languages.",
+  },
+
+  {
+    id: "english-motivation-XXX",
+    subtopic: "מילים מהמאמר – Motivation in PE",
+    q: "multivariate analysis of covariance",
+    answer:
+      "Meaning: A statistical method used to compare groups across multiple dependent variables while controlling for another variable.\n\nפירוש: ניתוח רב־משתני של שונות משותפת – שיטה סטטיסטית להשוואת קבוצות בכמה משתנים תוך בקרה על משתנה נוסף.\n\nExample: Multivariate analysis of covariance (MANCOVA) was used to analyse the data.",
+  },
+
+  {
+    id: "english-motivation-XXX",
+    subtopic: "מילים מהמאמר – Motivation in PE",
+    q: "interrelated",
+    answer:
+      "Meaning: Connected to or related to one another.\n\nפירוש: קשורים זה לזה / בעלי קשר הדדי.\n\nExample: Several outcome measures are interrelated.",
+  },
+
+  {
+    id: "english-motivation-XXX",
+    subtopic: "מילים מהמאמר – Motivation in PE",
+    q: "emotional repair",
+    answer:
+      "Meaning: The ability to improve or recover from a negative emotional state.\n\nפירוש: היכולת לשפר או לתקן מצב רגשי שלילי.\n\nExample: Emotional repair was associated with autonomous motivation.",
+  },
+
+  {
+    id: "english-motivation-XXX",
+    subtopic: "מילים מהמאמר – Motivation in PE",
+    q: "thus",
+    answer:
+      "Meaning: Therefore; as a result.\n\nפירוש: לכן / לפיכך / כתוצאה מכך.\n\nExample: Sex differences here were thus context-specific rather than uniform.",
+  },
+
+  {
+    id: "english-motivation-XXX",
+    subtopic: "מילים מהמאמר – Motivation in PE",
+    q: "context-specific",
+    answer:
+      "Meaning: Depending on the particular situation or context.\n\nפירוש: תלוי־הקשר / משתנה בהתאם להקשר.\n\nExample: Sex differences were context-specific rather than uniform.",
+  },
+
+  {
+    id: "english-motivation-XXX",
+    subtopic: "מילים מהמאמר – Motivation in PE",
+    q: "tentatively",
+    answer:
+      "Meaning: Cautiously and without claiming certainty.\n\nפירוש: בזהירות / באופן לא נחרץ / כהשערה.\n\nExample: The authors tentatively suggest that the difference may reflect educational traditions.",
+  },
+
+  {
+    id: "english-motivation-XXX",
+    subtopic: "מילים מהמאמר – Motivation in PE",
+    q: "by contrast",
+    answer:
+      "Meaning: Used to introduce an opposite or different situation.\n\nפירוש: לעומת זאת / בניגוד לכך.\n\nExample: By contrast, autonomous motivation correlated positively with responsibility.",
+  },
+
+  {
+    id: "english-motivation-XXX",
+    subtopic: "מילים מהמאמר – Motivation in PE",
+    q: "foregrounds",
+    answer:
+      "Meaning: Gives particular importance to something or places it at the centre.\n\nפירוש: מדגיש / מבליט / שם במרכז.\n\nExample: TPSR foregrounds responsibility, self-direction and care for others.",
+  },
+
+  {
+    id: "english-motivation-XXX",
+    subtopic: "מילים מהמאמר – Motivation in PE",
+    q: "hybrid",
+    answer:
+      "Meaning: A combination of two different models, approaches, or systems.\n\nפירוש: משולב / שילוב של שתי גישות או מערכות.\n\nExample: The authors propose a hybrid TPSR–SEM model.",
+  },
+
+  {
+    id: "english-motivation-XXX",
+    subtopic: "מילים מהמאמר – Motivation in PE",
+    q: "gains in perceived competence",
+    answer:
+      "Meaning: Improvements in how capable or competent people feel.\n\nפירוש: שיפור / עלייה בתחושת המסוגלות הנתפסת.\n\nExample: Previous research reported gains in perceived competence and social relationships.",
+  },
+
+  {
+    id: "english-motivation-XXX",
+    subtopic: "מילים מהמאמר – Motivation in PE",
+    q: "coincide",
+    answer:
+      "Meaning: To happen or occur at the same time as something else.\n\nפירוש: להתרחש יחד / להופיע במקביל.\n\nExample: Greater responsibility should coincide with less bullying and disruptive behaviour.",
+  },
+
+  {
+    id: "english-motivation-XXX",
+    subtopic: "מילים מהמאמר – Motivation in PE",
+    q: "generalisability",
+    answer:
+      "Meaning: The extent to which research findings can be applied to other populations or situations.\n\nפירוש: יכולת הכללה – עד כמה ניתן להחיל את ממצאי המחקר על אוכלוסיות או מצבים אחרים.\n\nExample: Studying only two countries limits generalisability.",
+  },
+
+  {
+    id: "english-motivation-XXX",
+    subtopic: "מילים מהמאמר – Motivation in PE",
+    q: "crucially",
+    answer:
+      "Meaning: Most importantly; in a particularly important way.\n\nפירוש: חשוב במיוחד / באופן מכריע.\n\nExample: Crucially, the authors call for longitudinal intervention research.",
+  },
+
+  {
+    id: "english-motivation-XXX",
+    subtopic: "מילים מהמאמר – Motivation in PE",
+    q: "emphasis",
+    answer:
+      "Meaning: Special importance or attention given to something.\n\nפירוש: דגש / מתן חשיבות מיוחדת.\n\nExample: The authors recommend greater emphasis on cultivating autonomous motivation.",
+  },
+  // =========================================================
+  // שאלות על המאמר – Motivation in PE
+  // =========================================================
+
+  {
+    id: "english-motivation-086",
+    subtopic: "שאלות על המאמר – Motivation in PE",
+    q: "What social problem does the article identify among young people?",
+    answer:
+      "The article states that young people are increasingly exposed to, or exhibit, socially harmful behaviour.",
+  },
+
+  {
+    id: "english-motivation-087",
+    subtopic: "שאלות על המאמר – Motivation in PE",
+    q: "Why are university students on sport-related courses important in this study?",
+    answer:
+      "They are important because they are the future PE teachers and sports leaders and may help shape the values of the next generation.",
+  },
+
+  {
+    id: "english-motivation-088",
+    subtopic: "שאלות על המאמר – Motivation in PE",
+    q: "What were the three main aims of the study?",
+    answer:
+      "The study aimed to identify students' motivational profiles, examine how motivation relates to resilience, emotional intelligence, responsibility and intentions to remain physically active, and compare patterns by country and sex.",
+  },
+
+  {
+    id: "english-motivation-089",
+    subtopic: "שאלות על המאמר – Motivation in PE",
+    q: "How many university students participated in the study?",
+    answer: "A total of 368 university students participated in the study.",
+  },
+
+  {
+    id: "english-motivation-090",
+    subtopic: "שאלות על המאמר – Motivation in PE",
+    q: "Which two countries were represented in the study?",
+    answer: "The participants were from Spain and Hungary.",
+  },
+
+  {
+    id: "english-motivation-091",
+    subtopic: "שאלות על המאמר – Motivation in PE",
+    q: "Which type of motivation was stronger overall?",
+    answer: "Autonomous motivation was stronger overall.",
+  },
+
+  {
+    id: "english-motivation-092",
+    subtopic: "שאלות על המאמר – Motivation in PE",
+    q: "What did autonomous motivation correlate more closely with?",
+    answer:
+      "Autonomous motivation correlated more closely with resilience, emotional regulation, and both personal and social responsibility.",
+  },
+
+  {
+    id: "english-motivation-093",
+    subtopic: "שאלות על המאמר – Motivation in PE",
+    q: "What teaching approach do the authors recommend?",
+    answer:
+      "The authors recommend combining the Teaching Personal and Social Responsibility model with the Sport Education Model.",
+  },
+
+  {
+    id: "english-motivation-094",
+    subtopic: "שאלות על המאמר – Motivation in PE",
+    q: "Why should PE not focus only on physical skills?",
+    answer:
+      "Because PE can also support cognitive, emotional, moral, and social development.",
+  },
+
+  {
+    id: "english-motivation-095",
+    subtopic: "שאלות על המאמר – Motivation in PE",
+    q: "How can positive emotional experiences in PE affect students?",
+    answer:
+      "Positive emotional experiences in PE can strengthen intrinsic motivation and support long-term commitment to health-related physical activity.",
+  },
+
+  {
+    id: "english-motivation-096",
+    subtopic: "שאלות על המאמר – Motivation in PE",
+    q: "What is autonomous motivation?",
+    answer:
+      "Autonomous motivation occurs when students act because of genuine interest or because they personally value the activity.",
+  },
+
+  {
+    id: "english-motivation-097",
+    subtopic: "שאלות על המאמר – Motivation in PE",
+    q: "What is controlled motivation?",
+    answer:
+      "Controlled motivation occurs when behaviour is driven mainly by external pressure, rules, or rewards.",
+  },
+
+  {
+    id: "english-motivation-098",
+    subtopic: "שאלות על המאמר – Motivation in PE",
+    q: "What are the three basic psychological needs described by Self-Determination Theory?",
+    answer:
+      "The three basic psychological needs are autonomy, competence, and relatedness.",
+  },
+
+  {
+    id: "english-motivation-099",
+    subtopic: "שאלות על המאמר – Motivation in PE",
+    q: "What happens when teaching supports autonomy, competence, and relatedness?",
+    answer:
+      "Students participate more willingly when teaching supports these three psychological needs.",
+  },
+
+  {
+    id: "english-motivation-100",
+    subtopic: "שאלות על המאמר – Motivation in PE",
+    q: "What are the five levels of the TPSR model?",
+    answer:
+      "The five levels are Irresponsibility, Self-control, Involvement, Self-responsibility, and Caring.",
+  },
+
+  {
+    id: "english-motivation-101",
+    subtopic: "שאלות על המאמר – Motivation in PE",
+    q: "How do learners behave at the lower levels of the TPSR model?",
+    answer:
+      "At the lower levels, learners may do little more than avoid disrupting other people.",
+  },
+
+  {
+    id: "english-motivation-102",
+    subtopic: "שאלות על המאמר – Motivation in PE",
+    q: "How do learners behave at the higher levels of the TPSR model?",
+    answer:
+      "At the higher levels, learners work independently, take ownership of their actions, and support their peers.",
+  },
+
+  {
+    id: "english-motivation-103",
+    subtopic: "שאלות על המאמר – Motivation in PE",
+    q: "Why is sport a useful setting for developing responsibility?",
+    answer:
+      "Sport provides a practical setting in which the progression of responsibility can be observed and developed.",
+  },
+
+  {
+    id: "english-motivation-104",
+    subtopic: "שאלות על המאמר – Motivation in PE",
+    q: "What is resilience?",
+    answer:
+      "Resilience is the capacity to recover and adapt positively after setbacks.",
+  },
+
+  {
+    id: "english-motivation-105",
+    subtopic: "שאלות על המאמר – Motivation in PE",
+    q: "What is resilience linked to in the article?",
+    answer:
+      "Resilience is linked to autonomous motivation and the effective regulation of emotion.",
+  },
+
+  {
+    id: "english-motivation-106",
+    subtopic: "שאלות על המאמר – Motivation in PE",
+    q: "What are the three components of emotional intelligence mentioned in the article?",
+    answer:
+      "The three components are emotional attention, emotional clarity, and emotional repair.",
+  },
+
+  {
+    id: "english-motivation-107",
+    subtopic: "שאלות על המאמר – Motivation in PE",
+    q: "What does emotional attention mean?",
+    answer: "Emotional attention means noticing one's emotions.",
+  },
+
+  {
+    id: "english-motivation-108",
+    subtopic: "שאלות על המאמר – Motivation in PE",
+    q: "What does emotional clarity mean?",
+    answer: "Emotional clarity means understanding one's emotions clearly.",
+  },
+
+  {
+    id: "english-motivation-109",
+    subtopic: "שאלות על המאמר – Motivation in PE",
+    q: "What does emotional repair mean?",
+    answer:
+      "Emotional repair means being able to improve or repair a negative mood.",
+  },
+
+  {
+    id: "english-motivation-110",
+    subtopic: "שאלות על המאמר – Motivation in PE",
+    q: "Why is it important for future PE teachers to live active lives themselves?",
+    answer:
+      "Their own experience of physical activity may make the principles they teach more authentic and easier to transmit.",
+  },
+
+  {
+    id: "english-motivation-111",
+    subtopic: "שאלות על המאמר – Motivation in PE",
+    q: "How was the Hungarian education system historically organised?",
+    answer:
+      "Hungary historically had a more centralised and standardised education system.",
+  },
+
+  {
+    id: "english-motivation-112",
+    subtopic: "שאלות על המאמר – Motivation in PE",
+    q: "How did the Spanish education system change after the transition to democracy?",
+    answer:
+      "Spain moved towards greater decentralisation and regional autonomy.",
+  },
+
+  {
+    id: "english-motivation-113",
+    subtopic: "שאלות על המאמר – Motivation in PE",
+    q: "Why did the researchers compare Hungary and Spain?",
+    answer:
+      "They wanted to examine whether differences in educational traditions were still reflected in students' motivation and related characteristics.",
+  },
+
+  {
+    id: "english-motivation-114",
+    subtopic: "שאלות על המאמר – Motivation in PE",
+    q: "How many hypotheses did the researchers test?",
+    answer: "The researchers tested five hypotheses.",
+  },
+
+  {
+    id: "english-motivation-115",
+    subtopic: "שאלות על המאמר – Motivation in PE",
+    q: "What type of research design was used?",
+    answer:
+      "The study used a cross-sectional, cross-cultural comparative quantitative design.",
+  },
+
+  {
+    id: "english-motivation-116",
+    subtopic: "שאלות על המאמר – Motivation in PE",
+    q: "What does cross-sectional mean in this study?",
+    answer:
+      "It means that all data were collected at a single point in time rather than following the same students over months or years.",
+  },
+
+  {
+    id: "english-motivation-117",
+    subtopic: "שאלות על המאמר – Motivation in PE",
+    q: "How many Hungarian and Spanish students participated?",
+    answer: "There were 205 Hungarian students and 163 Spanish students.",
+  },
+
+  {
+    id: "english-motivation-118",
+    subtopic: "שאלות על המאמר – Motivation in PE",
+    q: "What was the mean age of the participants?",
+    answer: "The mean age of the participants was 22.7 years.",
+  },
+
+  {
+    id: "english-motivation-119",
+    subtopic: "שאלות על המאמר – Motivation in PE",
+    q: "How were the participants selected?",
+    answer: "The participants were selected at random from volunteers.",
+  },
+
+  {
+    id: "english-motivation-120",
+    subtopic: "שאלות על המאמר – Motivation in PE",
+    q: "How many questionnaires were administered?",
+    answer:
+      "Seven questionnaires were administered: one demographic questionnaire and six validated psychological scales.",
+  },
+
+  {
+    id: "english-motivation-121",
+    subtopic: "שאלות על המאמר – Motivation in PE",
+    q: "What did the questionnaires measure?",
+    answer:
+      "They measured academic motivation, psychological need satisfaction, emotional intelligence, resilience, personal and social responsibility, and intention to remain physically active.",
+  },
+
+  {
+    id: "english-motivation-122",
+    subtopic: "שאלות על המאמר – Motivation in PE",
+    q: "Why were the questionnaires translated into Spanish and Hungarian?",
+    answer:
+      "They were translated so that participants could complete equivalent versions of the original English instruments in their own languages.",
+  },
+
+  {
+    id: "english-motivation-123",
+    subtopic: "שאלות על המאמר – Motivation in PE",
+    q: "How did the researchers try to preserve equivalent meaning across languages?",
+    answer:
+      "A bilingual speaker translated each instrument, a second person independently checked it, and disagreements were resolved through discussion.",
+  },
+
+  {
+    id: "english-motivation-124",
+    subtopic: "שאלות על המאמר – Motivation in PE",
+    q: "What statistical technique was used to analyse the data?",
+    answer:
+      "The researchers used multivariate analysis of covariance, or MANCOVA.",
+  },
+
+  {
+    id: "english-motivation-125",
+    subtopic: "שאלות על המאמר – Motivation in PE",
+    q: "Why was age used as a control variable?",
+    answer:
+      "Age was used as a control variable because it appeared to affect several of the measures.",
+  },
+
+  {
+    id: "english-motivation-126",
+    subtopic: "שאלות על המאמר – Motivation in PE",
+    q: "Why did the researchers report effect sizes?",
+    answer:
+      "Effect sizes indicate how substantial a difference is, rather than only whether the difference is statistically significant.",
+  },
+
+  {
+    id: "english-motivation-127",
+    subtopic: "שאלות על המאמר – Motivation in PE",
+    q: "What did the researchers do when some variables breached MANCOVA's assumptions?",
+    answer:
+      "They repeated the analysis using less demanding statistical tests and obtained closely similar results.",
+  },
+
+  {
+    id: "english-motivation-128",
+    subtopic: "שאלות על המאמר – Motivation in PE",
+    q: "What did the study find about autonomous and controlled motivation?",
+    answer:
+      "Both were reported at high levels, but autonomous motivation was stronger overall.",
+  },
+
+  {
+    id: "english-motivation-129",
+    subtopic: "שאלות על המאמר – Motivation in PE",
+    q: "What does the strong correlation between autonomous and controlled motivation suggest?",
+    answer:
+      "It suggests that most students are motivated by a mixture of personal interest and external reasons rather than by only one type of motivation.",
+  },
+
+  {
+    id: "english-motivation-130",
+    subtopic: "שאלות על המאמר – Motivation in PE",
+    q: "Which variables had medium-strength relationships with autonomous motivation?",
+    answer:
+      "Personal responsibility, social responsibility, emotional repair, and resilience had medium-strength relationships with autonomous motivation.",
+  },
+
+  {
+    id: "english-motivation-131",
+    subtopic: "שאלות על המאמר – Motivation in PE",
+    q: "How was controlled motivation related to most of the other variables?",
+    answer:
+      "Controlled motivation was only weakly correlated with almost all of the other variables.",
+  },
+
+  {
+    id: "english-motivation-132",
+    subtopic: "שאלות על המאמר – Motivation in PE",
+    q: "In which variables did Hungarian students score higher?",
+    answer:
+      "Hungarian students reported stronger relatedness and, to a lesser extent, higher controlled motivation.",
+  },
+
+  {
+    id: "english-motivation-133",
+    subtopic: "שאלות על המאמר – Motivation in PE",
+    q: "In which variables did Spanish students score higher?",
+    answer:
+      "Spanish students scored higher on autonomous motivation, emotional attention and repair, resilience, personal and social responsibility, and intention to remain physically active.",
+  },
+
+  {
+    id: "english-motivation-134",
+    subtopic: "שאלות על המאמר – Motivation in PE",
+    q: "Can the study prove that national culture caused the differences between Hungarian and Spanish students?",
+    answer:
+      "No. The study found differences between the groups, but the data cannot establish that national culture caused those differences.",
+  },
+
+  {
+    id: "english-motivation-135",
+    subtopic: "שאלות על המאמר – Motivation in PE",
+    q: "Was there an overall difference between male and female students?",
+    answer:
+      "No overall difference emerged between male and female students at the broadest statistical level.",
+  },
+
+  {
+    id: "english-motivation-136",
+    subtopic: "שאלות על המאמר – Motivation in PE",
+    q: "Why are the sex differences described as context-specific rather than uniform?",
+    answer:
+      "Because the differences depended on the country and the specific variable rather than appearing consistently across all male and female students.",
+  },
+
+  {
+    id: "english-motivation-137",
+    subtopic: "שאלות על המאמר – Motivation in PE",
+    q: "What difference was found between Spanish males and females?",
+    answer:
+      "Spanish males reported higher controlled motivation than Spanish females.",
+  },
+
+  {
+    id: "english-motivation-138",
+    subtopic: "שאלות על המאמר – Motivation in PE",
+    q: "What differences were found between Hungarian males and females?",
+    answer:
+      "Hungarian females scored higher than Hungarian males on emotional attention and both personal and social responsibility.",
+  },
+
+  {
+    id: "english-motivation-139",
+    subtopic: "שאלות על המאמר – Motivation in PE",
+    q: "How was autonomous motivation related to responsibility and future physical activity?",
+    answer:
+      "Autonomous motivation correlated positively with both forms of responsibility and with the desire to remain physically active.",
+  },
+
+  {
+    id: "english-motivation-140",
+    subtopic: "שאלות על המאמר – Motivation in PE",
+    q: "How was controlled motivation related to resilience?",
+    answer: "Controlled motivation was negatively correlated with resilience.",
+  },
+
+  {
+    id: "english-motivation-141",
+    subtopic: "שאלות על המאמר – Motivation in PE",
+    q: "Why can the researchers not conclude that controlled motivation causes lower resilience?",
+    answer:
+      "Because correlation shows an association between variables but does not prove that one variable causes the other.",
+  },
+
+  {
+    id: "english-motivation-142",
+    subtopic: "שאלות על המאמר – Motivation in PE",
+    q: "What does TPSR contribute to the proposed hybrid model?",
+    answer:
+      "TPSR contributes responsibility, self-direction, and care for others.",
+  },
+
+  {
+    id: "english-motivation-143",
+    subtopic: "שאלות על המאמר – Motivation in PE",
+    q: "What does the Sport Education Model contribute to the proposed hybrid model?",
+    answer:
+      "The Sport Education Model contributes cooperative learning structures and meaningful roles within a team.",
+  },
+
+  {
+    id: "english-motivation-144",
+    subtopic: "שאלות על המאמר – Motivation in PE",
+    q: "What positive outcomes were reported in earlier research using a similar hybrid model?",
+    answer:
+      "Earlier research reported reductions in bullying and violence together with improvements in perceived competence and social relationships.",
+  },
+
+  {
+    id: "english-motivation-145",
+    subtopic: "שאלות על המאמר – Motivation in PE",
+    q: "What are the three main limitations of the study?",
+    answer:
+      "The study collected data at only one point in time, relied entirely on self-report, and included participants from only two countries.",
+  },
+
+  {
+    id: "english-motivation-146",
+    subtopic: "שאלות על המאמר – Motivation in PE",
+    q: "Why does the cross-sectional design limit the conclusions of the study?",
+    answer:
+      "Because it captures only one point in time and cannot show how the same students change over time or establish causal relationships.",
+  },
+
+  {
+    id: "english-motivation-147",
+    subtopic: "שאלות על המאמר – Motivation in PE",
+    q: "Why is relying on self-report a limitation?",
+    answer:
+      "Because the findings depend entirely on what participants report about themselves rather than on direct observation or other types of evidence.",
+  },
+
+  {
+    id: "english-motivation-148",
+    subtopic: "שאלות על המאמר – Motivation in PE",
+    q: "Why does studying only two countries limit generalisability?",
+    answer:
+      "Because the findings may not apply to students in other countries, cultures, or educational systems.",
+  },
+
+  {
+    id: "english-motivation-149",
+    subtopic: "שאלות על המאמר – Motivation in PE",
+    q: "What kind of future research do the authors recommend?",
+    answer:
+      "They recommend larger and more internationally diverse studies, especially longitudinal intervention research comparing TPSR, SEM, the hybrid model, and a control group.",
+  },
+
+  {
+    id: "english-motivation-150",
+    subtopic: "שאלות על המאמר – Motivation in PE",
+    q: "What is the main conclusion of the study?",
+    answer:
+      "The study supports placing greater emphasis on autonomous motivation in the training of future PE teachers and sports leaders.",
+  },
+
+  {
+    id: "english-motivation-151",
+    subtopic: "שאלות על המאמר – Motivation in PE",
+    q: "What benefits might the proposed TPSR–SEM hybrid provide?",
+    answer:
+      "It may strengthen cooperation and responsibility while encouraging lifelong physical activity.",
+  },
+
+  {
+    id: "english-motivation-152",
+    subtopic: "שאלות על המאמר – Motivation in PE",
+    q: "Which group do the authors say deserves particular attention regarding bullying prevention?",
+    answer:
+      "The authors say that particular attention should be paid to young male students.",
+  },
+
+  {
+    id: "english-motivation-153",
+    subtopic: "שאלות על המאמר – Motivation in PE",
+    q: "How might behaviours learned in PE affect life outside the PE classroom?",
+    answer:
+      "If reflection, autonomy, responsibility, and care for others are consistently practised and reinforced, these behaviours may extend into schools and society more widely.",
+  },
+
+  {
+    id: "english-motivation-154",
+    subtopic: "שאלות על המאמר – Motivation in PE",
+    q: "Has the study proved that the proposed hybrid model works in practice?",
+    answer:
+      "No. Whether the model produces the expected results in practice remains a question for future evaluation.",
+  },
+  // =========================================================
+  // שאלות מדף התרגול – Motivation in PE
+  // =========================================================
+
+  {
+    id: "english-motivation-155",
+    subtopic: "שאלות מדף התרגול – Motivation in PE",
+    q: "What social problem is used to justify this research?",
+    answer:
+      "Young people are increasingly exposed to, or exhibit, socially harmful behaviour.",
+  },
+
+  {
+    id: "english-motivation-156",
+    subtopic: "שאלות מדף התרגול – Motivation in PE",
+    q: "Why do the authors consider students on sport-related courses an especially important group to study?",
+    answer:
+      "Because they are the future PE teachers and sports leaders and may help shape the values of the next generation.",
+  },
+
+  {
+    id: "english-motivation-157",
+    subtopic: "שאלות מדף התרגול – Motivation in PE",
+    q: "Rewrite the first aim of the study as a direct research question.",
+    answer:
+      "What are the motivational profiles of university students on sport-related courses?",
+  },
+
+  {
+    id: "english-motivation-158",
+    subtopic: "שאלות מדף התרגול – Motivation in PE",
+    q: "Rewrite the second aim of the study as a direct research question.",
+    answer:
+      "How does motivation relate to resilience, emotional intelligence, responsibility, and intentions to remain physically active after graduation?",
+  },
+
+  {
+    id: "english-motivation-159",
+    subtopic: "שאלות מדף התרגול – Motivation in PE",
+    q: "Rewrite the third aim of the study as a direct research question.",
+    answer: "How do motivational patterns differ by country and sex?",
+  },
+
+  {
+    id: "english-motivation-160",
+    subtopic: "שאלות מדף התרגול – Motivation in PE",
+    q: "Define autonomous motivation in your own words.",
+    answer:
+      "Autonomous motivation means acting because of genuine interest or because the activity has personal value.",
+  },
+
+  {
+    id: "english-motivation-161",
+    subtopic: "שאלות מדף התרגול – Motivation in PE",
+    q: "Define controlled motivation in your own words.",
+    answer:
+      "Controlled motivation means acting mainly because of external pressure, rules, rewards, or expectations.",
+  },
+
+  {
+    id: "english-motivation-162",
+    subtopic: "שאלות מדף התרגול – Motivation in PE",
+    q: "Define relatedness in your own words.",
+    answer:
+      "Relatedness is the feeling of being connected to and supported by other people.",
+  },
+
+  {
+    id: "english-motivation-163",
+    subtopic: "שאלות מדף התרגול – Motivation in PE",
+    q: "In paragraph 3, what does the word “them” refer to in the sentence about protecting them from a socially toxic environment?",
+    answer: "It refers to students.",
+  },
+
+  {
+    id: "english-motivation-164",
+    subtopic: "שאלות מדף התרגול – Motivation in PE",
+    q: "In paragraph 4, what does the word “it” refer to in the sentence “only if those who teach it understand how motivation works”?",
+    answer: "It refers to physical education, or PE.",
+  },
+
+  {
+    id: "english-motivation-165",
+    subtopic: "שאלות מדף התרגול – Motivation in PE",
+    q: "In paragraph 4, what does the word “them” refer to in the sentence “where teaching supports them, students participate more willingly”?",
+    answer:
+      "It refers to the three basic psychological needs: autonomy, competence, and relatedness.",
+  },
+
+  {
+    id: "english-motivation-166",
+    subtopic: "שאלות מדף התרגול – Motivation in PE",
+    q: "List the five levels of the TPSR model in order, from lowest to highest.",
+    answer:
+      "Irresponsibility, Self-control, Involvement, Self-responsibility, and Caring.",
+  },
+
+  {
+    id: "english-motivation-167",
+    subtopic: "שאלות מדף התרגול – Motivation in PE",
+    q: "What is the difference in behaviour between the lower levels and the higher levels of the TPSR model?",
+    answer:
+      "At the lower levels, learners mainly avoid disrupting others. At the higher levels, they work independently, take responsibility for their actions, and support their peers.",
+  },
+
+  {
+    id: "english-motivation-168",
+    subtopic: "שאלות מדף התרגול – Motivation in PE",
+    q: "What does the phrase “this progression” refer to in paragraph 5?",
+    answer:
+      "It refers to the five-level progression of responsibility in the TPSR model.",
+  },
+
+  {
+    id: "english-motivation-169",
+    subtopic: "שאלות מדף התרגול – Motivation in PE",
+    q: "Define resilience in your own words.",
+    answer:
+      "Resilience is the ability to recover and adapt positively after difficulties or setbacks.",
+  },
+
+  {
+    id: "english-motivation-170",
+    subtopic: "שאלות מדף התרגול – Motivation in PE",
+    q: "Explain the difference between emotional attention, emotional clarity, and emotional repair.",
+    answer:
+      "Emotional attention means noticing one's emotions, emotional clarity means understanding them clearly, and emotional repair means improving or recovering from a negative mood.",
+  },
+
+  {
+    id: "english-motivation-171",
+    subtopic: "שאלות מדף התרגול – Motivation in PE",
+    q: "Why does it matter that future PE teachers are physically active themselves?",
+    answer:
+      "Because their own experience of physical activity may make the principles they teach more authentic and easier to transmit to students.",
+  },
+
+  {
+    id: "english-motivation-172",
+    subtopic: "שאלות מדף התרגול – Motivation in PE",
+    q: "How was the Hungarian education system organised historically?",
+    answer: "It was historically more centralised and standardised.",
+  },
+
+  {
+    id: "english-motivation-173",
+    subtopic: "שאלות מדף התרגול – Motivation in PE",
+    q: "How did the Spanish education system differ?",
+    answer:
+      "Spain moved towards greater decentralisation and regional autonomy after its transition to democracy.",
+  },
+
+  {
+    id: "english-motivation-174",
+    subtopic: "שאלות מדף התרגול – Motivation in PE",
+    q: "Write the main idea of paragraph 8 in one sentence.",
+    answer:
+      "The researchers compare Hungary and Spain to examine whether their different educational histories are still reflected in students' motivation.",
+  },
+
+  {
+    id: "english-motivation-175",
+    subtopic: "שאלות מדף התרגול – Motivation in PE",
+    q: "Which of the five predictions concerns differences between cultures?",
+    answer: "The prediction that Hungarian and Spanish students would differ.",
+  },
+
+  {
+    id: "english-motivation-176",
+    subtopic: "שאלות מדף התרגול – Motivation in PE",
+    q: "Write the main idea of the whole Introduction in one sentence.",
+    answer:
+      "The Introduction explains how motivation, emotional development, responsibility, and educational context may interact in PE and why these relationships are important for future teachers.",
+  },
+
+  {
+    id: "english-motivation-177",
+    subtopic: "שאלות מדף התרגול – Motivation in PE",
+    q: "What type of research design was used, and in which paragraph is it described?",
+    answer:
+      "A cross-sectional, cross-cultural comparative quantitative design, described in paragraph 10.",
+  },
+
+  {
+    id: "english-motivation-178",
+    subtopic: "שאלות מדף התרגול – Motivation in PE",
+    q: "What was the total number of participants, and in which paragraph is it given?",
+    answer: "There were 368 participants, as stated in paragraph 11.",
+  },
+
+  {
+    id: "english-motivation-179",
+    subtopic: "שאלות מדף התרגול – Motivation in PE",
+    q: "What were the nationalities of the participants, and how many came from each country?",
+    answer:
+      "There were 205 Hungarian students and 163 Spanish students, as stated in paragraph 11.",
+  },
+
+  {
+    id: "english-motivation-180",
+    subtopic: "שאלות מדף התרגול – Motivation in PE",
+    q: "What proportion of participants were male in each country?",
+    answer:
+      "53% of the Hungarian students were male, and 67% of the Spanish students were male.",
+  },
+
+  {
+    id: "english-motivation-181",
+    subtopic: "שאלות מדף התרגול – Motivation in PE",
+    q: "Where did the study take place?",
+    answer:
+      "At the Hungarian University of Sport Sciences in Budapest and the University of Murcia in Spain.",
+  },
+
+  {
+    id: "english-motivation-182",
+    subtopic: "שאלות מדף התרגול – Motivation in PE",
+    q: "What was the age of the participants?",
+    answer: "Their mean age was 22.7 years, with ages ranging from 19 to 48.",
+  },
+
+  {
+    id: "english-motivation-183",
+    subtopic: "שאלות מדף התרגול – Motivation in PE",
+    q: "How were the participants selected?",
+    answer: "They were selected at random from volunteers.",
+  },
+
+  {
+    id: "english-motivation-184",
+    subtopic: "שאלות מדף התרגול – Motivation in PE",
+    q: "How many questionnaires were used and what types were they?",
+    answer:
+      "Seven questionnaires were used: one demographic questionnaire and six validated psychological scales.",
+  },
+
+  {
+    id: "english-motivation-185",
+    subtopic: "שאלות מדף התרגול – Motivation in PE",
+    q: "What statistical test was used?",
+    answer: "Multivariate analysis of covariance, or MANCOVA.",
+  },
+
+  {
+    id: "english-motivation-186",
+    subtopic: "שאלות מדף התרגול – Motivation in PE",
+    q: "What ethical procedures were followed?",
+    answer:
+      "The study received ethics approval, participants gave written informed consent, and anonymity was guaranteed.",
+  },
+
+  {
+    id: "english-motivation-187",
+    subtopic: "שאלות מדף התרגול – Motivation in PE",
+    q: "Define cross-sectional in your own words.",
+    answer:
+      "Cross-sectional research collects data from participants at one point in time rather than following them over a longer period.",
+  },
+
+  {
+    id: "english-motivation-188",
+    subtopic: "שאלות מדף התרגול – Motivation in PE",
+    q: "Students reported high levels of both types of motivation, though (1) ______ motivation was stronger overall.",
+    answer: "autonomous",
+  },
+
+  {
+    id: "english-motivation-189",
+    subtopic: "שאלות מדף התרגול – Motivation in PE",
+    q: "Since the two were closely (2) ______, the authors concluded that most students act from a mixture of personal interest and outside pressure.",
+    answer: "correlated",
+  },
+
+  {
+    id: "english-motivation-190",
+    subtopic: "שאלות מדף התרגול – Motivation in PE",
+    q: "Autonomous motivation was moderately linked to personal and social responsibility, emotional (3) ______ and resilience.",
+    answer: "repair",
+  },
+
+  {
+    id: "english-motivation-191",
+    subtopic: "שאלות מדף התרגול – Motivation in PE",
+    q: "Autonomous motivation was moderately linked to personal and social responsibility, emotional repair and (4) ______.",
+    answer: "resilience",
+  },
+
+  {
+    id: "english-motivation-192",
+    subtopic: "שאלות מדף התרגול – Motivation in PE",
+    q: "Autonomous motivation was only (5) ______ linked to emotional attention, emotional clarity and the wish to remain physically active.",
+    answer: "weakly",
+  },
+
+  {
+    id: "english-motivation-193",
+    subtopic: "שאלות מדף התרגול – Motivation in PE",
+    q: "Controlled motivation showed weak links with almost every other (6) ______.",
+    answer: "variable",
+  },
+
+  {
+    id: "english-motivation-194",
+    subtopic: "שאלות מדף התרגול – Motivation in PE",
+    q: "In which country was relatedness higher?",
+    answer: "Hungary.",
+  },
+
+  {
+    id: "english-motivation-195",
+    subtopic: "שאלות מדף התרגול – Motivation in PE",
+    q: "In which country was controlled motivation higher?",
+    answer: "Hungary.",
+  },
+
+  {
+    id: "english-motivation-196",
+    subtopic: "שאלות מדף התרגול – Motivation in PE",
+    q: "In which country was autonomous motivation higher?",
+    answer: "Spain.",
+  },
+
+  {
+    id: "english-motivation-197",
+    subtopic: "שאלות מדף התרגול – Motivation in PE",
+    q: "In which country was emotional attention higher?",
+    answer: "Spain.",
+  },
+
+  {
+    id: "english-motivation-198",
+    subtopic: "שאלות מדף התרגול – Motivation in PE",
+    q: "In which country was emotional repair higher?",
+    answer: "Spain.",
+  },
+
+  {
+    id: "english-motivation-199",
+    subtopic: "שאלות מדף התרגול – Motivation in PE",
+    q: "In which country was resilience higher?",
+    answer: "Spain.",
+  },
+
+  {
+    id: "english-motivation-200",
+    subtopic: "שאלות מדף התרגול – Motivation in PE",
+    q: "In which country was personal responsibility higher?",
+    answer: "Spain.",
+  },
+
+  {
+    id: "english-motivation-201",
+    subtopic: "שאלות מדף התרגול – Motivation in PE",
+    q: "In which country was social responsibility higher?",
+    answer: "Spain.",
+  },
+
+  {
+    id: "english-motivation-202",
+    subtopic: "שאלות מדף התרגול – Motivation in PE",
+    q: "In which country was intention to remain physically active higher?",
+    answer: "Spain.",
+  },
+
+  {
+    id: "english-motivation-203",
+    subtopic: "שאלות מדף התרגול – Motivation in PE",
+    q: "Paragraph 16 says sex differences were “context-specific rather than uniform”. Explain this phrase in your own words.",
+    answer:
+      "It means that the differences between males and females depended on the country and the specific variable, rather than being the same in all groups.",
+  },
+
+  {
+    id: "english-motivation-204",
+    subtopic: "שאלות מדף התרגול – Motivation in PE",
+    q: "Give two contrasting pieces of evidence from paragraph 16.",
+    answer:
+      "Spanish males reported higher controlled motivation than Spanish females, while Hungarian females scored higher than Hungarian males on emotional attention and both forms of responsibility.",
+  },
+
+  {
+    id: "english-motivation-205",
+    subtopic: "שאלות מדף התרגול – Motivation in PE",
+    q: "Paragraph 17 uses the expressions “possible evidence” and “correlation alone cannot confirm”. What do these expressions do?",
+    answer:
+      "They make the authors' interpretation cautious and show that the findings suggest a relationship but do not prove causation.",
+  },
+
+  {
+    id: "english-motivation-206",
+    subtopic: "שאלות מדף התרגול – Motivation in PE",
+    q: "What does TPSR contribute to the combined model?",
+    answer: "Responsibility, self-direction, and care for others.",
+  },
+
+  {
+    id: "english-motivation-207",
+    subtopic: "שאלות מדף התרגול – Motivation in PE",
+    q: "What does SEM add to the combined model?",
+    answer:
+      "Cooperative learning structures and meaningful roles within a team.",
+  },
+
+  {
+    id: "english-motivation-208",
+    subtopic: "שאלות מדף התרגול – Motivation in PE",
+    q: "Why do the authors believe TPSR and SEM may work better combined than separately?",
+    answer:
+      "Because TPSR develops responsibility, self-direction, and care for others, while SEM adds cooperation and meaningful team roles, so the two models complement each other.",
+  },
+
+  {
+    id: "english-motivation-209",
+    subtopic: "שאלות מדף התרגול – Motivation in PE",
+    q: "What is the first limitation given in paragraph 19?",
+    answer: "The study captured only a single point in time.",
+  },
+
+  {
+    id: "english-motivation-210",
+    subtopic: "שאלות מדף התרגול – Motivation in PE",
+    q: "What is the second limitation given in paragraph 19?",
+    answer: "The study relied entirely on self-report.",
+  },
+
+  {
+    id: "english-motivation-211",
+    subtopic: "שאלות מדף התרגול – Motivation in PE",
+    q: "What is the third limitation given in paragraph 19?",
+    answer: "The study included participants from only two countries.",
+  },
+
+  {
+    id: "english-motivation-212",
+    subtopic: "שאלות מדף התרגול – Motivation in PE",
+    q: "What does collecting data at only one point in time prevent the study from claiming?",
+    answer:
+      "It prevents the study from showing changes over time or establishing causal relationships.",
+  },
+
+  {
+    id: "english-motivation-213",
+    subtopic: "שאלות מדף התרגול – Motivation in PE",
+    q: "What does relying entirely on self-report prevent the study from claiming?",
+    answer:
+      "It prevents the study from claiming that the findings are based on objective behaviour or direct observation.",
+  },
+
+  {
+    id: "english-motivation-214",
+    subtopic: "שאלות מדף התרגול – Motivation in PE",
+    q: "What does using participants from only two countries prevent the study from claiming?",
+    answer:
+      "It prevents the study from claiming that the findings can be generalised confidently to other countries, cultures, or populations.",
+  },
+
+  {
+    id: "english-motivation-215",
+    subtopic: "שאלות מדף התרגול – Motivation in PE",
+    q: "Which statement best expresses the main idea of the whole article?",
+    answer:
+      "Because motivation driven by genuine interest is linked to greater responsibility and resilience, future PE teachers should be trained through a combined TPSR–SEM model.",
+  },
+];
 // מיפוי הסופי של הבנקים
 window.qaBanks = {
   educationalThought: educationalThoughtData,
@@ -24892,9 +26349,10 @@ window.qaBanks = {
   football: footballQA,
   statistics1: statistics1QA,
   statsDynamics: statsDynamicsQA,
-  Biochemistry: BiochemistryQA,
+  biochemistry: BiochemistryQA,
   volleyball: volleyballQA,
   handball: handballQA,
   developmentalPsychology: developmentalPsychologyQA,
   sportHistory: sportHistoryQA,
+  english: englishQA,
 };

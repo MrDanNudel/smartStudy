@@ -62,6 +62,7 @@ const circleEasy = document.getElementById("circleEasy");
 const circleHard = document.getElementById("circleHard");
 
 // === שמות נושאים ===
+// === שמות נושאים ===
 const SUBJECT_TITLES = {
   educationalThought: "מחשבת החינוך",
   anatomy: "אנטומיה",
@@ -74,11 +75,12 @@ const SUBJECT_TITLES = {
   physics: "פיזיקה",
   statistics1: "סטטיסטיקה – חלק א׳",
   statsDynamics: "יסודות בסטטיסטיקה ודינמיקה",
-  Biochemistry: "ביוכימיה",
+  biochemistry: "ביוכימיה",
   volleyball: "כדור עף",
   handball: "כדור יד",
   developmentalPsychology: "פסיכולוגיה התפתחותית",
   sportHistory: "היסטוריה של הספורט",
+  english: "אנגלית",
 };
 
 document.querySelector(".subject-name").textContent =

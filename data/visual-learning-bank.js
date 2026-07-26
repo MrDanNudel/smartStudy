@@ -31,8 +31,7 @@ window.visualLearningSubjects = {
               {
                 id: "greek-sport-overview-main",
 
-                image:
-                  "imgs/visual-learning/sport-history/ancient-greece/greek-sport-overview.png",
+                image: "imgs/visual-learning/sport-history/ancient-greece.png",
 
                 altHe:
                   "אינפוגרפיקה על הקשר בין ספורט, חינוך, דת ותרבות ביוון העתיקה",

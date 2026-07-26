@@ -132,7 +132,12 @@ body {
   font-weight: 700;
   opacity: 0;
   transform: translateY(6px);
-  transition: opacity 0.4s ease, transform 0.4s ease;
+  transition:
+    opacity 0.4s ease,
+    transform 0.4s ease;
+
+  white-space: pre-line;
+  unicode-bidi: plaintext;
 }
 .feedback.show {
   opacity: 1;
@@ -190,7 +195,10 @@ body {
   cursor: pointer;
   font-weight: bold;
   font-size: 1em;
-  transition: background 0.3s, transform 0.2s ease, box-shadow 0.3s ease;
+  transition:
+    background 0.3s,
+    transform 0.2s ease,
+    box-shadow 0.3s ease;
 }
 .main-btn:hover {
   background: #00c0ff;

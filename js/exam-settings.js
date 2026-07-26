@@ -19,11 +19,12 @@ window.addEventListener("DOMContentLoaded", () => {
     football: "יסודות בכדורגל",
     physics: "פיזיקה",
     statistics1: "סטטיסטיקה – חלק א׳",
-    Biochemistry: "ביוכימיה",
+    biochemistry: "ביוכימיה",
     volleyball: "כדור עף",
     handball: "כדור יד",
     developmentalPsychology: "פסיכולוגיה התפתחותית",
     sportHistory: "היסטוריה של הספורט",
+    english: "אנגלית",
   };
 
   const pageTitle = document.getElementById("pageTitle");
