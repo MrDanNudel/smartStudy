@@ -10889,7 +10889,3420 @@ const anatomyQuestions = [
     correct: 0,
   },
 ];
+const englishQuestions = [
+  // =========================
+  // אוצר מילים — המשך עד 50
+  // =========================
+  // =========================
+  // אוצר מילים — 1–27
+  // =========================
 
+  {
+    id: "amirnet-vocab-1",
+    subtopic: "אוצר מילים",
+    q: "The word 'accurate' is closest in meaning to:",
+    options: ["Precise", "Temporary", "Difficult", "Ordinary"],
+    correct: 0,
+  },
+
+  {
+    id: "amirnet-vocab-2",
+    subtopic: "אוצר מילים",
+    q: "The word 'scarce' is closest in meaning to:",
+    options: ["Expensive", "Rare", "Useful", "Heavy"],
+    correct: 1,
+  },
+
+  {
+    id: "amirnet-vocab-3",
+    subtopic: "אוצר מילים",
+    q: "The word 'maintain' is closest in meaning to:",
+    options: ["Destroy", "Keep", "Discover", "Avoid"],
+    correct: 1,
+  },
+
+  {
+    id: "amirnet-vocab-4",
+    subtopic: "אוצר מילים",
+    q: "The word 'significant' is closest in meaning to:",
+    options: ["Important", "Obvious", "Small", "Recent"],
+    correct: 0,
+  },
+
+  {
+    id: "amirnet-vocab-5",
+    subtopic: "אוצר מילים",
+    q: "The word 'decline' is closest in meaning to:",
+    options: ["Increase", "Decrease", "Repeat", "Explain"],
+    correct: 1,
+  },
+
+  {
+    id: "amirnet-vocab-6",
+    subtopic: "אוצר מילים",
+    q: "The word 'obtain' is closest in meaning to:",
+    options: ["Get", "Lose", "Hide", "Change"],
+    correct: 0,
+  },
+
+  {
+    id: "amirnet-vocab-7",
+    subtopic: "אוצר מילים",
+    q: "The word 'reluctant' is closest in meaning to:",
+    options: ["Unwilling", "Excited", "Certain", "Patient"],
+    correct: 0,
+  },
+
+  {
+    id: "amirnet-vocab-8",
+    subtopic: "אוצר מילים",
+    q: "The word 'rapid' is closest in meaning to:",
+    options: ["Slow", "Fast", "Careful", "Regular"],
+    correct: 1,
+  },
+
+  {
+    id: "amirnet-vocab-9",
+    subtopic: "אוצר מילים",
+    q: "The word 'essential' is closest in meaning to:",
+    options: ["Optional", "Necessary", "Interesting", "Complex"],
+    correct: 1,
+  },
+
+  {
+    id: "amirnet-vocab-10",
+    subtopic: "אוצר מילים",
+    q: "The word 'apparent' is closest in meaning to:",
+    options: ["Hidden", "Obvious", "Dangerous", "False"],
+    correct: 1,
+  },
+
+  {
+    id: "amirnet-vocab-11",
+    subtopic: "אוצר מילים",
+    q: "The word 'consequence' is closest in meaning to:",
+    options: ["Cause", "Result", "Plan", "Method"],
+    correct: 1,
+  },
+
+  {
+    id: "amirnet-vocab-12",
+    subtopic: "אוצר מילים",
+    q: "The word 'enhance' is closest in meaning to:",
+    options: ["Improve", "Remove", "Limit", "Measure"],
+    correct: 0,
+  },
+
+  {
+    id: "amirnet-vocab-13",
+    subtopic: "אוצר מילים",
+    q: "The word 'abundant' is closest in meaning to:",
+    options: ["Plentiful", "Rare", "Hidden", "Weak"],
+    correct: 0,
+  },
+
+  {
+    id: "amirnet-vocab-14",
+    subtopic: "אוצר מילים",
+    q: "The word 'deteriorate' is closest in meaning to:",
+    options: ["Improve", "Worsen", "Disappear", "Develop"],
+    correct: 1,
+  },
+
+  {
+    id: "amirnet-vocab-15",
+    subtopic: "אוצר מילים",
+    q: "The word 'compelling' is closest in meaning to:",
+    options: ["Convincing", "Ordinary", "Confusing", "Temporary"],
+    correct: 0,
+  },
+
+  {
+    id: "amirnet-vocab-16",
+    subtopic: "אוצר מילים",
+    q: "The word 'negligible' is closest in meaning to:",
+    options: ["Very small", "Very dangerous", "Unexpected", "Necessary"],
+    correct: 0,
+  },
+
+  {
+    id: "amirnet-vocab-17",
+    subtopic: "אוצר מילים",
+    q: "The word 'allocate' is closest in meaning to:",
+    options: ["Distribute", "Destroy", "Collect", "Predict"],
+    correct: 0,
+  },
+
+  {
+    id: "amirnet-vocab-18",
+    subtopic: "אוצר מילים",
+    q: "The word 'ambiguous' is closest in meaning to:",
+    options: ["Unclear", "Accurate", "Obvious", "Permanent"],
+    correct: 0,
+  },
+
+  {
+    id: "amirnet-vocab-19",
+    subtopic: "אוצר מילים",
+    q: "The word 'substantial' is closest in meaning to:",
+    options: ["Considerable", "Uncertain", "Minor", "Gradual"],
+    correct: 0,
+  },
+
+  {
+    id: "amirnet-vocab-20",
+    subtopic: "אוצר מילים",
+    q: "The word 'inevitable' is closest in meaning to:",
+    options: ["Unavoidable", "Unlikely", "Temporary", "Unknown"],
+    correct: 0,
+  },
+
+  {
+    id: "amirnet-vocab-21",
+    subtopic: "אוצר מילים",
+    q: "The word 'retain' is closest in meaning to:",
+    options: ["Keep", "Remove", "Replace", "Reduce"],
+    correct: 0,
+  },
+
+  {
+    id: "amirnet-vocab-22",
+    subtopic: "אוצר מילים",
+    q: "The word 'viable' is closest in meaning to:",
+    options: ["Practical", "Ancient", "Unusual", "Dangerous"],
+    correct: 0,
+  },
+
+  {
+    id: "amirnet-vocab-23",
+    subtopic: "אוצר מילים",
+    q: "The word 'adverse' is closest in meaning to:",
+    options: ["Harmful", "Helpful", "Regular", "Immediate"],
+    correct: 0,
+  },
+
+  {
+    id: "amirnet-vocab-24",
+    subtopic: "אוצר מילים",
+    q: "The word 'coherent' is closest in meaning to:",
+    options: ["Logical", "Brief", "Unexpected", "Incomplete"],
+    correct: 0,
+  },
+
+  {
+    id: "amirnet-vocab-25",
+    subtopic: "אוצר מילים",
+    q: "The word 'notorious' is closest in meaning to:",
+    options: [
+      "Famous for something negative",
+      "Unknown to most people",
+      "Highly respected",
+      "Recently discovered",
+    ],
+    correct: 0,
+  },
+
+  {
+    id: "amirnet-vocab-26",
+    subtopic: "אוצר מילים",
+    q: "The word 'conventional' is closest in meaning to:",
+    options: ["Traditional", "Experimental", "Rare", "Illegal"],
+    correct: 0,
+  },
+
+  {
+    id: "amirnet-vocab-27",
+    subtopic: "אוצר מילים",
+    q: "The word 'obsolete' is closest in meaning to:",
+    options: ["Outdated", "Accurate", "Expensive", "Reliable"],
+    correct: 0,
+  },
+  {
+    id: "amirnet-vocab-28",
+    subtopic: "אוצר מילים",
+    q: "The word 'feasible' is closest in meaning to:",
+    options: ["Temporary", "Practical", "Complicated", "Unnecessary"],
+    correct: 1,
+  },
+
+  {
+    id: "amirnet-vocab-29",
+    subtopic: "אוצר מילים",
+    q: "The word 'diminish' is closest in meaning to:",
+    options: ["Increase", "Explain", "Reduce", "Maintain"],
+    correct: 2,
+  },
+
+  {
+    id: "amirnet-vocab-30",
+    subtopic: "אוצר מילים",
+    q: "The word 'intricate' is closest in meaning to:",
+    options: ["Complex", "Ordinary", "Weak", "Ancient"],
+    correct: 0,
+  },
+
+  {
+    id: "amirnet-vocab-31",
+    subtopic: "אוצר מילים",
+    q: "The word 'plausible' is closest in meaning to:",
+    options: ["Unavoidable", "Unusual", "Temporary", "Believable"],
+    correct: 3,
+  },
+
+  {
+    id: "amirnet-vocab-32",
+    subtopic: "אוצר מילים",
+    q: "The word 'profound' is closest in meaning to:",
+    options: ["Brief", "Deep", "Predictable", "Minor"],
+    correct: 1,
+  },
+
+  {
+    id: "amirnet-vocab-33",
+    subtopic: "אוצר מילים",
+    q: "The word 'sporadic' is closest in meaning to:",
+    options: ["Continuous", "Occasional", "Immediate", "Necessary"],
+    correct: 1,
+  },
+
+  {
+    id: "amirnet-vocab-34",
+    subtopic: "אוצר מילים",
+    q: "The word 'exacerbate' is closest in meaning to:",
+    options: ["Worsen", "Prevent", "Measure", "Explain"],
+    correct: 0,
+  },
+
+  {
+    id: "amirnet-vocab-35",
+    subtopic: "אוצר מילים",
+    q: "The word 'arbitrary' is closest in meaning to:",
+    options: [
+      "Carefully planned",
+      "Widely accepted",
+      "Based on random choice",
+      "Scientifically proven",
+    ],
+    correct: 2,
+  },
+
+  {
+    id: "amirnet-vocab-36",
+    subtopic: "אוצר מילים",
+    q: "The word 'meticulous' is closest in meaning to:",
+    options: ["Extremely careful", "Uncertain", "Impatient", "Ordinary"],
+    correct: 0,
+  },
+
+  {
+    id: "amirnet-vocab-37",
+    subtopic: "אוצר מילים",
+    q: "The word 'prevalent' is closest in meaning to:",
+    options: ["Rare", "Harmful", "Common", "Recent"],
+    correct: 2,
+  },
+
+  {
+    id: "amirnet-vocab-38",
+    subtopic: "אוצר מילים",
+    q: "The word 'tentative' is closest in meaning to:",
+    options: ["Permanent", "Certain", "Preliminary", "Obvious"],
+    correct: 2,
+  },
+
+  {
+    id: "amirnet-vocab-39",
+    subtopic: "אוצר מילים",
+    q: "The word 'undermine' is closest in meaning to:",
+    options: ["Strengthen", "Weaken", "Discover", "Repeat"],
+    correct: 1,
+  },
+
+  {
+    id: "amirnet-vocab-40",
+    subtopic: "אוצר מילים",
+    q: "The word 'unprecedented' is closest in meaning to:",
+    options: [
+      "Never experienced before",
+      "Extremely common",
+      "Easy to predict",
+      "Impossible to explain",
+    ],
+    correct: 0,
+  },
+
+  {
+    id: "amirnet-vocab-41",
+    subtopic: "אוצר מילים",
+    q: "The word 'concede' is closest in meaning to:",
+    options: ["Reject", "Admit", "Investigate", "Predict"],
+    correct: 1,
+  },
+
+  {
+    id: "amirnet-vocab-42",
+    subtopic: "אוצר מילים",
+    q: "The word 'pervasive' is closest in meaning to:",
+    options: ["Temporary", "Widespread", "Insignificant", "Hidden"],
+    correct: 1,
+  },
+
+  {
+    id: "amirnet-vocab-43",
+    subtopic: "אוצר מילים",
+    q: "The word 'scrutinize' is closest in meaning to:",
+    options: ["Examine closely", "Ignore", "Simplify", "Reject immediately"],
+    correct: 0,
+  },
+
+  {
+    id: "amirnet-vocab-44",
+    subtopic: "אוצר מילים",
+    q: "The word 'inherent' is closest in meaning to:",
+    options: ["Temporary", "External", "Intrinsic", "Acquired"],
+    correct: 2,
+  },
+
+  {
+    id: "amirnet-vocab-45",
+    subtopic: "אוצר מילים",
+    q: "The word 'alleviate' is closest in meaning to:",
+    options: ["Worsen", "Relieve", "Cause", "Measure"],
+    correct: 1,
+  },
+
+  {
+    id: "amirnet-vocab-46",
+    subtopic: "אוצר מילים",
+    q: "The word 'resilient' is closest in meaning to:",
+    options: [
+      "Able to recover quickly",
+      "Easily damaged",
+      "Extremely rare",
+      "Difficult to understand",
+    ],
+    correct: 0,
+  },
+
+  {
+    id: "amirnet-vocab-47",
+    subtopic: "אוצר מילים",
+    q: "The word 'detrimental' is closest in meaning to:",
+    options: ["Beneficial", "Temporary", "Harmful", "Uncertain"],
+    correct: 2,
+  },
+
+  {
+    id: "amirnet-vocab-48",
+    subtopic: "אוצר מילים",
+    q: "The word 'corroborate' is closest in meaning to:",
+    options: ["Contradict", "Confirm", "Conceal", "Simplify"],
+    correct: 1,
+  },
+
+  {
+    id: "amirnet-vocab-49",
+    subtopic: "אוצר מילים",
+    q: "The word 'imminent' is closest in meaning to:",
+    options: [
+      "Unlikely",
+      "Long-lasting",
+      "About to happen",
+      "Already completed",
+    ],
+    correct: 2,
+  },
+
+  {
+    id: "amirnet-vocab-50",
+    subtopic: "אוצר מילים",
+    q: "The word 'discrepancy' is closest in meaning to:",
+    options: ["Agreement", "Difference", "Explanation", "Improvement"],
+    correct: 1,
+  },
+
+  // =========================
+  // ניסוח מחדש — המשך עד 50
+  // =========================
+
+  {
+    id: "amirnet-restatement-27",
+    subtopic: "ניסוח מחדש",
+    q: "Not until the late nineteenth century did scientists recognize the significance of the discovery.",
+    options: [
+      "Scientists understood the discovery's importance immediately.",
+      "The discovery was made in the late nineteenth century.",
+      "Scientists failed to recognize the discovery at any point.",
+      "Scientists recognized the importance of the discovery only in the late nineteenth century.",
+    ],
+    correct: 3,
+  },
+
+  {
+    id: "amirnet-restatement-28",
+    subtopic: "ניסוח מחדש",
+    q: "The fact that the treatment is widely used does not necessarily mean that it is effective.",
+    options: [
+      "A treatment can be commonly used even if its effectiveness is uncertain.",
+      "The treatment is effective because many people use it.",
+      "Only effective treatments become widely used.",
+      "Researchers have proven that the treatment is ineffective.",
+    ],
+    correct: 0,
+  },
+
+  {
+    id: "amirnet-restatement-29",
+    subtopic: "ניסוח מחדש",
+    q: "Were it not for the support of local residents, the project would probably have failed.",
+    options: [
+      "Local residents opposed the project and caused it to fail.",
+      "The project probably succeeded because local residents supported it.",
+      "The project failed despite receiving local support.",
+      "Local residents supported the project only after it succeeded.",
+    ],
+    correct: 1,
+  },
+
+  {
+    id: "amirnet-restatement-30",
+    subtopic: "ניסוח מחדש",
+    q: "There is no reason to assume that the current trend will persist indefinitely.",
+    options: [
+      "The current trend will certainly continue forever.",
+      "The trend has already come to an end.",
+      "We should not automatically expect the current trend to continue forever.",
+      "There is evidence that the trend is becoming stronger.",
+    ],
+    correct: 2,
+  },
+
+  {
+    id: "amirnet-restatement-31",
+    subtopic: "ניסוח מחדש",
+    q: "The more frequently people are exposed to an advertisement, the more familiar the advertised product may seem.",
+    options: [
+      "Frequent exposure to advertising may increase people's familiarity with a product.",
+      "People become less familiar with products when advertisements are repeated.",
+      "Advertisements are effective only when people already know the product.",
+      "Familiar products are advertised less frequently than unfamiliar ones.",
+    ],
+    correct: 0,
+  },
+
+  {
+    id: "amirnet-restatement-32",
+    subtopic: "ניסוח מחדש",
+    q: "The experiment yielded results that were inconsistent with the researchers' expectations.",
+    options: [
+      "The researchers predicted the results accurately.",
+      "The results differed from what the researchers had anticipated.",
+      "The researchers had no expectations before conducting the experiment.",
+      "The experiment produced no results.",
+    ],
+    correct: 1,
+  },
+
+  {
+    id: "amirnet-restatement-33",
+    subtopic: "ניסוח מחדש",
+    q: "Whatever advantages the new system may offer, its implementation will be costly.",
+    options: [
+      "The system has no advantages because it is expensive.",
+      "The system will be inexpensive if its advantages are significant.",
+      "Implementing the system will cost a great deal regardless of its potential benefits.",
+      "The system's advantages are mainly financial.",
+    ],
+    correct: 2,
+  },
+
+  {
+    id: "amirnet-restatement-34",
+    subtopic: "ניסוח מחדש",
+    q: "The decline in sales cannot be attributed solely to higher prices.",
+    options: [
+      "Higher prices had absolutely no effect on sales.",
+      "Higher prices are not the only possible cause of the decline in sales.",
+      "Sales declined only because prices increased.",
+      "Prices increased as a result of declining sales.",
+    ],
+    correct: 1,
+  },
+
+  {
+    id: "amirnet-restatement-35",
+    subtopic: "ניסוח מחדש",
+    q: "The painting was initially dismissed as a forgery, only to be authenticated decades later.",
+    options: [
+      "The painting was proven to be fake several decades after its discovery.",
+      "Experts immediately recognized the painting as authentic.",
+      "The painting was first considered fake but was later shown to be genuine.",
+      "The painting remained unauthenticated because experts believed it was a forgery.",
+    ],
+    correct: 2,
+  },
+
+  {
+    id: "amirnet-restatement-36",
+    subtopic: "ניסוח מחדש",
+    q: "Few inventions have had as profound an impact on human communication as the printing press.",
+    options: [
+      "The printing press had relatively little influence on communication.",
+      "The printing press is among the inventions that most greatly influenced human communication.",
+      "Most inventions have influenced communication more than the printing press.",
+      "The printing press was invented primarily to improve communication technology.",
+    ],
+    correct: 1,
+  },
+
+  {
+    id: "amirnet-restatement-37",
+    subtopic: "ניסוח מחדש",
+    q: "The study does not rule out the possibility that other factors contributed to the outcome.",
+    options: [
+      "The study proves that no other factors affected the outcome.",
+      "Other factors were shown to be the only cause of the outcome.",
+      "The study allows for the possibility that additional factors played a role.",
+      "Researchers refused to investigate other factors.",
+    ],
+    correct: 2,
+  },
+
+  {
+    id: "amirnet-restatement-38",
+    subtopic: "ניסוח מחדש",
+    q: "It was only after several unsuccessful attempts that the engineers identified the source of the problem.",
+    options: [
+      "The engineers found the cause immediately.",
+      "Several attempts failed before the engineers discovered what was causing the problem.",
+      "The engineers identified the problem before attempting to solve it.",
+      "The source of the problem remains unknown.",
+    ],
+    correct: 1,
+  },
+
+  {
+    id: "amirnet-restatement-39",
+    subtopic: "ניסוח מחדש",
+    q: "The apparent simplicity of the procedure is misleading.",
+    options: [
+      "The procedure is actually less simple than it appears.",
+      "The procedure is even simpler than it seems.",
+      "The procedure was designed to be misleading.",
+      "The procedure appears difficult but is actually simple.",
+    ],
+    correct: 0,
+  },
+
+  {
+    id: "amirnet-restatement-40",
+    subtopic: "ניסוח מחדש",
+    q: "Much as the researchers tried, they could not account for the unexpected result.",
+    options: [
+      "The researchers easily explained the unexpected result.",
+      "The researchers caused the result by trying too hard.",
+      "Despite their efforts, the researchers could not explain the unexpected result.",
+      "The result was expected, although the researchers could not explain it.",
+    ],
+    correct: 2,
+  },
+
+  {
+    id: "amirnet-restatement-41",
+    subtopic: "ניסוח מחדש",
+    q: "The evidence is insufficient to determine whether the two events are related.",
+    options: [
+      "The evidence proves that the events are unrelated.",
+      "There is not enough evidence to know whether a connection exists between the events.",
+      "The relationship between the events is obvious.",
+      "The events occurred because of the available evidence.",
+    ],
+    correct: 1,
+  },
+
+  {
+    id: "amirnet-restatement-42",
+    subtopic: "ניסוח מחדש",
+    q: "The new regulations are unlikely to have an immediate effect on housing prices.",
+    options: [
+      "Housing prices will probably not change immediately as a result of the regulations.",
+      "The regulations have already caused housing prices to fall.",
+      "Housing prices are expected to change immediately.",
+      "The regulations were introduced because housing prices had already changed.",
+    ],
+    correct: 0,
+  },
+
+  {
+    id: "amirnet-restatement-43",
+    subtopic: "ניסוח מחדש",
+    q: "Despite having received little formal training, she quickly became one of the company's most capable employees.",
+    options: [
+      "She became highly capable only after receiving extensive formal training.",
+      "Her lack of formal training prevented her from performing well.",
+      "Although she had little formal training, she soon proved to be a highly competent employee.",
+      "The company hired her because she had received more training than the other employees.",
+    ],
+    correct: 2,
+  },
+
+  {
+    id: "amirnet-restatement-44",
+    subtopic: "ניסוח מחדש",
+    q: "The extent to which climate influenced the civilization's decline remains a matter of debate.",
+    options: [
+      "There is still disagreement about how much climate contributed to the civilization's decline.",
+      "Scientists agree that climate was solely responsible for the civilization's decline.",
+      "Climate had no influence whatsoever on the civilization.",
+      "The civilization declined before any climatic changes occurred.",
+    ],
+    correct: 0,
+  },
+
+  {
+    id: "amirnet-restatement-45",
+    subtopic: "ניסוח מחדש",
+    q: "The museum would attract more visitors if admission fees were lower.",
+    options: [
+      "Lower admission fees would probably result in more people visiting the museum.",
+      "The museum lowered its admission fees because visitor numbers increased.",
+      "Most visitors believe the museum should charge higher admission fees.",
+      "Admission fees have no effect on the number of museum visitors.",
+    ],
+    correct: 0,
+  },
+
+  {
+    id: "amirnet-restatement-46",
+    subtopic: "ניסוח מחדש",
+    q: "What little evidence exists suggests that the settlement was abandoned suddenly.",
+    options: [
+      "There is extensive evidence showing that the settlement disappeared gradually.",
+      "Although evidence is limited, it indicates that the settlement was abandoned abruptly.",
+      "There is no evidence concerning how the settlement was abandoned.",
+      "The available evidence proves that the settlement was never inhabited.",
+    ],
+    correct: 1,
+  },
+
+  {
+    id: "amirnet-restatement-47",
+    subtopic: "ניסוח מחדש",
+    q: "Whether the benefits of the policy outweigh its disadvantages remains to be seen.",
+    options: [
+      "The disadvantages of the policy have already been proven to exceed its benefits.",
+      "The policy clearly has more benefits than disadvantages.",
+      "It is not yet clear whether the policy's advantages are greater than its drawbacks.",
+      "The policy has neither benefits nor disadvantages.",
+    ],
+    correct: 2,
+  },
+
+  {
+    id: "amirnet-restatement-48",
+    subtopic: "ניסוח מחדש",
+    q: "The scientist's reputation rests largely on work she conducted early in her career.",
+    options: [
+      "The scientist became well known mainly because of research she did near the beginning of her career.",
+      "The scientist's earliest research damaged her professional reputation.",
+      "Most of the scientist's important work was completed after she retired.",
+      "The scientist was already famous before beginning her research career.",
+    ],
+    correct: 0,
+  },
+
+  {
+    id: "amirnet-restatement-49",
+    subtopic: "ניסוח מחדש",
+    q: "Had demand not fallen unexpectedly, the company would have increased production.",
+    options: [
+      "The company increased production because demand fell.",
+      "The unexpected decline in demand prevented the company from increasing production.",
+      "Production fell before demand began to decline.",
+      "The company expected demand to fall and therefore increased production.",
+    ],
+    correct: 1,
+  },
+
+  {
+    id: "amirnet-restatement-50",
+    subtopic: "ניסוח מחדש",
+    q: "There is scarcely any aspect of modern life that has not been affected by digital technology.",
+    options: [
+      "Digital technology has influenced very few areas of modern life.",
+      "Modern life has remained largely unchanged by digital technology.",
+      "Digital technology is no longer relevant to modern life.",
+      "Digital technology has affected almost every aspect of modern life.",
+    ],
+    correct: 3,
+  },
+  // =========================
+  // הבנת הנקרא — המשך עד 50
+  // =========================
+  // =========================
+  // הבנת הנקרא — 1–31
+  // =========================
+
+  {
+    id: "amirnet-reading-1",
+    subtopic: "הבנת הנקרא",
+    q: `Many people assume that memory works like a recording device. However, research suggests that memories can change over time and may be influenced by later experiences.
+
+What is the main idea of the passage?`,
+    options: [
+      "Human memory always records events accurately.",
+      "Memories may be altered over time.",
+      "People usually forget all past experiences.",
+      "Recording devices work similarly to the human brain.",
+    ],
+    correct: 1,
+  },
+
+  {
+    id: "amirnet-reading-2",
+    subtopic: "הבנת הנקרא",
+    q: `Many people assume that memory works like a recording device. However, research suggests that memories can change over time and may be influenced by later experiences.
+
+According to the passage, memories may be affected by:`,
+    options: [
+      "later experiences",
+      "recording devices",
+      "physical exercise only",
+      "the weather",
+    ],
+    correct: 0,
+  },
+
+  {
+    id: "amirnet-reading-3",
+    subtopic: "הבנת הנקרא",
+    q: `For many years, scientists believed that sleep was simply a period of inactivity. Today, however, researchers know that the brain remains highly active during sleep and performs several important functions.
+
+What does the passage suggest about sleep?`,
+    options: [
+      "The brain becomes completely inactive during sleep.",
+      "Scientists still know nothing about sleep.",
+      "Sleep involves important brain activity.",
+      "Sleep is less important than previously thought.",
+    ],
+    correct: 2,
+  },
+
+  {
+    id: "amirnet-reading-4",
+    subtopic: "הבנת הנקרא",
+    q: `For many years, scientists believed that sleep was simply a period of inactivity. Today, however, researchers know that the brain remains highly active during sleep and performs several important functions.
+
+The word "however" is used to show:`,
+    options: ["contrast", "cause", "example", "sequence"],
+    correct: 0,
+  },
+
+  {
+    id: "amirnet-reading-5",
+    subtopic: "הבנת הנקרא",
+    q: `Urban trees provide more than just shade. They can reduce air pollution, lower temperatures during hot weather, and create habitats for birds and insects. For this reason, many cities are investing in programs to plant more trees.
+
+Why are many cities planting more trees?`,
+    options: [
+      "Trees require little space.",
+      "Trees provide several environmental benefits.",
+      "Birds cannot live outside cities.",
+      "Cities are becoming colder.",
+    ],
+    correct: 1,
+  },
+
+  {
+    id: "amirnet-reading-6",
+    subtopic: "הבנת הנקרא",
+    q: `Urban trees provide more than just shade. They can reduce air pollution, lower temperatures during hot weather, and create habitats for birds and insects. For this reason, many cities are investing in programs to plant more trees.
+
+Which of the following is NOT mentioned as a benefit of urban trees?`,
+    options: [
+      "Reducing pollution",
+      "Providing animal habitats",
+      "Lowering temperatures",
+      "Reducing traffic",
+    ],
+    correct: 3,
+  },
+
+  {
+    id: "amirnet-reading-7",
+    subtopic: "הבנת הנקרא",
+    q: `Some animals migrate thousands of kilometers each year. They do so to find food, reproduce, or escape harsh weather conditions. Migration can be dangerous, but for many species it is essential for survival.
+
+According to the passage, animals migrate mainly in order to:`,
+    options: [
+      "avoid all contact with other animals",
+      "increase their body size",
+      "meet important survival needs",
+      "explore unfamiliar environments",
+    ],
+    correct: 2,
+  },
+
+  {
+    id: "amirnet-reading-8",
+    subtopic: "הבנת הנקרא",
+    q: `Some animals migrate thousands of kilometers each year. They do so to find food, reproduce, or escape harsh weather conditions. Migration can be dangerous, but for many species it is essential for survival.
+
+The passage implies that migration:`,
+    options: [
+      "is always safe",
+      "has both risks and benefits",
+      "occurs only in cold climates",
+      "is unnecessary for most animals",
+    ],
+    correct: 1,
+  },
+
+  {
+    id: "amirnet-reading-9",
+    subtopic: "הבנת הנקרא",
+    q: `In the past, libraries were mainly places where people borrowed printed books. Modern libraries often provide computers, internet access, study spaces, digital resources, and community programs.
+
+What is the main point of the passage?`,
+    options: [
+      "Printed books are no longer available in libraries.",
+      "Modern libraries offer a wider range of services than before.",
+      "Libraries are used only by students.",
+      "Internet access has replaced libraries completely.",
+    ],
+    correct: 1,
+  },
+
+  {
+    id: "amirnet-reading-10",
+    subtopic: "הבנת הנקרא",
+    q: `In the past, libraries were mainly places where people borrowed printed books. Modern libraries often provide computers, internet access, study spaces, digital resources, and community programs.
+
+Which service is mentioned as being available in modern libraries?`,
+    options: [
+      "Medical treatment",
+      "Internet access",
+      "Transportation",
+      "Hotel accommodation",
+    ],
+    correct: 1,
+  },
+
+  {
+    id: "amirnet-reading-11",
+    subtopic: "הבנת הנקרא",
+    q: `Studies have shown that regular physical activity can improve both physical and mental health. Exercise may strengthen the heart, improve sleep, and reduce feelings of stress.
+
+Which statement is supported by the passage?`,
+    options: [
+      "Exercise affects only physical health.",
+      "Exercise may have several health benefits.",
+      "Exercise always eliminates stress completely.",
+      "Only intense exercise is useful.",
+    ],
+    correct: 1,
+  },
+
+  {
+    id: "amirnet-reading-12",
+    subtopic: "הבנת הנקרא",
+    q: `Studies have shown that regular physical activity can improve both physical and mental health. Exercise may strengthen the heart, improve sleep, and reduce feelings of stress.
+
+The word "reduce" is closest in meaning to:`,
+    options: ["increase", "decrease", "cause", "measure"],
+    correct: 1,
+  },
+
+  {
+    id: "amirnet-reading-13",
+    subtopic: "הבנת הנקרא",
+    q: `For much of the twentieth century, scientists assumed that adult brains were relatively fixed and incapable of major structural change. Research conducted in recent decades, however, has demonstrated that the brain can reorganize itself in response to learning, injury, and changes in the environment. This ability, known as neuroplasticity, has important implications for both education and rehabilitation.
+
+What is the main idea of the passage?`,
+    options: [
+      "Modern research has shown that adult brains are more adaptable than once believed.",
+      "Brain injuries cannot be treated effectively in adults.",
+      "Scientists no longer study how the brain changes.",
+      "Neuroplasticity occurs only during childhood.",
+    ],
+    correct: 0,
+  },
+
+  {
+    id: "amirnet-reading-14",
+    subtopic: "הבנת הנקרא",
+    q: `For much of the twentieth century, scientists assumed that adult brains were relatively fixed and incapable of major structural change. Research conducted in recent decades, however, has demonstrated that the brain can reorganize itself in response to learning, injury, and changes in the environment. This ability, known as neuroplasticity, has important implications for both education and rehabilitation.
+
+According to the passage, neuroplasticity refers to the brain's ability to:`,
+    options: [
+      "reorganize itself",
+      "prevent all injuries",
+      "stop changing in adulthood",
+      "store unlimited information",
+    ],
+    correct: 0,
+  },
+
+  {
+    id: "amirnet-reading-15",
+    subtopic: "הבנת הנקרא",
+    q: `For much of the twentieth century, scientists assumed that adult brains were relatively fixed and incapable of major structural change. Research conducted in recent decades, however, has demonstrated that the brain can reorganize itself in response to learning, injury, and changes in the environment. This ability, known as neuroplasticity, has important implications for both education and rehabilitation.
+
+The word "however" indicates that the newer research:`,
+    options: [
+      "contradicts an earlier belief",
+      "provides an example of an earlier theory",
+      "explains why brain research ended",
+      "supports the idea that the adult brain never changes",
+    ],
+    correct: 0,
+  },
+
+  {
+    id: "amirnet-reading-16",
+    subtopic: "הבנת הנקרא",
+    q: `In many ecosystems, large predators play a role that extends far beyond controlling the number of animals they hunt. By influencing the behavior and distribution of prey species, predators can indirectly affect vegetation, smaller animals, and even the physical characteristics of rivers. As a result, the removal of a top predator may produce unexpected changes throughout an ecosystem.
+
+What is the main point of the passage?`,
+    options: [
+      "Large predators can influence many parts of an ecosystem.",
+      "Predators affect only the animals they directly hunt.",
+      "Removing predators always improves an ecosystem.",
+      "Rivers determine where large predators live.",
+    ],
+    correct: 0,
+  },
+
+  {
+    id: "amirnet-reading-17",
+    subtopic: "הבנת הנקרא",
+    q: `In many ecosystems, large predators play a role that extends far beyond controlling the number of animals they hunt. By influencing the behavior and distribution of prey species, predators can indirectly affect vegetation, smaller animals, and even the physical characteristics of rivers. As a result, the removal of a top predator may produce unexpected changes throughout an ecosystem.
+
+The passage suggests that removing a top predator may:`,
+    options: [
+      "affect organisms and features not directly connected to its diet",
+      "have no influence on vegetation",
+      "change only the population of its prey",
+      "always increase biodiversity",
+    ],
+    correct: 0,
+  },
+
+  {
+    id: "amirnet-reading-18",
+    subtopic: "הבנת הנקרא",
+    q: `Some researchers have argued that creativity is not a fixed trait possessed by only a few gifted individuals. Instead, they suggest that creative thinking can be strengthened through practice, exposure to different perspectives, and environments that encourage experimentation. This view has influenced educational programs designed to promote creativity in schools and workplaces.
+
+Which statement best expresses the author's main point?`,
+    options: [
+      "Creativity may be developed rather than being entirely fixed.",
+      "Only naturally gifted people can become creative.",
+      "Schools should stop teaching creative subjects.",
+      "Creative thinking cannot be affected by the environment.",
+    ],
+    correct: 0,
+  },
+
+  {
+    id: "amirnet-reading-19",
+    subtopic: "הבנת הנקרא",
+    q: `Some researchers have argued that creativity is not a fixed trait possessed by only a few gifted individuals. Instead, they suggest that creative thinking can be strengthened through practice, exposure to different perspectives, and environments that encourage experimentation. This view has influenced educational programs designed to promote creativity in schools and workplaces.
+
+Which of the following is mentioned as a way to strengthen creativity?`,
+    options: [
+      "Exposure to different perspectives",
+      "Avoiding experimentation",
+      "Reducing practice",
+      "Working without feedback",
+    ],
+    correct: 0,
+  },
+
+  {
+    id: "amirnet-reading-20",
+    subtopic: "הבנת הנקרא",
+    q: `For centuries, maps were produced primarily by trained specialists. The development of satellite technology, digital mapping, and smartphones has dramatically changed this situation. Today, millions of people contribute geographic information by sharing locations, reporting road conditions, and adding details about local places. As a result, maps can now be updated far more rapidly than in the past.
+
+According to the passage, modern maps can be updated more quickly largely because:`,
+    options: [
+      "many ordinary users contribute information",
+      "professional mapmakers no longer exist",
+      "satellites have replaced all other technologies",
+      "maps contain less information than they once did",
+    ],
+    correct: 0,
+  },
+
+  {
+    id: "amirnet-reading-21",
+    subtopic: "הבנת הנקרא",
+    q: `For centuries, maps were produced primarily by trained specialists. The development of satellite technology, digital mapping, and smartphones has dramatically changed this situation. Today, millions of people contribute geographic information by sharing locations, reporting road conditions, and adding details about local places. As a result, maps can now be updated far more rapidly than in the past.
+
+What changed according to the passage?`,
+    options: [
+      "Mapmaking became less dependent exclusively on specialists.",
+      "People stopped using maps to navigate.",
+      "Digital maps became less accurate than printed maps.",
+      "Satellite technology made local information unnecessary.",
+    ],
+    correct: 0,
+  },
+
+  {
+    id: "amirnet-reading-22",
+    subtopic: "הבנת הנקרא",
+    q: `Economic growth is often measured by increases in a country's gross domestic product, or GDP. While GDP is useful for estimating the total value of goods and services produced, it does not measure every aspect of well-being. For example, it does not directly account for income distribution, environmental quality, or leisure time. Consequently, some economists argue that GDP should be supplemented by other indicators.
+
+Why do some economists believe GDP should be supplemented by other indicators?`,
+    options: [
+      "GDP does not capture every aspect of well-being.",
+      "GDP cannot measure economic activity at all.",
+      "GDP measures environmental quality more accurately than income.",
+      "GDP has stopped being used by governments.",
+    ],
+    correct: 0,
+  },
+
+  {
+    id: "amirnet-reading-23",
+    subtopic: "הבנת הנקרא",
+    q: `Economic growth is often measured by increases in a country's gross domestic product, or GDP. While GDP is useful for estimating the total value of goods and services produced, it does not measure every aspect of well-being. For example, it does not directly account for income distribution, environmental quality, or leisure time. Consequently, some economists argue that GDP should be supplemented by other indicators.
+
+Which of the following is NOT directly measured by GDP according to the passage?`,
+    options: [
+      "Environmental quality",
+      "The value of goods and services produced",
+      "Overall economic output",
+      "Production within the economy",
+    ],
+    correct: 0,
+  },
+
+  {
+    id: "amirnet-reading-24",
+    subtopic: "הבנת הנקרא",
+    q: `People often assume that making more choices leads to greater satisfaction. Yet studies suggest that when the number of options becomes very large, people may find it harder to decide and may feel less satisfied with the choice they eventually make. Researchers sometimes refer to this phenomenon as the "paradox of choice."
+
+What is the paradox described in the passage?`,
+    options: [
+      "Having more options can sometimes make decisions less satisfying.",
+      "People prefer having no choices at all.",
+      "More choices always improve decision-making.",
+      "People make better decisions when they ignore all available options.",
+    ],
+    correct: 0,
+  },
+
+  {
+    id: "amirnet-reading-25",
+    subtopic: "הבנת הנקרא",
+    q: `People often assume that making more choices leads to greater satisfaction. Yet studies suggest that when the number of options becomes very large, people may find it harder to decide and may feel less satisfied with the choice they eventually make. Researchers sometimes refer to this phenomenon as the "paradox of choice."
+
+The word "Yet" is used to introduce:`,
+    options: [
+      "a contrast with the previous idea",
+      "an example supporting the previous idea",
+      "a definition of satisfaction",
+      "a description of a historical event",
+    ],
+    correct: 0,
+  },
+
+  {
+    id: "amirnet-reading-26",
+    subtopic: "הבנת הנקרא",
+    q: `In scientific research, a result that appears statistically significant is not necessarily important in practical terms. A treatment, for instance, may produce a measurable improvement that is so small that patients barely notice any difference. Researchers must therefore consider not only whether an effect exists, but also whether its size is meaningful.
+
+What distinction does the passage emphasize?`,
+    options: [
+      "The difference between statistical significance and practical importance",
+      "The difference between patients and researchers",
+      "The difference between treatment and prevention",
+      "The difference between large studies and small studies",
+    ],
+    correct: 0,
+  },
+
+  {
+    id: "amirnet-reading-27",
+    subtopic: "הבנת הנקרא",
+    q: `In scientific research, a result that appears statistically significant is not necessarily important in practical terms. A treatment, for instance, may produce a measurable improvement that is so small that patients barely notice any difference. Researchers must therefore consider not only whether an effect exists, but also whether its size is meaningful.
+
+According to the passage, a statistically significant result may:`,
+    options: [
+      "have very little practical value",
+      "always produce a major benefit",
+      "be impossible to measure",
+      "prove that a treatment is harmful",
+    ],
+    correct: 0,
+  },
+
+  {
+    id: "amirnet-reading-28",
+    subtopic: "הבנת הנקרא",
+    q: `For a long time, historians tended to focus primarily on political leaders, wars, and major institutions. In recent decades, however, many historians have increasingly studied the everyday experiences of ordinary people. Personal letters, household records, photographs, and oral histories can provide insights into aspects of the past that official documents often overlook.
+
+What change in historical research does the passage describe?`,
+    options: [
+      "Greater attention to the lives of ordinary people",
+      "A complete rejection of written documents",
+      "Less interest in personal sources",
+      "A return to studying only political leaders",
+    ],
+    correct: 0,
+  },
+
+  {
+    id: "amirnet-reading-29",
+    subtopic: "הבנת הנקרא",
+    q: `For a long time, historians tended to focus primarily on political leaders, wars, and major institutions. In recent decades, however, many historians have increasingly studied the everyday experiences of ordinary people. Personal letters, household records, photographs, and oral histories can provide insights into aspects of the past that official documents often overlook.
+
+Why are personal letters and oral histories useful to historians?`,
+    options: [
+      "They can reveal aspects of everyday life missing from official records.",
+      "They are always more accurate than official documents.",
+      "They contain only information about political leaders.",
+      "They eliminate the need for other historical sources.",
+    ],
+    correct: 0,
+  },
+
+  {
+    id: "amirnet-reading-30",
+    subtopic: "הבנת הנקרא",
+    q: `Public concern about new technologies often focuses on the jobs they may eliminate. Historically, however, technological change has also created occupations that previously did not exist. This does not mean that technological transitions are painless: workers whose skills become less valuable may face serious difficulties, even if employment grows elsewhere in the economy.
+
+Which statement best summarizes the passage?`,
+    options: [
+      "Technology can both eliminate and create jobs, while still causing hardship for some workers.",
+      "Technological change always reduces total employment.",
+      "Workers generally benefit immediately from new technologies.",
+      "New technology has little effect on the labor market.",
+    ],
+    correct: 0,
+  },
+
+  {
+    id: "amirnet-reading-31",
+    subtopic: "הבנת הנקרא",
+    q: `Public concern about new technologies often focuses on the jobs they may eliminate. Historically, however, technological change has also created occupations that previously did not exist. This does not mean that technological transitions are painless: workers whose skills become less valuable may face serious difficulties, even if employment grows elsewhere in the economy.
+
+The author mentions workers whose skills become less valuable in order to show that:`,
+    options: [
+      "overall job creation does not prevent individuals from being negatively affected",
+      "new technology benefits every worker equally",
+      "employment always falls after technological change",
+      "workers can easily change occupations",
+    ],
+    correct: 0,
+  },
+  {
+    id: "amirnet-reading-32",
+    subtopic: "הבנת הנקרא",
+    q: `For many years, scientists believed that the primary function of dreaming was to process events experienced during the day. More recent research has suggested a broader role. Dreams may contribute to emotional regulation, memory consolidation, and even creative problem-solving. Nevertheless, researchers have yet to reach a consensus regarding why humans dream.
+
+What is the main idea of the passage?`,
+    options: [
+      "Scientists have proven that dreams exist only to process daily events.",
+      "Research suggests several possible functions of dreams, but their exact purpose remains uncertain.",
+      "Dreaming interferes with memory and emotional regulation.",
+      "Scientists no longer study dreaming because its function is understood.",
+    ],
+    correct: 1,
+  },
+
+  {
+    id: "amirnet-reading-33",
+    subtopic: "הבנת הנקרא",
+    q: `For many years, scientists believed that the primary function of dreaming was to process events experienced during the day. More recent research has suggested a broader role. Dreams may contribute to emotional regulation, memory consolidation, and even creative problem-solving. Nevertheless, researchers have yet to reach a consensus regarding why humans dream.
+
+The phrase "have yet to reach a consensus" means that researchers:`,
+    options: [
+      "have recently stopped studying dreams",
+      "all support the same explanation",
+      "do not yet generally agree on an explanation",
+      "have proven that dreams have no function",
+    ],
+    correct: 2,
+  },
+
+  {
+    id: "amirnet-reading-34",
+    subtopic: "הבנת הנקרא",
+    q: `For many years, scientists believed that the primary function of dreaming was to process events experienced during the day. More recent research has suggested a broader role. Dreams may contribute to emotional regulation, memory consolidation, and even creative problem-solving. Nevertheless, researchers have yet to reach a consensus regarding why humans dream.
+
+Which of the following is NOT mentioned as a possible function of dreams?`,
+    options: [
+      "Regulating emotions",
+      "Strengthening memories",
+      "Solving problems creatively",
+      "Improving physical strength",
+    ],
+    correct: 3,
+  },
+
+  {
+    id: "amirnet-reading-35",
+    subtopic: "הבנת הנקרא",
+    q: `Many cities have attempted to reduce traffic congestion by expanding roads. While adding lanes can temporarily improve traffic flow, the effect often disappears over time. Easier driving encourages some people to make trips they previously avoided, travel farther, or switch from public transportation to private cars. This phenomenon, known as induced demand, can eventually cause congestion to return.
+
+Why may expanding roads fail to reduce congestion permanently?`,
+    options: [
+      "Wider roads make public transportation faster.",
+      "Additional road capacity can encourage more driving.",
+      "Drivers avoid roads that have recently been expanded.",
+      "Road construction permanently reduces the number of cars.",
+    ],
+    correct: 1,
+  },
+
+  {
+    id: "amirnet-reading-36",
+    subtopic: "הבנת הנקרא",
+    q: `Many cities have attempted to reduce traffic congestion by expanding roads. While adding lanes can temporarily improve traffic flow, the effect often disappears over time. Easier driving encourages some people to make trips they previously avoided, travel farther, or switch from public transportation to private cars. This phenomenon, known as induced demand, can eventually cause congestion to return.
+
+The term "induced demand" refers to:`,
+    options: [
+      "a reduction in travel caused by congestion",
+      "increased use of roads resulting from increased road capacity",
+      "government demand for wider roads",
+      "the replacement of cars with public transportation",
+    ],
+    correct: 1,
+  },
+
+  {
+    id: "amirnet-reading-37",
+    subtopic: "הבנת הנקרא",
+    q: `Many cities have attempted to reduce traffic congestion by expanding roads. While adding lanes can temporarily improve traffic flow, the effect often disappears over time. Easier driving encourages some people to make trips they previously avoided, travel farther, or switch from public transportation to private cars. This phenomenon, known as induced demand, can eventually cause congestion to return.
+
+Which statement is supported by the passage?`,
+    options: [
+      "Adding road capacity may change people's transportation behavior.",
+      "Expanding roads always makes congestion worse immediately.",
+      "People prefer public transportation when roads become easier to use.",
+      "Traffic congestion cannot be affected by road capacity.",
+    ],
+    correct: 0,
+  },
+
+  {
+    id: "amirnet-reading-38",
+    subtopic: "הבנת הנקרא",
+    q: `The ability of certain animals to navigate over enormous distances has long fascinated scientists. Migratory birds, for example, may use the position of the sun, patterns of stars, landmarks, and even Earth's magnetic field to determine direction. Evidence suggests that they do not depend on a single navigational system but combine several sources of information.
+
+What is the main point of the passage?`,
+    options: [
+      "Migratory birds rely exclusively on Earth's magnetic field.",
+      "Scientists fully understand animal navigation.",
+      "Migratory birds may use several different cues to navigate.",
+      "Landmarks are the most important navigational tool for all animals.",
+    ],
+    correct: 2,
+  },
+
+  {
+    id: "amirnet-reading-39",
+    subtopic: "הבנת הנקרא",
+    q: `The ability of certain animals to navigate over enormous distances has long fascinated scientists. Migratory birds, for example, may use the position of the sun, patterns of stars, landmarks, and even Earth's magnetic field to determine direction. Evidence suggests that they do not depend on a single navigational system but combine several sources of information.
+
+Which conclusion is most consistent with the passage?`,
+    options: [
+      "A bird may still be able to navigate when one source of information is unavailable.",
+      "Birds can navigate only during daylight hours.",
+      "Earth's magnetic field is irrelevant to migration.",
+      "Every bird species uses exactly the same navigation system.",
+    ],
+    correct: 0,
+  },
+
+  {
+    id: "amirnet-reading-40",
+    subtopic: "הבנת הנקרא",
+    q: `When antibiotics were first introduced, they transformed the treatment of bacterial infections. Their widespread use, however, has contributed to the evolution of antibiotic-resistant bacteria. When bacteria are exposed to an antibiotic, susceptible organisms may die while resistant ones survive and reproduce. Over time, this can make certain infections increasingly difficult to treat.
+
+According to the passage, antibiotic resistance develops partly because:`,
+    options: [
+      "antibiotics cause all bacteria to reproduce more rapidly",
+      "resistant bacteria may survive treatment and reproduce",
+      "bacterial infections eventually become viral",
+      "antibiotics become physically weaker with age",
+    ],
+    correct: 1,
+  },
+
+  {
+    id: "amirnet-reading-41",
+    subtopic: "הבנת הנקרא",
+    q: `When antibiotics were first introduced, they transformed the treatment of bacterial infections. Their widespread use, however, has contributed to the evolution of antibiotic-resistant bacteria. When bacteria are exposed to an antibiotic, susceptible organisms may die while resistant ones survive and reproduce. Over time, this can make certain infections increasingly difficult to treat.
+
+The word "susceptible" is closest in meaning to:`,
+    options: ["unaffected", "resistant", "vulnerable", "unrelated"],
+    correct: 2,
+  },
+
+  {
+    id: "amirnet-reading-42",
+    subtopic: "הבנת הנקרא",
+    q: `When antibiotics were first introduced, they transformed the treatment of bacterial infections. Their widespread use, however, has contributed to the evolution of antibiotic-resistant bacteria. When bacteria are exposed to an antibiotic, susceptible organisms may die while resistant ones survive and reproduce. Over time, this can make certain infections increasingly difficult to treat.
+
+What contrast does the passage emphasize?`,
+    options: [
+      "Antibiotics were once useful, but their use has also contributed to a serious problem.",
+      "Bacterial infections are easier to treat than viral infections.",
+      "Modern antibiotics are weaker than older antibiotics.",
+      "Scientists initially opposed the use of antibiotics.",
+    ],
+    correct: 0,
+  },
+
+  {
+    id: "amirnet-reading-43",
+    subtopic: "הבנת הנקרא",
+    q: `Humans have a tendency to seek information that supports beliefs they already hold while paying less attention to evidence that challenges them. Psychologists call this confirmation bias. The effect can influence everyday decisions, political opinions, and even scientific reasoning. Awareness of the bias does not necessarily eliminate it, but it may encourage people to examine opposing evidence more carefully.
+
+What is confirmation bias?`,
+    options: [
+      "The tendency to change one's beliefs whenever new evidence appears",
+      "The tendency to favor information consistent with existing beliefs",
+      "The inability to remember previously learned information",
+      "The scientific practice of confirming experimental results",
+    ],
+    correct: 1,
+  },
+
+  {
+    id: "amirnet-reading-44",
+    subtopic: "הבנת הנקרא",
+    q: `Humans have a tendency to seek information that supports beliefs they already hold while paying less attention to evidence that challenges them. Psychologists call this confirmation bias. The effect can influence everyday decisions, political opinions, and even scientific reasoning. Awareness of the bias does not necessarily eliminate it, but it may encourage people to examine opposing evidence more carefully.
+
+According to the passage, becoming aware of confirmation bias:`,
+    options: [
+      "guarantees that it will disappear",
+      "may encourage more careful consideration of conflicting evidence",
+      "affects scientists but not ordinary people",
+      "makes people more confident in their existing beliefs",
+    ],
+    correct: 1,
+  },
+
+  {
+    id: "amirnet-reading-45",
+    subtopic: "הבנת הנקרא",
+    q: `Humans have a tendency to seek information that supports beliefs they already hold while paying less attention to evidence that challenges them. Psychologists call this confirmation bias. The effect can influence everyday decisions, political opinions, and even scientific reasoning. Awareness of the bias does not necessarily eliminate it, but it may encourage people to examine opposing evidence more carefully.
+
+The author mentions scientific reasoning mainly to show that confirmation bias:`,
+    options: [
+      "occurs only among researchers",
+      "can influence thinking in many different contexts",
+      "has been eliminated from science",
+      "is caused by scientific education",
+    ],
+    correct: 1,
+  },
+
+  {
+    id: "amirnet-reading-46",
+    subtopic: "הבנת הנקרא",
+    q: `Languages constantly change as speakers adopt new words, abandon old expressions, and alter pronunciation and grammar. Such changes are sometimes criticized as signs that a language is deteriorating. Linguists, however, generally view change as a normal feature of living languages rather than evidence of decline. Indeed, many forms considered correct today developed from usages that were once regarded as errors.
+
+What is the main idea of the passage?`,
+    options: [
+      "Language change is a natural process and does not necessarily represent decline.",
+      "Modern languages contain more grammatical errors than older languages.",
+      "Linguists believe languages should remain unchanged.",
+      "New words are the main cause of language deterioration.",
+    ],
+    correct: 0,
+  },
+
+  {
+    id: "amirnet-reading-47",
+    subtopic: "הבנת הנקרא",
+    q: `Languages constantly change as speakers adopt new words, abandon old expressions, and alter pronunciation and grammar. Such changes are sometimes criticized as signs that a language is deteriorating. Linguists, however, generally view change as a normal feature of living languages rather than evidence of decline. Indeed, many forms considered correct today developed from usages that were once regarded as errors.
+
+Why does the author mention forms that were once regarded as errors?`,
+    options: [
+      "To demonstrate that accepted language can develop from previously criticized usage",
+      "To argue that grammar should no longer be taught",
+      "To show that old forms are always more accurate",
+      "To prove that language change has recently stopped",
+    ],
+    correct: 0,
+  },
+
+  {
+    id: "amirnet-reading-48",
+    subtopic: "הבנת הנקרא",
+    q: `Languages constantly change as speakers adopt new words, abandon old expressions, and alter pronunciation and grammar. Such changes are sometimes criticized as signs that a language is deteriorating. Linguists, however, generally view change as a normal feature of living languages rather than evidence of decline. Indeed, many forms considered correct today developed from usages that were once regarded as errors.
+
+The word "deteriorating" is closest in meaning to:`,
+    options: [
+      "becoming more complex",
+      "becoming worse",
+      "becoming more popular",
+      "becoming standardized",
+    ],
+    correct: 1,
+  },
+
+  {
+    id: "amirnet-reading-49",
+    subtopic: "הבנת הנקרא",
+    q: `People often assume that forgetting is simply a failure of memory. However, some researchers argue that forgetting can be useful. By allowing irrelevant or outdated information to fade, the brain may make it easier to focus on information that is currently important. From this perspective, an efficient memory system is not one that preserves every detail, but one that retains information selectively.
+
+Why might forgetting be useful according to the passage?`,
+    options: [
+      "It prevents people from learning new information.",
+      "It ensures that every experience is remembered accurately.",
+      "It may help people focus by reducing irrelevant information.",
+      "It allows the brain to preserve every detail permanently.",
+    ],
+    correct: 2,
+  },
+
+  {
+    id: "amirnet-reading-50",
+    subtopic: "הבנת הנקרא",
+    q: `People often assume that forgetting is simply a failure of memory. However, some researchers argue that forgetting can be useful. By allowing irrelevant or outdated information to fade, the brain may make it easier to focus on information that is currently important. From this perspective, an efficient memory system is not one that preserves every detail, but one that retains information selectively.
+
+Which statement best expresses the author's conclusion?`,
+    options: [
+      "A good memory must preserve every experience in complete detail.",
+      "Forgetting always indicates that the memory system is functioning poorly.",
+      "Old information is more important than recently acquired information.",
+      "Effective memory may involve keeping useful information while allowing less relevant information to fade.",
+    ],
+    correct: 3,
+  },
+
+  // =========================
+  // הבנת הנקרא — 51–75
+  // =========================
+
+  {
+    id: "amirnet-reading-51",
+    subtopic: "הבנת הנקרא",
+    q: `For decades, scientists assumed that intelligence remained relatively stable throughout adulthood. More recent research, however, suggests a more complex picture. While certain abilities, such as processing speed, may decline with age, others, including vocabulary and knowledge acquired through experience, can remain stable or even improve.
+
+What is the main idea of the passage?`,
+    options: [
+      "All intellectual abilities decline steadily with age.",
+      "Intelligence is determined entirely during childhood.",
+      "Different intellectual abilities may change differently as people age.",
+      "Older adults generally acquire information faster than younger adults.",
+    ],
+    correct: 2,
+  },
+
+  {
+    id: "amirnet-reading-52",
+    subtopic: "הבנת הנקרא",
+    q: `For decades, scientists assumed that intelligence remained relatively stable throughout adulthood. More recent research, however, suggests a more complex picture. While certain abilities, such as processing speed, may decline with age, others, including vocabulary and knowledge acquired through experience, can remain stable or even improve.
+
+Which ability is mentioned as one that may improve with age?`,
+    options: [
+      "Processing speed",
+      "Vocabulary",
+      "Reaction time",
+      "Visual perception",
+    ],
+    correct: 1,
+  },
+
+  {
+    id: "amirnet-reading-53",
+    subtopic: "הבנת הנקרא",
+    q: `For decades, scientists assumed that intelligence remained relatively stable throughout adulthood. More recent research, however, suggests a more complex picture. While certain abilities, such as processing speed, may decline with age, others, including vocabulary and knowledge acquired through experience, can remain stable or even improve.
+
+The phrase "a more complex picture" suggests that:`,
+    options: [
+      "the relationship between aging and intelligence is not simple",
+      "researchers can no longer measure intelligence",
+      "all previous research on intelligence was incorrect",
+      "intelligence becomes impossible to define in adulthood",
+    ],
+    correct: 0,
+  },
+
+  {
+    id: "amirnet-reading-54",
+    subtopic: "הבנת הנקרא",
+    q: `Plants are often thought of as passive organisms, yet they respond to their surroundings in surprisingly sophisticated ways. Some plants release chemicals when attacked by insects, triggering defensive responses in nearby plants. Others adjust their growth according to light, gravity, or the presence of neighboring vegetation. Such findings have led researchers to reconsider traditional assumptions about plant behavior.
+
+Why does the author mention chemicals released by plants?`,
+    options: [
+      "To explain why insects depend on plants",
+      "To provide an example of plants responding to their environment",
+      "To show that all plants communicate in exactly the same way",
+      "To demonstrate that plants are unable to defend themselves",
+    ],
+    correct: 1,
+  },
+
+  {
+    id: "amirnet-reading-55",
+    subtopic: "הבנת הנקרא",
+    q: `Plants are often thought of as passive organisms, yet they respond to their surroundings in surprisingly sophisticated ways. Some plants release chemicals when attacked by insects, triggering defensive responses in nearby plants. Others adjust their growth according to light, gravity, or the presence of neighboring vegetation. Such findings have led researchers to reconsider traditional assumptions about plant behavior.
+
+What can be inferred from the passage?`,
+    options: [
+      "Plants may react to environmental information in multiple ways.",
+      "Plants respond only when attacked by insects.",
+      "Scientists have always understood plant behavior accurately.",
+      "Neighboring vegetation prevents plants from growing.",
+    ],
+    correct: 0,
+  },
+
+  {
+    id: "amirnet-reading-56",
+    subtopic: "הבנת הנקרא",
+    q: `Plants are often thought of as passive organisms, yet they respond to their surroundings in surprisingly sophisticated ways. Some plants release chemicals when attacked by insects, triggering defensive responses in nearby plants. Others adjust their growth according to light, gravity, or the presence of neighboring vegetation. Such findings have led researchers to reconsider traditional assumptions about plant behavior.
+
+The word "passive" is closest in meaning to:`,
+    options: [
+      "dangerous",
+      "complex",
+      "not actively responding",
+      "rapidly changing",
+    ],
+    correct: 2,
+  },
+
+  {
+    id: "amirnet-reading-57",
+    subtopic: "הבנת הנקרא",
+    q: `People often judge the probability of an event according to how easily examples come to mind. After hearing reports of a plane crash, for instance, a person may temporarily believe that flying is more dangerous than statistics actually suggest. Psychologists refer to this tendency as the availability heuristic.
+
+What is the availability heuristic?`,
+    options: [
+      "The tendency to judge likelihood based on examples that are easy to recall",
+      "The ability to calculate probability without statistical information",
+      "The tendency to avoid information about dangerous events",
+      "The practice of comparing several statistical models",
+    ],
+    correct: 0,
+  },
+
+  {
+    id: "amirnet-reading-58",
+    subtopic: "הבנת הנקרא",
+    q: `People often judge the probability of an event according to how easily examples come to mind. After hearing reports of a plane crash, for instance, a person may temporarily believe that flying is more dangerous than statistics actually suggest. Psychologists refer to this tendency as the availability heuristic.
+
+Why is the plane crash example included?`,
+    options: [
+      "To prove that flying is extremely dangerous",
+      "To show how memorable information can influence judgments of probability",
+      "To demonstrate that people usually understand statistics correctly",
+      "To explain why plane crashes have become more common",
+    ],
+    correct: 1,
+  },
+
+  {
+    id: "amirnet-reading-59",
+    subtopic: "הבנת הנקרא",
+    q: `People often judge the probability of an event according to how easily examples come to mind. After hearing reports of a plane crash, for instance, a person may temporarily believe that flying is more dangerous than statistics actually suggest. Psychologists refer to this tendency as the availability heuristic.
+
+Which statement is most consistent with the passage?`,
+    options: [
+      "Events that receive considerable attention may seem more common than they actually are.",
+      "People always rely on accurate statistics when evaluating risk.",
+      "Rare events are generally impossible to remember.",
+      "Hearing about an event makes that event more likely to occur.",
+    ],
+    correct: 0,
+  },
+
+  {
+    id: "amirnet-reading-60",
+    subtopic: "הבנת הנקרא",
+    q: `In many countries, efforts to protect endangered species originally focused on individual animals. Conservationists increasingly recognize, however, that preserving a species often requires protecting the ecosystem on which it depends. A population cannot survive indefinitely if its sources of food, breeding grounds, or shelter disappear.
+
+What is the main idea of the passage?`,
+    options: [
+      "Protecting individual animals is always sufficient to save a species.",
+      "Conservation may require protecting habitats as well as animals.",
+      "Most endangered species can adapt easily to habitat loss.",
+      "Food is the only environmental factor affecting endangered species.",
+    ],
+    correct: 1,
+  },
+
+  {
+    id: "amirnet-reading-61",
+    subtopic: "הבנת הנקרא",
+    q: `In many countries, efforts to protect endangered species originally focused on individual animals. Conservationists increasingly recognize, however, that preserving a species often requires protecting the ecosystem on which it depends. A population cannot survive indefinitely if its sources of food, breeding grounds, or shelter disappear.
+
+Which of the following is NOT mentioned as something a species may depend on?`,
+    options: ["Food", "Breeding grounds", "Shelter", "Migration speed"],
+    correct: 3,
+  },
+
+  {
+    id: "amirnet-reading-62",
+    subtopic: "הבנת הנקרא",
+    q: `In many countries, efforts to protect endangered species originally focused on individual animals. Conservationists increasingly recognize, however, that preserving a species often requires protecting the ecosystem on which it depends. A population cannot survive indefinitely if its sources of food, breeding grounds, or shelter disappear.
+
+The passage suggests that conservation strategies have become:`,
+    options: [
+      "more focused exclusively on individual animals",
+      "less concerned with endangered species",
+      "more attentive to the broader environment of a species",
+      "unnecessary because most habitats are protected",
+    ],
+    correct: 2,
+  },
+
+  {
+    id: "amirnet-reading-63",
+    subtopic: "הבנת הנקרא",
+    q: `Scientific models are simplified representations of reality. Their usefulness does not depend on reproducing every detail of the systems they describe. Instead, a good model identifies the features most relevant to a particular question while leaving out information that would add complexity without improving understanding.
+
+According to the passage, a useful scientific model:`,
+    options: [
+      "must reproduce every detail of reality",
+      "focuses on information relevant to the question being studied",
+      "avoids simplifying complex systems",
+      "is useful only when it is completely accurate",
+    ],
+    correct: 1,
+  },
+
+  {
+    id: "amirnet-reading-64",
+    subtopic: "הבנת הנקרא",
+    q: `Scientific models are simplified representations of reality. Their usefulness does not depend on reproducing every detail of the systems they describe. Instead, a good model identifies the features most relevant to a particular question while leaving out information that would add complexity without improving understanding.
+
+Why might a model leave out certain information?`,
+    options: [
+      "Because some information may add complexity without being useful",
+      "Because scientists generally lack access to detailed information",
+      "Because models are not intended to explain anything",
+      "Because simple systems cannot be modeled accurately",
+    ],
+    correct: 0,
+  },
+
+  {
+    id: "amirnet-reading-65",
+    subtopic: "הבנת הנקרא",
+    q: `Scientific models are simplified representations of reality. Their usefulness does not depend on reproducing every detail of the systems they describe. Instead, a good model identifies the features most relevant to a particular question while leaving out information that would add complexity without improving understanding.
+
+Which statement best expresses the author's view?`,
+    options: [
+      "A model can be useful without being a complete representation of reality.",
+      "The most complicated model is usually the most useful.",
+      "Scientific models should contain as much information as possible.",
+      "Simplifying reality always makes scientific conclusions unreliable.",
+    ],
+    correct: 0,
+  },
+
+  {
+    id: "amirnet-reading-66",
+    subtopic: "הבנת הנקרא",
+    q: `The introduction of clocks into medieval European towns gradually changed how people organized their daily lives. Previously, activities were often scheduled according to natural events such as sunrise or sunset. Mechanical clocks made it possible to divide the day into standardized units, allowing work, trade, and public activities to be coordinated with greater precision.
+
+What change did mechanical clocks help bring about?`,
+    options: [
+      "People stopped working after sunset.",
+      "Daily activities could be scheduled more precisely.",
+      "Natural events became easier to predict.",
+      "Trade became less organized.",
+    ],
+    correct: 1,
+  },
+
+  {
+    id: "amirnet-reading-67",
+    subtopic: "הבנת הנקרא",
+    q: `The introduction of clocks into medieval European towns gradually changed how people organized their daily lives. Previously, activities were often scheduled according to natural events such as sunrise or sunset. Mechanical clocks made it possible to divide the day into standardized units, allowing work, trade, and public activities to be coordinated with greater precision.
+
+Before mechanical clocks became common, people often organized activities according to:`,
+    options: [
+      "standardized hours",
+      "government regulations",
+      "natural events",
+      "international trade schedules",
+    ],
+    correct: 2,
+  },
+
+  {
+    id: "amirnet-reading-68",
+    subtopic: "הבנת הנקרא",
+    q: `The introduction of clocks into medieval European towns gradually changed how people organized their daily lives. Previously, activities were often scheduled according to natural events such as sunrise or sunset. Mechanical clocks made it possible to divide the day into standardized units, allowing work, trade, and public activities to be coordinated with greater precision.
+
+The passage is mainly concerned with:`,
+    options: [
+      "how a technology changed the organization of everyday life",
+      "why medieval people refused to use mechanical clocks",
+      "how natural events became more predictable",
+      "why trade declined in medieval European towns",
+    ],
+    correct: 0,
+  },
+
+  {
+    id: "amirnet-reading-69",
+    subtopic: "הבנת הנקרא",
+    q: `Experiments are often repeated by independent researchers in order to determine whether the original findings can be reproduced. A failure to reproduce a result does not automatically prove that the original study was wrong. Differences in methods, participants, or conditions may explain the discrepancy. Nevertheless, repeated failures can raise doubts about the reliability of an initial finding.
+
+What is the main point of the passage?`,
+    options: [
+      "A failed replication always proves that the original study was incorrect.",
+      "Independent researchers should avoid repeating experiments.",
+      "Replication can help evaluate findings, but failures may have several explanations.",
+      "Experiments produce reliable findings only when they use identical participants.",
+    ],
+    correct: 2,
+  },
+
+  {
+    id: "amirnet-reading-70",
+    subtopic: "הבנת הנקרא",
+    q: `Experiments are often repeated by independent researchers in order to determine whether the original findings can be reproduced. A failure to reproduce a result does not automatically prove that the original study was wrong. Differences in methods, participants, or conditions may explain the discrepancy. Nevertheless, repeated failures can raise doubts about the reliability of an initial finding.
+
+According to the passage, a replication might produce different results because:`,
+    options: [
+      "the methods or conditions may differ",
+      "original studies are always inaccurate",
+      "independent researchers intentionally change the results",
+      "scientific findings cannot be reproduced",
+    ],
+    correct: 0,
+  },
+
+  {
+    id: "amirnet-reading-71",
+    subtopic: "הבנת הנקרא",
+    q: `Experiments are often repeated by independent researchers in order to determine whether the original findings can be reproduced. A failure to reproduce a result does not automatically prove that the original study was wrong. Differences in methods, participants, or conditions may explain the discrepancy. Nevertheless, repeated failures can raise doubts about the reliability of an initial finding.
+
+What would most likely make researchers increasingly question an original finding?`,
+    options: [
+      "One successful replication",
+      "Repeated inability to reproduce the result",
+      "Using the same method as the original researchers",
+      "Finding minor differences among participants",
+    ],
+    correct: 1,
+  },
+
+  {
+    id: "amirnet-reading-72",
+    subtopic: "הבנת הנקרא",
+    q: `When people learn a new skill, improvement is rarely constant. Rapid progress may be followed by periods in which performance appears to change very little. These plateaus can be frustrating, but they do not necessarily indicate that learning has stopped. Changes may still be occurring that are not immediately reflected in observable performance.
+
+What is the main idea of the passage?`,
+    options: [
+      "A lack of visible improvement does not always mean that learning has stopped.",
+      "People learn new skills at a constant rate.",
+      "Learning stops whenever performance reaches a plateau.",
+      "Rapid improvement usually prevents long-term learning.",
+    ],
+    correct: 0,
+  },
+
+  {
+    id: "amirnet-reading-73",
+    subtopic: "הבנת הנקרא",
+    q: `When people learn a new skill, improvement is rarely constant. Rapid progress may be followed by periods in which performance appears to change very little. These plateaus can be frustrating, but they do not necessarily indicate that learning has stopped. Changes may still be occurring that are not immediately reflected in observable performance.
+
+The word "plateaus" most nearly refers to:`,
+    options: [
+      "periods of rapid improvement",
+      "periods with little apparent progress",
+      "complete losses of previously learned skills",
+      "methods used to measure performance",
+    ],
+    correct: 1,
+  },
+
+  {
+    id: "amirnet-reading-74",
+    subtopic: "הבנת הנקרא",
+    q: `When people learn a new skill, improvement is rarely constant. Rapid progress may be followed by periods in which performance appears to change very little. These plateaus can be frustrating, but they do not necessarily indicate that learning has stopped. Changes may still be occurring that are not immediately reflected in observable performance.
+
+Which conclusion can be drawn from the passage?`,
+    options: [
+      "Observable performance always reflects every change in learning.",
+      "A person should abandon a skill when progress temporarily slows.",
+      "Learning may continue even when improvement is not immediately visible.",
+      "People who improve rapidly never experience plateaus.",
+    ],
+    correct: 2,
+  },
+
+  {
+    id: "amirnet-reading-75",
+    subtopic: "הבנת הנקרא",
+    q: `Historical accounts are shaped not only by the evidence available to historians but also by the questions historians choose to ask. The same collection of documents may therefore produce different interpretations when examined by researchers interested in politics, economics, gender, technology, or everyday life. This does not mean that all interpretations are equally valid; they must still be supported by evidence.
+
+Which statement best summarizes the passage?`,
+    options: [
+      "Historical evidence can support only one possible interpretation.",
+      "Historians' questions can influence interpretation, but conclusions must still be grounded in evidence.",
+      "Historical documents are generally too unreliable to be useful.",
+      "Different interpretations are equally valid regardless of the available evidence.",
+    ],
+    correct: 1,
+  },
+
+  // =========================
+  // אוצר מילים — 51–75
+  // =========================
+
+  {
+    id: "amirnet-vocab-51",
+    subtopic: "אוצר מילים",
+    q: "The word 'elusive' is closest in meaning to:",
+    options: [
+      "Easy to obtain",
+      "Difficult to find or achieve",
+      "Widely accepted",
+      "Clearly defined",
+    ],
+    correct: 1,
+  },
+
+  {
+    id: "amirnet-vocab-52",
+    subtopic: "אוצר מילים",
+    q: "The word 'mitigate' is closest in meaning to:",
+    options: [
+      "Make less severe",
+      "Completely eliminate",
+      "Investigate",
+      "Predict",
+    ],
+    correct: 0,
+  },
+
+  {
+    id: "amirnet-vocab-53",
+    subtopic: "אוצר מילים",
+    q: "The word 'conspicuous' is closest in meaning to:",
+    options: ["Hidden", "Temporary", "Easily noticeable", "Unimportant"],
+    correct: 2,
+  },
+
+  {
+    id: "amirnet-vocab-54",
+    subtopic: "אוצר מילים",
+    q: "The word 'stringent' is closest in meaning to:",
+    options: ["Flexible", "Strict", "Unnecessary", "Traditional"],
+    correct: 1,
+  },
+
+  {
+    id: "amirnet-vocab-55",
+    subtopic: "אוצר מילים",
+    q: "The word 'dormant' is closest in meaning to:",
+    options: [
+      "Inactive",
+      "Dangerous",
+      "Growing rapidly",
+      "Recently discovered",
+    ],
+    correct: 0,
+  },
+
+  {
+    id: "amirnet-vocab-56",
+    subtopic: "אוצר מילים",
+    q: "The word 'impede' is closest in meaning to:",
+    options: ["Encourage", "Observe", "Hinder", "Predict"],
+    correct: 2,
+  },
+
+  {
+    id: "amirnet-vocab-57",
+    subtopic: "אוצר מילים",
+    q: "The word 'redundant' is closest in meaning to:",
+    options: [
+      "Essential",
+      "No longer necessary",
+      "Difficult to replace",
+      "Highly efficient",
+    ],
+    correct: 1,
+  },
+
+  {
+    id: "amirnet-vocab-58",
+    subtopic: "אוצר מילים",
+    q: "The word 'subtle' is closest in meaning to:",
+    options: [
+      "Obvious",
+      "Enormous",
+      "Not immediately noticeable",
+      "Artificial",
+    ],
+    correct: 2,
+  },
+
+  {
+    id: "amirnet-vocab-59",
+    subtopic: "אוצר מילים",
+    q: "The word 'comply' is closest in meaning to:",
+    options: ["Refuse", "Obey", "Investigate", "Compete"],
+    correct: 1,
+  },
+
+  {
+    id: "amirnet-vocab-60",
+    subtopic: "אוצר מילים",
+    q: "The word 'vulnerable' is closest in meaning to:",
+    options: [
+      "Capable of being harmed",
+      "Extremely powerful",
+      "Difficult to locate",
+      "Highly adaptable",
+    ],
+    correct: 0,
+  },
+
+  {
+    id: "amirnet-vocab-61",
+    subtopic: "אוצר מילים",
+    q: "The word 'prone' is closest in meaning to:",
+    options: [
+      "Protected from",
+      "Likely to experience",
+      "Unaware of",
+      "Responsible for",
+    ],
+    correct: 1,
+  },
+
+  {
+    id: "amirnet-vocab-62",
+    subtopic: "אוצר מילים",
+    q: "The word 'conceal' is closest in meaning to:",
+    options: ["Reveal", "Examine", "Hide", "Confirm"],
+    correct: 2,
+  },
+
+  {
+    id: "amirnet-vocab-63",
+    subtopic: "אוצר מילים",
+    q: "The word 'lucrative' is closest in meaning to:",
+    options: ["Profitable", "Dangerous", "Temporary", "Uncertain"],
+    correct: 0,
+  },
+
+  {
+    id: "amirnet-vocab-64",
+    subtopic: "אוצר מילים",
+    q: "The word 'erratic' is closest in meaning to:",
+    options: ["Consistent", "Unpredictable", "Gradual", "Accurate"],
+    correct: 1,
+  },
+
+  {
+    id: "amirnet-vocab-65",
+    subtopic: "אוצר מילים",
+    q: "The word 'deplete' is closest in meaning to:",
+    options: [
+      "Increase substantially",
+      "Use up",
+      "Replace immediately",
+      "Distribute evenly",
+    ],
+    correct: 1,
+  },
+
+  {
+    id: "amirnet-vocab-66",
+    subtopic: "אוצר מילים",
+    q: "The word 'reconcile' is closest in meaning to:",
+    options: ["Make compatible", "Separate permanently", "Reject", "Overlook"],
+    correct: 0,
+  },
+
+  {
+    id: "amirnet-vocab-67",
+    subtopic: "אוצר מילים",
+    q: "The word 'stagnant' is closest in meaning to:",
+    options: [
+      "Developing rapidly",
+      "Not developing or progressing",
+      "Highly profitable",
+      "Difficult to predict",
+    ],
+    correct: 1,
+  },
+
+  {
+    id: "amirnet-vocab-68",
+    subtopic: "אוצר מילים",
+    q: "The word 'impartial' is closest in meaning to:",
+    options: ["Biased", "Neutral", "Uncertain", "Uninformed"],
+    correct: 1,
+  },
+
+  {
+    id: "amirnet-vocab-69",
+    subtopic: "אוצר מילים",
+    q: "The word 'exemplify' is closest in meaning to:",
+    options: [
+      "Serve as an example of",
+      "Contradict",
+      "Eliminate",
+      "Exaggerate",
+    ],
+    correct: 0,
+  },
+
+  {
+    id: "amirnet-vocab-70",
+    subtopic: "אוצר מילים",
+    q: "The word 'contentious' is closest in meaning to:",
+    options: [
+      "Likely to cause disagreement",
+      "Easy to understand",
+      "Widely ignored",
+      "Scientifically proven",
+    ],
+    correct: 0,
+  },
+
+  {
+    id: "amirnet-vocab-71",
+    subtopic: "אוצר מילים",
+    q: "The word 'succinct' is closest in meaning to:",
+    options: [
+      "Lengthy and detailed",
+      "Brief and clear",
+      "Confusing",
+      "Highly emotional",
+    ],
+    correct: 1,
+  },
+
+  {
+    id: "amirnet-vocab-72",
+    subtopic: "אוצר מילים",
+    q: "The word 'infer' is closest in meaning to:",
+    options: [
+      "State directly",
+      "Conclude from evidence",
+      "Ignore evidence",
+      "Disprove completely",
+    ],
+    correct: 1,
+  },
+
+  {
+    id: "amirnet-vocab-73",
+    subtopic: "אוצר מילים",
+    q: "The word 'detract' is closest in meaning to:",
+    options: [
+      "Increase the value of",
+      "Take away from the value of",
+      "Replace entirely",
+      "Explain clearly",
+    ],
+    correct: 1,
+  },
+
+  {
+    id: "amirnet-vocab-74",
+    subtopic: "אוצר מילים",
+    q: "The word 'ubiquitous' is closest in meaning to:",
+    options: [
+      "Found almost everywhere",
+      "Extremely rare",
+      "Recently invented",
+      "Difficult to recognize",
+    ],
+    correct: 0,
+  },
+
+  {
+    id: "amirnet-vocab-75",
+    subtopic: "אוצר מילים",
+    q: "The word 'relinquish' is closest in meaning to:",
+    options: ["Acquire", "Give up", "Protect", "Investigate"],
+    correct: 1,
+  },
+  // =========================
+  // השלמת משפטים — 51–75
+  // =========================
+  // =========================
+  // השלמת משפטים — 1–50
+  // =========================
+
+  {
+    id: "amirnet-sentence-1",
+    subtopic: "השלמת משפטים",
+    q: "Although the task was difficult, she managed to complete it ______.",
+    options: ["successfully", "rarely", "carelessly", "hardly"],
+    correct: 0,
+  },
+
+  {
+    id: "amirnet-sentence-2",
+    subtopic: "השלמת משפטים",
+    q: "The company decided to ______ the project because it was too expensive.",
+    options: ["continue", "cancel", "describe", "improve"],
+    correct: 1,
+  },
+
+  {
+    id: "amirnet-sentence-3",
+    subtopic: "השלמת משפטים",
+    q: "The scientist repeated the experiment in order to ______ the results.",
+    options: ["confirm", "ignore", "prevent", "reduce"],
+    correct: 0,
+  },
+
+  {
+    id: "amirnet-sentence-4",
+    subtopic: "השלמת משפטים",
+    q: "Despite the heavy rain, the outdoor event ______ as planned.",
+    options: ["proceeded", "disappeared", "refused", "failed"],
+    correct: 0,
+  },
+
+  {
+    id: "amirnet-sentence-5",
+    subtopic: "השלמת משפטים",
+    q: "The doctor advised him to exercise regularly in order to ______ his health.",
+    options: ["damage", "improve", "ignore", "replace"],
+    correct: 1,
+  },
+
+  {
+    id: "amirnet-sentence-6",
+    subtopic: "השלמת משפטים",
+    q: "Because the evidence was insufficient, the researchers were unable to reach a ______ conclusion.",
+    options: ["definite", "careless", "temporary", "silent"],
+    correct: 0,
+  },
+
+  {
+    id: "amirnet-sentence-7",
+    subtopic: "השלמת משפטים",
+    q: "The new law is intended to ______ the amount of pollution produced by factories.",
+    options: ["reduce", "collect", "repeat", "divide"],
+    correct: 0,
+  },
+
+  {
+    id: "amirnet-sentence-8",
+    subtopic: "השלמת משפטים",
+    q: "The museum attracts thousands of visitors each year because of its ______ collection of ancient objects.",
+    options: ["ordinary", "impressive", "limited", "weak"],
+    correct: 1,
+  },
+
+  {
+    id: "amirnet-sentence-9",
+    subtopic: "השלמת משפטים",
+    q: "The manager asked the employees to be ______ when dealing with confidential information.",
+    options: ["careful", "hungry", "rapid", "casual"],
+    correct: 0,
+  },
+
+  {
+    id: "amirnet-sentence-10",
+    subtopic: "השלמת משפטים",
+    q: "The two theories appear similar, but they are actually quite ______.",
+    options: ["different", "famous", "simple", "common"],
+    correct: 0,
+  },
+
+  {
+    id: "amirnet-sentence-11",
+    subtopic: "השלמת משפטים",
+    q: "The athlete's injury was not serious, and he was able to ______ training after a few days.",
+    options: ["resume", "prevent", "damage", "refuse"],
+    correct: 0,
+  },
+
+  {
+    id: "amirnet-sentence-12",
+    subtopic: "השלמת משפטים",
+    q: "The teacher tried to ______ the concept by giving several practical examples.",
+    options: ["clarify", "hide", "complicate", "reject"],
+    correct: 0,
+  },
+
+  {
+    id: "amirnet-sentence-13",
+    subtopic: "השלמת משפטים",
+    q: "The village is difficult to reach because it is located in a very ______ area.",
+    options: ["remote", "popular", "central", "crowded"],
+    correct: 0,
+  },
+
+  {
+    id: "amirnet-sentence-14",
+    subtopic: "השלמת משפטים",
+    q: "The report provides ______ information about the causes of the accident.",
+    options: ["detailed", "accidental", "silent", "temporary"],
+    correct: 0,
+  },
+
+  {
+    id: "amirnet-sentence-15",
+    subtopic: "השלמת משפטים",
+    q: "The discovery was considered ______ because it changed the way scientists understood the disease.",
+    options: ["insignificant", "important", "ordinary", "unrelated"],
+    correct: 1,
+  },
+
+  {
+    id: "amirnet-sentence-16",
+    subtopic: "השלמת משפטים",
+    q: "Although the evidence was largely circumstantial, it was sufficient to ______ further investigation.",
+    options: ["warrant", "prevent", "oppose", "conceal"],
+    correct: 0,
+  },
+
+  {
+    id: "amirnet-sentence-17",
+    subtopic: "השלמת משפטים",
+    q: "The government introduced new regulations in an attempt to ______ the rapid decline in air quality.",
+    options: ["reverse", "preserve", "justify", "estimate"],
+    correct: 0,
+  },
+
+  {
+    id: "amirnet-sentence-18",
+    subtopic: "השלמת משפטים",
+    q: "The scientist warned that the results should be interpreted with ______ because the sample size was relatively small.",
+    options: ["caution", "enthusiasm", "certainty", "relief"],
+    correct: 0,
+  },
+
+  {
+    id: "amirnet-sentence-19",
+    subtopic: "השלמת משפטים",
+    q: "The two accounts of the event differ considerably, making it difficult to determine which version is more ______.",
+    options: ["credible", "ordinary", "flexible", "temporary"],
+    correct: 0,
+  },
+
+  {
+    id: "amirnet-sentence-20",
+    subtopic: "השלמת משפטים",
+    q: "Because the company failed to adapt to changing consumer preferences, its products gradually became ______.",
+    options: ["obsolete", "efficient", "accessible", "abundant"],
+    correct: 0,
+  },
+
+  {
+    id: "amirnet-sentence-21",
+    subtopic: "השלמת משפטים",
+    q: "The author's argument is persuasive because it is supported by a ______ amount of scientific evidence.",
+    options: ["substantial", "negligible", "random", "fragile"],
+    correct: 0,
+  },
+
+  {
+    id: "amirnet-sentence-22",
+    subtopic: "השלמת משפטים",
+    q: "The medicine was originally developed for one condition, but researchers later discovered that it had ______ applications.",
+    options: ["additional", "scarce", "reluctant", "hostile"],
+    correct: 0,
+  },
+
+  {
+    id: "amirnet-sentence-23",
+    subtopic: "השלמת משפטים",
+    q: "The committee decided to postpone its decision until more information became ______.",
+    options: ["available", "inevitable", "controversial", "accurate"],
+    correct: 0,
+  },
+
+  {
+    id: "amirnet-sentence-24",
+    subtopic: "השלמת משפטים",
+    q: "The new evidence appears to ______ the theory that the species originated in this region.",
+    options: ["support", "restrict", "avoid", "eliminate"],
+    correct: 0,
+  },
+
+  {
+    id: "amirnet-sentence-25",
+    subtopic: "השלמת משפטים",
+    q: "The economic impact of the policy was initially thought to be minor, but later studies showed it to be quite ______.",
+    options: ["significant", "temporary", "ambiguous", "ordinary"],
+    correct: 0,
+  },
+
+  {
+    id: "amirnet-sentence-26",
+    subtopic: "השלמת משפטים",
+    q: "The professor's explanation was so ______ that even students unfamiliar with the subject could understand it.",
+    options: ["clear", "scarce", "reluctant", "adverse"],
+    correct: 0,
+  },
+
+  {
+    id: "amirnet-sentence-27",
+    subtopic: "השלמת משפטים",
+    q: "Several attempts to reproduce the experiment failed, leading researchers to ______ the original findings.",
+    options: ["question", "retain", "enhance", "allocate"],
+    correct: 0,
+  },
+
+  {
+    id: "amirnet-sentence-28",
+    subtopic: "השלמת משפטים",
+    q: "The company must reduce expenses if it hopes to remain financially ______.",
+    options: ["viable", "ambiguous", "obsolete", "scarce"],
+    correct: 0,
+  },
+
+  {
+    id: "amirnet-sentence-29",
+    subtopic: "השלמת משפטים",
+    q: "The historian argued that the conflict was not caused by a single event but by a ______ combination of political and economic factors.",
+    options: ["complex", "negligible", "precise", "temporary"],
+    correct: 0,
+  },
+
+  {
+    id: "amirnet-sentence-30",
+    subtopic: "השלמת משפטים",
+    q: "The long-term effects of the treatment remain ______ because the study has only recently begun.",
+    options: ["uncertain", "inevitable", "substantial", "obvious"],
+    correct: 0,
+  },
+
+  {
+    id: "amirnet-sentence-31",
+    subtopic: "השלמת משפטים",
+    q: "The archaeological site remained largely ______ until construction workers discovered several ancient objects there.",
+    options: ["controversial", "unknown", "accessible", "prosperous"],
+    correct: 1,
+  },
+
+  {
+    id: "amirnet-sentence-32",
+    subtopic: "השלמת משפטים",
+    q: "The researcher emphasized that correlation between two variables does not necessarily ______ a causal relationship.",
+    options: ["establish", "prevent", "conceal", "reverse"],
+    correct: 0,
+  },
+
+  {
+    id: "amirnet-sentence-33",
+    subtopic: "השלמת משפטים",
+    q: "The government's initial response was criticized as ______, since it failed to address the most urgent aspects of the crisis.",
+    options: ["comprehensive", "innovative", "inadequate", "inevitable"],
+    correct: 2,
+  },
+
+  {
+    id: "amirnet-sentence-34",
+    subtopic: "השלמת משפטים",
+    q: "Although the two species appear almost identical, genetic analysis has revealed ______ differences between them.",
+    options: ["substantial", "irrelevant", "temporary", "accidental"],
+    correct: 0,
+  },
+
+  {
+    id: "amirnet-sentence-35",
+    subtopic: "השלמת משפטים",
+    q: "The author deliberately avoids making a ______ claim, acknowledging that further research is necessary.",
+    options: ["tentative", "definitive", "minor", "reluctant"],
+    correct: 1,
+  },
+
+  {
+    id: "amirnet-sentence-36",
+    subtopic: "השלמת משפטים",
+    q: "The economic consequences of the decision were not immediately ______ but became clear several years later.",
+    options: ["apparent", "scarce", "arbitrary", "hostile"],
+    correct: 0,
+  },
+
+  {
+    id: "amirnet-sentence-37",
+    subtopic: "השלמת משפטים",
+    q: "The discovery of additional documents helped ______ several assumptions historians had made about the period.",
+    options: ["confirm", "evade", "allocate", "diminish"],
+    correct: 0,
+  },
+
+  {
+    id: "amirnet-sentence-38",
+    subtopic: "השלמת משפטים",
+    q: "Despite repeated efforts to ______ the spread of the invasive species, its population continued to grow.",
+    options: ["accelerate", "contain", "justify", "retain"],
+    correct: 1,
+  },
+
+  {
+    id: "amirnet-sentence-39",
+    subtopic: "השלמת משפטים",
+    q: "The witness gave such a ______ account of the incident that investigators began to question its reliability.",
+    options: ["consistent", "detailed", "contradictory", "precise"],
+    correct: 2,
+  },
+
+  {
+    id: "amirnet-sentence-40",
+    subtopic: "השלמת משפטים",
+    q: "The success of the project was largely ______ to the cooperation between several research institutions.",
+    options: ["attributed", "prevented", "restricted", "opposed"],
+    correct: 0,
+  },
+
+  {
+    id: "amirnet-sentence-41",
+    subtopic: "השלמת משפטים",
+    q: "Scientists remain ______ about the exact cause of the phenomenon because several explanations are consistent with the available evidence.",
+    options: ["certain", "uncertain", "indifferent", "unanimous"],
+    correct: 1,
+  },
+
+  {
+    id: "amirnet-sentence-42",
+    subtopic: "השלמת משפטים",
+    q: "The new technology could ______ the need for several time-consuming manual procedures.",
+    options: ["eliminate", "retain", "postpone", "conceal"],
+    correct: 0,
+  },
+
+  {
+    id: "amirnet-sentence-43",
+    subtopic: "השלמת משפטים",
+    q: "The country's economic recovery was ______ by a sudden rise in energy prices.",
+    options: ["accelerated", "hampered", "confirmed", "allocated"],
+    correct: 1,
+  },
+
+  {
+    id: "amirnet-sentence-44",
+    subtopic: "השלמת משפטים",
+    q: "The evidence presented in the report is too ______ to support such a broad conclusion.",
+    options: ["compelling", "extensive", "limited", "conclusive"],
+    correct: 2,
+  },
+
+  {
+    id: "amirnet-sentence-45",
+    subtopic: "השלמת משפטים",
+    q: "The species has managed to ______ despite dramatic changes to its natural habitat.",
+    options: ["persist", "withdraw", "decline", "exclude"],
+    correct: 0,
+  },
+
+  {
+    id: "amirnet-sentence-46",
+    subtopic: "השלמת משפטים",
+    q: "The minister's statement was deliberately ______, allowing both sides of the dispute to interpret it in their favor.",
+    options: ["explicit", "ambiguous", "accurate", "irrelevant"],
+    correct: 1,
+  },
+
+  {
+    id: "amirnet-sentence-47",
+    subtopic: "השלמת משפטים",
+    q: "Researchers were unable to ______ the results of the original experiment under the same conditions.",
+    options: ["replicate", "oppose", "allocate", "conceal"],
+    correct: 0,
+  },
+
+  {
+    id: "amirnet-sentence-48",
+    subtopic: "השלמת משפטים",
+    q: "The policy was introduced as a temporary measure, but it eventually became a ______ feature of the system.",
+    options: ["sporadic", "permanent", "negligible", "tentative"],
+    correct: 1,
+  },
+
+  {
+    id: "amirnet-sentence-49",
+    subtopic: "השלמת משפטים",
+    q: "The findings appear to ______ the widespread assumption that the two conditions are closely related.",
+    options: ["challenge", "retain", "allocate", "postpone"],
+    correct: 0,
+  },
+
+  {
+    id: "amirnet-sentence-50",
+    subtopic: "השלמת משפטים",
+    q: "The committee refused to make a recommendation because the available data were too ______.",
+    options: ["comprehensive", "conclusive", "inconclusive", "consistent"],
+    correct: 2,
+  },
+  {
+    id: "amirnet-sentence-51",
+    subtopic: "השלמת משפטים",
+    q: "Although the new regulations were intended to simplify the process, they have actually made it more ______.",
+    options: ["efficient", "complicated", "accessible", "predictable"],
+    correct: 1,
+  },
+
+  {
+    id: "amirnet-sentence-52",
+    subtopic: "השלמת משפטים",
+    q: "The researchers were reluctant to draw conclusions because the available evidence was too ______.",
+    options: ["conclusive", "extensive", "inconclusive", "compelling"],
+    correct: 2,
+  },
+
+  {
+    id: "amirnet-sentence-53",
+    subtopic: "השלמת משפטים",
+    q: "The organization launched a campaign designed to ______ public awareness of the environmental consequences of plastic waste.",
+    options: ["raise", "conceal", "restrict", "undermine"],
+    correct: 0,
+  },
+
+  {
+    id: "amirnet-sentence-54",
+    subtopic: "השלמת משפטים",
+    q: "The decline in the animal population was initially ______ to habitat loss, but later research identified several additional factors.",
+    options: ["prevented", "attributed", "restricted", "exposed"],
+    correct: 1,
+  },
+
+  {
+    id: "amirnet-sentence-55",
+    subtopic: "השלמת משפטים",
+    q: "The professor's explanation was deliberately ______ so that students with little background in the subject could understand it.",
+    options: ["ambiguous", "intricate", "simplified", "controversial"],
+    correct: 2,
+  },
+
+  {
+    id: "amirnet-sentence-56",
+    subtopic: "השלמת משפטים",
+    q: "The company's financial difficulties were ______ by an unexpected decline in consumer demand.",
+    options: ["alleviated", "exacerbated", "concealed", "resolved"],
+    correct: 1,
+  },
+
+  {
+    id: "amirnet-sentence-57",
+    subtopic: "השלמת משפטים",
+    q: "The evidence was convincing enough to ______ further investigation into the cause of the accident.",
+    options: ["discourage", "warrant", "conceal", "prevent"],
+    correct: 1,
+  },
+
+  {
+    id: "amirnet-sentence-58",
+    subtopic: "השלמת משפטים",
+    q: "Because the two accounts contain several major ______, investigators cannot determine exactly what happened.",
+    options: ["similarities", "predictions", "discrepancies", "advantages"],
+    correct: 2,
+  },
+
+  {
+    id: "amirnet-sentence-59",
+    subtopic: "השלמת משפטים",
+    q: "The treatment may alleviate the symptoms, but it does not ______ the underlying cause of the disease.",
+    options: ["address", "retain", "infer", "allocate"],
+    correct: 0,
+  },
+
+  {
+    id: "amirnet-sentence-60",
+    subtopic: "השלמת משפטים",
+    q: "The proposed solution appears ______ in theory, but researchers are uncertain whether it can be implemented successfully.",
+    options: ["obsolete", "plausible", "inevitable", "adverse"],
+    correct: 1,
+  },
+
+  {
+    id: "amirnet-sentence-61",
+    subtopic: "השלמת משפטים",
+    q: "The new evidence appears to ______ the claim that the two events were unrelated.",
+    options: ["strengthen", "undermine", "preserve", "allocate"],
+    correct: 1,
+  },
+
+  {
+    id: "amirnet-sentence-62",
+    subtopic: "השלמת משפטים",
+    q: "The government imposed ______ safety regulations following a series of serious industrial accidents.",
+    options: ["sporadic", "negligible", "stringent", "arbitrary"],
+    correct: 2,
+  },
+
+  {
+    id: "amirnet-sentence-63",
+    subtopic: "השלמת משפטים",
+    q: "Although the disease was once ______ in the region, vaccination programs have made it relatively rare.",
+    options: ["prevalent", "dormant", "ambiguous", "tentative"],
+    correct: 0,
+  },
+
+  {
+    id: "amirnet-sentence-64",
+    subtopic: "השלמת משפטים",
+    q: "The researchers attempted to ______ their findings by conducting the experiment with a much larger sample.",
+    options: ["contradict", "corroborate", "conceal", "diminish"],
+    correct: 1,
+  },
+
+  {
+    id: "amirnet-sentence-65",
+    subtopic: "השלמת משפטים",
+    q: "The distinction between the two theories is ______ and may not be immediately apparent to someone unfamiliar with the subject.",
+    options: ["obvious", "subtle", "arbitrary", "profound"],
+    correct: 1,
+  },
+
+  {
+    id: "amirnet-sentence-66",
+    subtopic: "השלמת משפטים",
+    q: "The company was forced to ______ several outdated procedures that were no longer necessary.",
+    options: ["retain", "expand", "eliminate", "corroborate"],
+    correct: 2,
+  },
+
+  {
+    id: "amirnet-sentence-67",
+    subtopic: "השלמת משפטים",
+    q: "Despite years of research, a complete explanation for the phenomenon remains ______.",
+    options: ["elusive", "inevitable", "conventional", "abundant"],
+    correct: 0,
+  },
+
+  {
+    id: "amirnet-sentence-68",
+    subtopic: "השלמת משפטים",
+    q: "The author argues that economic growth alone is not a ______ indicator of improvements in quality of life.",
+    options: ["sufficient", "sporadic", "reluctant", "dormant"],
+    correct: 0,
+  },
+
+  {
+    id: "amirnet-sentence-69",
+    subtopic: "השלמת משפטים",
+    q: "The changes were introduced gradually in order to ______ disruption to employees and customers.",
+    options: ["exacerbate", "mitigate", "infer", "retain"],
+    correct: 1,
+  },
+
+  {
+    id: "amirnet-sentence-70",
+    subtopic: "השלמת משפטים",
+    q: "The archaeological evidence is too limited to ______ precisely when the settlement was established.",
+    options: ["determine", "prevent", "comply", "relinquish"],
+    correct: 0,
+  },
+
+  {
+    id: "amirnet-sentence-71",
+    subtopic: "השלמת משפטים",
+    q: "The two studies reached apparently contradictory conclusions, but the discrepancy can largely be ______ by differences in methodology.",
+    options: ["ignored", "explained", "prevented", "concealed"],
+    correct: 1,
+  },
+
+  {
+    id: "amirnet-sentence-72",
+    subtopic: "השלמת משפטים",
+    q: "Because freshwater supplies are limited, prolonged drought could seriously ______ the region's agricultural production.",
+    options: ["enhance", "impede", "corroborate", "retain"],
+    correct: 1,
+  },
+
+  {
+    id: "amirnet-sentence-73",
+    subtopic: "השלמת משפטים",
+    q: "The apparent simplicity of the device ______ the complexity of the technology operating inside it.",
+    options: ["reveals", "conceals", "confirms", "alleviates"],
+    correct: 1,
+  },
+
+  {
+    id: "amirnet-sentence-74",
+    subtopic: "השלמת משפטים",
+    q: "The scientist emphasized that the results were ______ and should not be treated as definitive until further studies were completed.",
+    options: ["conclusive", "tentative", "inevitable", "unprecedented"],
+    correct: 1,
+  },
+
+  {
+    id: "amirnet-sentence-75",
+    subtopic: "השלמת משפטים",
+    q: "Even minor errors in the measurements can ______ the reliability of the final results.",
+    options: ["enhance", "allocate", "compromise", "corroborate"],
+    correct: 2,
+  },
+  // =========================
+  // ניסוח מחדש — 51–75
+  // =========================
+  // =========================
+  // ניסוח מחדש — 1–26
+  // =========================
+
+  {
+    id: "amirnet-restatement-1",
+    subtopic: "ניסוח מחדש",
+    q: "The meeting was postponed because the manager was ill.",
+    options: [
+      "The meeting was delayed due to the manager's illness.",
+      "The manager became ill after the meeting.",
+      "The meeting ended because the manager arrived late.",
+      "The manager attended the meeting despite being ill.",
+    ],
+    correct: 0,
+  },
+
+  {
+    id: "amirnet-restatement-2",
+    subtopic: "ניסוח מחדש",
+    q: "Few people expected the team to win the championship.",
+    options: [
+      "Most people were certain the team would win.",
+      "The team's victory surprised many people.",
+      "The team was expected to lose every game.",
+      "Few people watched the championship.",
+    ],
+    correct: 1,
+  },
+
+  {
+    id: "amirnet-restatement-3",
+    subtopic: "ניסוח מחדש",
+    q: "The new device is easier to use than the previous model.",
+    options: [
+      "The previous model was simpler to use.",
+      "Both models are equally difficult to use.",
+      "Using the new device requires less effort.",
+      "The new device is more expensive than the old one.",
+    ],
+    correct: 2,
+  },
+
+  {
+    id: "amirnet-restatement-4",
+    subtopic: "ניסוח מחדש",
+    q: "Unless the weather improves, the match will be canceled.",
+    options: [
+      "The match will take place regardless of the weather.",
+      "The match will be canceled if the weather does not improve.",
+      "The weather will improve after the match.",
+      "The match has already been canceled.",
+    ],
+    correct: 1,
+  },
+
+  {
+    id: "amirnet-restatement-5",
+    subtopic: "ניסוח מחדש",
+    q: "The book was so interesting that I finished it in one day.",
+    options: [
+      "I finished the book quickly because it was very interesting.",
+      "The book became interesting only at the end.",
+      "I spent several days reading the book.",
+      "I did not expect to finish the book.",
+    ],
+    correct: 0,
+  },
+
+  {
+    id: "amirnet-restatement-6",
+    subtopic: "ניסוח מחדש",
+    q: "It is unlikely that the company will open another branch this year.",
+    options: [
+      "The company will definitely open another branch.",
+      "The company has already opened another branch.",
+      "The company probably will not open another branch this year.",
+      "The company closes branches every year.",
+    ],
+    correct: 2,
+  },
+
+  {
+    id: "amirnet-restatement-7",
+    subtopic: "ניסוח מחדש",
+    q: "The researchers found no evidence that the treatment was harmful.",
+    options: [
+      "The treatment was proven to be harmful.",
+      "The researchers did not find proof that the treatment caused harm.",
+      "The researchers refused to study the treatment.",
+      "The treatment caused serious side effects.",
+    ],
+    correct: 1,
+  },
+
+  {
+    id: "amirnet-restatement-8",
+    subtopic: "ניסוח מחדש",
+    q: "Although Daniel was tired, he continued working.",
+    options: [
+      "Daniel stopped working because he was tired.",
+      "Daniel continued working despite being tired.",
+      "Daniel worked only after resting.",
+      "Daniel was not tired while working.",
+    ],
+    correct: 1,
+  },
+
+  {
+    id: "amirnet-restatement-9",
+    subtopic: "ניסוח מחדש",
+    q: "The city has changed considerably over the past decade.",
+    options: [
+      "Very little has changed in the city.",
+      "The city has undergone major changes during the last ten years.",
+      "The city changed only recently.",
+      "The city was built ten years ago.",
+    ],
+    correct: 1,
+  },
+
+  {
+    id: "amirnet-restatement-10",
+    subtopic: "ניסוח מחדש",
+    q: "Only after the experiment ended did the scientists notice the error.",
+    options: [
+      "The scientists noticed the error before the experiment began.",
+      "The scientists corrected the error during the experiment.",
+      "The scientists became aware of the error only when the experiment was over.",
+      "The scientists expected an error to occur.",
+    ],
+    correct: 2,
+  },
+
+  {
+    id: "amirnet-restatement-11",
+    subtopic: "ניסוח מחדש",
+    q: "The article raises several questions but provides few answers.",
+    options: [
+      "The article answers every question it discusses.",
+      "The article discusses several issues without resolving most of them.",
+      "The article contains very little information.",
+      "The article focuses only on answers.",
+    ],
+    correct: 1,
+  },
+
+  {
+    id: "amirnet-restatement-12",
+    subtopic: "ניסוח מחדש",
+    q: "Hardly any of the original buildings remain standing today.",
+    options: [
+      "Very few of the original buildings still exist.",
+      "Most of the original buildings have recently been restored.",
+      "None of the original buildings were ever completed.",
+      "The original buildings are still in excellent condition.",
+    ],
+    correct: 0,
+  },
+
+  {
+    id: "amirnet-restatement-13",
+    subtopic: "ניסוח מחדש",
+    q: "The discovery was important not because it solved the problem, but because it changed the way scientists approached it.",
+    options: [
+      "The discovery's importance lay in changing scientists' approach rather than solving the problem itself.",
+      "Scientists considered the discovery unimportant because the problem remained unsolved.",
+      "The discovery solved the problem by changing scientists' opinions.",
+      "Scientists changed their approach only after the problem had been solved.",
+    ],
+    correct: 0,
+  },
+
+  {
+    id: "amirnet-restatement-14",
+    subtopic: "ניסוח מחדש",
+    q: "Had the warning been taken seriously, the accident might have been prevented.",
+    options: [
+      "The accident may not have occurred if people had paid attention to the warning.",
+      "The warning was issued only after the accident occurred.",
+      "The accident happened because no warning had been given.",
+      "Taking the warning seriously caused the accident.",
+    ],
+    correct: 0,
+  },
+
+  {
+    id: "amirnet-restatement-15",
+    subtopic: "ניסוח מחדש",
+    q: "The theory remains controversial despite the considerable evidence supporting it.",
+    options: [
+      "Although much evidence supports the theory, it is still disputed.",
+      "The theory is accepted because there is little evidence against it.",
+      "The theory was controversial until strong evidence proved it correct.",
+      "Most researchers reject the evidence supporting the theory.",
+    ],
+    correct: 0,
+  },
+
+  {
+    id: "amirnet-restatement-16",
+    subtopic: "ניסוח מחדש",
+    q: "No sooner had the train left the station than the storm began.",
+    options: [
+      "The storm began immediately after the train departed.",
+      "The train left because a storm had begun.",
+      "The storm ended shortly before the train departed.",
+      "The train waited at the station until the storm ended.",
+    ],
+    correct: 0,
+  },
+
+  {
+    id: "amirnet-restatement-17",
+    subtopic: "ניסוח מחדש",
+    q: "The company has yet to determine whether the new strategy will be effective.",
+    options: [
+      "The company still does not know if the new strategy will work.",
+      "The company has decided that the new strategy is ineffective.",
+      "The new strategy has already produced successful results.",
+      "The company has abandoned the new strategy.",
+    ],
+    correct: 0,
+  },
+
+  {
+    id: "amirnet-restatement-18",
+    subtopic: "ניסוח מחדש",
+    q: "Contrary to what was initially believed, the disease is not transmitted through the air.",
+    options: [
+      "It was first thought that the disease spread through the air, but this proved incorrect.",
+      "Researchers have always known that the disease is airborne.",
+      "The disease was recently discovered to spread only through the air.",
+      "Scientists still do not know how the disease is transmitted.",
+    ],
+    correct: 0,
+  },
+
+  {
+    id: "amirnet-restatement-19",
+    subtopic: "ניסוח מחדש",
+    q: "The proposal was rejected on the grounds that it would be too costly to implement.",
+    options: [
+      "The proposal was turned down because carrying it out would cost too much.",
+      "The proposal was accepted despite its high cost.",
+      "The proposal was rejected before its cost was calculated.",
+      "The proposal was too inexpensive to be considered practical.",
+    ],
+    correct: 0,
+  },
+
+  {
+    id: "amirnet-restatement-20",
+    subtopic: "ניסוח מחדש",
+    q: "There is little evidence to suggest that the decline will continue.",
+    options: [
+      "There is not much evidence indicating that the decline will persist.",
+      "The decline is almost certain to continue.",
+      "The evidence clearly proves that the decline has ended.",
+      "There is strong evidence that the decline will become more severe.",
+    ],
+    correct: 0,
+  },
+
+  {
+    id: "amirnet-restatement-21",
+    subtopic: "ניסוח מחדש",
+    q: "While the method is relatively inexpensive, its effectiveness has not been established.",
+    options: [
+      "Although the method does not cost much, it is still unclear whether it works.",
+      "The method is expensive but has been proven highly effective.",
+      "The method is inexpensive because it is ineffective.",
+      "Researchers have established that the method is both cheap and effective.",
+    ],
+    correct: 0,
+  },
+
+  {
+    id: "amirnet-restatement-22",
+    subtopic: "ניסוח מחדש",
+    q: "The significance of the findings was not immediately apparent.",
+    options: [
+      "It took some time before the importance of the findings became clear.",
+      "The findings were immediately recognized as extremely important.",
+      "The findings became less important over time.",
+      "Researchers immediately rejected the findings.",
+    ],
+    correct: 0,
+  },
+
+  {
+    id: "amirnet-restatement-23",
+    subtopic: "ניסוח מחדש",
+    q: "Only a fraction of the species that once inhabited the island can still be found there.",
+    options: [
+      "Only a small proportion of the island's former species remain.",
+      "Almost all the species that once lived on the island are still there.",
+      "The island now contains more species than it did in the past.",
+      "No species have disappeared from the island.",
+    ],
+    correct: 0,
+  },
+
+  {
+    id: "amirnet-restatement-24",
+    subtopic: "ניסוח מחדש",
+    q: "The policy was intended to reduce inequality, yet its actual effect was minimal.",
+    options: [
+      "Although the policy aimed to reduce inequality, it had little real impact.",
+      "The policy successfully eliminated most inequality.",
+      "The policy increased inequality because that was its goal.",
+      "The policy was abandoned before it could have any effect.",
+    ],
+    correct: 0,
+  },
+
+  {
+    id: "amirnet-restatement-25",
+    subtopic: "ניסוח מחדש",
+    q: "Much of what is known about the ancient civilization is based on indirect evidence.",
+    options: [
+      "A large part of our knowledge of the ancient civilization comes from evidence that is not direct.",
+      "Historians know almost nothing about the ancient civilization.",
+      "Direct evidence provides all that is known about the civilization.",
+      "Most evidence about the ancient civilization has been proven false.",
+    ],
+    correct: 0,
+  },
+
+  {
+    id: "amirnet-restatement-26",
+    subtopic: "ניסוח מחדש",
+    q: "Even if the new system proves effective, replacing the existing one will take years.",
+    options: [
+      "Even if the new system works well, the old system will not be replaced quickly.",
+      "The existing system will be replaced immediately if the new one works.",
+      "The new system cannot be effective until the old one is removed.",
+      "Replacing the existing system has already taken several years.",
+    ],
+    correct: 0,
+  },
+  {
+    id: "amirnet-restatement-51",
+    subtopic: "ניסוח מחדש",
+    q: "The consequences of the decision may not become apparent for several years.",
+    options: [
+      "The decision will probably be reversed within several years.",
+      "It may take years before the effects of the decision become clear.",
+      "The consequences of the decision have already disappeared.",
+      "The decision was made several years after its consequences became apparent.",
+    ],
+    correct: 1,
+  },
+
+  {
+    id: "amirnet-restatement-52",
+    subtopic: "ניסוח מחדש",
+    q: "Had the researchers used a larger sample, their findings might have been more reliable.",
+    options: [
+      "A larger sample could have increased the reliability of the findings.",
+      "The findings were reliable because the researchers used a large sample.",
+      "The researchers reduced the sample in order to improve reliability.",
+      "Using a larger sample would certainly have changed the findings completely.",
+    ],
+    correct: 0,
+  },
+
+  {
+    id: "amirnet-restatement-53",
+    subtopic: "ניסוח מחדש",
+    q: "The extent of the damage was far greater than initially estimated.",
+    options: [
+      "The original estimate exaggerated the amount of damage.",
+      "The damage was exactly as serious as experts first believed.",
+      "The damage proved to be much more severe than first thought.",
+      "Experts were unable to determine whether any damage had occurred.",
+    ],
+    correct: 2,
+  },
+
+  {
+    id: "amirnet-restatement-54",
+    subtopic: "ניסוח מחדש",
+    q: "No matter how carefully the experiment is conducted, some degree of uncertainty is inevitable.",
+    options: [
+      "Careful experiments always eliminate uncertainty.",
+      "Uncertainty occurs only when experiments are poorly conducted.",
+      "Scientists should avoid experiments whose results are uncertain.",
+      "Even a carefully conducted experiment cannot eliminate all uncertainty.",
+    ],
+    correct: 3,
+  },
+
+  {
+    id: "amirnet-restatement-55",
+    subtopic: "ניסוח מחדש",
+    q: "The theory is by no means universally accepted.",
+    options: [
+      "The theory has been accepted by almost everyone.",
+      "There are people who do not accept the theory.",
+      "The theory was once rejected but is now universally accepted.",
+      "No one has seriously considered the theory.",
+    ],
+    correct: 1,
+  },
+
+  {
+    id: "amirnet-restatement-56",
+    subtopic: "ניסוח מחדש",
+    q: "Only by reducing its expenses can the company remain profitable.",
+    options: [
+      "The company must reduce its expenses in order to remain profitable.",
+      "The company will become profitable even if its expenses increase.",
+      "Reducing expenses would prevent the company from making a profit.",
+      "The company has already reduced its expenses and increased its profits.",
+    ],
+    correct: 0,
+  },
+
+  {
+    id: "amirnet-restatement-57",
+    subtopic: "ניסוח מחדש",
+    q: "The researchers found the evidence compelling, though not conclusive.",
+    options: [
+      "The researchers believed the evidence proved the claim beyond doubt.",
+      "The researchers considered the evidence completely unconvincing.",
+      "The evidence was persuasive but did not provide definite proof.",
+      "The evidence was rejected because it contradicted the researchers' conclusion.",
+    ],
+    correct: 2,
+  },
+
+  {
+    id: "amirnet-restatement-58",
+    subtopic: "ניסוח מחדש",
+    q: "Little did the explorers realize that their discovery would transform the region.",
+    options: [
+      "The explorers discovered the region only after it had changed.",
+      "The explorers did not realize how important the consequences of their discovery would be.",
+      "The explorers expected their discovery to transform the region immediately.",
+      "The region had already been transformed before the explorers arrived.",
+    ],
+    correct: 1,
+  },
+
+  {
+    id: "amirnet-restatement-59",
+    subtopic: "ניסוח מחדש",
+    q: "The benefits of the program are difficult to quantify.",
+    options: [
+      "The program has been shown to have no benefits.",
+      "The program's benefits are too small to matter.",
+      "The exact extent of the program's benefits is difficult to measure.",
+      "Researchers have precisely calculated every benefit of the program.",
+    ],
+    correct: 2,
+  },
+
+  {
+    id: "amirnet-restatement-60",
+    subtopic: "ניסוח מחדש",
+    q: "Even though the evidence is limited, it should not be dismissed entirely.",
+    options: [
+      "The evidence should be considered despite its limitations.",
+      "Limited evidence is never worth considering.",
+      "The evidence is extensive enough to prove the claim.",
+      "The evidence has already been shown to be false.",
+    ],
+    correct: 0,
+  },
+
+  {
+    id: "amirnet-restatement-61",
+    subtopic: "ניסוח מחדש",
+    q: "The policy has done little to address the underlying causes of the problem.",
+    options: [
+      "The policy has successfully eliminated the causes of the problem.",
+      "The policy has had only a small effect on the fundamental causes of the problem.",
+      "The policy created the problem it was intended to solve.",
+      "The underlying causes disappeared before the policy was introduced.",
+    ],
+    correct: 1,
+  },
+
+  {
+    id: "amirnet-restatement-62",
+    subtopic: "ניסוח מחדש",
+    q: "There is every reason to believe that demand will continue to increase.",
+    options: [
+      "There is strong reason to expect demand to keep growing.",
+      "There is no evidence concerning future demand.",
+      "Demand has already reached its highest possible level.",
+      "Demand is expected to decline despite current evidence.",
+    ],
+    correct: 0,
+  },
+
+  {
+    id: "amirnet-restatement-63",
+    subtopic: "ניסוח מחדש",
+    q: "The new evidence calls into question several long-held assumptions.",
+    options: [
+      "The new evidence confirms all previously accepted assumptions.",
+      "Several assumptions were abandoned before the new evidence appeared.",
+      "The new evidence gives reason to doubt some beliefs that have been accepted for a long time.",
+      "The evidence is based entirely on long-held assumptions.",
+    ],
+    correct: 2,
+  },
+
+  {
+    id: "amirnet-restatement-64",
+    subtopic: "ניסוח מחדש",
+    q: "The species is believed to have disappeared long before humans reached the island.",
+    options: [
+      "Humans probably arrived on the island after the species had already disappeared.",
+      "The species disappeared because humans settled on the island.",
+      "Humans and the species are believed to have arrived at the same time.",
+      "The species survived on the island until recently.",
+    ],
+    correct: 0,
+  },
+
+  {
+    id: "amirnet-restatement-65",
+    subtopic: "ניסוח מחדש",
+    q: "As convincing as the explanation may seem, it is based on several untested assumptions.",
+    options: [
+      "The explanation has been proven because all its assumptions were tested.",
+      "Although the explanation appears persuasive, some of its assumptions have not been tested.",
+      "The explanation is unconvincing because it contains no assumptions.",
+      "Testing the assumptions made the explanation less convincing.",
+    ],
+    correct: 1,
+  },
+
+  {
+    id: "amirnet-restatement-66",
+    subtopic: "ניסוח מחדש",
+    q: "The problem is unlikely to resolve itself without government intervention.",
+    options: [
+      "Government intervention would probably make the problem worse.",
+      "The problem has already disappeared without government action.",
+      "The government is unlikely to recognize the problem.",
+      "The problem probably will not disappear on its own.",
+    ],
+    correct: 3,
+  },
+
+  {
+    id: "amirnet-restatement-67",
+    subtopic: "ניסוח מחדש",
+    q: "What distinguishes the new approach from previous ones is its emphasis on prevention.",
+    options: [
+      "Unlike earlier approaches, the new one places particular importance on preventing problems.",
+      "Previous approaches focused more heavily on prevention than the new one.",
+      "The new approach differs from earlier ones mainly because it avoids prevention.",
+      "There is little difference between the new approach and previous ones.",
+    ],
+    correct: 0,
+  },
+
+  {
+    id: "amirnet-restatement-68",
+    subtopic: "ניסוח מחדש",
+    q: "The results should be interpreted with caution, given the small number of participants.",
+    options: [
+      "The large number of participants makes the results highly reliable.",
+      "The results are certainly incorrect because too few people participated.",
+      "Because the study involved few participants, its results should be considered carefully.",
+      "The number of participants has no relevance to the interpretation of the results.",
+    ],
+    correct: 2,
+  },
+
+  {
+    id: "amirnet-restatement-69",
+    subtopic: "ניסוח מחדש",
+    q: "The invention was not so much the work of one individual as the product of decades of research.",
+    options: [
+      "One individual completed decades of research before creating the invention.",
+      "The invention resulted more from many years of research than from the work of a single person.",
+      "The invention was created before any significant research had been conducted.",
+      "Decades of research contributed little to the invention.",
+    ],
+    correct: 1,
+  },
+
+  {
+    id: "amirnet-restatement-70",
+    subtopic: "ניסוח מחדש",
+    q: "The absence of evidence is not necessarily evidence of absence.",
+    options: [
+      "If something has not been observed, this does not automatically prove that it does not exist.",
+      "Anything that cannot be observed must not exist.",
+      "Evidence is unnecessary when determining whether something exists.",
+      "Something can exist only when there is direct evidence of it.",
+    ],
+    correct: 0,
+  },
+
+  {
+    id: "amirnet-restatement-71",
+    subtopic: "ניסוח מחדש",
+    q: "The company barely managed to avoid bankruptcy.",
+    options: [
+      "The company went bankrupt despite its efforts.",
+      "The company was never in serious financial difficulty.",
+      "The company avoided bankruptcy, but only with great difficulty.",
+      "The company deliberately chose to declare bankruptcy.",
+    ],
+    correct: 2,
+  },
+
+  {
+    id: "amirnet-restatement-72",
+    subtopic: "ניסוח מחדש",
+    q: "Much remains to be learned about the long-term effects of the treatment.",
+    options: [
+      "The treatment's long-term effects are completely understood.",
+      "There is still a great deal that is unknown about the treatment's long-term effects.",
+      "Researchers have stopped studying the treatment's effects.",
+      "The treatment has no long-term effects.",
+    ],
+    correct: 1,
+  },
+
+  {
+    id: "amirnet-restatement-73",
+    subtopic: "ניסוח מחדש",
+    q: "The city has experienced nothing comparable to this drought in more than a century.",
+    options: [
+      "A more severe drought occurs in the city almost every year.",
+      "The current drought has lasted for more than one hundred years.",
+      "The city has experienced several identical droughts during the past century.",
+      "The city has not experienced a drought like this for over one hundred years.",
+    ],
+    correct: 3,
+  },
+
+  {
+    id: "amirnet-restatement-74",
+    subtopic: "ניסוח מחדש",
+    q: "The decline cannot be explained by demographic changes alone.",
+    options: [
+      "Demographic changes may have contributed to the decline, but other factors must also be considered.",
+      "Demographic changes had no possible connection to the decline.",
+      "The decline was caused exclusively by demographic changes.",
+      "Researchers have found no evidence that the decline occurred.",
+    ],
+    correct: 0,
+  },
+
+  {
+    id: "amirnet-restatement-75",
+    subtopic: "ניסוח מחדש",
+    q: "The discovery was all the more remarkable because it occurred entirely by chance.",
+    options: [
+      "The discovery was carefully planned and therefore unsurprising.",
+      "The accidental nature of the discovery made it even more remarkable.",
+      "The discovery was considered unimportant because it happened accidentally.",
+      "Researchers expected to make the discovery despite having no plan.",
+    ],
+    correct: 1,
+  },
+];
 const literacyExamQuestions = [
   {
     id: "exam-pron-1",
@@ -13090,6 +16503,7 @@ const literacyExamQuestions = [
     developmentalPsychology: developmentalPsychologyQuestions,
     educationalThought: educationalThoughtMcqData,
     literacy: literacyExamQuestions,
+    english: englishQuestions,
   };
 
   // כל המאגרים — עבור עמוד ההגדרות

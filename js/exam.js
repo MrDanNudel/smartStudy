@@ -24,6 +24,7 @@ const SUBJECT_TITLES = {
   developmentalPsychology: "פסיכולוגיה התפתחותית",
   sportHistory: "היסטוריה של הספורט",
   educationalThought: "מחשבת החינוך",
+  english: "הכנה למבחן אמירנט",
 };
 
 // ================================
