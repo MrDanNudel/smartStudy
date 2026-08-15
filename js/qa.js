@@ -89,13 +89,16 @@ document.querySelector(".subject-name").textContent =
 
 // === הצגת תת־נושא מתחת לכותרת ===
 const subtopicNameEl = document.getElementById("subtopicName");
-if (subtopicNameEl) {
-  if (selectedSubtopic !== "all") {
-    // תת־נושא ספציפי שנבחר
-    subtopicNameEl.textContent = selectedSubtopic;
+
+function updateSubtopicTitle(question) {
+  if (!subtopicNameEl) return;
+
+  if (selectedSubtopic === "all") {
+    // במצב "כל תתי־הנושאים" מציגים את תת־הנושא של השאלה הנוכחית
+    subtopicNameEl.textContent = question?.subtopic || "ללא תת־נושא";
   } else {
-    // אם לא רוצים שורה בכלל במצב "כל תתי-הנושאים" אפשר לשים "".
-    subtopicNameEl.textContent = "כל תתי־הנושאים";
+    // כאשר נבחר תת־נושא מסוים, הכותרת נשארת קבועה
+    subtopicNameEl.textContent = selectedSubtopic;
   }
 }
 
@@ -156,6 +159,7 @@ function loadQuestion() {
   if (!q) return;
 
   questionText.textContent = q.q;
+  updateSubtopicTitle(q);
 
   feedback.classList.remove("show");
   feedback.innerHTML = "";
