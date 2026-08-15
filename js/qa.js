@@ -82,6 +82,7 @@ const SUBJECT_TITLES = {
   sportHistory: "היסטוריה של הספורט",
   english: "אנגלית",
   financialEducation: "חינוך פיננסי",
+  nutrition: "תזונה",
 };
 
 document.querySelector(".subject-name").textContent =

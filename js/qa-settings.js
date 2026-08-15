@@ -33,6 +33,7 @@ const subjectTitles = {
   educationalThought: "מחשבת החינוך",
   english: "אנגלית",
   financialEducation: "חינוך פיננסי",
+  nutrition: "תזונה",
 };
 
 // Elements
