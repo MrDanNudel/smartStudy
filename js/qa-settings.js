@@ -32,6 +32,7 @@ const subjectTitles = {
   sportHistory: "היסטוריה של הספורט",
   educationalThought: "מחשבת החינוך",
   english: "אנגלית",
+  financialEducation: "חינוך פיננסי",
 };
 
 // Elements

@@ -81,6 +81,7 @@ const SUBJECT_TITLES = {
   developmentalPsychology: "פסיכולוגיה התפתחותית",
   sportHistory: "היסטוריה של הספורט",
   english: "אנגלית",
+  financialEducation: "חינוך פיננסי",
 };
 
 document.querySelector(".subject-name").textContent =
