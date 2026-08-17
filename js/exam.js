@@ -25,6 +25,9 @@ const SUBJECT_TITLES = {
   sportHistory: "היסטוריה של הספורט",
   educationalThought: "מחשבת החינוך",
   english: "הכנה למבחן אמירנט",
+  financialEducation: "חינוך פיננסי",
+  nutrition: "תזונה",
+  generalKnowledge: "ידע כללי",
 };
 
 // ================================

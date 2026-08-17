@@ -25,6 +25,9 @@ window.addEventListener("DOMContentLoaded", () => {
     developmentalPsychology: "פסיכולוגיה התפתחותית",
     sportHistory: "היסטוריה של הספורט",
     english: "אנגלית",
+    financialEducation: "חינוך פיננסי",
+    nutrition: "תזונה",
+    generalKnowledge: "ידע כללי",
   };
 
   const pageTitle = document.getElementById("pageTitle");

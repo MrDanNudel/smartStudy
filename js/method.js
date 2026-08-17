@@ -11,6 +11,13 @@ window.addEventListener("DOMContentLoaded", () => {
         "לימוד התפתחות הספורט לאורך ההיסטוריה, מהעולם העתיק ועד הספורט המודרני. הנושא כולל את המשחקים האולימפיים, תרבויות ספורט שונות, אישים מרכזיים ואירועים שהשפיעו על עולם הספורט.",
     },
 
+    generalKnowledge: {
+      title: "ידע כללי",
+      image: "./imgs/general-knowledge.png",
+      description:
+        "הרחבת הידע במגוון תחומים מרכזיים. הנושא כולל גאוגרפיה, היסטוריה, מדע, טבע, גוף האדם, חלל, טכנולוגיה, תרבות, אמנות, ספרות, ספורט ואישים חשובים.",
+    },
+
     developmentalPsychology: {
       title: "פסיכולוגיה התפתחותית",
       image: "./imgs/developmental-psychology.jpg",
