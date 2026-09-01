@@ -115,6 +115,7 @@ window.addEventListener("DOMContentLoaded", () => {
       description:
         "לימוד יסודות משחק הכדוריד, כולל מסירה, כדרור, זריקה לשער, תנועה, הגנה, התקפה, עבודת צוות וחוקי המשחק.",
     },
+
     financialEducation: {
       title: "חינוך פיננסי",
       image: "./imgs/financial-education.png",
@@ -201,7 +202,26 @@ window.addEventListener("DOMContentLoaded", () => {
   const quizBtn = document.getElementById("quizBtn");
   const showBtn = document.getElementById("showBtn");
   const visualBtn = document.getElementById("visualBtn");
+  const identificationBtn = document.getElementById("identificationBtn");
+  const methodGrid = document.querySelector(".method-grid");
   const backBtn = document.querySelector(".back-btn");
+
+  // מבחן הזיהוי מופיע אך ורק באנטומיה
+  if (identificationBtn) {
+    const isAnatomy = subjectKey === "anatomy";
+
+    identificationBtn.hidden = !isAnatomy;
+    identificationBtn.style.display = isAnatomy ? "" : "none";
+
+    methodGrid?.classList.toggle("method-grid--anatomy", isAnatomy);
+
+    // באנטומיה מוצגים ארבעת סוגי התרגול באותה שורה
+    if (methodGrid) {
+      methodGrid.style.gridTemplateColumns = isAnatomy
+        ? "repeat(4, minmax(0, 1fr))"
+        : "";
+    }
+  }
 
   // ================================
   // מבחן אמריקאי
@@ -254,6 +274,23 @@ window.addEventListener("DOMContentLoaded", () => {
 
     navigateWithFade(
       `visual-learning.html?subject=${encodeURIComponent(subjectKey)}`,
+    );
+  });
+
+  // ================================
+  // מבחן זיהוי באנטומיה
+  // ================================
+
+  identificationBtn?.addEventListener("click", () => {
+    if (subjectKey !== "anatomy") {
+      return;
+    }
+
+    localStorage.setItem("selectedMethodKey", "identification");
+    localStorage.setItem("selectedMethodLabel", "מבחן זיהוי");
+
+    navigateWithFade(
+      `identification-settings.html?subject=${encodeURIComponent(subjectKey)}`,
     );
   });
 

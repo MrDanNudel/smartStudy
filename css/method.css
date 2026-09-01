@@ -731,3 +731,13 @@ body.fade-out {
     transform: none;
   }
 }
+
+/* מסתיר לחלוטין את מבחן הזיהוי בשאר המקצועות */
+.method-card[hidden] {
+  display: none !important;
+}
+
+/* ארבעת התרגולים באותה שורה באנטומיה */
+.method-grid.method-grid--anatomy {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
