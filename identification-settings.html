@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>הגדרות מבחן זיהוי</title>
+
+    <link rel="stylesheet" href="css/base.css" />
+    <link rel="stylesheet" href="css/identification-settings.css" />
+  </head>
+
+  <body>
+    <div class="top-bar">
+      <button class="nav-btn" id="prev-page" type="button">
+        ⟵ לעמוד הקודם
+      </button>
+
+      <div class="title-wrap">
+        <p class="subject-label">הנושא הנבחר</p>
+        <h1 class="page-title" id="pageTitle">אנטומיה</h1>
+      </div>
+
+      <button class="nav-btn" id="home-page" type="button">לעמוד הבית ⟶</button>
+    </div>
+
+    <main class="settings-card">
+      <div class="settings-icon" aria-hidden="true">🎯</div>
+      <h2 class="settings-title">הגדרות מבחן זיהוי</h2>
+      <p class="settings-description">
+        בחר את הנושאים שעליהם תרצה להיבחן ואת מספר השקופיות.
+      </p>
+
+      <fieldset class="topics-fieldset">
+        <legend>בחר נושאים</legend>
+
+        <label class="topic-option topic-option--all" for="allTopicsCheckbox">
+          <input id="allTopicsCheckbox" type="checkbox" checked />
+          <span class="topic-option__text">
+            <strong>כל הנושאים</strong>
+            <small id="allTopicsCount">0 שקופיות</small>
+          </span>
+        </label>
+
+        <div id="topicsContainer" class="topics-list" aria-live="polite">
+          <p class="empty-message">טוען את נושאי התרגול...</p>
+        </div>
+      </fieldset>
+
+      <div class="form-row">
+        <label for="slides-btn">מספר שקופיות</label>
+        <button class="mini-btn" id="slides-btn" type="button">
+          <span id="slides-value">0 שקופיות</span>
+        </button>
+        <small id="availableSlidesText" class="available-text">
+          זמינות 0 שקופיות בנושאים שנבחרו
+        </small>
+      </div>
+
+      <button id="start-btn" class="start-btn" type="button" disabled>
+        התחל מבחן זיהוי
+      </button>
+
+      <p id="statusMessage" class="status-message" role="status"></p>
+    </main>
+
+    <div class="modal" id="modal" aria-hidden="true">
+      <div
+        class="modal-content"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="modal-title"
+      >
+        <h3 id="modal-title">בחר מספר שקופיות</h3>
+
+        <input type="number" id="modal-input" min="1" inputmode="numeric" />
+
+        <p id="modal-help" class="modal-help"></p>
+
+        <div class="modal-actions">
+          <button id="save-btn" class="primary" type="button">שמור</button>
+          <button id="cancel-btn" type="button">בטל</button>
+        </div>
+      </div>
+    </div>
+
+    <!--
+      יש לטעון כאן את מאגר שקופיות הזיהוי כאשר הוא יהיה מוכן, לדוגמה:
+      <script src="data/identification-bank.js"></script>
+    -->
+    <script src="js/identification-settings.js"></script>
+  </body>
+</html>

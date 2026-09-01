@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>מבחן זיהוי באנטומיה</title>
+
+    <link rel="stylesheet" href="css/base.css" />
+    <link rel="stylesheet" href="css/identification-test.css" />
+  </head>
+
+  <body>
+    <header class="top-bar">
+      <button class="nav-btn" id="backBtn" type="button">⟵ להגדרות</button>
+
+      <div class="title-wrap">
+        <p class="subject-label">מבחן זיהוי</p>
+        <h1 class="page-title">אנטומיה</h1>
+      </div>
+
+      <button class="nav-btn" id="homeBtn" type="button">לעמוד הבית ⟶</button>
+    </header>
+
+    <main class="page-shell">
+      <section
+        id="examScreen"
+        class="exam-screen"
+        aria-labelledby="questionTitle"
+      >
+        <div class="exam-meta">
+          <span id="questionCounter">שאלה 1 מתוך 1</span>
+          <span id="topicLabel">—</span>
+        </div>
+
+        <div class="timer" aria-label="הזמן שנותר לשאלה">
+          <div class="timer__labels">
+            <span>זמן נותר</span>
+            <strong id="timerText">30</strong>
+          </div>
+          <div class="timer__track">
+            <div id="timerFill" class="timer__fill"></div>
+          </div>
+        </div>
+
+        <article class="question-card">
+          <h2 id="questionTitle" class="question-title">מה מופיע בתמונה?</h2>
+
+          <div class="image-frame">
+            <img id="slideImage" src="" alt="" />
+            <p id="imageError" class="image-error" hidden>
+              לא ניתן לטעון את תמונת השקופית.
+            </p>
+          </div>
+
+          <form id="answerForm" class="answer-form" autocomplete="off">
+            <label for="answerInput">התשובה שלך</label>
+            <input
+              id="answerInput"
+              name="answer"
+              type="text"
+              placeholder="כתוב כאן את התשובה..."
+              spellcheck="false"
+              maxlength="160"
+              required
+            />
+
+            <button id="nextBtn" class="next-btn" type="submit">
+              לשאלה הבאה
+            </button>
+          </form>
+
+          <p class="exam-note">המשוב יוצג רק לאחר סיום המבחן.</p>
+        </article>
+      </section>
+
+      <section id="resultsScreen" class="results-screen" hidden>
+        <div class="results-summary">
+          <div class="results-icon" aria-hidden="true">🎯</div>
+          <p class="results-kicker">המבחן הסתיים</p>
+          <h2 id="scoreTitle">ענית נכון על 0 מתוך 0</h2>
+          <p id="scorePercent" class="score-percent">0%</p>
+          <p id="scoreMessage" class="score-message"></p>
+
+          <div class="results-actions">
+            <button id="reviewBtn" class="primary-btn" type="button">
+              מעבר על התשובות
+            </button>
+            <button id="retryBtn" class="secondary-btn" type="button">
+              מבחן נוסף
+            </button>
+          </div>
+        </div>
+
+        <section id="reviewSection" class="review-section" hidden>
+          <h2>סקירת התשובות</h2>
+          <div id="reviewList" class="review-list"></div>
+        </section>
+      </section>
+
+      <section id="emptyScreen" class="empty-screen" hidden>
+        <h2>לא נמצאו שקופיות למבחן</h2>
+        <p>ודא שמאגר הזיהוי נטען ושקיימות בו שקופיות בנושאים שנבחרו.</p>
+        <button id="emptyBackBtn" class="primary-btn" type="button">
+          חזרה להגדרות
+        </button>
+      </section>
+    </main>
+
+    <script src="data/identification-bank.js"></script>
+    <script src="js/identification-test.js"></script>
+  </body>
+</html>
